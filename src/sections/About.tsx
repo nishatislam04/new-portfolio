@@ -21,10 +21,22 @@ const techStack = PERSONAL_INFO.techStack.map((name) => ({ name }));
 
 export const AboutSection = () => {
 	const achievements = [
-		`${PERSONAL_INFO.stats.experience} years of professional development experience`,
-		`${PERSONAL_INFO.stats.projectsCompleted} successful projects delivered`,
-		`Expertise in ${PERSONAL_INFO.stats.technologies} modern web technologies`,
-		`${PERSONAL_INFO.stats.clientSatisfaction} client satisfaction rate`,
+		{
+			number: PERSONAL_INFO.stats.experience,
+			text: "years of professional development experience",
+		},
+		{
+			number: PERSONAL_INFO.stats.projectsCompleted,
+			text: "successful projects delivered",
+		},
+		{
+			number: PERSONAL_INFO.stats.technologies,
+			text: "modern web technologies mastered",
+		},
+		{
+			number: PERSONAL_INFO.stats.clientSatisfaction,
+			text: "client satisfaction rate",
+		},
 	];
 
 	return (
@@ -63,11 +75,20 @@ export const AboutSection = () => {
 							<FadeIn delay={0.4}>
 								<div className="space-y-4">
 									<h3 className="heading-3 text-white">Key Highlights</h3>
-									<div className="space-y-3">
+									<div className="space-y-4">
 										{achievements.map((achievement, index) => (
-											<motion.div key={index} className="flex items-start gap-3" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
+											<motion.div
+												key={index}
+												className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300"
+												initial={{ opacity: 0, x: -20 }}
+												whileInView={{ opacity: 1, x: 0 }}
+												viewport={{ once: true }}
+												transition={{ duration: 0.5, delay: index * 0.1 }}
+												whileHover={{ scale: 1.02 }}>
 												<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-												<span className="text-gray-300">{achievement}</span>
+												<span className="text-gray-300 flex-1">
+													<span className="text-emerald-400 font-bold text-xl">{achievement.number}</span> {achievement.text}
+												</span>
 											</motion.div>
 										))}
 									</div>
