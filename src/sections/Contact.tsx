@@ -1,55 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Section, Card, CardContent, Button } from "@/components/ui";
+import { Section, Card, Button } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import { ArrowUpRightIcon, GitHubIcon, LinkedInIcon, WhatsAppIcon, MessengerIcon, GmailIcon } from "@/components/icons";
+import { ArrowUpRightIcon, LinkedInIcon, WhatsAppIcon, MessengerIcon, GmailIcon } from "@/components/icons";
 import { otherImages } from "@/assets/images";
 import { CONTACT_INFO, SOCIAL_LINKS } from "@/constants";
-import { ContactForm } from "@/types";
-import { isValidEmail } from "@/utils";
+import { sendEmail } from "@/actions/SendEmail";
 
 export const ContactSection = () => {
-	const [formData, setFormData] = useState<ContactForm>({
-		name: "",
-		email: "",
-		message: "",
-	});
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+	const formRef = useRef<HTMLFormElement>(null);
+	const [isPending, startTransition] = useTransition();
+	const [state, setState] = useState<{ success: boolean; error?: string; message?: string } | null>(null);
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
-	};
+	// Handle form submission
+	const handleSubmit = async (formData: FormData) => {
+		startTransition(async () => {
+			const result = await sendEmail(null, formData);
+			setState(result);
 
-	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-
-		if (!formData.name || !formData.email || !formData.message) {
-			alert("Please fill in all fields");
-			return;
-		}
-
-		if (!isValidEmail(formData.email)) {
-			alert("Please enter a valid email address");
-			return;
-		}
-
-		setIsSubmitting(true);
-
-		try {
-			// Simulate form submission - replace with actual form handling
-			await new Promise((resolve) => setTimeout(resolve, 2000));
-			setSubmitStatus("success");
-			setFormData({ name: "", email: "", message: "" });
-		} catch (error) {
-			setSubmitStatus("error");
-		} finally {
-			setIsSubmitting(false);
-		}
+			// Reset form on successful submission
+			if (result.success && formRef.current) {
+				formRef.current.reset();
+			}
+		});
 	};
 
 	return (
@@ -74,8 +50,8 @@ export const ContactSection = () => {
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
 						{/* Contact Form */}
 						<FadeIn delay={0.2}>
-							<Card variant="glass" className="p-8 h-[670px]">
-								<form onSubmit={handleSubmit} className="space-y-6 h-40 flex flex-col">
+							<Card variant="glass" className="p-8 h-[750px]">
+								<form ref={formRef} action={handleSubmit} className="space-y-6 h-40 flex flex-col">
 									<div className="flex-grow space-y-6">
 										<div>
 											<label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -85,11 +61,10 @@ export const ContactSection = () => {
 												type="text"
 												id="name"
 												name="name"
-												value={formData.name}
-												onChange={handleInputChange}
 												className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
 												placeholder="Your name"
 												required
+												disabled={isPending}
 											/>
 										</div>
 
@@ -101,11 +76,10 @@ export const ContactSection = () => {
 												type="email"
 												id="email"
 												name="email"
-												value={formData.email}
-												onChange={handleInputChange}
 												className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
 												placeholder="your.email@example.com"
 												required
+												disabled={isPending}
 											/>
 										</div>
 
@@ -116,32 +90,33 @@ export const ContactSection = () => {
 											<textarea
 												id="message"
 												name="message"
-												value={formData.message}
-												onChange={handleInputChange}
 												rows={10}
 												className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 resize-none"
 												placeholder="Tell me about your project..."
 												required
+												disabled={isPending}
 											/>
 										</div>
 									</div>
 
 									<div className="pt-4">
-										<Button type="submit" disabled={isSubmitting} className="w-full group">
-											{isSubmitting ? "Sending..." : "Send Message"}
-											{!isSubmitting && <ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />}
+										<Button type="submit" disabled={isPending} className="w-full group">
+											{isPending ? "Sending..." : "Send Message"}
+											{!isPending && <ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />}
 										</Button>
 									</div>
 
-									{submitStatus === "success" && (
-										<motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-emerald-400 text-center">
-											Message sent successfully! I'll get back to you soon.
+									{/* Success Message */}
+									{state?.success && (
+										<motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-emerald-400 text-center font-medium">
+											{state.message || "Message sent successfully! I'll get back to you soon."}
 										</motion.p>
 									)}
 
-									{submitStatus === "error" && (
-										<motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-center">
-											Something went wrong. Please try again.
+									{/* Error Message */}
+									{state?.error && (
+										<motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-center font-medium">
+											{state.error}
 										</motion.p>
 									)}
 								</form>
