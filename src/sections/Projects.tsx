@@ -17,6 +17,26 @@ const portfolioProjects = [
 		image: projectImages.organizationCover,
 		technologies: ["Laravel", "TailwindCSS", "MySQL", "Gmail API", "Google OAuth"],
 		description: "A comprehensive organization management system where Super users manage organizations and subscriptions, Admins handle assigned organizations, and Members join organizations with automated payment tracking and penalty management.",
+		hasLiveDemo: false,
+	},
+	{
+		company: "Personal Project",
+		year: "2025",
+		title: "Team-Docs - Collaborative Documentation Platform",
+		results: [
+			{ title: "TipTap-powered Notion-like editor with slash commands and real-time collaboration" },
+			{ title: "Multi-tenant architecture with workspace isolation and role-based permissions" },
+			{ title: "PostgreSQL full-text search with ranking algorithms and workspace-scoped security" },
+			{ title: "Comprehensive admin dashboard with workspace approval and user management" },
+			{ title: "NextAuth.js JWT authentication with middleware-based route protection" },
+			{ title: "Performance optimized with Server Actions and React 18 concurrent features" },
+		],
+		link: "#", // Live project link coming soon
+		image: projectImages.teamDocsCover, // Team-Docs cover image coming soon
+		technologies: ["Next.js 15", "PostgreSQL", "Prisma ORM", "NextAuth.js", "TipTap", "Tailwind CSS v4", "Shadcn UI", "Zustand", "Docker"],
+		description: "A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing.",
+		hasLiveDemo: true,
+		isComingSoon: true,
 	},
 	{
 		company: "SoftBd LTD",
@@ -29,27 +49,12 @@ const portfolioProjects = [
 			{ title: "Streamlined user navigation with efficient performance optimization" },
 			{ title: "REST API integration for seamless data flow and updates" },
 		],
-		link: "#", // Add your project link here if available
+		link: "#", // No public access available
 		image: projectImages.juktoCover,
 		technologies: ["Laravel", "React", "MySQL", "TailwindCSS", "REST APIs"],
 		description: "A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement.",
-	},
-	{
-		company: "Personal Project",
-		year: "2024",
-		title: "Team-Docs - Collaborative Documentation Platform",
-		results: [
-			{ title: "TipTap-powered Notion-like editor with slash commands and real-time collaboration" },
-			{ title: "Multi-tenant architecture with workspace isolation and role-based permissions" },
-			{ title: "PostgreSQL full-text search with ranking algorithms and workspace-scoped security" },
-			{ title: "Comprehensive admin dashboard with workspace approval and user management" },
-			{ title: "NextAuth.js JWT authentication with middleware-based route protection" },
-			{ title: "Performance optimized with Server Actions and React 18 concurrent features" },
-		],
-		link: "#", // Add your project link here if available
-		image: projectImages.aiStartupLandingPage, // You can replace this with a Team-Docs cover image
-		technologies: ["Next.js 15", "PostgreSQL", "Prisma ORM", "NextAuth.js", "TipTap", "Tailwind CSS v4", "Shadcn UI", "Zustand", "Docker"],
-		description: "A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing.",
+		hasLiveDemo: false,
+		isPrivate: true,
 	},
 ];
 
@@ -72,10 +77,16 @@ const ProjectCard = ({ project, index }: { project: PortfolioProject; index: num
 
 					{/* Overlay buttons */}
 					<div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-						<Button size="sm" onClick={() => window.open(project.link, "_blank")} className="backdrop-blur-sm bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-white">
-							<ArrowUpRightIcon className="w-4 h-4 mr-2" />
-							{project.link.includes("github") ? "View Code" : "View Project"}
-						</Button>
+						{project.isPrivate ? (
+							<div className="backdrop-blur-sm bg-gray-500/20 border border-gray-500/30 text-gray-300 px-4 py-2 rounded-md text-sm">Private Project</div>
+						) : project.isComingSoon ? (
+							<div className="backdrop-blur-sm bg-blue-500/20 border border-blue-500/30 text-blue-300 px-4 py-2 rounded-md text-sm">Live Demo Coming Soon</div>
+						) : (
+							<Button size="sm" onClick={() => window.open(project.link, "_blank")} className="backdrop-blur-sm bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-white">
+								<ArrowUpRightIcon className="w-4 h-4 mr-2" />
+								{project.link.includes("github") ? "View Code" : "View Project"}
+							</Button>
+						)}
 					</div>
 				</div>
 

@@ -7,6 +7,7 @@ import lightSaasLandingPage from "./light-saas-landing-page.png";
 // Work cover images
 import organizationCover from "../workCoverImages/organization_cover.jpg";
 import juktoCover from "../workCoverImages/jukto_cover.png";
+import teamDocsCover from "../workCoverImages/teamDocsCoverPhoto11.png";
 
 // Memoji avatars
 import memojiAvatar1 from "./memoji-avatar-1.png";
@@ -28,6 +29,7 @@ export const projectImages = {
 	lightSaasLandingPage,
 	organizationCover,
 	juktoCover,
+	teamDocsCover,
 };
 
 export const memojiImages = {

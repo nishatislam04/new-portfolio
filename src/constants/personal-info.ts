@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
 	title: "Full Stack Web Developer",
 
 	// Profile/Bio
-	profile: `I am a motivated Full Stack Web Developer with one year of experience at SoftBd LTD, where I contributed to real-world projects including an organization management system and Jukto News platform. I also developed Team-Docs, an enterprise-grade collaborative documentation platform with advanced features like multi-tenant architecture and real-time collaboration. I specialize in modern web technologies including Next.js, Laravel, React, PostgreSQL, and advanced state management.`,
+	profile: `Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.`,
 
 	// Contact Information
 	email: "nishatislam3108@gmail.com",

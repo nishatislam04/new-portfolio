@@ -20,6 +20,9 @@ export interface PortfolioProject {
 	image: StaticImageData;
 	technologies?: string[];
 	description?: string;
+	hasLiveDemo?: boolean;
+	isComingSoon?: boolean;
+	isPrivate?: boolean;
 }
 
 export interface Testimonial {
