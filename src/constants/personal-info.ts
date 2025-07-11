@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
 	title: "Full Stack Web Developer",
 
 	// Profile/Bio
-	profile: `I am a motivated Full Stack Web Developer with one year of experience at SoftBd LTD, where I contributed to real-world projects using NextJS, Laravel. I enjoy tackling challenges in both frontend and backend development.`,
+	profile: `I am a motivated Full Stack Web Developer with one year of experience at SoftBd LTD, where I developed comprehensive web applications including an organization management system with role-based permissions, subscription management, and automated payment tracking. I specialize in both frontend and backend development using modern technologies like Next.js and Laravel.`,
 
 	// Contact Information
 	email: "nishatislam3108@gmail.com",
@@ -40,13 +40,13 @@ export const PERSONAL_INFO = {
 	skills: ["JavaScript", "React", "Next.js", "PHP", "Laravel", "Vue.js", "MySQL", "PostgreSQL", "Prisma ORM", "Docker", "Tailwind CSS", "SASS", "Git", "Redis"],
 
 	// Tech Stack for About Section (subset of main skills)
-	techStack: ["Next.js", "Laravel", "React", "JavaScript", "Git", "Docker"],
+	techStack: ["Next.js", "Laravel", "React", "JavaScript", "MySQL", "Git"],
 
 	// Achievements/Stats
 	stats: {
-		projectsCompleted: "5+",
+		projectsCompleted: "8+",
 		experience: "1+",
-		technologies: "12+",
+		technologies: "15+",
 		clientSatisfaction: "100%",
 	},
 };

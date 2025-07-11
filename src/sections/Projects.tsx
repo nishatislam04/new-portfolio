@@ -1,32 +1,36 @@
 "use client";
-import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
-import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
-import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
+import { projectImages } from "@/assets/images";
 
 const portfolioProjects = [
 	{
-		company: "Acme Corp",
-		year: "2022",
-		title: "Dark Saas Landing Page",
-		results: [{ title: "Enhanced user experience by 40%" }, { title: "Improved site speed by 50%" }, { title: "Increased mobile traffic by 35%" }],
-		link: "https://youtu.be/4k7IdSLxh6w",
-		image: darkSaasLandingPage,
+		company: "SoftBd LTD",
+		year: "2024",
+		title: "Organization Management System",
+		results: [{ title: "Role-based permission system with 3 user levels" }, { title: "Automated installment tracking with penalty calculation" }, { title: "Google OAuth integration for seamless authentication" }, { title: "Email notification system for payment reminders" }],
+		link: "#", // Add your project link here
+		image: projectImages.organizationCover,
+		technologies: ["Laravel", "TailwindCSS", "MySQL", "Gmail API"],
+		description: "A comprehensive organization management system featuring role-based permissions, subscription management, and automated payment tracking with penalty calculations.",
 	},
 	{
-		company: "Innovative Co",
-		year: "2021",
-		title: "Light Saas Landing Page",
-		results: [{ title: "Boosted sales by 20%" }, { title: "Expanded customer reach by 35%" }, { title: "Increased brand awareness by 15%" }],
-		link: "https://youtu.be/7hi5zwO75yc",
-		image: lightSaasLandingPage,
+		company: "Personal Project",
+		year: "2024",
+		title: "Jukto Platform",
+		results: [{ title: "Modern responsive design implementation" }, { title: "Enhanced user engagement features" }, { title: "Optimized performance and loading speed" }],
+		link: "#", // Add your project link here
+		image: projectImages.juktoCover,
+		technologies: ["Next.js", "React", "TailwindCSS"],
+		description: "A modern web platform built with Next.js featuring responsive design and optimized user experience.",
 	},
 	{
-		company: "Quantum Dynamics",
+		company: "Portfolio Project",
 		year: "2023",
 		title: "AI Startup Landing Page",
-		results: [{ title: "Enhanced user experience by 40%" }, { title: "Improved site speed by 50%" }, { title: "Increased mobile traffic by 35%" }],
+		results: [{ title: "Modern design with smooth animations" }, { title: "Responsive across all device sizes" }, { title: "Optimized for conversion and engagement" }],
 		link: "https://youtu.be/Z7I5uSRHMHg",
-		image: aiStartupLandingPage,
+		image: projectImages.aiStartupLandingPage,
+		technologies: ["React", "Next.js", "Framer Motion"],
+		description: "A cutting-edge landing page for an AI startup featuring modern design principles and smooth animations.",
 	},
 ];
 
@@ -61,13 +65,25 @@ const ProjectCard = ({ project, index }: { project: PortfolioProject; index: num
 						{/* Project title and company */}
 						<div className="flex items-start justify-between gap-4">
 							<h3 className="heading-3 text-white group-hover:text-emerald-400 transition-colors duration-300">{project.title}</h3>
-							<span className="px-2 py-1 text-xs bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 whitespace-nowrap">
-								{project.year}
-							</span>
+							<span className="px-2 py-1 text-xs bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 whitespace-nowrap">{project.year}</span>
 						</div>
 
 						{/* Company */}
 						<p className="text-gray-400 font-medium">{project.company}</p>
+
+						{/* Description */}
+						{project.description && <p className="text-sm text-gray-300 leading-relaxed">{project.description}</p>}
+
+						{/* Technologies */}
+						{project.technologies && (
+							<div className="flex flex-wrap gap-2">
+								{project.technologies.map((tech, idx) => (
+									<span key={idx} className="px-2 py-1 text-xs bg-gray-800/50 text-gray-300 rounded border border-gray-700/50">
+										{tech}
+									</span>
+								))}
+							</div>
+						)}
 
 						{/* Results */}
 						<div className="space-y-2">
@@ -103,7 +119,7 @@ export const ProjectsSection = () => {
 							<h2 className="heading-2 mb-4">
 								Featured <span className="gradient-text">Projects</span>
 							</h2>
-							<p className="body-large text-gray-400 max-w-2xl mx-auto">A showcase of my recent work, featuring modern web applications built with cutting-edge technologies.</p>
+							<p className="body-large text-gray-400 max-w-2xl mx-auto">A showcase of my professional work and personal projects, featuring full-stack web applications with real-world impact and modern technologies.</p>
 						</div>
 					</FadeIn>
 
