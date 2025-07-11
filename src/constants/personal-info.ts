@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
 	title: "Full Stack Web Developer",
 
 	// Profile/Bio
-	profile: `I am a motivated Full Stack Web Developer with one year of experience at SoftBd LTD, where I developed comprehensive web applications including an organization management system with role-based permissions, subscription management, and automated payment tracking. I specialize in both frontend and backend development using modern technologies like Next.js and Laravel.`,
+	profile: `I am a motivated Full Stack Web Developer with one year of experience at SoftBd LTD, where I contributed to real-world projects including an organization management system with role-based permissions and automated payment tracking, and Jukto News platform with real-time content aggregation. I specialize in both frontend and backend development using modern technologies like Next.js, Laravel, React, and MySQL.`,
 
 	// Contact Information
 	email: "nishatislam3108@gmail.com",
@@ -30,8 +30,9 @@ export const PERSONAL_INFO = {
 			position: "Junior Software Engineer",
 			duration: "JULY 2024 - CURRENT",
 			description: [
-				"Actively contributed to real-world projects, collaborating closely with team-member, gaining valuable hands-on experience in full-stack web development.",
-				"Acquired and applied new technologies, including modern PHP techniques and Laravel best practices, significantly enhancing my problem-solving and project execution skills.",
+				"Developed a comprehensive organization management system with role-based permissions (Super, Admin, Member), subscription management, and automated payment tracking with penalty calculations.",
+				"Contributed to Jukto News platform development, implementing real-time news aggregation, content management, and interactive UI components with responsive design.",
+				"Applied modern technologies including Laravel, React, MySQL, and REST APIs while collaborating with team members on full-stack web development projects.",
 			],
 		},
 	],
