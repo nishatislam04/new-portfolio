@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://nishat-portfolio.vercel.app"),
+	metadataBase: new URL("https://new-portfolio-psi-bice.vercel.app"),
 	title: {
 		default: "Nishat Mazumder - Full Stack Web Developer",
 		template: "%s | Nishat Mazumder",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://nishat-portfolio.vercel.app",
+		url: "https://new-portfolio-psi-bice.vercel.app",
 		title: "Nishat Mazumder - Full Stack Web Developer",
 		description: "Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
 		siteName: "Nishat Mazumder Portfolio",
