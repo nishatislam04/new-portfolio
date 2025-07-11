@@ -1,6 +1,6 @@
-# Modern Portfolio Website
+# 🚀 Nishat Mazumder - Portfolio Website
 
-A beautiful, responsive portfolio website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Features a modern design with smooth animations, dark theme, and mobile-first responsive layout.
+A stunning, responsive portfolio website showcasing my work as a Full Stack Web Developer. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Features enterprise-grade projects, modern design with smooth animations, and production-ready optimizations.
 
 ## ✨ Features
 
@@ -47,17 +47,20 @@ src/
 ## 🛠️ Installation & Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd portfolio
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
@@ -68,18 +71,23 @@ src/
 ## 📝 Customization
 
 ### Personal Information
+
 Update the following files with your information:
+
 - `src/constants/index.ts` - Projects, testimonials, skills, and contact info
 - `src/app/layout.tsx` - Meta tags and SEO information
 - `src/assets/images/` - Replace with your project images and photos
 
 ### Styling
+
 - `src/app/globals.css` - Global styles and CSS variables
 - `tailwind.config.ts` - Tailwind configuration and custom colors
 - Individual component files for specific styling
 
 ### Content Sections
+
 Each section is a separate component in `src/sections/`:
+
 - `Header.tsx` - Navigation header
 - `Hero.tsx` - Hero/landing section
 - `About.tsx` - About me section
@@ -101,15 +109,41 @@ Each section is a separate component in `src/sections/`:
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically with each push
+
+1. **Prepare for Production**
+
+   ```bash
+   npm run lint:fix
+   npm run type-check
+   npm run build
+   ```
+
+2. **Deploy to Vercel**
+   - Push your code to GitHub
+   - Connect your repository to Vercel
+   - Set environment variables in Vercel dashboard
+   - Deploy automatically with each push
+
+3. **Environment Variables**
+   - Copy `.env.example` to `.env.local`
+   - Fill in your actual values
+   - Add the same variables to Vercel dashboard
 
 ### Manual Build
+
 ```bash
 npm run build
 npm start
 ```
+
+### Performance Optimization
+
+- ✅ Image optimization with WebP/AVIF formats
+- ✅ Code splitting and lazy loading
+- ✅ CSS optimization and minification
+- ✅ Gzip compression enabled
+- ✅ SEO optimizations (sitemap, robots.txt)
+- ✅ Error boundaries and loading states
 
 ## 📱 Browser Support
 
