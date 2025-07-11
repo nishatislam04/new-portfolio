@@ -18,19 +18,24 @@ const TechIcon = ({ name }: { name: string }) => {
 // Toolbox items with tech stack
 const toolboxItems = [
 	{ title: "JavaScript" },
-	{ title: "HTML5" },
-	{ title: "CSS3" },
+	{ title: "TypeScript" },
 	{ title: "React" },
 	{ title: "Next.js" },
+	{ title: "NestJS" },
+	{ title: "PHP" },
 	{ title: "Laravel" },
-	{ title: "TypeScript" },
-	{ title: "Tailwind CSS" },
 	{ title: "MySQL" },
-	{ title: "Node.js" },
-	{ title: "Git" },
+	{ title: "PostgreSQL" },
+	{ title: "Prisma ORM" },
+	{ title: "Tailwind CSS" },
+	{ title: "SASS" },
+	{ title: "Shadcn UI" },
+	{ title: "Zustand" },
+	{ title: "NextAuth.js" },
+	{ title: "Redis" },
 	{ title: "Docker" },
-	{ title: "VS Code" },
-	{ title: "Chrome" },
+	{ title: "Git" },
+	{ title: "Bun" },
 ];
 
 const ToolboxItem = ({ item, index }: { item: (typeof toolboxItems)[0]; index: number }) => (

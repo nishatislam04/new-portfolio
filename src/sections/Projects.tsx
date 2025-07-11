@@ -35,14 +35,21 @@ const portfolioProjects = [
 		description: "A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement.",
 	},
 	{
-		company: "Portfolio Project",
-		year: "2023",
-		title: "AI Startup Landing Page",
-		results: [{ title: "Modern design with smooth animations" }, { title: "Responsive across all device sizes" }, { title: "Optimized for conversion and engagement" }],
-		link: "https://youtu.be/Z7I5uSRHMHg",
-		image: projectImages.aiStartupLandingPage,
-		technologies: ["React", "Next.js", "Framer Motion"],
-		description: "A cutting-edge landing page for an AI startup featuring modern design principles and smooth animations.",
+		company: "Personal Project",
+		year: "2024",
+		title: "Team-Docs - Collaborative Documentation Platform",
+		results: [
+			{ title: "TipTap-powered Notion-like editor with slash commands and real-time collaboration" },
+			{ title: "Multi-tenant architecture with workspace isolation and role-based permissions" },
+			{ title: "PostgreSQL full-text search with ranking algorithms and workspace-scoped security" },
+			{ title: "Comprehensive admin dashboard with workspace approval and user management" },
+			{ title: "NextAuth.js JWT authentication with middleware-based route protection" },
+			{ title: "Performance optimized with Server Actions and React 18 concurrent features" },
+		],
+		link: "#", // Add your project link here if available
+		image: projectImages.aiStartupLandingPage, // You can replace this with a Team-Docs cover image
+		technologies: ["Next.js 15", "PostgreSQL", "Prisma ORM", "NextAuth.js", "TipTap", "Tailwind CSS v4", "Shadcn UI", "Zustand", "Docker"],
+		description: "A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing.",
 	},
 ];
 

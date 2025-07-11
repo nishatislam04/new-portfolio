@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
 	title: "Full Stack Web Developer",
 
 	// Profile/Bio
-	profile: `I am a motivated Full Stack Web Developer with one year of experience at SoftBd LTD, where I contributed to real-world projects including an organization management system with role-based permissions and automated payment tracking, and Jukto News platform with real-time content aggregation. I specialize in both frontend and backend development using modern technologies like Next.js, Laravel, React, and MySQL.`,
+	profile: `I am a motivated Full Stack Web Developer with one year of experience at SoftBd LTD, where I contributed to real-world projects including an organization management system and Jukto News platform. I also developed Team-Docs, an enterprise-grade collaborative documentation platform with advanced features like multi-tenant architecture and real-time collaboration. I specialize in modern web technologies including Next.js, Laravel, React, PostgreSQL, and advanced state management.`,
 
 	// Contact Information
 	email: "nishatislam3108@gmail.com",
@@ -38,16 +38,16 @@ export const PERSONAL_INFO = {
 	],
 
 	// Technical Skills
-	skills: ["JavaScript", "React", "Next.js", "PHP", "Laravel", "Vue.js", "MySQL", "PostgreSQL", "Prisma ORM", "Docker", "Tailwind CSS", "SASS", "Git", "Redis"],
+	skills: ["JavaScript", "TypeScript", "React", "Next.js", "PHP", "Laravel", "Vue.js", "MySQL", "PostgreSQL", "Prisma ORM", "NextAuth.js", "Zustand", "Docker", "Tailwind CSS", "Shadcn UI", "TipTap", "Framer Motion", "Git", "Bun"],
 
 	// Tech Stack for About Section (subset of main skills)
-	techStack: ["Next.js", "Laravel", "React", "JavaScript", "MySQL", "Git"],
+	techStack: ["Next.js", "Laravel", "React", "PostgreSQL", "Prisma ORM", "Docker"],
 
 	// Achievements/Stats
 	stats: {
-		projectsCompleted: "8+",
+		projectsCompleted: "10+",
 		experience: "1+",
-		technologies: "15+",
+		technologies: "20+",
 		clientSatisfaction: "100%",
 	},
 };
