@@ -11,12 +11,6 @@ const nextConfig = {
 		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
 	},
 
-	// Experimental features for better performance
-	experimental: {
-		optimizeCss: true,
-		scrollRestoration: true,
-	},
-
 	webpack(config) {
 		// Grab the existing rule that handles SVG imports
 		const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));

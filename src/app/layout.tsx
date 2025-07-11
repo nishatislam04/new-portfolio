@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://nishat-portfolio.vercel.app"),
 	title: {
 		default: "Nishat Mazumder - Full Stack Web Developer",
 		template: "%s | Nishat Mazumder",
@@ -20,24 +21,15 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://nishat-portfolio.vercel.app", // Update with your actual Vercel URL
+		url: "https://nishat-portfolio.vercel.app",
 		title: "Nishat Mazumder - Full Stack Web Developer",
 		description: "Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
 		siteName: "Nishat Mazumder Portfolio",
-		images: [
-			{
-				url: "/og-image.png", // You can add an OG image later
-				width: 1200,
-				height: 630,
-				alt: "Nishat Mazumder - Full Stack Web Developer",
-			},
-		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "Nishat Mazumder - Full Stack Web Developer",
 		description: "Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
-		images: ["/og-image.png"], // You can add a Twitter card image later
 	},
 	robots: {
 		index: true,
@@ -49,9 +41,6 @@ export const metadata: Metadata = {
 			"max-image-preview": "large",
 			"max-snippet": -1,
 		},
-	},
-	verification: {
-		google: "your-google-verification-code", // Add your Google Search Console verification code
 	},
 };
 
