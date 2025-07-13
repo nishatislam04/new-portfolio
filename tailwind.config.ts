@@ -41,7 +41,8 @@ const config: Config = {
 				},
 			},
 			fontFamily: {
-				sans: ["Inter", "system-ui", "sans-serif"],
+				sans: "var(--font-sans)",
+				serif: "var(--font-serif)",
 			},
 			animation: {
 				"fade-in": "fadeIn 0.5s ease-in-out",
