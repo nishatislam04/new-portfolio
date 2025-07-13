@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { Section, Button } from "@/components/ui";
+import { Section, Container } from "@/components/ui";
 import { FadeIn } from "@/components/animations";
-import { ArrowUpRightIcon, SparkleIcon } from "@/components/icons";
-import { otherImages, memojiImages } from "@/assets/images";
+import { ArrowUpRightIcon } from "@/components/icons";
 import { scrollToElement } from "@/utils";
 import { PERSONAL_INFO } from "@/constants/personal-info";
+import grainImage from "@/assets/images/grain.jpg";
 
 export const CTASection = () => {
 	const handleContactClick = () => {
@@ -15,127 +14,62 @@ export const CTASection = () => {
 	};
 
 	return (
-		<Section className="relative overflow-hidden">
-			{/* Background elements */}
-			<div className="absolute inset-0 opacity-5">
-				<Image src={otherImages.grain} alt="" fill className="object-cover" />
-			</div>
-
-			{/* Gradient background */}
-			<div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-sky-500/10" />
-
-			{/* Floating elements */}
-			<div className="absolute inset-0">
-				<motion.div
-					className="absolute top-1/4 left-1/4"
-					animate={{
-						y: [0, -20, 0],
-						rotate: [0, 5, 0],
-					}}
-					transition={{
-						duration: 6,
-						repeat: Infinity,
-						ease: "easeInOut",
-					}}>
-					<SparkleIcon className="w-6 h-6 text-emerald-400/30" />
-				</motion.div>
-
-				<motion.div
-					className="absolute top-1/3 right-1/4"
-					animate={{
-						y: [0, 15, 0],
-						rotate: [0, -5, 0],
-					}}
-					transition={{
-						duration: 4,
-						repeat: Infinity,
-						ease: "easeInOut",
-						delay: 2,
-					}}>
-					<SparkleIcon className="w-4 h-4 text-sky-400/30" />
-				</motion.div>
-
-				<motion.div
-					className="absolute bottom-1/4 left-1/3"
-					animate={{
-						y: [0, -10, 0],
-						rotate: [0, 10, 0],
-					}}
-					transition={{
-						duration: 5,
-						repeat: Infinity,
-						ease: "easeInOut",
-						delay: 1,
-					}}>
-					<SparkleIcon className="w-5 h-5 text-emerald-300/20" />
-				</motion.div>
-			</div>
-
-			<div className="relative z-10">
-				<div className="max-w-4xl mx-auto text-center">
-					<FadeIn>
-						<div className="mb-8">
-							{/* Avatar */}
-							<motion.div className="relative w-24 h-24 mx-auto mb-6" whileHover={{ scale: 1.1, rotate: 5 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-								<Image src={memojiImages.smile} alt="Let's work together" fill className="object-contain" />
-							</motion.div>
-
-							{/* Heading */}
-							<h2 className="heading-2 mb-4">
-								Let's work <span className="gradient-text">together</span>
-							</h2>
-
-							{/* Description */}
-							<p className="body-large text-gray-400 max-w-2xl mx-auto mb-8">Have a project in mind? Let's discuss how we can bring your ideas to life with cutting-edge technology and exceptional design.</p>
-
-							{/* CTA Button */}
-							<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-								<Button onClick={handleContactClick} size="lg" className="group shadow-2xl shadow-emerald-500/25">
-									<span className="relative z-10">Get in Touch</span>
-									<ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-								</Button>
-							</motion.div>
+		<Section className="py-16 pt-12 lg:py-24 lg:pt-20">
+			<Container>
+				<div className="bg-gradient-to-r from-emerald-300 to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center relative overflow-hidden z-0 md:text-left">
+					{/* Heading */}
+					<div className="flex flex-col gap-8 items-center md:flex-row md:gap-16">
+						<div className="">
+							<h2 className="font-serif text-2xl md:text-3xl">Let's create something amazing together</h2>
+							<p className="text-sm mt-2 md:text-base">Ready to bring your next project to life? Let's connect and discuss how i can achive your goal</p>
 						</div>
-					</FadeIn>
-
-					{/* Animated Stats */}
-					<FadeIn delay={0.3}>
-						<div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-white/10">
-							<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-								<div className="relative">
-									<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.projectsCompleted}</div>
-									<motion.div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
-								</div>
-								<div className="text-gray-300 text-sm font-medium">Projects Completed</div>
-							</motion.div>
-
-							<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-								<div className="relative">
-									<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.technologies}</div>
-									<motion.div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
-								</div>
-								<div className="text-gray-300 text-sm font-medium">Technologies</div>
-							</motion.div>
-
-							<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-								<div className="relative">
-									<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.experience}</div>
-									<motion.div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
-								</div>
-								<div className="text-gray-300 text-sm font-medium">Years Experience</div>
-							</motion.div>
-
-							<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
-								<div className="relative">
-									<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.clientSatisfaction}</div>
-									<motion.div className="absolute -inset-2 bg-gradient-to-r from-pink-500/20 to-emerald-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
-								</div>
-								<div className="text-gray-300 text-sm font-medium">Client Satisfaction</div>
-							</motion.div>
+						<div className="">
+							<button className="text-white bg-gray-900 inline-flex items-center px-6 h-12 rounded-xl gap-2 w-max border border-gray-900" onClick={handleContactClick}>
+								<span className="font-semibold">Contact Me</span>
+								<ArrowUpRightIcon className="size-4" />
+							</button>
 						</div>
-					</FadeIn>
+					</div>
+					<div className="absolute inset-0 opacity-5 -z-10" style={{ backgroundImage: `url(${grainImage.src})` }}></div>
 				</div>
-			</div>
+
+				{/* Stats */}
+				<FadeIn delay={0.3}>
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 lg:pt-20 border-t border-white/10">
+						<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+							<div className="relative">
+								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.projectsCompleted}</div>
+								<motion.div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
+							</div>
+							<div className="text-gray-300 text-sm font-medium">Projects Completed</div>
+						</motion.div>
+
+						<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+							<div className="relative">
+								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.technologies}</div>
+								<motion.div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
+							</div>
+							<div className="text-gray-300 text-sm font-medium">Technologies</div>
+						</motion.div>
+
+						<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+							<div className="relative">
+								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.experience}</div>
+								<motion.div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
+							</div>
+							<div className="text-gray-300 text-sm font-medium">Years Experience</div>
+						</motion.div>
+
+						<motion.div className="text-center group" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+							<div className="relative">
+								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.clientSatisfaction}</div>
+								<motion.div className="absolute -inset-2 bg-gradient-to-r from-pink-500/20 to-emerald-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" initial={false} />
+							</div>
+							<div className="text-gray-300 text-sm font-medium">Client Satisfaction</div>
+						</motion.div>
+					</div>
+				</FadeIn>
+			</Container>
 		</Section>
 	);
 };
