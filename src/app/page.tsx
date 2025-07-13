@@ -15,16 +15,16 @@ export default function Home() {
 		<>
 			<SkipLink />
 			<Header />
-			<main id="main-content" className="min-h-screen">
-				<HeroSection />
-				<AboutSection />
-				<ToolboxSection />
-				<TapeSection />
-				<ProjectsSection />
-				{/* <TestimonialsSection /> */}
-				<ContactSection />
-				<CTASection />
-			</main>
+			{/* <main id="main-content" className=""> */}
+			<HeroSection />
+			<AboutSection />
+			<ToolboxSection />
+			<TapeSection />
+			<ProjectsSection />
+			{/* <TestimonialsSection /> */}
+			<ContactSection />
+			<CTASection />
+			{/* </main> */}
 			<Footer />
 		</>
 	);

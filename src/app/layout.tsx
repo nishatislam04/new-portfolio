@@ -64,7 +64,7 @@ export default function RootLayout({
 				<meta name="theme-color" content="#0f172a" />
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 			</head>
-			<body className={`${inter.variable} ${calistoga.variable} font-sans`}>{children}</body>
+			<body className={`${inter.variable} ${calistoga.variable} font-sans relative`}>{children}</body>
 		</html>
 	);
 }
