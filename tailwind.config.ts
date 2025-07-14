@@ -53,6 +53,7 @@ const config: Config = {
 				"spin-slow": "spin 3s linear infinite",
 				"pulse-slow": "pulse 3s infinite",
 				"move-left": "moveLeft 1s linear infinite",
+				"move-right": "moveRight 1s linear infinite",
 				"ping-large": "pingLarge 1s ease-in-out infinite",
 			},
 			keyframes: {
@@ -75,6 +76,10 @@ const config: Config = {
 				moveLeft: {
 					"0%": { transform: "translateX(0)" },
 					"100%": { transform: "translateX(-50%)" },
+				},
+				moveRight: {
+					"0%": { transform: "translateX(-50%)" },
+					"100%": { transform: "translateX(0%)" },
 				},
 				pingLarge: {
 					"75%, 100%": {

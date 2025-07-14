@@ -12,8 +12,6 @@ import { CTASection } from "@/sections/CTA";
 import { Footer } from "@/sections/Footer";
 import { SkipLink } from "@/components/accessibility/SkipLink";
 
-// const HeroSection = dynamic(() => import("@/sections/Hero"), { ssr: false });
-
 export default function Home() {
 	return (
 		<>

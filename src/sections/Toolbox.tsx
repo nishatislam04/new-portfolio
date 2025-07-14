@@ -5,51 +5,71 @@ import Image from "next/image";
 import { Section } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
 import { otherImages } from "@/assets/images";
+import JavaScriptIcon from "@/assets/icons/stacks/js.svg";
+import TypeScriptIcon from "@/assets/icons/stacks/ts.svg";
+import ReactIcon from "@/assets/icons/stacks/react.svg";
+import NextJSIcon from "@/assets/icons/stacks/nextjs.svg";
+import NestJSIcon from "@/assets/icons/stacks/nestjs.svg";
+import PHPIcon from "@/assets/icons/stacks/php.svg";
+import LaravelIcon from "@/assets/icons/stacks/laravel.svg";
+import MySQLIcon from "@/assets/icons/stacks/mysql.svg";
+import PostgreSQLIcon from "@/assets/icons/stacks/postgres.svg";
+import PrismaIcon from "@/assets/icons/stacks/prisma.svg";
+import TailwindCssIcon from "@/assets/icons/stacks/tailwindcss.svg";
+import SASSIcon from "@/assets/icons/stacks/sass.svg";
+import RedisIcon from "@/assets/icons/stacks/redis.svg";
+import DockerIcon from "@/assets/icons/stacks/docker.svg";
+import GitIcon from "@/assets/icons/stacks/git.svg";
+import { Fragment } from "react";
 
 // Tech stack icons as simple blue gradient rectangles with text
-const TechIcon = ({ name }: { name: string }) => {
-	return (
-		<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-			<span className="text-white text-xs font-bold">{name.slice(0, 2).toUpperCase()}</span>
-		</div>
-	);
-};
+// const TechIcon = ({ name }: { name: string }) => {
+// 	return (
+// 		<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+// 			<span className="text-white text-xs font-bold">{name.slice(0, 2).toUpperCase()}</span>
+// 		</div>
+// 	);
+// };
 
 // Toolbox items with tech stack
-const toolboxItems = [
-	{ title: "JavaScript" },
-	{ title: "TypeScript" },
-	{ title: "React" },
-	{ title: "Next.js" },
-	{ title: "NestJS" },
-	{ title: "PHP" },
-	{ title: "Laravel" },
-	{ title: "MySQL" },
-	{ title: "PostgreSQL" },
-	{ title: "Prisma ORM" },
-	{ title: "Tailwind CSS" },
-	{ title: "SASS" },
-	{ title: "Shadcn UI" },
-	{ title: "Zustand" },
-	{ title: "NextAuth.js" },
-	{ title: "Redis" },
-	{ title: "Docker" },
-	{ title: "Git" },
-	{ title: "Bun" },
+const toolboxItemsOne = [
+	{ title: "JavaScript", icon: <JavaScriptIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "TypeScript", icon: <TypeScriptIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "React", icon: <ReactIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "Next.js", icon: <NextJSIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "NestJS", icon: <NestJSIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "PHP", icon: <PHPIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "Laravel", icon: <LaravelIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
 ];
 
-const ToolboxItem = ({ item, index }: { item: (typeof toolboxItems)[0]; index: number }) => (
+const toolboxItemsTwo = [
+	{ title: "MySQL", icon: <MySQLIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "PostgreSQL", icon: <PostgreSQLIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "Prisma ORM", icon: <PrismaIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "Tailwind CSS", icon: <TailwindCssIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "SASS", icon: <SASSIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "Redis", icon: <RedisIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "Docker", icon: <DockerIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "Git", icon: <GitIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+];
+
+const ToolboxItem = ({ item, index }: { item: (typeof toolboxItemsOne)[0]; index: number }) => (
 	<motion.div
-		className="inline-flex items-center gap-3 px-4 py-3 bg-gray-800/50 rounded-xl border border-gray-700/50 backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300"
+		className="inline-flex items-center gap-3 px-3 py-2 bg-gray-800/50 outline outline-2 outline-white/10 rounded-lg backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300"
 		initial={{ opacity: 0, scale: 0.8 }}
 		whileInView={{ opacity: 1, scale: 1 }}
 		viewport={{ once: true }}
 		transition={{ duration: 0.5, delay: index * 0.05 }}
 		whileHover={{ scale: 1.05, y: -3 }}>
-		<div className="text-blue-400">
-			<TechIcon name={item.title} />
-		</div>
-		<span className="text-white font-medium text-sm bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">{item.title}</span>
+		<div className="size-10">{item.icon}</div>
+		<svg className="size-0 absolute">
+			<linearGradient id="tech-icon-gradient">
+				<stop offset="0%" stopColor="rgb(110 231 183)" />
+				<stop offset="100%" stopColor="rgb(56 189 248)" />
+			</linearGradient>
+		</svg>
+
+		<span className="font-semibold">{item.title}</span>
 	</motion.div>
 );
 
@@ -104,10 +124,24 @@ export const ToolboxSection = () => {
 
 					{/* Toolbox Grid */}
 					<FadeIn delay={0.2}>
-						<div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
-							{toolboxItems.map((item, index) => (
-								<ToolboxItem key={item.title} item={item} index={index} />
-							))}
+						<div className="flex flex-col gap-8">
+							{/* First row (toolboxItemsOne) */}
+							<div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+								<div className="flex w-max gap-4 mx-auto animate-move-left [animation-duration:30s]">
+									{[...toolboxItemsOne, ...toolboxItemsOne].map((item, index) => (
+										<ToolboxItem key={`${item.title}-${index}`} item={item} index={index} />
+									))}
+								</div>
+							</div>
+
+							{/* Second row (toolboxItemsTwo) */}
+							<div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+								<div className="flex w-max gap-4 mx-auto animate-move-right [animation-duration:30s]">
+									{[...toolboxItemsTwo, ...toolboxItemsTwo].reverse().map((item, index) => (
+										<ToolboxItem key={`${item.title}-${index}`} item={item} index={index} />
+									))}
+								</div>
+							</div>
 						</div>
 					</FadeIn>
 
