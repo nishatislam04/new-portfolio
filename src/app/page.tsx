@@ -1,5 +1,7 @@
+// import dynamic from "next/dynamic";
+
 import { Header } from "@/sections/Header";
-import { HeroSection } from "@/sections/Hero";
+import HeroSection from "@/sections/Hero";
 import { AboutSection } from "@/sections/About";
 import { ToolboxSection } from "@/sections/Toolbox";
 import { ProjectsSection } from "@/sections/Projects";
@@ -9,6 +11,8 @@ import { ContactSection } from "@/sections/Contact";
 import { CTASection } from "@/sections/CTA";
 import { Footer } from "@/sections/Footer";
 import { SkipLink } from "@/components/accessibility/SkipLink";
+
+// const HeroSection = dynamic(() => import("@/sections/Hero"), { ssr: false });
 
 export default function Home() {
 	return (

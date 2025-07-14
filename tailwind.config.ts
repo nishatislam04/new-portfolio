@@ -53,6 +53,7 @@ const config: Config = {
 				"spin-slow": "spin 3s linear infinite",
 				"pulse-slow": "pulse 3s infinite",
 				"move-left": "moveLeft 1s linear infinite",
+				"ping-large": "pingLarge 1s ease-in-out infinite",
 			},
 			keyframes: {
 				fadeIn: {
@@ -74,6 +75,12 @@ const config: Config = {
 				moveLeft: {
 					"0%": { transform: "translateX(0)" },
 					"100%": { transform: "translateX(-50%)" },
+				},
+				pingLarge: {
+					"75%, 100%": {
+						transform: "scale(3)",
+						opacity: "0",
+					},
 				},
 			},
 			backgroundImage: {
