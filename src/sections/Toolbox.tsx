@@ -20,16 +20,6 @@ import SASSIcon from "@/assets/icons/stacks/sass.svg";
 import RedisIcon from "@/assets/icons/stacks/redis.svg";
 import DockerIcon from "@/assets/icons/stacks/docker.svg";
 import GitIcon from "@/assets/icons/stacks/git.svg";
-import { Fragment } from "react";
-
-// Tech stack icons as simple blue gradient rectangles with text
-// const TechIcon = ({ name }: { name: string }) => {
-// 	return (
-// 		<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-// 			<span className="text-white text-xs font-bold">{name.slice(0, 2).toUpperCase()}</span>
-// 		</div>
-// 	);
-// };
 
 // Toolbox items with tech stack
 const toolboxItemsOne = [
