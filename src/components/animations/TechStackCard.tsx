@@ -18,7 +18,7 @@ const TechIcon = ({ icon }: { icon: React.ReactNode }) => {
 	);
 };
 
-export default function TechStackCard({ tech, index }: { tech: { name: string; icon: React.ReactNode }; index: number }) {
+export function TechStackCard({ tech, index }: { tech: { name: string; icon: React.ReactNode }; index: number }) {
 	return (
 		<motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} whileHover={{ scale: 1.05, y: -5 }}>
 			<Card variant="glass" className="p-4 text-center group hover:border-blue-500/30 transition-all duration-300">

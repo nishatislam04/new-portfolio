@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "@/components/icons";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { Container } from "@/components/ui";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 

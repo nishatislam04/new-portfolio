@@ -4,10 +4,14 @@ import { useRef, useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import { Section, Card, Button } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import { ArrowUpRightIcon, LinkedInIcon, WhatsAppIcon, MessengerIcon, GmailIcon } from "@/components/icons";
 import { sendEmail } from "@/actions/SendEmail";
 import Link from "next/link";
 import { PERSONAL_INFO } from "@/constants/personal-info";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import WhatsAppIcon from "@/assets/icons/Whatsapp.svg";
+import GmailIcon from "@/assets/icons/Gmail.svg";
+import LinkedInIcon from "@/assets/icons/Linkedin.svg";
+import MessengerIcon from "@/assets/icons/Messenger.svg";
 
 export default function ContactSection() {
 	const formRef = useRef<HTMLFormElement>(null);

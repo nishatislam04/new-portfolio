@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Section } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import { CheckCircleIcon } from "@/components/icons";
+import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import profilePicture from "@/assets/images/profile_picture.png";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import NextJSIcon from "@/assets/icons/stacks/nextjs.svg";
@@ -10,8 +10,8 @@ import LaravelIcon from "@/assets/icons/stacks/laravel.svg";
 import PostgreSQLIcon from "@/assets/icons/stacks/postgres.svg";
 import PrismaIcon from "@/assets/icons/stacks/prisma.svg";
 import DockerIcon from "@/assets/icons/stacks/docker.svg";
-import { FadeInOnScroll } from "@/components/animations/FadeInOnScroll";
-import TechStackCard from "@/components/animations/TechStackCard";
+import { FadeInOnScroll } from "@/components/animations";
+import { TechStackCard } from "@/components/animations";
 
 const techStacks = [
 	{ name: "Next.js", icon: <NextJSIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },

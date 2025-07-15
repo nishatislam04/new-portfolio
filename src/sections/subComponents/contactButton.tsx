@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRightIcon } from "@/components/icons";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { scrollToElement } from "@/utils";
 
 export default function ContactButton({ jumpto }: { jumpto: string }) {

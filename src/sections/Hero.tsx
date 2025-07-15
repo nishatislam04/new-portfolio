@@ -1,5 +1,6 @@
 import { Section, Container } from "@/components/ui";
-import { ArrowDownIcon, ArrowUpRightIcon } from "@/components/icons";
+import ArrowDownIcon from "@/assets/icons/arrow-down.svg";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import Image from "next/image";
 import memojiImage from "@/assets/images/memoji-computer.png";

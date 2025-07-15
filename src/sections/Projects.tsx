@@ -1,14 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Section, Card, CardContent, Button } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import { ArrowUpRightIcon } from "@/components/icons";
-import { PortfolioProject } from "@/types";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 
-const ProjectCard = ({ project, index }: { project: PortfolioProject; index: number }) => {
+const ProjectCard = ({
+	project,
+	index,
+}: {
+	project: { title: string; company: string; year: string; description: string; technologies: string[]; results: { title: string }[]; link: string; image: StaticImageData; isPrivate?: boolean; isComingSoon?: boolean; hasLiveDemo?: boolean };
+	index: number;
+}) => {
 	return (
 		<motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ y: -10, scale: 1.02 }} className="group">
 			<Card variant="glass" className="overflow-hidden h-full hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
