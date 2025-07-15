@@ -4,12 +4,12 @@ import { FadeIn, StaggerContainer } from "@/components/animations";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import profilePicture from "@/assets/images/profile_picture.png";
 import { PERSONAL_INFO } from "@/constants/personal-info";
-import NextJSIcon from "@/assets/icons/stacks/nextjs.svg";
-import NestJSIcon from "@/assets/icons/stacks/nestjs.svg";
-import LaravelIcon from "@/assets/icons/stacks/laravel.svg";
-import PostgreSQLIcon from "@/assets/icons/stacks/postgres.svg";
-import PrismaIcon from "@/assets/icons/stacks/prisma.svg";
-import DockerIcon from "@/assets/icons/stacks/docker.svg";
+import NextJSIcon from "@/assets/icons/stacks/minified/nextjs.svg";
+import NestJSIcon from "@/assets/icons/stacks/minified/nestjs.svg";
+import LaravelIcon from "@/assets/icons/stacks/minified/laravel.svg";
+import PostgreSQLIcon from "@/assets/icons/stacks/minified/postgres.svg";
+import PrismaIcon from "@/assets/icons/stacks/minified/prisma.svg";
+import DockerIcon from "@/assets/icons/stacks/minified/docker.svg";
 import { FadeInOnScroll } from "@/components/animations";
 import { TechStackCard } from "@/components/animations";
 
@@ -76,7 +76,7 @@ export default function AboutSection() {
 									<div className="relative w-64 h-64 mx-auto transform transition-transform duration-500 hover:scale-105">
 										<div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-sky-500/20 rounded-full blur-xl" />
 										<div className="relative w-full h-full bg-gray-800/50 rounded-full border border-white/10 overflow-hidden">
-											<Image src={profilePicture} alt="About me" className="object-contain p-4" width={1920} height={1080} loading="lazy" quality={20} />
+											<Image src={profilePicture} alt="About me" className="object-contain p-4" width={1920} height={1080} loading="lazy" quality={40} />
 										</div>
 									</div>
 								</div>

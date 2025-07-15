@@ -8,10 +8,10 @@ import { sendEmail } from "@/actions/SendEmail";
 import Link from "next/link";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-import WhatsAppIcon from "@/assets/icons/Whatsapp.svg";
-import GmailIcon from "@/assets/icons/Gmail.svg";
-import LinkedInIcon from "@/assets/icons/Linkedin.svg";
-import MessengerIcon from "@/assets/icons/Messenger.svg";
+import WhatsAppIcon from "@/assets/icons/minified/Whatsapp.svg";
+import GmailIcon from "@/assets/icons/minified/Gmail.svg";
+import LinkedInIcon from "@/assets/icons/minified/Linkedin.svg";
+import MessengerIcon from "@/assets/icons/minified/Messenger.svg";
 
 export default function ContactSection() {
 	const formRef = useRef<HTMLFormElement>(null);

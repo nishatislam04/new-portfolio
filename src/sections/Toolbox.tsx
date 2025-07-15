@@ -1,20 +1,20 @@
 import { Section } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import JavaScriptIcon from "@/assets/icons/stacks/js.svg";
-import TypeScriptIcon from "@/assets/icons/stacks/ts.svg";
-import ReactIcon from "@/assets/icons/stacks/react.svg";
-import NextJSIcon from "@/assets/icons/stacks/nextjs.svg";
-import NestJSIcon from "@/assets/icons/stacks/nestjs.svg";
-import PHPIcon from "@/assets/icons/stacks/php.svg";
-import LaravelIcon from "@/assets/icons/stacks/laravel.svg";
-import MySQLIcon from "@/assets/icons/stacks/mysql.svg";
-import PostgreSQLIcon from "@/assets/icons/stacks/postgres.svg";
-import PrismaIcon from "@/assets/icons/stacks/prisma.svg";
-import TailwindCssIcon from "@/assets/icons/stacks/tailwindcss.svg";
-import SASSIcon from "@/assets/icons/stacks/sass.svg";
-import RedisIcon from "@/assets/icons/stacks/redis.svg";
-import DockerIcon from "@/assets/icons/stacks/docker.svg";
-import GitIcon from "@/assets/icons/stacks/git.svg";
+import JavaScriptIcon from "@/assets/icons/stacks/minified/js.svg";
+import TypeScriptIcon from "@/assets/icons/stacks/minified/ts.svg";
+import ReactIcon from "@/assets/icons/stacks/minified/react.svg";
+import NextJSIcon from "@/assets/icons/stacks/minified/nextjs.svg";
+import NestJSIcon from "@/assets/icons/stacks/minified/nestjs.svg";
+import PHPIcon from "@/assets/icons/stacks/minified/php.svg";
+import LaravelIcon from "@/assets/icons/stacks/minified/laravel.svg";
+import MySQLIcon from "@/assets/icons/stacks/minified/mysql.svg";
+import PostgreSQLIcon from "@/assets/icons/stacks/minified/postgres.svg";
+import PrismaIcon from "@/assets/icons/stacks/minified/prisma.svg";
+import TailwindCssIcon from "@/assets/icons/stacks/minified/tailwindcss.svg";
+import SASSIcon from "@/assets/icons/stacks/minified/sass.svg";
+import RedisIcon from "@/assets/icons/stacks/minified/redis.svg";
+import DockerIcon from "@/assets/icons/stacks/minified/docker.svg";
+import GitIcon from "@/assets/icons/stacks/minified/git.svg";
 import ToolBoxItems from "@/components/block/ToolBoxItems";
 
 // Toolbox items with tech stack
