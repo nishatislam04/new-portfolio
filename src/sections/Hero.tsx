@@ -15,12 +15,15 @@ export default function HeroSection() {
 	return (
 		<Section id="home" className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip">
 			<div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
-				<div
+				{/* <div
 					className="absolute inset-0 -z-30 opacity-5"
 					style={{
 						backgroundImage: `url(${grainImage.src})`,
 					}}
-				/>
+				/> */}
+				<div className="absolute inset-0 -z-30 opacity-5">
+					<Image src={grainImage} alt="Grain texture" className="object-cover" priority />
+				</div>
 				{/* orbit */}
 				<div className="size-[620px] hero-ring"></div>
 				<div className="size-[820px] hero-ring"></div>

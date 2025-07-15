@@ -3,6 +3,7 @@ import { FadeIn } from "@/components/animations";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import grainImage from "@/assets/images/grain.jpg";
 import ContactButton from "./subComponents/contactButton";
+import Image from "next/image";
 
 export default function CTASection() {
 	return (
@@ -17,7 +18,9 @@ export default function CTASection() {
 						</div>
 						<ContactButton jumpto="contact" />
 					</div>
-					<div className="absolute inset-0 opacity-5 -z-10" style={{ backgroundImage: `url(${grainImage.src})` }}></div>
+					<div className="absolute inset-0 -z-30 opacity-5">
+						<Image src={grainImage} alt="Grain texture" className="object-cover" priority />
+					</div>
 				</div>
 
 				{/* Stats */}

@@ -2,11 +2,11 @@
 
 ### Code Quality
 
-- [] move client component parts in separate file (more modularize)
+- [x] move client component parts in separate file (more modularize)
 - [] remove eslint & add biome
 - [] remove react-icons
 - [] optimize svg & images
-- [] remove unused assets
+- [x] remove unused assets
 
 - [x] add resume view feature
 
@@ -26,6 +26,7 @@
 - [x] update contact link opening respective application
 - [x] add heading on form with "send me an business email"
 - [] add icons animation (tech icons)
+- [] add stats number animation
 
 ### upcoming features [tools & packages]
 
@@ -35,7 +36,6 @@
 - [] update tailwindcss latest
 - [] update nextjs latest canary
 - [] update react latest
-- [] add stats number animation
 
 ### Performance
 
