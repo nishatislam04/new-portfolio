@@ -7,17 +7,37 @@ import { FadeIn, StaggerContainer } from "@/components/animations";
 import { CheckCircleIcon } from "@/components/icons";
 import { memojiImages, otherImages } from "@/assets/images";
 import { PERSONAL_INFO } from "@/constants/personal-info";
+import NextJSIcon from "@/assets/icons/stacks/nextjs.svg";
+import NestJSIcon from "@/assets/icons/stacks/nestjs.svg";
+import LaravelIcon from "@/assets/icons/stacks/laravel.svg";
+import PostgreSQLIcon from "@/assets/icons/stacks/postgres.svg";
+import PrismaIcon from "@/assets/icons/stacks/prisma.svg";
+import DockerIcon from "@/assets/icons/stacks/docker.svg";
+
 // Tech stack icons with blue gradient
-const TechIcon = ({ name }: { name: string }) => {
+const TechIcon = ({ icon }: { icon: React.ReactNode }) => {
 	return (
-		<div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-			<span className="text-white text-sm font-bold">{name.slice(0, 2).toUpperCase()}</span>
-		</div>
+		<>
+			<div className="size-10">{icon}</div>
+			<svg className="size-0 absolute">
+				<linearGradient id="tech-icon-gradient">
+					<stop offset="0%" stopColor="rgb(110 231 183)" />
+					<stop offset="100%" stopColor="rgb(56 189 248)" />
+				</linearGradient>
+			</svg>
+		</>
 	);
 };
 
-// Tech stack items from personal info
-const techStack = PERSONAL_INFO.techStack.map((name) => ({ name }));
+// const techStack = PERSONAL_INFO.techStack.map((name) => ({ name }));
+const techStacks = [
+	{ name: "Next.js", icon: <NextJSIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ name: "Laravel", icon: <LaravelIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ name: "NestJS", icon: <NestJSIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ name: "PostgreSQL", icon: <PostgreSQLIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ name: "Prisma ORM", icon: <PrismaIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ name: "Docker", icon: <DockerIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+];
 
 export const AboutSection = () => {
 	const achievements = [
@@ -115,11 +135,11 @@ export const AboutSection = () => {
 								<div className="space-y-6">
 									<h3 className="heading-3 text-center">My Stacks</h3>
 									<div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-										{techStack.map((tech, index) => (
+										{techStacks.map((tech, index) => (
 											<motion.div key={tech.name} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} whileHover={{ scale: 1.05, y: -5 }}>
 												<Card variant="glass" className="p-4 text-center group hover:border-blue-500/30 transition-all duration-300">
 													<div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-														<TechIcon name={tech.name} />
+														<TechIcon icon={tech.icon} />
 													</div>
 													<p className="text-sm font-medium bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-blue-500 transition-all duration-300">{tech.name}</p>
 												</Card>
