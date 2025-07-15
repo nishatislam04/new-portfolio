@@ -80,7 +80,7 @@ export default function HeroSection() {
 					<h1 className="font-serif text-3xl text-center mt-8 tracking-wide md:text-5xl">Building Exceptional User Experiences</h1>
 					<p className="mt-4 text-center text-white/60 md:text-lg">{PERSONAL_INFO.profile}</p>
 				</div>
-				<div className="flex flex-col items-center mt-8 gap-4 md:flex-row justify-center">
+				<div className="flex flex-col items-center mt-8 gap-4 md:flex-row justify-center z-50 relative">
 					<button onClick={handleScrollToProjects} className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl">
 						<span className="font-semibold">View My Work</span>
 						<ArrowDownIcon className="size-4" />

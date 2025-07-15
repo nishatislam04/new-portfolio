@@ -31,12 +31,12 @@ const portfolioProjects = [
 			{ title: "NextAuth.js JWT authentication with middleware-based route protection" },
 			{ title: "Performance optimized with Server Actions and React 18 concurrent features" },
 		],
-		link: "#", // Live project link coming soon
-		image: projectImages.teamDocsCover, // Team-Docs cover image coming soon
+		link: "https://team-docs-new.vercel.app/",
+		image: projectImages.teamDocsCover,
 		technologies: ["Next.js 15", "PostgreSQL", "Prisma ORM", "NextAuth.js", "TipTap", "Tailwind CSS v4", "Shadcn UI", "Zustand", "Docker"],
 		description: "A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing.",
 		hasLiveDemo: true,
-		isComingSoon: true,
+		isComingSoon: false,
 	},
 	{
 		company: "SoftBd LTD",
