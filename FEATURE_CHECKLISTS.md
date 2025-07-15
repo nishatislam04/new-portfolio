@@ -39,10 +39,10 @@
 
 ### Performance
 
-- [] dynamic import component. especially the not important components
 - [] optimize tailwindcss file
 - [] missing source maps for large first-party JavaScript
-- [] we need to minify svg. all the images looks nice size. but svg are huge
+- [x] we need to minify svg. all the images looks nice size. but svg are huge
+- [] update error & page not found to be not having any dependency
 
 ### SEO & Meta Tags
 
