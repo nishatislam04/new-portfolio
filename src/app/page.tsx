@@ -1,5 +1,3 @@
-// import dynamic from "next/dynamic";
-
 import { Header } from "@/sections/Header";
 import HeroSection from "@/sections/Hero";
 import { AboutSection } from "@/sections/About";
@@ -17,7 +15,6 @@ export default function Home() {
 		<>
 			<SkipLink />
 			<Header />
-			{/* <main id="main-content" className=""> */}
 			<HeroSection />
 			<AboutSection />
 			<ToolboxSection />
@@ -26,7 +23,6 @@ export default function Home() {
 			{/* <TestimonialsSection /> */}
 			<ContactSection />
 			<CTASection />
-			{/* </main> */}
 			<Footer />
 		</>
 	);
