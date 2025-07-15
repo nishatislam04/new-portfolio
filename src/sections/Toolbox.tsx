@@ -23,24 +23,24 @@ import GitIcon from "@/assets/icons/stacks/git.svg";
 
 // Toolbox items with tech stack
 const toolboxItemsOne = [
-	{ title: "JavaScript", icon: <JavaScriptIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "TypeScript", icon: <TypeScriptIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "React", icon: <ReactIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "Next.js", icon: <NextJSIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "NestJS", icon: <NestJSIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "PHP", icon: <PHPIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "Laravel", icon: <LaravelIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "JavaScript", icon: <JavaScriptIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "TypeScript", icon: <TypeScriptIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "React", icon: <ReactIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "Next.js", icon: <NextJSIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "NestJS", icon: <NestJSIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "PHP", icon: <PHPIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "Laravel", icon: <LaravelIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
 ];
 
 const toolboxItemsTwo = [
-	{ title: "MySQL", icon: <MySQLIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "PostgreSQL", icon: <PostgreSQLIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "Prisma ORM", icon: <PrismaIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "Tailwind CSS", icon: <TailwindCssIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "SASS", icon: <SASSIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "Redis", icon: <RedisIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "Docker", icon: <DockerIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
-	{ title: "Git", icon: <GitIcon className="size-10 fill-url(#tech-icon-gradient)" /> },
+	{ title: "MySQL", icon: <MySQLIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "PostgreSQL", icon: <PostgreSQLIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "Prisma ORM", icon: <PrismaIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "Tailwind CSS", icon: <TailwindCssIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "SASS", icon: <SASSIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "Redis", icon: <RedisIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "Docker", icon: <DockerIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
+	{ title: "Git", icon: <GitIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
 ];
 
 const ToolboxItem = ({ item, index }: { item: (typeof toolboxItemsOne)[0]; index: number }) => (
@@ -51,6 +51,7 @@ const ToolboxItem = ({ item, index }: { item: (typeof toolboxItemsOne)[0]; index
 		viewport={{ once: true }}
 		transition={{ duration: 0.5, delay: index * 0.05 }}
 		whileHover={{ scale: 1.05, y: -3 }}>
+		{/* icon */}
 		<div className="size-10">{item.icon}</div>
 		<svg className="size-0 absolute">
 			<linearGradient id="tech-icon-gradient">
