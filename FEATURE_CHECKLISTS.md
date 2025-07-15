@@ -42,7 +42,7 @@
 - [] dynamic import component. especially the not important components
 - [] optimize tailwindcss file
 - [] missing source maps for large first-party JavaScript
-- []
+- [] we need to minify svg. all the images looks nice size. but svg are huge
 
 ### SEO & Meta Tags
 
