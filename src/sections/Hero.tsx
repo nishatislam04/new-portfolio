@@ -57,8 +57,7 @@ export default function HeroSection() {
 			</div>
 			<Container>
 				<div className="flex flex-col items-center">
-					<Image src={memojiImage} className="size-[100px]" alt="Person peeking behind from computer" width={100} height={100} />
-
+					<Image src={memojiImage} className="size-[100px]" alt="Person peeking behind from computer" width={100} height={100} priority />
 					<div className="bg-gray-950 border border-gray-800 py-1.5 px-4 inline-flex items-center gap-4 rounded-lg">
 						<div className="bg-green-500 size-2.5 rounded-full relative">
 							<div className="animate-ping-large rounded-full bg-green-500 absolute inset-0"></div>
