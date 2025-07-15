@@ -28,7 +28,7 @@ export default function ContactSection() {
 						<ContactForm />
 
 						<div className="space-y-8 h-full flex flex-col">
-							<FadeIn delay={0.4} className="flex-grow">
+							<FadeIn delay={0.4} {...{ className: "flex-grow" }}>
 								<Card variant="glass" className="p-8 h-full flex flex-col">
 									<div className="flex-grow">
 										<h3 className="heading-3 mb-6">Get in Touch</h3>

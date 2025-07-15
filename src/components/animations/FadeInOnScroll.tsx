@@ -24,7 +24,7 @@ export function FadeInOnScroll({ children, delay = 0, duration = 0.5, direction 
 	const offset = offsetMap[direction] || { x: 0, y: 0 };
 
 	return (
-		<motion.div initial={{ opacity: 0, ...offset }} whileInView={{ opacity: 1, x: 0, y: 0 }} viewport={{ once: true }} transition={{ duration, delay }} whileHover={hoverEffect ? { scale: 1.02 } : {}} className={`transition-all duration-300 ${className}`}>
+		<motion.div initial={{ opacity: 0, ...offset }} whileInView={{ opacity: 1, x: 0, y: 0 }} viewport={{ once: true }} transition={{ duration, delay }} whileHover={hoverEffect ? { scale: 1.02 } : {}} {...{ className: `transition-all duration-300 ${className}` }}>
 			{children}
 		</motion.div>
 	);

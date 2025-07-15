@@ -13,7 +13,7 @@ export default function ProjectCard({
 	index: number;
 }) {
 	return (
-		<motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ y: -10, scale: 1.02 }} className="group">
+		<motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.1 }} whileHover={{ y: -10, scale: 1.02 }} {...{ className: "group" }}>
 			<Card variant="glass" className="overflow-hidden h-full hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
 				{/* Project Image */}
 				<div className="relative h-48 md:h-56 overflow-hidden">
@@ -65,7 +65,7 @@ export default function ProjectCard({
 							<h4 className="text-sm font-semibold text-gray-200 mb-2">Key Features & Achievements</h4>
 							<div className="space-y-2">
 								{project.results.map((result, idx) => (
-									<motion.div key={idx} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }} className="flex items-start gap-3 text-sm text-gray-300 group/item hover:text-gray-200 transition-colors duration-200">
+									<motion.div key={idx} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }} {...{ className: "flex items-start gap-3 text-sm text-gray-300 group/item hover:text-gray-200 transition-colors duration-200" }}>
 										<div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full mt-1.5 flex-shrink-0 group-hover/item:scale-110 transition-transform duration-200"></div>
 										<span className="leading-relaxed">{result.title}</span>
 									</motion.div>

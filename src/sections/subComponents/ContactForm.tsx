@@ -84,18 +84,10 @@ export default function ContactForm() {
 					</div>
 
 					{/* Success Message */}
-					{state?.success && (
-						<motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-sm text-emerald-400 text-center font-medium">
-							{state.message || "Message sent successfully! I'll get back to you soon."}
-						</motion.p>
-					)}
+					{state?.success && <p className="text-sm text-emerald-400 text-center font-medium">{state.message || "Message sent successfully! I'll get back to you soon."}</p>}
 
 					{/* Error Message */}
-					{state?.error && (
-						<motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-sm text-red-400 text-center font-medium">
-							{state.error}
-						</motion.p>
-					)}
+					{state?.error && <p className="text-sm text-red-400 text-center font-medium">{state.error}</p>}
 				</form>
 			</Card>
 		</FadeIn>
