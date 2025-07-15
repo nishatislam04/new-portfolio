@@ -1,70 +1,12 @@
 "use client";
-import { projectImages } from "@/assets/images";
-
-const portfolioProjects = [
-	{
-		company: "SoftBd LTD",
-		year: "2024",
-		title: "Organization Management System",
-		results: [
-			{ title: "Role-based permission system with 3 user levels (Super, Admin, Member)" },
-			{ title: "Automated installment tracking with penalty calculation for overdue payments" },
-			{ title: "Google OAuth integration for seamless user authentication" },
-			{ title: "Email notification system for payment reminders and alerts" },
-			{ title: "Comprehensive subscription management with installment tracking" },
-		],
-		link: "https://github.com/nishatislam04/organizations",
-		image: projectImages.organizationCover,
-		technologies: ["Laravel", "TailwindCSS", "MySQL", "Gmail API", "Google OAuth"],
-		description: "A comprehensive organization management system where Super users manage organizations and subscriptions, Admins handle assigned organizations, and Members join organizations with automated payment tracking and penalty management.",
-		hasLiveDemo: false,
-	},
-	{
-		company: "Personal Project",
-		year: "2025",
-		title: "Team-Docs - Collaborative Documentation Platform",
-		results: [
-			{ title: "TipTap-powered Notion-like editor with slash commands and real-time collaboration" },
-			{ title: "Multi-tenant architecture with workspace isolation and role-based permissions" },
-			{ title: "PostgreSQL full-text search with ranking algorithms and workspace-scoped security" },
-			{ title: "Comprehensive admin dashboard with workspace approval and user management" },
-			{ title: "NextAuth.js JWT authentication with middleware-based route protection" },
-			{ title: "Performance optimized with Server Actions and React 18 concurrent features" },
-		],
-		link: "https://team-docs-new.vercel.app/",
-		image: projectImages.teamDocsCover,
-		technologies: ["Next.js 15", "PostgreSQL", "Prisma ORM", "NextAuth.js", "TipTap", "Tailwind CSS v4", "Shadcn UI", "Zustand", "Docker"],
-		description: "A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing.",
-		hasLiveDemo: true,
-		isComingSoon: false,
-	},
-	{
-		company: "SoftBd LTD",
-		year: "2024",
-		title: "Jukto News Platform",
-		results: [
-			{ title: "Real-time news aggregation from multiple sources and categories" },
-			{ title: "Advanced content management with automated news scraping" },
-			{ title: "Interactive UI components with responsive design across all devices" },
-			{ title: "Streamlined user navigation with efficient performance optimization" },
-			{ title: "REST API integration for seamless data flow and updates" },
-		],
-		link: "#", // No public access available
-		image: projectImages.juktoCover,
-		technologies: ["Laravel", "React", "MySQL", "TailwindCSS", "REST APIs"],
-		description: "A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement.",
-		hasLiveDemo: false,
-		isPrivate: true,
-	},
-];
 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Section, Card, CardContent, Button } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
 import { ArrowUpRightIcon } from "@/components/icons";
-import { otherImages } from "@/assets/images";
 import { PortfolioProject } from "@/types";
+import { PERSONAL_INFO } from "@/constants/personal-info";
 
 const ProjectCard = ({ project, index }: { project: PortfolioProject; index: number }) => {
 	return (
@@ -153,7 +95,7 @@ export default function ProjectsSection() {
 
 					{/* Projects Grid */}
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-						{portfolioProjects.map((project, index) => (
+						{PERSONAL_INFO.portfolioProjects.map((project, index) => (
 							<ProjectCard key={project.title} project={project} index={index} />
 						))}
 					</div>

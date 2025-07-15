@@ -1,5 +1,3 @@
-"use client";
-
 import { NAV_ITEMS } from "@/constants";
 
 export default function Header() {

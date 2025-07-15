@@ -1,10 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
 import { Section } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import { otherImages } from "@/assets/images";
 import JavaScriptIcon from "@/assets/icons/stacks/js.svg";
 import TypeScriptIcon from "@/assets/icons/stacks/ts.svg";
 import ReactIcon from "@/assets/icons/stacks/react.svg";
@@ -20,6 +15,7 @@ import SASSIcon from "@/assets/icons/stacks/sass.svg";
 import RedisIcon from "@/assets/icons/stacks/redis.svg";
 import DockerIcon from "@/assets/icons/stacks/docker.svg";
 import GitIcon from "@/assets/icons/stacks/git.svg";
+import ToolBoxItems from "@/components/block/ToolBoxItems";
 
 // Toolbox items with tech stack
 const toolboxItemsOne = [
@@ -43,58 +39,9 @@ const toolboxItemsTwo = [
 	{ title: "Git", icon: <GitIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
 ];
 
-const ToolboxItem = ({ item, index }: { item: (typeof toolboxItemsOne)[0]; index: number }) => (
-	<motion.div
-		className="inline-flex items-center gap-3 px-3 py-2 bg-gray-800/50 outline outline-2 outline-white/10 rounded-lg backdrop-blur-sm hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300"
-		initial={{ opacity: 0, scale: 0.8 }}
-		whileInView={{ opacity: 1, scale: 1 }}
-		viewport={{ once: true }}
-		transition={{ duration: 0.5, delay: index * 0.05 }}
-		whileHover={{ scale: 1.05, y: -3 }}>
-		{/* icon */}
-		<div className="size-10">{item.icon}</div>
-		<svg className="size-0 absolute">
-			<linearGradient id="tech-icon-gradient">
-				<stop offset="0%" stopColor="rgb(110 231 183)" />
-				<stop offset="100%" stopColor="rgb(56 189 248)" />
-			</linearGradient>
-		</svg>
-
-		<span className="font-semibold">{item.title}</span>
-	</motion.div>
-);
-
 export default function ToolboxSection() {
 	return (
 		<Section className="relative overflow-hidden">
-			<div className="absolute inset-0">
-				<motion.div
-					className="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"
-					animate={{
-						scale: [1, 1.2, 1],
-						opacity: [0.3, 0.5, 0.3],
-					}}
-					transition={{
-						duration: 8,
-						repeat: Infinity,
-						ease: "easeInOut",
-					}}
-				/>
-				<motion.div
-					className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-sky-500/5 rounded-full blur-3xl"
-					animate={{
-						scale: [1.2, 1, 1.2],
-						opacity: [0.5, 0.3, 0.5],
-					}}
-					transition={{
-						duration: 8,
-						repeat: Infinity,
-						ease: "easeInOut",
-						delay: 4,
-					}}
-				/>
-			</div>
-
 			<div className="relative z-10">
 				<StaggerContainer>
 					{/* Section header */}
@@ -114,7 +61,7 @@ export default function ToolboxSection() {
 							<div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
 								<div className="flex w-max gap-4 mx-auto animate-move-left [animation-duration:30s]">
 									{[...toolboxItemsOne, ...toolboxItemsOne].map((item, index) => (
-										<ToolboxItem key={`${item.title}-${index}`} item={item} index={index} />
+										<ToolBoxItems key={`${item.title}-${index}`} item={item} index={index} />
 									))}
 								</div>
 							</div>
@@ -123,7 +70,7 @@ export default function ToolboxSection() {
 							<div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
 								<div className="flex w-max gap-4 mx-auto animate-move-right [animation-duration:30s]">
 									{[...toolboxItemsTwo, ...toolboxItemsTwo].reverse().map((item, index) => (
-										<ToolboxItem key={`${item.title}-${index}`} item={item} index={index} />
+										<ToolBoxItems key={`${item.title}-${index}`} item={item} index={index} />
 									))}
 								</div>
 							</div>

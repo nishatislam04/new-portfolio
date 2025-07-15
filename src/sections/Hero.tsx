@@ -1,8 +1,5 @@
-"use client";
-
 import { Section, Container } from "@/components/ui";
 import { ArrowDownIcon, ArrowUpRightIcon } from "@/components/icons";
-import { scrollToElement } from "@/utils";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import Image from "next/image";
 import memojiImage from "@/assets/images/memoji-computer.png";
@@ -11,16 +8,9 @@ import StarIcon from "@/assets/icons/star.svg";
 import SparkleIcon from "@/assets/icons/sparkle.svg";
 import HeroOrbit from "@/components/block/HeroOrbit";
 import DownloadIcon from "@/assets/icons/Download.svg";
+import HeroButton from "./subComponents/HeroButton";
 
 export default function HeroSection() {
-	const handleScrollToProjects = () => {
-		scrollToElement("projects");
-	};
-
-	const handleScrollToContact = () => {
-		scrollToElement("contact");
-	};
-
 	return (
 		<Section id="home" className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip">
 			<div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
@@ -28,7 +18,8 @@ export default function HeroSection() {
 					className="absolute inset-0 -z-30 opacity-5"
 					style={{
 						backgroundImage: `url(${grainImage.src})`,
-					}}></div>
+					}}
+				/>
 				{/* orbit */}
 				<div className="size-[620px] hero-ring"></div>
 				<div className="size-[820px] hero-ring"></div>
@@ -79,21 +70,18 @@ export default function HeroSection() {
 				</div>
 				<div className="max-w-lg mx-auto">
 					<h1 className="font-serif text-3xl text-center mt-8 tracking-wide md:text-5xl">Building Exceptional User Experiences</h1>
-					<p className="mt-4 text-center text-white/60 md:text-lg">{PERSONAL_INFO.profile}</p>
+					<p className="mt-4 text-center text-white/60 md:text-base">{PERSONAL_INFO.profile}</p>
 				</div>
 				<div className="flex flex-col items-center mt-8 gap-4 md:flex-row justify-center z-50 relative">
-					<button onClick={handleScrollToProjects} className="inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl">
-						<span className="font-semibold">View My Work</span>
+					<HeroButton jumpTo="projects" text="View My Work">
 						<ArrowDownIcon className="size-4" />
-					</button>
-					<a download href="/Minhajul_islam-cv.pdf" target="_blank" className="inline-flex items-center bg-gray-50/5 gap-2 border border-white/15 px-6 h-12 rounded-xl">
-						<span className="font-semibold">View My CV</span>
-						<DownloadIcon className="size-5 fill-white" />
-					</a>
-					<button onClick={handleScrollToContact} className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl">
-						<span className="font-semibold">Let's Connect</span>
+					</HeroButton>
+					<HeroButton text="View My CV">
+						<DownloadIcon className="size-5 fill-white ml-2" />
+					</HeroButton>
+					<HeroButton jumpTo="contact" text="Let's Connect" className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl">
 						<ArrowUpRightIcon className="w-5 h-5" />
-					</button>
+					</HeroButton>
 				</div>
 			</Container>
 		</Section>

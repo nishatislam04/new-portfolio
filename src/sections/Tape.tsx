@@ -1,5 +1,3 @@
-"use client";
-
 import StarIcon from "@/assets/icons/star.svg";
 
 // Words for the tape - matching typical design samples

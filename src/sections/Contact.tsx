@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { Section, Card, Button } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
 import { ArrowUpRightIcon, LinkedInIcon, WhatsAppIcon, MessengerIcon, GmailIcon } from "@/components/icons";
-import { CONTACT_INFO, SOCIAL_LINKS } from "@/constants";
 import { sendEmail } from "@/actions/SendEmail";
 import Link from "next/link";
+import { PERSONAL_INFO } from "@/constants/personal-info";
 
 export default function ContactSection() {
 	const formRef = useRef<HTMLFormElement>(null);
@@ -44,7 +44,7 @@ export default function ContactSection() {
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
 						{/* Contact Form */}
 						<FadeIn delay={0.2}>
-							<Card variant="glass" className="p-8 h-[820px]">
+							<Card variant="glass" className="p-8 h-[830px]">
 								<form ref={formRef} action={handleSubmit} className="space-y-6 h-40 flex flex-col">
 									<div className="flex-grow space-y-6">
 										<div>
@@ -127,31 +127,31 @@ export default function ContactSection() {
 										<div className="space-y-6 mb-8">
 											<div>
 												<h4 className="font-semibold text-white mb-2">Email</h4>
-												<a href={`mailto:${CONTACT_INFO.email}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
-													{CONTACT_INFO.email}
+												<a href={`mailto:${PERSONAL_INFO.CONTACT_INFO.email}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													{PERSONAL_INFO.CONTACT_INFO.email}
 												</a>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">GitHub</h4>
-												<Link href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+												<Link href={PERSONAL_INFO.CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
 													github.com/nishatislam04
 												</Link>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">Call Me</h4>
-												<a href={`tel:${CONTACT_INFO.phone}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
-													{CONTACT_INFO.phone}
+												<a href={`tel:${PERSONAL_INFO.CONTACT_INFO.phone}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													{PERSONAL_INFO.CONTACT_INFO.phone}
 												</a>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">Location</h4>
-												<a href={CONTACT_INFO.locationLink} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
-													{CONTACT_INFO.location}
+												<a href={PERSONAL_INFO.CONTACT_INFO.locationLink} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													{PERSONAL_INFO.CONTACT_INFO.location}
 												</a>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">Availability</h4>
-												<p className="text-gray-400">{CONTACT_INFO.availability}</p>
+												<p className="text-gray-400">{PERSONAL_INFO.CONTACT_INFO.availability}</p>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">Response Time</h4>
@@ -164,7 +164,7 @@ export default function ContactSection() {
 									<div className="mt-8 pt-8 border-t border-gray-700/50">
 										<h4 className="font-semibold text-white mb-4">Connect With Me</h4>
 										<div className="grid grid-cols-2 gap-3">
-											{SOCIAL_LINKS.map((social) => {
+											{PERSONAL_INFO.SOCIAL_LINKS.map((social) => {
 												const getIcon = () => {
 													switch (social.icon) {
 														case "gmail":

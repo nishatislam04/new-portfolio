@@ -1,5 +1,4 @@
-// Personal Information Constants
-// Update this file with your own information to customize the portfolio
+import { projectImages } from "@/assets/images";
 
 export const PERSONAL_INFO = {
 	// Basic Information
@@ -24,6 +23,38 @@ export const PERSONAL_INFO = {
 		messenger: "https://m.me/nishat.mazumder.004",
 	},
 
+	CONTACT_INFO: {
+		email: "nishatislam3108@gmail.com",
+		github: "https://github.com/nishatislam04",
+		phone: "+880 1641102404",
+		location: "Rampura, Dhaka, Bangladesh",
+		locationLink: "https://maps.app.goo.gl/eCvVBcRV2HD5nWxE9",
+		availability: "Available for freelance projects",
+	},
+
+	SOCIAL_LINKS: [
+		{
+			name: "Gmail",
+			url: `mailto:nishatislam3108@gmail.com`,
+			icon: "gmail",
+		},
+		{
+			name: "LinkedIn",
+			url: "https://www.linkedin.com/in/nishat-mazumder/",
+			icon: "linkedin",
+		},
+		{
+			name: "WhatsApp",
+			url: "https://wa.me/8801641102404",
+			icon: "whatsapp",
+		},
+		{
+			name: "Messenger",
+			url: "https://m.me/nishat.mazumder.004",
+			icon: "messenger",
+		},
+	],
+
 	// Work Experience
 	workExperience: [
 		{
@@ -41,17 +72,97 @@ export const PERSONAL_INFO = {
 	// Technical Skills
 	skills: ["JavaScript", "TypeScript", "React", "Next.js", "PHP", "Laravel", "Vue.js", "MySQL", "PostgreSQL", "Prisma ORM", "NextAuth.js", "Zustand", "Docker", "Tailwind CSS", "Shadcn UI", "TipTap", "Framer Motion", "Git", "Bun"],
 
-	// Tech Stack for About Section (subset of main skills)
 	techStack: ["Next.js", "Laravel", "React", "PostgreSQL", "Prisma ORM", "Docker"],
 
-	// Achievements/Stats
+	// Stats
 	stats: {
-		projectsCompleted: "10+",
 		experience: "1+",
+		projectsCompleted: "10+",
 		technologies: "20+",
 		clientSatisfaction: "100%",
 	},
+
+	// Achievements
+	achievements: [
+		{
+			info: "how many years development",
+			number: "1+",
+			text: "years of professional development experience",
+		},
+		{
+			info: "how many projects",
+			number: "10+",
+			text: "successful projects delivered",
+		},
+		{
+			info: "how many technologies mastered",
+			number: "20+",
+			text: "modern web technologies mastered",
+		},
+		{
+			info: "client satisfaction",
+			number: "100%",
+			text: "client satisfaction rate",
+		},
+	],
+
+	portfolioProjects: [
+		{
+			company: "SoftBd LTD",
+			year: "2024",
+			title: "Organization Management System",
+			results: [
+				{ title: "Role-based permission system with 3 user levels (Super, Admin, Member)" },
+				{ title: "Automated installment tracking with penalty calculation for overdue payments" },
+				{ title: "Google OAuth integration for seamless user authentication" },
+				{ title: "Email notification system for payment reminders and alerts" },
+				{ title: "Comprehensive subscription management with installment tracking" },
+			],
+			link: "https://github.com/nishatislam04/organizations",
+			image: projectImages.organizationCover,
+			technologies: ["Laravel", "TailwindCSS", "MySQL", "Gmail API", "Google OAuth"],
+			description: "A comprehensive organization management system where Super users manage organizations and subscriptions, Admins handle assigned organizations, and Members join organizations with automated payment tracking and penalty management.",
+			hasLiveDemo: false,
+		},
+		{
+			company: "Personal Project",
+			year: "2025",
+			title: "Team-Docs - Collaborative Documentation Platform",
+			results: [
+				{ title: "TipTap-powered Notion-like editor with slash commands and real-time collaboration" },
+				{ title: "Multi-tenant architecture with workspace isolation and role-based permissions" },
+				{ title: "PostgreSQL full-text search with ranking algorithms and workspace-scoped security" },
+				{ title: "Comprehensive admin dashboard with workspace approval and user management" },
+				{ title: "NextAuth.js JWT authentication with middleware-based route protection" },
+				{ title: "Performance optimized with Server Actions and React 18 concurrent features" },
+			],
+			link: "https://team-docs-new.vercel.app/",
+			image: projectImages.teamDocsCover,
+			technologies: ["Next.js 15", "PostgreSQL", "Prisma ORM", "NextAuth.js", "TipTap", "Tailwind CSS v4", "Shadcn UI", "Zustand", "Docker"],
+			description: "A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing.",
+			hasLiveDemo: true,
+			isComingSoon: false,
+		},
+		{
+			company: "SoftBd LTD",
+			year: "2024",
+			title: "Jukto News Platform",
+			results: [
+				{ title: "Real-time news aggregation from multiple sources and categories" },
+				{ title: "Advanced content management with automated news scraping" },
+				{ title: "Interactive UI components with responsive design across all devices" },
+				{ title: "Streamlined user navigation with efficient performance optimization" },
+				{ title: "REST API integration for seamless data flow and updates" },
+			],
+			link: "#", // No public access available
+			image: projectImages.juktoCover,
+			technologies: ["Laravel", "React", "MySQL", "TailwindCSS", "REST APIs"],
+			description: "A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement.",
+			hasLiveDemo: false,
+			isPrivate: true,
+		},
+	],
 };
 
 // Export individual items for easier access
-export const { name, title, profile, email, location, availability, socialLinks, workExperience, skills, techStack, stats } = PERSONAL_INFO;
+export const { name, title, profile, email, location, availability, socialLinks, workExperience, skills, techStack, stats, achievements, portfolioProjects } = PERSONAL_INFO;
