@@ -7,9 +7,13 @@
 - [] remove react-icons
 - [] optimize svg & images
 - [] remove unused assets
+- [] add resume view feature
+- [] add work experience section
+- [] add education section
 
 ### upcoming features [code quality]
 
+- [] add favicon
 - [] update all sections background grain color
 - [] add tailwindcss class re-ordering
 - [] update projects section
