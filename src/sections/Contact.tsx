@@ -2,15 +2,14 @@
 
 import { useRef, useState, useTransition } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Section, Card, Button } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
 import { ArrowUpRightIcon, LinkedInIcon, WhatsAppIcon, MessengerIcon, GmailIcon } from "@/components/icons";
-import { otherImages } from "@/assets/images";
 import { CONTACT_INFO, SOCIAL_LINKS } from "@/constants";
 import { sendEmail } from "@/actions/SendEmail";
+import Link from "next/link";
 
-export const ContactSection = () => {
+export default function ContactSection() {
 	const formRef = useRef<HTMLFormElement>(null);
 	const [isPending, startTransition] = useTransition();
 	const [state, setState] = useState<{ success: boolean; error?: string; message?: string } | null>(null);
@@ -30,11 +29,6 @@ export const ContactSection = () => {
 
 	return (
 		<Section id="contact" className="relative">
-			{/* Background elements */}
-			<div className="absolute inset-0 opacity-5">
-				<Image src={otherImages.grain} alt="" fill className="object-cover" />
-			</div>
-
 			<div className="relative z-10">
 				<StaggerContainer>
 					{/* Section header */}
@@ -50,10 +44,11 @@ export const ContactSection = () => {
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
 						{/* Contact Form */}
 						<FadeIn delay={0.2}>
-							<Card variant="glass" className="p-8 h-[750px]">
+							<Card variant="glass" className="p-8 h-[820px]">
 								<form ref={formRef} action={handleSubmit} className="space-y-6 h-40 flex flex-col">
 									<div className="flex-grow space-y-6">
 										<div>
+											<h1 className="heading-3 mb-8 capitalize">send me an business email</h1>
 											<label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
 												Name
 											</label>
@@ -62,7 +57,7 @@ export const ContactSection = () => {
 												id="name"
 												name="name"
 												className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
-												placeholder="Your name"
+												placeholder="Please enter your name"
 												required
 												disabled={isPending}
 											/>
@@ -77,7 +72,7 @@ export const ContactSection = () => {
 												id="email"
 												name="email"
 												className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
-												placeholder="your.email@example.com"
+												placeholder="Please enter your email"
 												required
 												disabled={isPending}
 											/>
@@ -90,16 +85,16 @@ export const ContactSection = () => {
 											<textarea
 												id="message"
 												name="message"
-												rows={10}
+												rows={14}
 												className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 resize-none"
-												placeholder="Tell me about your project..."
+												placeholder="Please enter your message"
 												required
 												disabled={isPending}
 											/>
 										</div>
 									</div>
 
-									<div className="pt-4">
+									<div className="pt-2">
 										<Button type="submit" disabled={isPending} className="w-full group">
 											{isPending ? "Sending..." : "Send Message"}
 											{!isPending && <ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />}
@@ -132,23 +127,27 @@ export const ContactSection = () => {
 										<div className="space-y-6 mb-8">
 											<div>
 												<h4 className="font-semibold text-white mb-2">Email</h4>
-												<a href={`mailto:${CONTACT_INFO.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors duration-200">
+												<a href={`mailto:${CONTACT_INFO.email}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
 													{CONTACT_INFO.email}
 												</a>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">GitHub</h4>
-												<a href="https://github.com/nishatislam04" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-emerald-400 transition-colors duration-200">
+												<Link href={CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
 													github.com/nishatislam04
-												</a>
+												</Link>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">Call Me</h4>
-												<p className="text-gray-400">{CONTACT_INFO.phone}</p>
+												<a href={`tel:${CONTACT_INFO.phone}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													{CONTACT_INFO.phone}
+												</a>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">Location</h4>
-												<p className="text-gray-400">{CONTACT_INFO.location}</p>
+												<a href={CONTACT_INFO.locationLink} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													{CONTACT_INFO.location}
+												</a>
 											</div>
 											<div>
 												<h4 className="font-semibold text-white mb-2">Availability</h4>
@@ -217,4 +216,4 @@ export const ContactSection = () => {
 			</div>
 		</Section>
 	);
-};
+}

@@ -114,8 +114,10 @@ export const TESTIMONIALS: Testimonial[] = [
 // Contact information
 export const CONTACT_INFO = {
 	email: PERSONAL_INFO.email,
+	github: PERSONAL_INFO.socialLinks.github,
 	phone: PERSONAL_INFO.phone,
 	location: PERSONAL_INFO.location,
+	locationLink: PERSONAL_INFO.locationLink,
 	availability: PERSONAL_INFO.availability,
 };
 

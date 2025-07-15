@@ -1,29 +1,30 @@
-import { Header } from "@/sections/Header";
-import HeroSection from "@/sections/Hero";
-import { AboutSection } from "@/sections/About";
-import { ToolboxSection } from "@/sections/Toolbox";
-import { ProjectsSection } from "@/sections/Projects";
-// import { TestimonialsSection } from '@/sections/Testimonials';
-import { TapeSection } from "@/sections/Tape";
-import { ContactSection } from "@/sections/Contact";
-import { CTASection } from "@/sections/CTA";
-import { Footer } from "@/sections/Footer";
-import { SkipLink } from "@/components/accessibility/SkipLink";
+import dynamic from "next/dynamic";
+
+import SkipLink from "@/components/accessibility/SkipLink";
+
+const DynamicHeader = dynamic(() => import("@/sections/Header"));
+const DynamicHeroSection = dynamic(() => import("@/sections/Hero"));
+const DynamicAboutSection = dynamic(() => import("@/sections/About"));
+const DynamicToolboxSection = dynamic(() => import("@/sections/Toolbox"));
+const DynamicProjectsSection = dynamic(() => import("@/sections/Projects"));
+const DynamicTapeSection = dynamic(() => import("@/sections/Tape"));
+const DynamicContactSection = dynamic(() => import("@/sections/Contact"));
+const DynamicCTASection = dynamic(() => import("@/sections/CTA"));
+const DynamicFooter = dynamic(() => import("@/sections/Footer"));
 
 export default function Home() {
 	return (
 		<>
 			<SkipLink />
-			<Header />
-			<HeroSection />
-			<AboutSection />
-			<ToolboxSection />
-			<TapeSection />
-			<ProjectsSection />
-			{/* <TestimonialsSection /> */}
-			<ContactSection />
-			<CTASection />
-			<Footer />
+			<DynamicHeader />
+			<DynamicHeroSection />
+			<DynamicAboutSection />
+			<DynamicToolboxSection />
+			<DynamicTapeSection />
+			<DynamicProjectsSection />
+			<DynamicContactSection />
+			<DynamicCTASection />
+			<DynamicFooter />
 		</>
 	);
 }

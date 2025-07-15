@@ -40,7 +40,7 @@ const techStacks = [
 	{ name: "Docker", icon: <DockerIcon className="size-10 fill-[url(#tech-icon-gradient)]" /> },
 ];
 
-export const AboutSection = () => {
+export default function AboutSection() {
 	const achievements = [
 		{
 			number: PERSONAL_INFO.stats.experience,
@@ -62,11 +62,6 @@ export const AboutSection = () => {
 
 	return (
 		<Section id="about" className="relative">
-			{/* Background elements */}
-			<div className="absolute inset-0 opacity-5">
-				<Image src={otherImages.grain} alt="" fill className="object-cover" />
-			</div>
-
 			<div className="relative z-10">
 				<StaggerContainer>
 					{/* Section header */}
@@ -155,4 +150,4 @@ export const AboutSection = () => {
 			</div>
 		</Section>
 	);
-};
+}

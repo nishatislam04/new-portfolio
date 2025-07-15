@@ -2,7 +2,7 @@
 
 import { NAV_ITEMS } from "@/constants";
 
-export const Header = () => {
+export default function Header() {
 	return (
 		<div className="flex items-center justify-center fixed top-3 w-full z-20">
 			<nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur">
@@ -16,4 +16,4 @@ export const Header = () => {
 			</nav>
 		</div>
 	);
-};
+}

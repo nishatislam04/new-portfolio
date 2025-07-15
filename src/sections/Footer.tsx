@@ -2,7 +2,7 @@ import { ArrowUpRightIcon } from "@/components/icons";
 import { Container } from "@/components/ui";
 import { SOCIAL_LINKS } from "@/constants";
 
-export const Footer = () => {
+export default function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
@@ -25,4 +25,4 @@ export const Footer = () => {
 			</Container>
 		</footer>
 	);
-};
+}

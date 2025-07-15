@@ -13,6 +13,7 @@ export const PERSONAL_INFO = {
 	email: "nishatislam3108@gmail.com",
 	phone: "+880 1641102404",
 	location: "Rampura, Dhaka, Bangladesh",
+	locationLink: "https://maps.app.goo.gl/eCvVBcRV2HD5nWxE9",
 	availability: "Available for freelance projects",
 
 	// Social Links

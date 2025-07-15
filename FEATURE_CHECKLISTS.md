@@ -7,19 +7,24 @@
 - [] remove react-icons
 - [] optimize svg & images
 - [] remove unused assets
-- [] add resume view feature
-- [] add work experience section
-- [] add education section
+
+- [x] add resume view feature
+
+# [] add work experience section
+
+# [] add education section
 
 ### upcoming features [code quality]
 
-- [] add favicon
-- [] update all sections background grain color
+- [x] add favicon
+
+- [x] update all sections background grain color
+
 - [] add tailwindcss class re-ordering
 - [] update projects section
 - [] update email template with professional template
-- [] update contact link opening respective application
-- [] add heading on form with "send me an business email"
+- [x] update contact link opening respective application
+- [x] add heading on form with "send me an business email"
 - [] add icons animation (tech icons)
 
 ### upcoming features [tools & packages]

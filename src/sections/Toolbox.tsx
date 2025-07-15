@@ -64,15 +64,9 @@ const ToolboxItem = ({ item, index }: { item: (typeof toolboxItemsOne)[0]; index
 	</motion.div>
 );
 
-export const ToolboxSection = () => {
+export default function ToolboxSection() {
 	return (
 		<Section className="relative overflow-hidden">
-			{/* Background elements */}
-			<div className="absolute inset-0 opacity-5">
-				<Image src={otherImages.grain} alt="" fill className="object-cover" />
-			</div>
-
-			{/* Animated background shapes */}
 			<div className="absolute inset-0">
 				<motion.div
 					className="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"
@@ -146,4 +140,4 @@ export const ToolboxSection = () => {
 			</div>
 		</Section>
 	);
-};
+}

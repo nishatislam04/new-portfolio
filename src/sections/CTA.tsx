@@ -8,7 +8,7 @@ import { scrollToElement } from "@/utils";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import grainImage from "@/assets/images/grain.jpg";
 
-export const CTASection = () => {
+export default function CTASection() {
 	const handleContactClick = () => {
 		scrollToElement("contact");
 	};
@@ -72,4 +72,4 @@ export const CTASection = () => {
 			</Container>
 		</Section>
 	);
-};
+}

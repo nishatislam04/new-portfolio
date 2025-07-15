@@ -62,7 +62,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Section, Card, CardContent, Button } from "@/components/ui";
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import { ArrowUpRightIcon, GitHubIcon } from "@/components/icons";
+import { ArrowUpRightIcon } from "@/components/icons";
 import { otherImages } from "@/assets/images";
 import { PortfolioProject } from "@/types";
 
@@ -134,16 +134,11 @@ const ProjectCard = ({ project, index }: { project: PortfolioProject; index: num
 	);
 };
 
-export const ProjectsSection = () => {
+export default function ProjectsSection() {
 	// Using the portfolioProjects array defined at the top
 
 	return (
 		<Section id="projects" className="relative">
-			{/* Background elements */}
-			<div className="absolute inset-0 opacity-5">
-				<Image src={otherImages.grain} alt="" fill className="object-cover" />
-			</div>
-
 			<div className="relative z-10">
 				<StaggerContainer>
 					{/* Section header */}
@@ -182,4 +177,4 @@ export const ProjectsSection = () => {
 			</div>
 		</Section>
 	);
-};
+}

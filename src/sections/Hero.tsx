@@ -10,6 +10,7 @@ import grainImage from "@/assets/images/grain.jpg";
 import StarIcon from "@/assets/icons/star.svg";
 import SparkleIcon from "@/assets/icons/sparkle.svg";
 import HeroOrbit from "@/components/block/HeroOrbit";
+import DownloadIcon from "@/assets/icons/Download.svg";
 
 export default function HeroSection() {
 	const handleScrollToProjects = () => {
@@ -85,6 +86,10 @@ export default function HeroSection() {
 						<span className="font-semibold">View My Work</span>
 						<ArrowDownIcon className="size-4" />
 					</button>
+					<a download href="/Minhajul_islam-cv.pdf" target="_blank" className="inline-flex items-center bg-gray-50/5 gap-2 border border-white/15 px-6 h-12 rounded-xl">
+						<span className="font-semibold">View My CV</span>
+						<DownloadIcon className="size-5 fill-white" />
+					</a>
 					<button onClick={handleScrollToContact} className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl">
 						<span className="font-semibold">Let's Connect</span>
 						<ArrowUpRightIcon className="w-5 h-5" />

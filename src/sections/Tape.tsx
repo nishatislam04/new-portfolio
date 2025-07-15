@@ -5,7 +5,7 @@ import StarIcon from "@/assets/icons/star.svg";
 // Words for the tape - matching typical design samples
 const tapeWords = ["PERFORMANT", "ACCESSIBLE", "SECURE", "INTERACTIVE", "SCALABLE", "RESPONSIVE", "USABLE", "RELIABLE", "PERFORMANT", "ACCESSIBLE", "SECURE", "INTERACTIVE", "SCALABLE", "RESPONSIVE", "USABLE", "RELIABLE"];
 
-export const TapeSection = () => {
+export default function TapeSection() {
 	return (
 		<section className="py-16">
 			<div className="bg-gradient-to-r from-emerald-300 to-sky-400 overflow-x-clip -rotate-3 -mx-1">
@@ -24,4 +24,4 @@ export const TapeSection = () => {
 			</div>
 		</section>
 	);
-};
+}
