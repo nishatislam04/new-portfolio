@@ -33,7 +33,7 @@
 - [] integrate vercel properly
 - [] integrate rspack
 - [] integrate biome
-- [] update tailwindcss latest
+- [] update tailwindcss latest. after implementing all features from video
 - [] update nextjs latest canary
 - [] update react latest
 
