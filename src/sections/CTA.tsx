@@ -19,7 +19,7 @@ export default function CTASection() {
 						<ContactButton jumpto="contact" />
 					</div>
 					<div className="absolute inset-0 -z-30 opacity-5">
-						<Image src={grainImage} alt="Grain texture" className="object-cover" priority />
+						<Image src={grainImage} alt="Grain texture" className="object-cover" priority width={1920} height={1080} quality={20} />
 					</div>
 				</div>
 

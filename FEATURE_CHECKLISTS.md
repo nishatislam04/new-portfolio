@@ -40,6 +40,8 @@
 ### Performance
 
 - [] dynamic import component. especially the not important components
+- [] optimize tailwindcss file
+- [] missing source maps for large first-party JavaScript
 - []
 
 ### SEO & Meta Tags

@@ -73,10 +73,18 @@ export default function AboutSection() {
 							{/* Avatar */}
 							<FadeIn delay={0.3}>
 								<div className="relative">
-									<div className="relative w-64 h-64 mx-auto transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105">
+									<div className="relative w-64 h-64 mx-auto transform transition-transform duration-500 hover:scale-105">
 										<div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-sky-500/20 rounded-full blur-xl" />
 										<div className="relative w-full h-full bg-gray-800/50 rounded-full border border-white/10 overflow-hidden">
-											<Image src={profilePicture} alt="About me" fill className="object-contain p-4" />
+											<Image
+												src={profilePicture}
+												alt="About me"
+												className="object-contain p-4"
+												width={1920}
+												height={1080}
+												priority // force preload
+												quality={20}
+											/>
 										</div>
 									</div>
 								</div>
