@@ -33,7 +33,10 @@ export default function ProjectsSection() {
 					<div className="flex flex-col gap-14 mt-10 md:mt-20">
 						{PERSONAL_INFO.portfolioProjects.map((project, index) => (
 							<div
-								className="bg-gray-800 rounded-3xl relative z-0 overflow-hidden after:z-10 after:content-[''] after:absolute after:inset-0 after:outline-2 after:outline after:-outline-offset-2 after:rounded-3xl after:outline-white/20 px-8 pt-8 after:pointer-events-none md:pt-12 md:px-10 lg:px-20 lg:pt-16"
+								className="bg-gray-800 rounded-3xl z-0 overflow-hidden after:z-10 after:content-[''] after:absolute after:inset-0 after:outline-2 after:outline after:-outline-offset-2 after:rounded-3xl after:outline-white/20 px-8 pt-8 after:pointer-events-none md:pt-12 md:px-10 lg:px-20 lg:pt-16 sticky"
+								style={{
+									top: `calc(64px + ${index * 45}px)`,
+								}}
 								key={index}>
 								<div className="absolute inset-0 -z-30 opacity-5">
 									<Image src={grainImage} alt="Grain texture" className="object-cover" priority width={1920} height={1080} quality={20} />
