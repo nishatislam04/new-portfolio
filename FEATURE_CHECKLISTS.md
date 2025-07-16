@@ -4,8 +4,8 @@
 
 - [x] move client component parts in separate file (more modularize)
 - [] remove eslint & add biome
-- [] remove react-icons
-- [] optimize svg & images
+- [x] remove react-icons
+- [x] optimize svg & images
 - [x] remove unused assets
 
 - [x] add resume view feature
@@ -27,15 +27,16 @@
 - [x] add heading on form with "send me an business email"
 - [] add icons animation (tech icons)
 - [] add stats number animation
+- [] add custom color for text selection
 
 ### upcoming features [tools & packages]
 
 - [] integrate vercel properly
 - [] integrate rspack
 - [] integrate biome
-- [] update tailwindcss latest. after implementing all features from video
-- [] update nextjs latest canary
-- [] update react latest
+- [] update tailwindcss latest. (after implementing all features from video)
+- [x] update nextjs latest canary
+- [x] update react latest
 
 ### Performance
 
