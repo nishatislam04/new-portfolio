@@ -1,3 +1,3 @@
-{
-  "buildCommand": "./vercel-build.sh"
-}
+#!/bin/bash
+npm install --legacy-peer-deps
+npm run build
