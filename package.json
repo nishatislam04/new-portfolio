@@ -10,8 +10,7 @@
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
     "build:analyze": "ANALYZE=true next build",
-    "preview": "next build --turbopack && next start -H 192.168.1.111",
-    "postinstall": "npm install --legacy-peer-deps"
+    "preview": "next build --turbopack && next start -H 192.168.1.111"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
