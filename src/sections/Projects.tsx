@@ -79,14 +79,11 @@ export default function ProjectsSection() {
 											</a>
 										)}
 									</div>
-									{/* <div className="relative">
-										<Image src={project.image} alt={project.title} className="mt-8 -mb-4 rounded-lg md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none" />
-									</div> */}
-									<div className="relative">
-										<Image src={project.image} alt={project.title} className="mt-8 -mb-4 rounded-lg md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none" />
+									<div className="relative group mt-8 rounded-lg w-[690px] overflow-hidden lg:mt-0 lg:h-full">
+										<Image src={project.image} alt={project.title} className="-mb-4 w-full h-auto md:-mb-0 lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover" />
 
 										{/* Overlay */}
-										<div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+										<div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
 											{project.isPrivate ? (
 												<div className="text-white/70 border border-white/30 bg-white/10 backdrop-blur-md px-5 py-3 rounded-lg flex items-center gap-2 text-sm font-semibold">
 													<LockIcon className="size-5 fill-white" />
