@@ -43,10 +43,10 @@ export default function EducationSection() {
 											</div>
 
 											{/* Details: Duration & GPA */}
-											<div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 lg:gap-6">
+											<div className="flex flex-col sm:flex-row items-center justify-between lg:justify-start gap-4 lg:gap-6">
 												{/* GPA Display */}
 												<div className="flex items-center gap-3">
-													<span className="text-gray-400 font-medium">GPA:</span>
+													<span className="text-gray-400 font-medium text-xl">GPA:</span>
 													<div className="text-2xl font-bold text-white">
 														{edu.gpa}
 														<span className="text-lg text-gray-400 font-normal">/{edu.maxGpa}</span>

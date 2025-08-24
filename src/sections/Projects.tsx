@@ -4,6 +4,7 @@ import { PERSONAL_INFO } from "@/constants/personal-info";
 import ProjectCard from "./subComponents/ProjectCard";
 import ProjectCTA from "./subComponents/ProjectCTA";
 import Image from "next/image";
+import Link from "next/link";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import ArrownUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import grainImage from "@/assets/images/grain.jpg";
@@ -71,12 +72,12 @@ export default function ProjectsSection() {
 												<span className="pt-2">Live Demo Coming Soon</span>
 											</div>
 										) : (
-											<a href={project.link} target="_blank" rel="noopener noreferrer" className="">
+											<Link href={project.link} target="_blank" rel="noopener noreferrer" className="">
 												<button className="bg-white text-gray-950 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8">
 													<span className="">{project.link.includes("github") ? "View Code" : "View Project"}</span>
 													<ArrownUpRightIcon className="size-4 md:size-5" />
 												</button>
-											</a>
+											</Link>
 										)}
 									</div>
 									<div className="relative group mt-8 rounded-lg w-[690px] overflow-hidden lg:mt-0 lg:h-full">
@@ -95,10 +96,10 @@ export default function ProjectsSection() {
 													Coming Soon
 												</div>
 											) : (
-												<a href={project.link} target="_blank" rel="noopener noreferrer" className="text-white border border-white/30 bg-white/10 backdrop-blur-md px-5 py-3 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-white/20 transition">
+												<Link href={project.link} target="_blank" rel="noopener noreferrer" className="text-white border border-white/30 bg-white/10 backdrop-blur-md px-5 py-3 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-white/20 transition">
 													<ArrownUpRightIcon className="size-5" />
 													{project.link.includes("github") ? "View Code" : "View Project"}
-												</a>
+												</Link>
 											)}
 										</div>
 									</div>

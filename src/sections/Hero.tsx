@@ -86,13 +86,13 @@ export default function HeroSection() {
 					<p className="mt-4 text-center text-white/60 md:text-base">{PERSONAL_INFO.profile}</p>
 				</div>
 				<div className="flex flex-col items-center mt-8 gap-4 md:flex-row justify-center z-50 relative">
-					<HeroButton jumpTo="projects" text="View My Work">
+					<HeroButton jumpTo="projects" text="My Work">
 						<ArrowDownIcon className="size-4" />
 					</HeroButton>
-					<HeroButton href="https://drive.google.com/file/d/16rFYNbRmaBiCcKloCobYp_pHqw0Nd_sL/view?usp=sharing" text="View My CV">
+					<HeroButton href="https://drive.google.com/file/d/16rFYNbRmaBiCcKloCobYp_pHqw0Nd_sL/view?usp=sharing" text="My CV">
 						<ViewIcon className="size-4" />
 					</HeroButton>
-					<HeroButton jumpTo="contact" text="Let's Connect" className="border border-white bg-white text-gray-900 hover:bg-gray-100 hover:border-gray-200">
+					<HeroButton jumpTo="contact" text="Let's Connect" className="border border-white bg-white text-gray-900 hover:bg-gray-100 hover:border-gray-200 max-w-[190px]">
 						<ArrowUpRightIcon className="size-4" />
 					</HeroButton>
 				</div>
