@@ -1,0 +1,22 @@
+{
+  "name": "Nishat Mazumder - Full Stack Developer",
+  "short_name": "Nishat Portfolio",
+  "description": "Full Stack Web Developer specializing in Next.js, Laravel, and React",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0f172a",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

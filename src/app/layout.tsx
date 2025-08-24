@@ -63,7 +63,12 @@ export default function RootLayout({
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 				<meta name="theme-color" content="#0f172a" />
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+				
+				{/* Favicon Implementation */}
+				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+				<link rel="icon" href="/favicon.ico" sizes="32x32" />
+				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+				<link rel="manifest" href="/site.webmanifest" />
 			</head>
 			<body className={`${inter.variable} ${calistoga.variable} font-sans relative`}>{children}</body>
 		</html>

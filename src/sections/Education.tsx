@@ -35,7 +35,7 @@ export default function EducationSection() {
 										</div>
 
 										{/* Main Content */}
-										<div className="space-y-6">
+										<div className="space-y-12">
 											{/* Header: Degree & Institution */}
 											<div className="text-center lg:text-left">
 												<h3 className="heading-3 text-white group-hover:text-emerald-400 transition-colors duration-300 mb-2">{edu.degree}</h3>

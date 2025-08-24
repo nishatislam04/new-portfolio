@@ -11,7 +11,7 @@
 
 ## [] add work experience section
 
-## [] add education section
+- [x] add education section
 
 ### upcoming features [code quality]
 
