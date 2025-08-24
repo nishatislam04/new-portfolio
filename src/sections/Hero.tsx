@@ -90,10 +90,10 @@ export default function HeroSection() {
 						<ArrowDownIcon className="size-4" />
 					</HeroButton>
 					<HeroButton href="https://drive.google.com/file/d/16rFYNbRmaBiCcKloCobYp_pHqw0Nd_sL/view?usp=sharing" text="View My CV">
-						<ViewIcon className="size-5" />
+						<ViewIcon className="size-4" />
 					</HeroButton>
 					<HeroButton jumpTo="contact" text="Let's Connect" className="border border-white bg-white text-gray-900 hover:bg-gray-100 hover:border-gray-200">
-						<ArrowUpRightIcon className="w-5 h-5" />
+						<ArrowUpRightIcon className="size-4" />
 					</HeroButton>
 				</div>
 			</Container>

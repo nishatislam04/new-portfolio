@@ -30,9 +30,9 @@ export default function WorkExperienceSection() {
 									{index < workExperience.length - 1 && <div className="absolute left-8 top-24 w-0.5 h-32 bg-gradient-to-b from-emerald-500/50 to-transparent" />}
 
 									{/* Experience Card */}
-									<div className="relative bg-gray-800/50 border border-gray-700/50 rounded-xl p-8 hover:border-emerald-500/30 transition-all duration-300 group">
+									<div className="relative bg-gray-800/50 border border-gray-700/50 rounded-xl lg:p-8 p-6 hover:border-emerald-500/30 transition-all duration-300 group">
 										{/* Timeline Dot */}
-										<div className="absolute -left-4 top-12 w-8 h-8 bg-emerald-500 rounded-full border-4 border-gray-900 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+										<div className="absolute -left-4 top-6 lg:top-9 w-8 h-8 bg-emerald-500 rounded-full border-4 border-gray-900 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
 											<BriefcaseIcon className="w-4 h-4 text-white" />
 										</div>
 
@@ -46,7 +46,7 @@ export default function WorkExperienceSection() {
 												</div>
 
 												{/* Duration & Type Badge */}
-												<div className="flex self-end flex-col sm:flex-row gap-3">
+												<div className="-mr-2 flex self-end flex-col sm:flex-row gap-3">
 													<div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-medium">
 														<CalendarIcon className="w-4 h-4" />
 														{exp.duration}
@@ -59,7 +59,7 @@ export default function WorkExperienceSection() {
 											</div>
 
 											{/* Description */}
-											<div className="space-y-4">
+											<div className="space-y-8 lg:space-y-6">
 												<p className="body-base text-gray-300 leading-relaxed">{exp.description}</p>
 
 												{/* Achievements */}
@@ -90,7 +90,7 @@ export default function WorkExperienceSection() {
 										</div>
 
 										{/* Decorative Elements */}
-										<div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+										<div className="absolute top-4 lg:top-1 right-2 lg:right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
 											<BriefcaseIcon className="w-16 h-16 text-emerald-500" />
 										</div>
 									</div>
