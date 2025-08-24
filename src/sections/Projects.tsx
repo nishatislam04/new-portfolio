@@ -41,7 +41,7 @@ export default function ProjectsSection() {
 								}}
 								key={index}>
 								<div className="absolute inset-0 -z-30 opacity-5">
-									<Image src={grainImage} alt="Grain texture" className="object-cover" priority width={1920} height={1080} quality={20} />
+									<Image src={grainImage} alt="Grain texture" className="object-cover" loading="lazy" decoding="async" placeholder="blur" width={1920} height={1080} quality={20} />
 								</div>
 								<div className="lg:grid lg:grid-cols-2 lg:gap-8">
 									<div className="lg:pb-16">
@@ -80,7 +80,7 @@ export default function ProjectsSection() {
 										)}
 									</div>
 									<div className="relative group mt-8 rounded-lg w-[690px] overflow-hidden lg:mt-0 lg:h-full">
-										<Image src={project.image} alt={project.title} className="-mb-4 w-full h-auto md:-mb-0 lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover" />
+										<Image src={project.image} alt={project.title} className="-mb-4 w-full h-auto md:-mb-0 lg:absolute lg:inset-0 lg:h-full lg:w-full lg:object-cover" sizes="(max-width:1200px) 100vw, 50vw" fill />
 
 										{/* Overlay */}
 										<div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">

@@ -19,7 +19,7 @@ export default function CTASection() {
 						<ContactButton jumpto="contact" />
 					</div>
 					<div className="absolute inset-0 -z-30 opacity-5">
-						<Image src={grainImage} alt="Grain texture" className="object-cover" priority width={1920} height={1080} quality={20} />
+						<Image src={grainImage} alt="Grain texture" className="object-cover" loading="lazy" decoding="async" placeholder="blur" width={1920} height={1080} quality={20} />
 					</div>
 				</div>
 
@@ -28,40 +28,28 @@ export default function CTASection() {
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 lg:pt-20 border-t border-white/10">
 						<div className="text-center group">
 							<div className="relative">
-								<AnimatedCounter 
-									value={PERSONAL_INFO.stats.projectsCompleted}
-									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
-								/>
+								<AnimatedCounter value={PERSONAL_INFO.stats.projectsCompleted} className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl" />
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Projects Completed</div>
 						</div>
 
 						<div className="text-center group">
 							<div className="relative">
-								<AnimatedCounter 
-									value={PERSONAL_INFO.stats.technologies}
-									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
-								/>
+								<AnimatedCounter value={PERSONAL_INFO.stats.technologies} className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl" />
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Technologies</div>
 						</div>
 
 						<div className="text-center group">
 							<div className="relative">
-								<AnimatedCounter 
-									value={PERSONAL_INFO.stats.experience}
-									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
-								/>
+								<AnimatedCounter value={PERSONAL_INFO.stats.experience} className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl" />
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Years Experience</div>
 						</div>
 
 						<div className="text-center group">
 							<div className="relative">
-								<AnimatedCounter 
-									value={PERSONAL_INFO.stats.clientSatisfaction}
-									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
-								/>
+								<AnimatedCounter value={PERSONAL_INFO.stats.clientSatisfaction} className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl" />
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Client Satisfaction</div>
 						</div>

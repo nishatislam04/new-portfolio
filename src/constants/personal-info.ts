@@ -26,7 +26,7 @@ export const PERSONAL_INFO = {
 	CONTACT_INFO: {
 		email: "nishatislam3108@gmail.com",
 		github: "https://github.com/nishatislam04",
-		phone: "+880 1641102404",
+		phone: "01641102404",
 		location: "Rampura, Dhaka, Bangladesh",
 		locationLink: "https://maps.app.goo.gl/eCvVBcRV2HD5nWxE9",
 		availability: "Available for freelance projects",
