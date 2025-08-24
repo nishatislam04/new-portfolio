@@ -17,7 +17,15 @@ const Section = forwardRef<HTMLElement, SectionProps>(({ className, children, co
 	};
 
 	return (
-		<section className={cn(paddingStyles[padding], className)} ref={ref} {...props}>
+		<section
+			className={cn(
+				"[content-visibility:auto] [contain-intrinsic-size:1px_1000px]",
+				paddingStyles[padding],
+				className
+			)}
+			ref={ref}
+			{...props}
+		>
 			<Container size={containerSize}>{children}</Container>
 		</section>
 	);

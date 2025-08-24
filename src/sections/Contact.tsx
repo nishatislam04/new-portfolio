@@ -40,7 +40,7 @@ export default function ContactSection() {
 										<h3 className="heading-3 mb-6">Get in Touch</h3>
 										<div className="space-y-6 mb-8">
 											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<EmailIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<EmailIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Email</h4>
 													<a href={`mailto:${PERSONAL_INFO.CONTACT_INFO.email}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
@@ -49,7 +49,7 @@ export default function ContactSection() {
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<GithubIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<GithubIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">GitHub</h4>
 													<Link href={PERSONAL_INFO.CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
@@ -58,7 +58,7 @@ export default function ContactSection() {
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<PhoneIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<PhoneIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Call Me</h4>
 													<a href={`tel:${PERSONAL_INFO.CONTACT_INFO.phone}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
@@ -67,7 +67,7 @@ export default function ContactSection() {
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<LocationIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<LocationIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Location</h4>
 													<a href={PERSONAL_INFO.CONTACT_INFO.locationLink} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
@@ -76,14 +76,14 @@ export default function ContactSection() {
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<AvailabilityIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<AvailabilityIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Availability</h4>
 													<p className="text-gray-400">{PERSONAL_INFO.CONTACT_INFO.availability}</p>
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<ResponseTimeIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<ResponseTimeIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Response Time</h4>
 													<p className="text-gray-400">Usually within 24 hours</p>
@@ -100,15 +100,15 @@ export default function ContactSection() {
 												const getIcon = () => {
 													switch (social.icon) {
 														case "gmail":
-															return <GmailIcon className="w-5 h-5" />;
+															return <GmailIcon className="w-5 h-5" aria-hidden="true" focusable="false" />;
 														case "linkedin":
-															return <LinkedInIcon className="w-5 h-5 text-blue-500" />;
+															return <LinkedInIcon className="w-5 h-5 text-blue-500" aria-hidden="true" focusable="false" />;
 														case "whatsapp":
-															return <WhatsAppIcon className="w-5 h-5 text-green-500" />;
+															return <WhatsAppIcon className="w-5 h-5 text-green-500" aria-hidden="true" focusable="false" />;
 														case "messenger":
-															return <MessengerIcon className="w-5 h-5 text-blue-400" />;
+															return <MessengerIcon className="w-5 h-5 text-blue-400" aria-hidden="true" focusable="false" />;
 														default:
-															return <GmailIcon className="w-5 h-5" />;
+															return <GmailIcon className="w-5 h-5" aria-hidden="true" focusable="false" />;
 													}
 												};
 

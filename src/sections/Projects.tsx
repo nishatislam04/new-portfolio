@@ -41,7 +41,7 @@ export default function ProjectsSection() {
 								}}
 								key={index}>
 								<div className="absolute inset-0 -z-30 opacity-5">
-									<Image src={grainImage} alt="Grain texture" className="object-cover" loading="lazy" decoding="async" placeholder="blur" width={1920} height={1080} quality={20} />
+									<Image src={grainImage} alt="Grain texture" className="object-cover" loading="lazy" decoding="async" placeholder="blur" width={1920} height={1080} quality={20} sizes="100vw" />
 								</div>
 								<div className="lg:grid lg:grid-cols-2 lg:gap-8">
 									<div className="lg:pb-16">

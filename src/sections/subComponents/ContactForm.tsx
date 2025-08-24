@@ -30,7 +30,7 @@ export default function ContactForm() {
 				<form ref={formRef} action={handleSubmit} className="space-y-6 h-40 flex flex-col">
 					<div className="flex-grow space-y-6">
 						<div>
-							<h1 className="heading-3 mb-8 capitalize">send me an business email</h1>
+							<h3 className="heading-3 mb-8 capitalize">send me an business email</h3>
 							<label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
 								Name
 							</label>

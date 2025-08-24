@@ -17,7 +17,7 @@ export default function ProjectCard({
 			<Card variant="glass" className="overflow-hidden h-full hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
 				{/* Project Image */}
 				<div className="relative h-48 md:h-56 overflow-hidden">
-					<Image src={project.image} alt={project.title} width={450} height={206} loading="lazy" quality={20} className="object-cover transition-transform duration-500 group-hover:scale-110" />
+					<Image src={project.image} alt={project.title} width={450} height={206} loading="lazy" quality={20} sizes="(max-width: 768px) 100vw, 450px" className="object-cover transition-transform duration-500 group-hover:scale-110" />
 					<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 					{/* Overlay buttons */}

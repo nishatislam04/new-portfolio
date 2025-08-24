@@ -13,7 +13,7 @@ export default function ToolBoxItems({ item, index }: { item: { title: string; i
 			whileHover={{ scale: 1.05, y: -3 }}>
 			{/* icon */}
 			<div className="size-10">{item.icon}</div>
-			<svg className="size-0 absolute">
+			<svg className="size-0 absolute" aria-hidden="true" focusable="false">
 				<linearGradient id="tech-icon-gradient">
 					<stop offset="0%" stopColor="rgb(110 231 183)" />
 					<stop offset="100%" stopColor="rgb(56 189 248)" />
