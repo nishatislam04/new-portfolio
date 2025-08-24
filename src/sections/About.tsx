@@ -62,9 +62,28 @@ export default function AboutSection() {
 												direction="left" 
 												className="group flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-500 hover:bg-gray-800/50 relative overflow-hidden"
 											>
-												{/* Subtle animated background */}
+												{/* Always-on subtle background glow */}
+												<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/3 to-sky-500/3 animate-pulse" />
+												
+												{/* Always-on subtle border glow */}
+												<div 
+													className="absolute inset-0 rounded-lg border border-emerald-500/10"
+													style={{
+														animation: `borderGlow 4s ease-in-out infinite ${index * 0.5}s`
+													}}
+												/>
+												
+												{/* Enhanced hover animations */}
 												<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 												<div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+												
+												{/* Always-on shimmer effect */}
+												<div 
+													className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent"
+													style={{
+														animation: `shimmer 6s linear infinite ${index * 0.8}s`
+													}}
+												/>
 												
 												<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0 relative z-10 transition-transform duration-300 group-hover:scale-110" />
 												<span className="text-gray-300 flex-1 relative z-10">

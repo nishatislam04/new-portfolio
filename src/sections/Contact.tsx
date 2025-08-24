@@ -6,6 +6,12 @@ import WhatsAppIcon from "@/assets/icons/minified/Whatsapp.svg";
 import GmailIcon from "@/assets/icons/minified/Gmail.svg";
 import LinkedInIcon from "@/assets/icons/minified/Linkedin.svg";
 import MessengerIcon from "@/assets/icons/minified/Messenger.svg";
+import EmailIcon from "@/assets/icons/email.svg";
+import GithubIcon from "@/assets/icons/github.svg";
+import PhoneIcon from "@/assets/icons/phone.svg";
+import LocationIcon from "@/assets/icons/location.svg";
+import AvailabilityIcon from "@/assets/icons/availability.svg";
+import ResponseTimeIcon from "@/assets/icons/response-time.svg";
 import ContactForm from "./subComponents/ContactForm";
 
 export default function ContactSection() {
@@ -33,37 +39,55 @@ export default function ContactSection() {
 									<div className="flex-grow">
 										<h3 className="heading-3 mb-6">Get in Touch</h3>
 										<div className="space-y-6 mb-8">
-											<div>
-												<h4 className="font-semibold text-white mb-2">Email</h4>
-												<a href={`mailto:${PERSONAL_INFO.CONTACT_INFO.email}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
-													{PERSONAL_INFO.CONTACT_INFO.email}
-												</a>
+											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+												<EmailIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<div>
+													<h4 className="font-semibold text-white mb-1">Email</h4>
+													<a href={`mailto:${PERSONAL_INFO.CONTACT_INFO.email}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+														{PERSONAL_INFO.CONTACT_INFO.email}
+													</a>
+												</div>
 											</div>
-											<div>
-												<h4 className="font-semibold text-white mb-2">GitHub</h4>
-												<Link href={PERSONAL_INFO.CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
-													github.com/nishatislam04
-												</Link>
+											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+												<GithubIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<div>
+													<h4 className="font-semibold text-white mb-1">GitHub</h4>
+													<Link href={PERSONAL_INFO.CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+														github.com/nishatislam04
+													</Link>
+												</div>
 											</div>
-											<div>
-												<h4 className="font-semibold text-white mb-2">Call Me</h4>
-												<a href={`tel:${PERSONAL_INFO.CONTACT_INFO.phone}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
-													{PERSONAL_INFO.CONTACT_INFO.phone}
-												</a>
+											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+												<PhoneIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<div>
+													<h4 className="font-semibold text-white mb-1">Call Me</h4>
+													<a href={`tel:${PERSONAL_INFO.CONTACT_INFO.phone}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+														{PERSONAL_INFO.CONTACT_INFO.phone}
+													</a>
+												</div>
 											</div>
-											<div>
-												<h4 className="font-semibold text-white mb-2">Location</h4>
-												<a href={PERSONAL_INFO.CONTACT_INFO.locationLink} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
-													{PERSONAL_INFO.CONTACT_INFO.location}
-												</a>
+											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+												<LocationIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<div>
+													<h4 className="font-semibold text-white mb-1">Location</h4>
+													<a href={PERSONAL_INFO.CONTACT_INFO.locationLink} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+														{PERSONAL_INFO.CONTACT_INFO.location}
+													</a>
+												</div>
 											</div>
-											<div>
-												<h4 className="font-semibold text-white mb-2">Availability</h4>
-												<p className="text-gray-400">{PERSONAL_INFO.CONTACT_INFO.availability}</p>
+											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+												<AvailabilityIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<div>
+													<h4 className="font-semibold text-white mb-1">Availability</h4>
+													<p className="text-gray-400">{PERSONAL_INFO.CONTACT_INFO.availability}</p>
+												</div>
 											</div>
-											<div>
-												<h4 className="font-semibold text-white mb-2">Response Time</h4>
-												<p className="text-gray-400">Usually within 24 hours</p>
+											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+												<ResponseTimeIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+												<div>
+													<h4 className="font-semibold text-white mb-1">Response Time</h4>
+													<p className="text-gray-400">Usually within 24 hours</p>
+												</div>
 											</div>
 										</div>
 									</div>

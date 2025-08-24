@@ -34,13 +34,13 @@ export function TechStackCard({ tech, index }: { tech: { name: string; icon: Rea
 				{/* Subtle infinite background animations */}
 				<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 				
-				{/* Infinite subtle border glow */}
+				{/* Enhanced infinite border animations */}
 				<motion.div 
 					className="absolute inset-0 rounded-xl border border-emerald-500/20"
 					animate={{
 						boxShadow: [
 							"0 0 0 0 rgba(16, 185, 129, 0.1)",
-							"0 0 10px 2px rgba(16, 185, 129, 0.2)",
+							"0 0 15px 3px rgba(16, 185, 129, 0.3)",
 							"0 0 0 0 rgba(16, 185, 129, 0.1)"
 						]
 					}}
@@ -49,6 +49,43 @@ export function TechStackCard({ tech, index }: { tech: { name: string; icon: Rea
 						repeat: Infinity,
 						ease: "easeInOut",
 						delay: index * 0.5
+					}}
+				/>
+				
+				{/* Animated border gradient */}
+				<motion.div 
+					className="absolute inset-0 rounded-xl"
+					style={{
+						background: "linear-gradient(45deg, transparent, rgba(16, 185, 129, 0.1), transparent)",
+						backgroundSize: "200% 200%"
+					}}
+					animate={{
+						backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"]
+					}}
+					transition={{
+						duration: 4,
+						repeat: Infinity,
+						ease: "linear",
+						delay: index * 0.3
+					}}
+				/>
+				
+				{/* Pulsing border highlight */}
+				<motion.div 
+					className="absolute inset-0 rounded-xl border-2 border-emerald-500/0"
+					animate={{
+						borderColor: [
+							"rgba(16, 185, 129, 0)",
+							"rgba(16, 185, 129, 0.2)",
+							"rgba(56, 189, 248, 0.2)",
+							"rgba(16, 185, 129, 0)"
+						]
+					}}
+					transition={{
+						duration: 5,
+						repeat: Infinity,
+						ease: "easeInOut",
+						delay: index * 0.7
 					}}
 				/>
 				

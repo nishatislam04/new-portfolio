@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Calistoga } from "next/font/google";
+import { Inter, Calistoga, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,6 +13,13 @@ const calistoga = Calistoga({
 	display: "swap",
 	variable: "--font-serif",
 	weight: ["400"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-mono",
+	weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -70,7 +77,7 @@ export default function RootLayout({
 				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 				<link rel="manifest" href="/site.webmanifest" />
 			</head>
-			<body className={`${inter.variable} ${calistoga.variable} font-sans relative`}>{children}</body>
+			<body className={`${inter.variable} ${calistoga.variable} ${jetbrainsMono.variable} font-sans relative`}>{children}</body>
 		</html>
 	);
 }
