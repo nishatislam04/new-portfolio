@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Project, Technology } from "@/types/project";
-import { Button } from "@/components/ui";
+import { Button, ImageCarousel } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import XIcon from "@/assets/icons/minified/x.svg";
@@ -20,14 +20,26 @@ interface ProjectModalProps {
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   useEffect(() => {
     if (isOpen) {
+      // Store current scroll position
+      const scrollY = window.scrollY;
+      
+      // Lock body scroll and maintain position
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      
+      return () => {
+        // Restore body scroll and position
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+      };
     }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -91,7 +103,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="relative w-full max-w-4xl max-h-[90vh] bg-gray-900/95 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden"
+            className="relative w-[90vw] h-[90vh] bg-gray-900/95 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -103,7 +115,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             </button>
 
             {/* Scrollable Content */}
-            <div className="overflow-y-auto max-h-[90vh]">
+            <div className="overflow-y-auto h-full">
               {/* Hero Section */}
               <div className="relative h-64 md:h-80">
                 <Image
@@ -248,27 +260,17 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   </div>
                 )}
 
-                {/* Image Gallery */}
+                {/* Image Gallery Carousel */}
                 {project.images && project.images.length > 0 && (
                   <div>
-                    <h2 className="text-xl font-semibold text-white mb-4">Project Gallery</h2>
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                      {project.images.map((image, index) => (
-                        <div key={index} className="group relative aspect-video rounded-lg overflow-hidden border border-gray-700/30">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                          {image.caption && (
-                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-                              <p className="text-white text-sm">{image.caption}</p>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
+                    <h2 className="text-xl font-semibold text-white mb-6">Project Gallery</h2>
+                    <ImageCarousel 
+                      images={project.images}
+                      autoPlay={true}
+                      autoPlayInterval={5000}
+                      showThumbnails={true}
+                      className="w-full"
+                    />
                   </div>
                 )}
 
