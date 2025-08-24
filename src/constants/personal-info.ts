@@ -60,12 +60,17 @@ export const PERSONAL_INFO = {
 		{
 			company: "SOFTBD LTD",
 			position: "Junior Software Engineer",
-			duration: "JULY 2024 - CURRENT",
-			description: [
-				"Developed a comprehensive organization management system with role-based permissions (Super, Admin, Member), subscription management, and automated payment tracking with penalty calculations.",
-				"Contributed to Jukto News platform development, implementing real-time news aggregation, content management, and interactive UI components with responsive design.",
-				"Applied modern technologies including Laravel, React, MySQL, and REST APIs while collaborating with team members on full-stack web development projects.",
+			duration: "July 2024 - Current",
+			startDate: "July 2024",
+			endDate: "Current",
+			location: "Dhaka, Bangladesh",
+			type: "Full-time",
+			description: "Actively contributed to real-world projects, collaborating closely with team members, gaining valuable hands-on experience in full-stack web development.",
+			achievements: [
+				"Actively contributed to real-world projects, collaborating closely with team members, gaining valuable hands-on experience in full-stack web development.",
+				"Acquired and applied new technologies, including modern PHP techniques and Laravel best practices, significantly enhancing my problem-solving and project execution skills.",
 			],
+			technologies: ["PHP", "Laravel", "React", "MySQL"],
 		},
 	],
 
