@@ -37,14 +37,20 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
    npm install
    ```
 
-3. **Start development server**
+3. **Create .env.local file**
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+4. **Start development server**
 
    ```bash
    npm run dev
    ```
 
-4. **Open in browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+5. **Open in browser**
+   Navigate to [http://192.168.0.106:3000](http://192.168.0.106:3000)
 
 ## 🚀 Deployment
 

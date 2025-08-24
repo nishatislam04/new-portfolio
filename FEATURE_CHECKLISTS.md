@@ -1,18 +1,17 @@
 # 🚀 Feature Checklist
 
-### Code Quality
+## Code Quality
 
 - [x] move client component parts in separate file (more modularize)
-- [] remove eslint & add biome
 - [x] remove react-icons
 - [x] optimize svg & images
 - [x] remove unused assets
 
 - [x] add resume view feature
 
-# [] add work experience section
+## [] add work experience section
 
-# [] add education section
+## [] add education section
 
 ### upcoming features [code quality]
 
@@ -33,7 +32,6 @@
 
 - [] integrate vercel properly
 - [] integrate rspack
-- [] integrate biome
 - [] update tailwindcss latest. (after implementing all features from video)
 - [x] update nextjs latest canary
 - [x] update react latest
