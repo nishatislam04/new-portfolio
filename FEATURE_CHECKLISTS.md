@@ -28,14 +28,6 @@
 - [] add stats number animation
 - [] add custom color for text selection
 
-### upcoming features [tools & packages]
-
-- [] integrate vercel properly
-- [] integrate rspack
-- [] update tailwindcss latest. (after implementing all features from video)
-- [x] update nextjs latest canary
-- [x] update react latest
-
 ### Performance
 
 - [] optimize tailwindcss file

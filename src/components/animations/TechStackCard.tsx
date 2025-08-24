@@ -20,12 +20,60 @@ const TechIcon = ({ icon }: { icon: React.ReactNode }) => {
 
 export function TechStackCard({ tech, index }: { tech: { name: string; icon: React.ReactNode }; index: number }) {
 	return (
-		<motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} whileHover={{ scale: 1.05, y: -5 }}>
-			<Card variant="glass" className="p-4 text-center group hover:border-blue-500/30 transition-all duration-300">
-				<div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-					<TechIcon icon={tech.icon} />
+		<motion.div 
+			initial={{ opacity: 0, scale: 0.8 }} 
+			whileInView={{ opacity: 1, scale: 1 }} 
+			viewport={{ once: true }} 
+			transition={{ duration: 0.5, delay: index * 0.1 }} 
+			whileHover={{ scale: 1.05, y: -5 }}
+		>
+			<Card 
+				variant="glass" 
+				className="p-4 text-center group hover:border-emerald-500/30 transition-all duration-300 relative overflow-hidden"
+			>
+				{/* Subtle infinite background animations */}
+				<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+				
+				{/* Infinite subtle border glow */}
+				<motion.div 
+					className="absolute inset-0 rounded-xl border border-emerald-500/20"
+					animate={{
+						boxShadow: [
+							"0 0 0 0 rgba(16, 185, 129, 0.1)",
+							"0 0 10px 2px rgba(16, 185, 129, 0.2)",
+							"0 0 0 0 rgba(16, 185, 129, 0.1)"
+						]
+					}}
+					transition={{
+						duration: 3,
+						repeat: Infinity,
+						ease: "easeInOut",
+						delay: index * 0.5
+					}}
+				/>
+				
+				{/* Infinite subtle background shimmer */}
+				<motion.div 
+					className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent"
+					animate={{
+						x: ["-100%", "100%"]
+					}}
+					transition={{
+						duration: 4,
+						repeat: Infinity,
+						ease: "linear",
+						delay: index * 0.3
+					}}
+				/>
+				
+				<div className="relative z-10">
+					<div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+						<TechIcon icon={tech.icon} />
+					</div>
+					<p className="text-sm font-medium bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent group-hover:from-emerald-300 group-hover:to-sky-300 transition-all duration-300">
+						{tech.name}
+					</p>
 				</div>
-				<p className="text-sm font-medium bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-blue-500 transition-all duration-300">{tech.name}</p>
 			</Card>
 		</motion.div>
 	);

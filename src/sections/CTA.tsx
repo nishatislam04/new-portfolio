@@ -1,5 +1,5 @@
 import { Section, Container } from "@/components/ui";
-import { FadeIn } from "@/components/animations";
+import { FadeIn, AnimatedCounter } from "@/components/animations";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import grainImage from "@/assets/images/grain.jpg";
 import ContactButton from "./subComponents/contactButton";
@@ -28,28 +28,40 @@ export default function CTASection() {
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 lg:pt-20 border-t border-white/10">
 						<div className="text-center group">
 							<div className="relative">
-								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.projectsCompleted}</div>
+								<AnimatedCounter 
+									value={PERSONAL_INFO.stats.projectsCompleted}
+									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
+								/>
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Projects Completed</div>
 						</div>
 
 						<div className="text-center group">
 							<div className="relative">
-								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.technologies}</div>
+								<AnimatedCounter 
+									value={PERSONAL_INFO.stats.technologies}
+									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
+								/>
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Technologies</div>
 						</div>
 
 						<div className="text-center group">
 							<div className="relative">
-								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.experience}</div>
+								<AnimatedCounter 
+									value={PERSONAL_INFO.stats.experience}
+									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
+								/>
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Years Experience</div>
 						</div>
 
 						<div className="text-center group">
 							<div className="relative">
-								<div className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl">{PERSONAL_INFO.stats.clientSatisfaction}</div>
+								<AnimatedCounter 
+									value={PERSONAL_INFO.stats.clientSatisfaction}
+									className="text-4xl md:text-5xl font-black text-white mb-2 block drop-shadow-2xl"
+								/>
 							</div>
 							<div className="text-gray-300 text-sm font-medium">Client Satisfaction</div>
 						</div>
