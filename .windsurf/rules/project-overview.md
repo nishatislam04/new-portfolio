@@ -320,6 +320,12 @@ export { Component };
 
 ---
 
+### Never do:
+
+- **run local server**: after implementing feature, never start or restart local server to test as the local server was always running
+
+---
+
 ## 🎯 Summary
 
 These rules ensure consistent, professional, and accessible UI components that align with the portfolio's design system. Always prioritize user experience, performance, and maintainability when developing new features.

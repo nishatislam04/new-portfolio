@@ -9,7 +9,7 @@
 
 - [x] add resume view feature
 
-## [] add work experience section
+- [x] add work experience section
 
 - [x] add education section
 

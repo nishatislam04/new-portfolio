@@ -8,7 +8,7 @@ import grainImage from "@/assets/images/grain.jpg";
 import StarIcon from "@/assets/icons/star.svg";
 import SparkleIcon from "@/assets/icons/sparkle.svg";
 import HeroOrbit from "@/components/block/HeroOrbit";
-import DownloadIcon from "@/assets/icons/Download.svg";
+import ViewIcon from "@/assets/icons/view.svg";
 import HeroButton from "./subComponents/HeroButton";
 
 export default function HeroSection() {
@@ -73,10 +73,10 @@ export default function HeroSection() {
 					<HeroButton jumpTo="projects" text="View My Work">
 						<ArrowDownIcon className="size-4" />
 					</HeroButton>
-					<HeroButton text="View My CV">
-						<DownloadIcon className="size-5 fill-white ml-2" />
+					<HeroButton href="https://drive.google.com/file/d/16rFYNbRmaBiCcKloCobYp_pHqw0Nd_sL/view?usp=sharing" text="View My CV">
+						<ViewIcon className="size-5" />
 					</HeroButton>
-					<HeroButton jumpTo="contact" text="Let's Connect" className="inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl">
+					<HeroButton jumpTo="contact" text="Let's Connect" className="border border-white bg-white text-gray-900 hover:bg-gray-100 hover:border-gray-200">
 						<ArrowUpRightIcon className="w-5 h-5" />
 					</HeroButton>
 				</div>

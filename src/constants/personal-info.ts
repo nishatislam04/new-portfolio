@@ -136,11 +136,12 @@ export const PERSONAL_INFO = {
 				{ title: "Email notification system for payment reminders and alerts" },
 				{ title: "Comprehensive subscription management with installment tracking" },
 			],
-			link: "https://github.com/nishatislam04/organizations",
+			link: "#", // Private project - no public access
 			image: projectImages.organizationCover,
 			technologies: ["Laravel", "TailwindCSS", "MySQL", "Gmail API", "Google OAuth"],
 			description: "A comprehensive organization management system where Super users manage organizations and subscriptions, Admins handle assigned organizations, and Members join organizations with automated payment tracking and penalty management.",
 			hasLiveDemo: false,
+			isPrivate: true,
 		},
 		{
 			company: "Personal Project",
