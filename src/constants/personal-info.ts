@@ -106,6 +106,19 @@ export const PERSONAL_INFO = {
 		},
 	],
 
+	// Education
+	education: [
+		{
+			degree: "Diploma in Computer Science",
+			institution: "Feni Computer Institute, Feni",
+			duration: "2021 - 2024",
+			gpa: "3.72",
+			maxGpa: "4.0",
+			description: "My Academice Background",
+			highlights: ["Strong foundation in programming languages and software development", "Database design and management principles", "Web development technologies and frameworks", "Software engineering best practices", "Problem-solving and analytical thinking"],
+		},
+	],
+
 	portfolioProjects: [
 		{
 			company: "SoftBd LTD",
@@ -165,4 +178,4 @@ export const PERSONAL_INFO = {
 };
 
 // Export individual items for easier access
-export const { name, title, profile, email, location, availability, socialLinks, workExperience, skills, techStack, stats, achievements, portfolioProjects } = PERSONAL_INFO;
+export const { name, title, profile, email, location, availability, socialLinks, workExperience, skills, techStack, stats, achievements, education, portfolioProjects } = PERSONAL_INFO;
