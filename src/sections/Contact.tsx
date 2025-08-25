@@ -39,7 +39,7 @@ export default function ContactSection() {
 									<div className="flex-grow">
 										<h3 className="heading-3 mb-6">Get in Touch</h3>
 										<div className="space-y-6 mb-8">
-											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 												<EmailIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Email</h4>
@@ -48,7 +48,7 @@ export default function ContactSection() {
 													</a>
 												</div>
 											</div>
-											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 												<GithubIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">GitHub</h4>
@@ -57,7 +57,7 @@ export default function ContactSection() {
 													</Link>
 												</div>
 											</div>
-											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 												<PhoneIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Call Me</h4>
@@ -66,7 +66,7 @@ export default function ContactSection() {
 													</a>
 												</div>
 											</div>
-											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 												<LocationIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Location</h4>
@@ -75,14 +75,14 @@ export default function ContactSection() {
 													</a>
 												</div>
 											</div>
-											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 												<AvailabilityIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Availability</h4>
 													<p className="text-gray-400">{PERSONAL_INFO.CONTACT_INFO.availability}</p>
 												</div>
 											</div>
-											<div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
+											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 												<ResponseTimeIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
 												<div>
 													<h4 className="font-semibold text-white mb-1">Response Time</h4>
@@ -113,7 +113,7 @@ export default function ContactSection() {
 												};
 
 												return (
-													<Link key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300 group">
+													<Link key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300 group">
 														{getIcon()}
 														<span className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300">{social.name}</span>
 													</Link>

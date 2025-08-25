@@ -67,7 +67,7 @@ export default function WorkExperienceSection() {
 													<h4 className="text-white font-semibold">Key Achievements:</h4>
 													<div className="grid gap-3">
 														{exp.achievements.map((achievement, achievementIndex) => (
-															<div key={achievementIndex} className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-colors duration-300">
+															<div key={achievementIndex} className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-colors duration-300">
 																<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
 																<span className="text-gray-300 text-sm leading-relaxed">{achievement}</span>
 															</div>

@@ -60,14 +60,14 @@ export default function AboutSection() {
 												key={index} 
 												delay={index * 0.1} 
 												direction="left" 
-												className="group flex items-start gap-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-500 hover:bg-gray-800/50 relative overflow-hidden"
+												className="group flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-500 hover:bg-gray-800/50 relative overflow-hidden"
 											>
 												{/* Always-on subtle background glow */}
 												<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/3 to-sky-500/3 animate-pulse" />
 												
 												{/* Always-on subtle border glow */}
 												<div 
-													className="absolute inset-0 rounded-lg border border-emerald-500/10"
+													className="absolute inset-0 rounded-xl border border-emerald-500/10"
 													style={{
 														animation: `borderGlow 4s ease-in-out infinite ${index * 0.5}s`
 													}}

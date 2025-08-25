@@ -23,9 +23,9 @@ export default function ProjectCard({
 					{/* Overlay buttons */}
 					<div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
 						{project.isPrivate ? (
-							<div className="backdrop-blur-sm bg-gray-500/20 border border-gray-500/30 text-gray-300 px-4 py-2 rounded-md text-sm">Private Project</div>
+							<div className="backdrop-blur-sm bg-gray-500/20 border border-gray-500/30 text-gray-300 px-4 py-2 rounded-xl text-sm">Private Project</div>
 						) : project.isComingSoon ? (
-							<div className="backdrop-blur-sm bg-blue-500/20 border border-blue-500/30 text-blue-300 px-4 py-2 rounded-md text-sm">Live Demo Coming Soon</div>
+							<div className="backdrop-blur-sm bg-blue-500/20 border border-blue-500/30 text-blue-300 px-4 py-2 rounded-xl text-sm">Live Demo Coming Soon</div>
 						) : (
 							<Button size="sm" onClick={() => window.open(project.link, "_blank")} className="backdrop-blur-sm bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-white">
 								<ArrowUpRightIcon className="w-4 h-4 mr-2" />
@@ -53,7 +53,7 @@ export default function ProjectCard({
 						{project.technologies && (
 							<div className="flex flex-wrap gap-2 mb-4">
 								{project.technologies.map((tech, idx) => (
-									<span key={idx} className="px-2 py-1 text-xs bg-gradient-to-r from-gray-800/80 to-gray-700/80 text-gray-300 rounded-md border border-gray-600/50 hover:border-emerald-500/30 hover:text-emerald-300 transition-all duration-200">
+									<span key={idx} className="px-2 py-1 text-xs bg-gradient-to-r from-gray-800/80 to-gray-700/80 text-gray-300 rounded-xl border border-gray-600/50 hover:border-emerald-500/30 hover:text-emerald-300 transition-all duration-200">
 										{tech}
 									</span>
 								))}
