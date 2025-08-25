@@ -6,3 +6,9 @@ export { ProjectGrid } from "./ProjectGrid";
 export { ProjectCard } from "./ProjectCard";
 export { ProjectModal } from "./ProjectModal";
 export { ImageCarousel } from "./ImageCarousel";
+export {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogClose,
+} from "./Dialog";

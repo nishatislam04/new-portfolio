@@ -25,6 +25,7 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
   // Initialize auto-play when component mounts
   useEffect(() => {
@@ -38,16 +39,19 @@ export function ImageCarousel({
   }, [autoPlay, images.length]);
 
   const nextSlide = useCallback(() => {
+    setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   }, [images.length]);
 
   const prevSlide = useCallback(() => {
+    setDirection(-1);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   }, [images.length]);
 
   const goToSlide = useCallback((index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
-  }, []);
+  }, [currentIndex]);
 
   // Auto-play functionality
   useEffect(() => {
@@ -98,9 +102,9 @@ export function ImageCarousel({
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, x: 300 }}
+            initial={{ opacity: 0, x: direction * 300 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -300 }}
+            exit={{ opacity: 0, x: direction * -300 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0"
           >
