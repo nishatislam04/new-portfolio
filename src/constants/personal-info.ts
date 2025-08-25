@@ -100,12 +100,12 @@ export const PERSONAL_INFO = {
 				{ title: "Next.js", icon: "nextjs" },
 				{ title: "Tailwind CSS", icon: "tailwindcss" },
 				{ title: "SASS", icon: "sass" },
-				{ title: "Zustand", icon: "custom" },
-				{ title: "Inertia.js", icon: "custom" },
-				{ title: "Shadcn UI", icon: "custom" },
-				{ title: "Mantine UI", icon: "custom" },
-				{ title: "React Hook Form", icon: "custom" },
-				{ title: "Tiptap", icon: "custom" },
+				{ title: "Zustand", icon: "zustand" },
+				{ title: "Inertia.js", icon: "inertia" },
+				{ title: "Shadcn UI", icon: "shadcnUI" },
+				{ title: "Mantine UI", icon: "mantineUI" },
+				{ title: "React Hook Form", icon: "reactHookForm" },
+				{ title: "Tiptap", icon: "tiptap" },
 			],
 		},
 		{
@@ -116,7 +116,7 @@ export const PERSONAL_INFO = {
 				{ title: "NestJS", icon: "nestjs" },
 				{ title: "Laravel", icon: "laravel" },
 				{ title: "Prisma ORM", icon: "prisma" },
-				{ title: "Laravel Reverb", icon: "custom" },
+				{ title: "Laravel Reverb", icon: "laravelReverb" },
 			],
 		},
 		{
@@ -133,9 +133,7 @@ export const PERSONAL_INFO = {
 			id: "libraries",
 			title: "Libraries",
 			color: "rose" as const,
-			items: [
-				{ title: "Zod", icon: "custom" },
-			],
+			items: [{ title: "Zod", icon: "zod" }],
 		},
 		{
 			id: "devops",
@@ -205,14 +203,9 @@ export const PERSONAL_INFO = {
 			featured: true,
 			priority: 1,
 			shortDescription: "A comprehensive organization management system with role-based permissions and automated payment tracking.",
-			fullDescription: "A comprehensive organization management system where Super users manage organizations and subscriptions, Admins handle assigned organizations, and Members join organizations with automated payment tracking and penalty management. Built with Laravel and modern web technologies for scalable enterprise use.",
-			keyFeatures: [
-				"Role-based permission system with 3 user levels",
-				"Automated installment tracking with penalty calculation",
-				"Google OAuth integration for seamless authentication",
-				"Email notification system for payment reminders",
-				"Comprehensive subscription management"
-			],
+			fullDescription:
+				"A comprehensive organization management system where Super users manage organizations and subscriptions, Admins handle assigned organizations, and Members join organizations with automated payment tracking and penalty management. Built with Laravel and modern web technologies for scalable enterprise use.",
+			keyFeatures: ["Role-based permission system with 3 user levels", "Automated installment tracking with penalty calculation", "Google OAuth integration for seamless authentication", "Email notification system for payment reminders", "Comprehensive subscription management"],
 			results: [
 				{ title: "Role-based permission system with 3 user levels (Super, Admin, Member)" },
 				{ title: "Automated installment tracking with penalty calculation for overdue payments" },
@@ -223,7 +216,7 @@ export const PERSONAL_INFO = {
 			coverImage: {
 				src: projectImages.organizationCover,
 				alt: "Organization Management System Dashboard",
-				priority: true
+				priority: true,
 			},
 			technologies: ["Laravel", "TailwindCSS", "MySQL", "Gmail API", "Google OAuth"],
 			links: [],
@@ -245,14 +238,15 @@ export const PERSONAL_INFO = {
 			featured: true,
 			priority: 2,
 			shortDescription: "A modern, enterprise-grade collaborative documentation platform with Notion-like editing experience.",
-			fullDescription: "A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing. Built with Next.js 15 and modern React patterns for optimal performance.",
+			fullDescription:
+				"A modern, enterprise-grade collaborative documentation platform featuring Notion-like editing experience, multi-tenant architecture, and advanced workspace management designed for efficient team knowledge sharing. Built with Next.js 15 and modern React patterns for optimal performance.",
 			keyFeatures: [
 				"TipTap-powered Notion-like editor with slash commands",
 				"Multi-tenant architecture with workspace isolation",
 				"PostgreSQL full-text search with ranking algorithms",
 				"Comprehensive admin dashboard with workspace approval",
 				"NextAuth.js JWT authentication with middleware protection",
-				"Performance optimized with Server Actions"
+				"Performance optimized with Server Actions",
 			],
 			results: [
 				{ title: "TipTap-powered Notion-like editor with slash commands and real-time collaboration" },
@@ -265,15 +259,15 @@ export const PERSONAL_INFO = {
 			coverImage: {
 				src: projectImages.teamDocsCover,
 				alt: "Team-Docs Collaborative Platform Interface",
-				priority: true
+				priority: true,
 			},
 			technologies: ["Next.js 15", "PostgreSQL", "Prisma ORM", "NextAuth.js", "TipTap", "Tailwind CSS v4", "Shadcn UI", "Zustand", "Docker"],
 			links: [
 				{
 					type: "live" as const,
 					url: "https://team-docs-new.vercel.app/",
-					label: "View Live Demo"
-				}
+					label: "View Live Demo",
+				},
 			],
 			// Legacy support
 			link: "https://team-docs-new.vercel.app/",
@@ -294,13 +288,7 @@ export const PERSONAL_INFO = {
 			priority: 3,
 			shortDescription: "A dynamic news aggregation platform with real-time updates and content management.",
 			fullDescription: "A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement. Features advanced content scraping and automated news aggregation.",
-			keyFeatures: [
-				"Real-time news aggregation from multiple sources",
-				"Advanced content management with automated scraping",
-				"Interactive UI components with responsive design",
-				"Streamlined user navigation with performance optimization",
-				"REST API integration for seamless data flow"
-			],
+			keyFeatures: ["Real-time news aggregation from multiple sources", "Advanced content management with automated scraping", "Interactive UI components with responsive design", "Streamlined user navigation with performance optimization", "REST API integration for seamless data flow"],
 			results: [
 				{ title: "Real-time news aggregation from multiple sources and categories" },
 				{ title: "Advanced content management with automated news scraping" },
@@ -310,7 +298,7 @@ export const PERSONAL_INFO = {
 			],
 			coverImage: {
 				src: projectImages.juktoCover,
-				alt: "Jukto News Platform Interface"
+				alt: "Jukto News Platform Interface",
 			},
 			technologies: ["Laravel", "React", "MySQL", "TailwindCSS", "REST APIs"],
 			links: [],
@@ -340,34 +328,34 @@ export const PERSONAL_INFO = {
 				"Inventory management with low-stock alerts",
 				"Predictive analytics for demand forecasting",
 				"Customizable dashboard with drag-and-drop widgets",
-				"Multi-store support with consolidated reporting"
+				"Multi-store support with consolidated reporting",
 			],
 			results: [
 				{ title: "Increased sales visibility by 300% with real-time dashboards", impact: "300% increase", metrics: "Real-time tracking" },
 				{ title: "Reduced inventory costs by 25% through predictive analytics", impact: "25% cost reduction", metrics: "Predictive modeling" },
-				{ title: "Improved customer retention by 40% with behavior insights", impact: "40% improvement", metrics: "Customer analytics" }
+				{ title: "Improved customer retention by 40% with behavior insights", impact: "40% improvement", metrics: "Customer analytics" },
 			],
 			coverImage: {
 				src: projectImages.organizationCover, // Using placeholder
 				alt: "E-Commerce Analytics Dashboard",
-				caption: "Main dashboard showing sales overview and key metrics"
+				caption: "Main dashboard showing sales overview and key metrics",
 			},
 			images: [
 				{
 					src: projectImages.organizationCover,
 					alt: "Sales Analytics View",
-					caption: "Detailed sales analytics with trend visualization"
+					caption: "Detailed sales analytics with trend visualization",
 				},
 				{
 					src: projectImages.teamDocsCover,
 					alt: "Customer Behavior Heatmap",
-					caption: "Customer interaction heatmap and behavior patterns"
+					caption: "Customer interaction heatmap and behavior patterns",
 				},
 				{
 					src: projectImages.juktoCover,
 					alt: "Inventory Management Interface",
-					caption: "Real-time inventory tracking and alerts system"
-				}
+					caption: "Real-time inventory tracking and alerts system",
+				},
 			],
 			technologies: [
 				{ name: "React", category: "frontend" as const },
@@ -375,31 +363,23 @@ export const PERSONAL_INFO = {
 				{ name: "D3.js", category: "frontend" as const },
 				{ name: "Node.js", category: "backend" as const },
 				{ name: "PostgreSQL", category: "database" as const },
-				{ name: "Redis", category: "database" as const }
+				{ name: "Redis", category: "database" as const },
 			],
 			architecture: ["Microservices", "Event-driven architecture", "CQRS pattern"],
-			challenges: [
-				"Handling real-time data streams from multiple sources",
-				"Optimizing complex analytical queries for large datasets",
-				"Creating responsive visualizations for mobile devices"
-			],
-			solutions: [
-				"Implemented WebSocket connections with Redis pub/sub",
-				"Used database indexing and query optimization techniques",
-				"Created adaptive chart components with responsive breakpoints"
-			],
+			challenges: ["Handling real-time data streams from multiple sources", "Optimizing complex analytical queries for large datasets", "Creating responsive visualizations for mobile devices"],
+			solutions: ["Implemented WebSocket connections with Redis pub/sub", "Used database indexing and query optimization techniques", "Created adaptive chart components with responsive breakpoints"],
 			links: [
 				{
 					type: "live" as const,
 					url: "https://demo-ecommerce-dashboard.vercel.app",
-					label: "View Live Demo"
+					label: "View Live Demo",
 				},
 				{
 					type: "github" as const,
 					url: "https://github.com/demo/ecommerce-dashboard",
-					label: "View Source Code"
-				}
-			]
+					label: "View Source Code",
+				},
+			],
 		},
 		{
 			id: "mobile-fitness-app",
@@ -419,38 +399,38 @@ export const PERSONAL_INFO = {
 				"Social challenges and community features",
 				"Wearable device integration (Apple Watch, Fitbit)",
 				"Progress tracking with detailed analytics",
-				"Offline workout mode with sync capabilities"
+				"Offline workout mode with sync capabilities",
 			],
 			results: [
 				{ title: "Beta testing with 500+ users showing 85% engagement rate", impact: "85% engagement", metrics: "Beta metrics" },
-				{ title: "Average 30% improvement in user fitness goals", impact: "30% improvement", metrics: "Goal achievement" }
+				{ title: "Average 30% improvement in user fitness goals", impact: "30% improvement", metrics: "Goal achievement" },
 			],
 			coverImage: {
 				src: projectImages.teamDocsCover, // Using placeholder
 				alt: "FitTrack Mobile App Interface",
-				caption: "Main workout tracking interface with AI recommendations"
+				caption: "Main workout tracking interface with AI recommendations",
 			},
 			images: [
 				{
 					src: projectImages.teamDocsCover,
 					alt: "Workout Planning Screen",
-					caption: "AI-powered workout planning with custom routines"
+					caption: "AI-powered workout planning with custom routines",
 				},
 				{
 					src: projectImages.juktoCover,
 					alt: "Nutrition Tracking Interface",
-					caption: "Comprehensive nutrition tracking with barcode scanning"
+					caption: "Comprehensive nutrition tracking with barcode scanning",
 				},
 				{
 					src: projectImages.organizationCover,
 					alt: "Progress Analytics Dashboard",
-					caption: "Detailed progress tracking and performance analytics"
+					caption: "Detailed progress tracking and performance analytics",
 				},
 				{
 					src: projectImages.teamDocsCover,
 					alt: "Social Challenges Feature",
-					caption: "Community challenges and social fitness features"
-				}
+					caption: "Community challenges and social fitness features",
+				},
 			],
 			videoUrl: "https://www.youtube.com/embed/demo-video",
 			technologies: [
@@ -459,32 +439,24 @@ export const PERSONAL_INFO = {
 				{ name: "Expo", category: "tool" as const },
 				{ name: "Node.js", category: "backend" as const },
 				{ name: "MongoDB", category: "database" as const },
-				{ name: "AWS", category: "cloud" as const }
+				{ name: "AWS", category: "cloud" as const },
 			],
 			architecture: ["Native mobile architecture", "RESTful API", "Cloud storage"],
-			challenges: [
-				"Optimizing battery usage for continuous tracking",
-				"Handling offline data synchronization",
-				"Integrating with multiple fitness device APIs"
-			],
-			solutions: [
-				"Implemented efficient background processing with minimal battery impact",
-				"Created robust offline-first architecture with conflict resolution",
-				"Built unified SDK wrapper for multiple device integrations"
-			],
+			challenges: ["Optimizing battery usage for continuous tracking", "Handling offline data synchronization", "Integrating with multiple fitness device APIs"],
+			solutions: ["Implemented efficient background processing with minimal battery impact", "Created robust offline-first architecture with conflict resolution", "Built unified SDK wrapper for multiple device integrations"],
 			links: [
 				{
 					type: "demo" as const,
 					url: "https://expo.dev/@demo/fittrack-app",
-					label: "Try Expo Demo"
+					label: "Try Expo Demo",
 				},
 				{
 					type: "case-study" as const,
 					url: "https://medium.com/@demo/fittrack-case-study",
-					label: "Read Case Study"
-				}
-			]
-		}
+					label: "Read Case Study",
+				},
+			],
+		},
 	],
 };
 
