@@ -79,6 +79,75 @@ export const PERSONAL_INFO = {
 
 	techStack: ["Next.js", "Laravel", "React", "PostgreSQL", "Prisma ORM", "Docker"],
 
+	// Toolbox Categories
+	toolboxCategories: [
+		{
+			id: "languages",
+			title: "Languages",
+			color: "emerald" as const,
+			items: [
+				{ title: "JavaScript", icon: "js" },
+				{ title: "TypeScript", icon: "ts" },
+				{ title: "PHP", icon: "php" },
+			],
+		},
+		{
+			id: "frontend",
+			title: "Frontend",
+			color: "sky" as const,
+			items: [
+				{ title: "React", icon: "react" },
+				{ title: "Next.js", icon: "nextjs" },
+				{ title: "Tailwind CSS", icon: "tailwindcss" },
+				{ title: "SASS", icon: "sass" },
+				{ title: "Zustand", icon: "custom" },
+				{ title: "Inertia.js", icon: "custom" },
+				{ title: "Shadcn UI", icon: "custom" },
+				{ title: "Mantine UI", icon: "custom" },
+				{ title: "React Hook Form", icon: "custom" },
+				{ title: "Tiptap", icon: "custom" },
+			],
+		},
+		{
+			id: "backend",
+			title: "Backend",
+			color: "violet" as const,
+			items: [
+				{ title: "NestJS", icon: "nestjs" },
+				{ title: "Laravel", icon: "laravel" },
+				{ title: "Prisma ORM", icon: "prisma" },
+				{ title: "Laravel Reverb", icon: "custom" },
+			],
+		},
+		{
+			id: "databases",
+			title: "Databases",
+			color: "amber" as const,
+			items: [
+				{ title: "MySQL", icon: "mysql" },
+				{ title: "PostgreSQL", icon: "postgres" },
+				{ title: "Redis", icon: "redis" },
+			],
+		},
+		{
+			id: "libraries",
+			title: "Libraries",
+			color: "rose" as const,
+			items: [
+				{ title: "Zod", icon: "custom" },
+			],
+		},
+		{
+			id: "devops",
+			title: "DevOps",
+			color: "slate" as const,
+			items: [
+				{ title: "Docker", icon: "docker" },
+				{ title: "Git", icon: "git" },
+			],
+		},
+	] as const,
+
 	// Stats
 	stats: {
 		experience: "1+",

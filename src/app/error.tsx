@@ -22,7 +22,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 				</div>
 
 				{process.env.NODE_ENV === "development" && (
-					<details className="mt-8 text-left bg-gray-800 p-4 rounded-lg">
+					<details className="mt-8 text-left bg-gray-800 p-4 rounded-lg max-w-4xl mx-auto">
 						<summary className="cursor-pointer text-gray-300 mb-2">Error Details (Development Only)</summary>
 						<pre className="text-red-400 text-sm overflow-auto">{error.message}</pre>
 					</details>
