@@ -20,24 +20,13 @@ interface ProjectModalProps {
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   useEffect(() => {
     if (isOpen) {
-      // Store current scroll position
-      const scrollY = window.scrollY;
-      
-      // Lock body scroll and maintain position
+      // Simple scroll lock without position manipulation
+      const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
       
       return () => {
-        // Restore body scroll and position
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        
-        // Restore scroll position
-        window.scrollTo(0, scrollY);
+        // Restore original overflow
+        document.body.style.overflow = originalOverflow;
       };
     }
   }, [isOpen]);
@@ -95,7 +84,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          style={{ zIndex: 99999 }}
           onClick={onClose}
         >
           <motion.div
@@ -103,7 +93,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="relative w-[90vw] h-[90vh] bg-gray-900/95 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden"
+            className="relative w-[90vw] h-[90vh] max-w-[90vw] max-h-[90vh] bg-gray-900/95 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}

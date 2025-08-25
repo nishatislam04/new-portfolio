@@ -24,7 +24,18 @@ export function ImageCarousel({
   className 
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Initialize auto-play when component mounts
+  useEffect(() => {
+    if (autoPlay && images.length > 1) {
+      // Small delay to ensure component is fully mounted
+      const timer = setTimeout(() => {
+        setIsPlaying(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [autoPlay, images.length]);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -40,15 +51,28 @@ export function ImageCarousel({
 
   // Auto-play functionality
   useEffect(() => {
+    console.log('Carousel auto-play state:', { isPlaying, autoPlay, imagesLength: images.length, autoPlayInterval });
     if (!isPlaying || images.length <= 1) return;
 
-    const interval = setInterval(nextSlide, autoPlayInterval);
-    return () => clearInterval(interval);
+    console.log('Starting carousel auto-play interval');
+    const interval = setInterval(() => {
+      console.log('Auto-play tick - advancing slide');
+      nextSlide();
+    }, autoPlayInterval);
+    
+    return () => {
+      console.log('Clearing carousel auto-play interval');
+      clearInterval(interval);
+    };
   }, [isPlaying, nextSlide, autoPlayInterval, images.length]);
 
-  // Pause auto-play on hover
-  const handleMouseEnter = () => setIsPlaying(false);
-  const handleMouseLeave = () => setIsPlaying(autoPlay);
+  // Pause auto-play on hover (only if autoPlay is enabled)
+  const handleMouseEnter = () => {
+    if (autoPlay) setIsPlaying(false);
+  };
+  const handleMouseLeave = () => {
+    if (autoPlay) setIsPlaying(true);
+  };
 
   // Keyboard navigation
   useEffect(() => {
