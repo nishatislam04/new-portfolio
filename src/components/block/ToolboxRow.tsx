@@ -29,6 +29,8 @@ import MantineIcon from "@/assets/icons/stacks/mantineUI.png";
 import ReactHookFormIcon from "@/assets/icons/stacks/reactHookForm.png";
 import TiptapIcon from "@/assets/icons/stacks/tiptap.jpeg";
 import LaravelReverbIcon from "@/assets/icons/stacks/laravelReverb.png";
+import BunIcon from "@/assets/icons/stacks/bun.png";
+import ResendIcon from "@/assets/icons/stacks/resend.png";
 
 interface ToolboxItem {
 	readonly title: string;
@@ -94,6 +96,14 @@ const colorSchemes = {
 		gradientFrom: "from-rose-400",
 		gradientTo: "to-rose-500",
 	},
+	indigo: {
+		titleText: "text-indigo-400",
+		iconFill: "fill-indigo-400",
+		hoverBg: "hover:bg-indigo-500/10",
+		activeBg: "active:bg-indigo-500/20",
+		gradientFrom: "from-indigo-400",
+		gradientTo: "to-indigo-500",
+	},
 } as const;
 
 // Icon mapping
@@ -121,6 +131,8 @@ const iconComponents = {
 	reactHookForm: ReactHookFormIcon,
 	tiptap: TiptapIcon,
 	laravelReverb: LaravelReverbIcon,
+	bun: BunIcon,
+	resend: ResendIcon,
 } as const;
 
 // Custom icon generator for tools without SVGs
@@ -174,7 +186,7 @@ export default function ToolboxRow({ category, index }: ToolboxRowProps) {
 							<div className="transition-all duration-300 group-hover:scale-110">
 								{IconComponent ? (
 									isRaster ? (
-										<Image src={IconComponent as any} alt={item.title} width={40} height={40} className={cn("size-10 object-contain select-none")} priority={false} />
+										<Image src={IconComponent as any} alt={item.title} width={40} height={40} className={cn("size-10 object-contain select-none")} priority={false} unoptimized decoding="async" loading="lazy" />
 									) : (
 										(() => {
 											const SvgComp = IconComponent as React.ComponentType<React.SVGProps<SVGSVGElement>>;

@@ -100,12 +100,15 @@ export const PERSONAL_INFO = {
 				{ title: "Next.js", icon: "nextjs" },
 				{ title: "Tailwind CSS", icon: "tailwindcss" },
 				{ title: "SASS", icon: "sass" },
-				{ title: "Zustand", icon: "zustand" },
-				{ title: "Inertia.js", icon: "inertia" },
+			],
+		},
+		{
+			id: "ui-component",
+			title: "UI Component",
+			color: "indigo" as const,
+			items: [
 				{ title: "Shadcn UI", icon: "shadcnUI" },
 				{ title: "Mantine UI", icon: "mantineUI" },
-				{ title: "React Hook Form", icon: "reactHookForm" },
-				{ title: "Tiptap", icon: "tiptap" },
 			],
 		},
 		{
@@ -129,12 +132,7 @@ export const PERSONAL_INFO = {
 				{ title: "Redis", icon: "redis" },
 			],
 		},
-		{
-			id: "libraries",
-			title: "Libraries",
-			color: "rose" as const,
-			items: [{ title: "Zod", icon: "zod" }],
-		},
+
 		{
 			id: "devops",
 			title: "DevOps",
@@ -142,6 +140,20 @@ export const PERSONAL_INFO = {
 			items: [
 				{ title: "Docker", icon: "docker" },
 				{ title: "Git", icon: "git" },
+			],
+		},
+		{
+			id: "tools",
+			title: "Tools",
+			color: "rose" as const,
+			items: [
+				{ title: "Inertia.js", icon: "inertia" },
+				{ title: "React Hook Form", icon: "reactHookForm" },
+				{ title: "Zustand", icon: "zustand" },
+				{ title: "Zod", icon: "zod" },
+				{ title: "Tiptap", icon: "tiptap" },
+				{ title: "Resend", icon: "resend" },
+				{ title: "Bun", icon: "bun" },
 			],
 		},
 	] as const,
