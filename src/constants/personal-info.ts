@@ -305,7 +305,7 @@ export const PERSONAL_INFO = {
 	// Dummy projects to showcase different content structures
 	{
 		id: "institution-management-suite",
-		company: "Personal Project",
+		company: "Collaborative Project",
 		year: "2024",
 		title: "Institution Management Suite",
 		status: "completed" as const,
@@ -446,14 +446,16 @@ export const PERSONAL_INFO = {
 			alt: "Jukto News Platform Interface",
 		},
 		technologies: ["Laravel", "React", "MySQL", "TailwindCSS", "REST APIs"],
-		links: [],
+		links: [
+			{ type: "live" as const, url: "https://news.jukto.com", label: "View Live" }
+		],
 		// Legacy support
-		link: "#",
+		link: "https://news.jukto.com",
 		image: projectImages.juktoCover,
 		description:
 			"A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement.",
-		hasLiveDemo: false,
-		isPrivate: true,
+		hasLiveDemo: true,
+		isPrivate: false,
 	},
 	],
 };
