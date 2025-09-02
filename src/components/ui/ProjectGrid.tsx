@@ -21,8 +21,14 @@ export function ProjectGrid({
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const featuredProjects = projects.filter(p => p.featured);
-  const regularProjects = projects.filter(p => !p.featured);
+  const sortByPriority = (arr: Project[]) => [...arr].sort((a, b) => {
+    const pa = a.priority ?? 999;
+    const pb = b.priority ?? 999;
+    return pa - pb;
+  });
+
+  const featuredProjects = sortByPriority(projects.filter(p => p.featured));
+  const regularProjects = sortByPriority(projects.filter(p => !p.featured));
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
