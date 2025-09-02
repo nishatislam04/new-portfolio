@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Project, Technology } from "@/types/project";
+import { Project } from "@/types/project";
 import { Button, Card, CardContent } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { TechBadges } from "@/components/ui/TechBadges";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import LockIcon from "@/assets/icons/minified/lock.svg";
 import ClockIcon from "@/assets/icons/minified/clock.svg";
@@ -86,38 +86,7 @@ export function ProjectCard({
     return null;
   };
 
-  const renderTechnologies = (technologies: (string | Technology)[], limit?: number) => {
-    const techs = limit ? technologies.slice(0, limit) : technologies;
-    return (
-      <div className="flex flex-wrap gap-2">
-        {techs.map((tech, index) => {
-          const techName = typeof tech === 'string' ? tech : tech.name;
-          const techCategory = typeof tech === 'object' ? tech.category : undefined;
-          
-          return (
-            <span
-              key={index}
-              className={cn(
-                "px-2 py-1 text-xs rounded-full font-medium border",
-                techCategory === 'frontend' && "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
-                techCategory === 'backend' && "bg-blue-500/10 text-blue-300 border-blue-500/30",
-                techCategory === 'database' && "bg-purple-500/10 text-purple-300 border-purple-500/30",
-                techCategory === 'cloud' && "bg-orange-500/10 text-orange-300 border-orange-500/30",
-                !techCategory && "bg-gray-500/10 text-gray-300 border-gray-500/30"
-              )}
-            >
-              {techName}
-            </span>
-          );
-        })}
-        {limit && technologies.length > limit && (
-          <span className="px-2 py-1 text-xs rounded-full font-medium border bg-gray-500/10 text-gray-300 border-gray-500/30">
-            +{technologies.length - limit} more
-          </span>
-        )}
-      </div>
-    );
-  };
+  // Tech badges are rendered via shared component
 
   if (variant === 'featured') {
     return (
@@ -196,7 +165,7 @@ export function ProjectCard({
             {/* Technologies */}
             <div>
               <h4 className="text-sm font-medium text-white mb-2">Technologies</h4>
-              {renderTechnologies(project.technologies, 6)}
+              <TechBadges items={project.technologies} limit={6} size="sm" />
             </div>
           </CardContent>
         </Card>
@@ -256,7 +225,7 @@ export function ProjectCard({
 
             {/* Technologies */}
             <div>
-              {renderTechnologies(project.technologies, 4)}
+              <TechBadges items={project.technologies} limit={4} size="sm" />
             </div>
 
             {/* Results/Impact */}
@@ -331,7 +300,7 @@ export function ProjectCard({
 
           {/* Technologies */}
           <div>
-            {renderTechnologies(project.technologies, 3)}
+            <TechBadges items={project.technologies} limit={3} size="sm" />
           </div>
         </CardContent>
       </Card>

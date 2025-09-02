@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Project, Technology } from "@/types/project";
+import { Project } from "@/types/project";
 import { Button, Dialog, DialogContent, DialogClose, ImageCarousel } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { TechBadges } from "@/components/ui/TechBadges";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import XIcon from "@/assets/icons/minified/x.svg";
 import GithubIcon from "@/assets/icons/minified/github.svg";
@@ -18,33 +18,7 @@ interface ProjectModalProps {
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   if (!project) return null;
 
-  const renderTechnologies = (technologies: (string | Technology)[]) => {
-    return (
-      <div className="flex flex-wrap gap-2">
-        {technologies.map((tech, index) => {
-          const techName = typeof tech === 'string' ? tech : tech.name;
-          const techCategory = typeof tech === 'object' ? tech.category : undefined;
-          
-          return (
-            <span
-              key={index}
-              className={cn(
-                "px-3 py-1 text-sm rounded-full font-medium border",
-                techCategory === 'frontend' && "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
-                techCategory === 'backend' && "bg-blue-500/10 text-blue-300 border-blue-500/30",
-                techCategory === 'database' && "bg-purple-500/10 text-purple-300 border-purple-500/30",
-                techCategory === 'cloud' && "bg-orange-500/10 text-orange-300 border-orange-500/30",
-                techCategory === 'tool' && "bg-yellow-500/10 text-yellow-300 border-yellow-500/30",
-                !techCategory && "bg-gray-500/10 text-gray-300 border-gray-500/30"
-              )}
-            >
-              {techName}
-            </span>
-          );
-        })}
-      </div>
-    );
-  };
+  // Technologies are rendered via shared TechBadges component
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -127,7 +101,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {/* Technologies */}
           <div>
             <h2 className="text-2xl font-semibold text-white mb-6">Technologies Used</h2>
-            {renderTechnologies(project.technologies)}
+            <TechBadges items={project.technologies} size="md" />
           </div>
 
           {/* Architecture & Technical Details */}
