@@ -89,14 +89,7 @@ export function ProjectCard({ project, variant = "compact", onProjectClick }: Pr
 				<Card variant="glass" className="overflow-hidden h-full hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
 					{/* Featured Project Image */}
 					<div className="relative h-64 md:h-80 overflow-hidden">
-						<Image
-							src={project.coverImage.src}
-							alt={project.coverImage.alt}
-							fill
-							className="object-contain object-top"
-							priority={project.coverImage.priority}
-							sizes="(min-width: 1024px) 50vw, 100vw"
-						/>
+						<Image src={project.coverImage.src} alt={project.coverImage.alt} fill className="object-contain object-top" priority={project.coverImage.priority} sizes="(min-width: 1024px) 50vw, 100vw" />
 						<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 						{/* Status Badge */}
@@ -156,13 +149,7 @@ export function ProjectCard({ project, variant = "compact", onProjectClick }: Pr
 				<Card variant="glass" className="overflow-hidden h-full hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
 					{/* Project Image */}
 					<div className="relative h-48 md:h-56 overflow-hidden">
-						<Image
-							src={project.coverImage.src}
-							alt={project.coverImage.alt}
-							fill
-							className={project.id === "multi-vendor-ecommerce" ? "object-contain object-top" : "object-cover object-top"}
-							sizes="(min-width: 1024px) 66vw, (min-width: 768px) 50vw, 100vw"
-						/>
+						<Image src={project.coverImage.src} alt={project.coverImage.alt} fill className={project.id === "multi-vendor-ecommerce" ? "object-cover object-top" : "object-cover object-top"} sizes="(min-width: 1024px) 66vw, (min-width: 768px) 50vw, 100vw" />
 						<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 						{/* Status Badge */}
@@ -223,7 +210,7 @@ export function ProjectCard({ project, variant = "compact", onProjectClick }: Pr
 						src={project.coverImage.src}
 						alt={project.coverImage.alt}
 						fill
-						className={project.id === "multi-vendor-ecommerce" ? "object-contain object-top" : "object-cover object-top"}
+						className={project.id === "multi-vendor-ecommerce" ? "object-contain object-top" : project.id === "org-management-system" ? "object-contain object-top" : "object-cover object-top"}
 						sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
