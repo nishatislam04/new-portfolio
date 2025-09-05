@@ -218,8 +218,8 @@ export const PERSONAL_INFO = {
 			status: "completed" as const,
 			category: "Enterprise Software",
 			tags: ["Laravel", "Enterprise", "Management", "Authentication"],
-			featured: true,
-			priority: 3,
+			featured: false,
+			priority: 1,
 			shortDescription: "A comprehensive organization management system with role-based permissions and automated payment tracking.",
 			fullDescription:
 				"A comprehensive organization management system where Super users manage organizations and subscriptions, Admins handle assigned organizations, and Members join organizations with automated payment tracking and penalty management. Built with Laravel and modern web technologies for scalable enterprise use.",
@@ -310,10 +310,21 @@ export const PERSONAL_INFO = {
 		title: "Institution Management Suite",
 		status: "completed" as const,
 		category: "Education Management",
-		tags: ["Laravel", "Docker", "Lando", "Blade", "TailwindCSS", "MySQL", "RBAC", "Notifications", "CRUD"],
-		featured: false,
+		tags: [
+			"Laravel",
+			"Docker",
+			"Lando",
+			"Blade",
+			"TailwindCSS",
+			"MySQL",
+			"RBAC",
+			"Notifications",
+			"CRUD",
+		],
+		featured: true,
 		priority: 2,
-		shortDescription: "Dockerized Laravel application for educational institutions with role-based admin, teacher, and student management.",
+		shortDescription:
+			"Dockerized Laravel application for educational institutions with role-based admin, teacher, and student management.",
 		fullDescription:
 			"A Docker (Lando) powered Laravel application with Blade and TailwindCSS that centralizes institution operations: teacher and student management, class/level and group assignments, preset resources (subjects, levels, groups), a lightweight shop, notifications, and robust CRUD with authorization and validation.",
 		keyFeatures: [
@@ -325,7 +336,11 @@ export const PERSONAL_INFO = {
 			"Shop module for basic purchases and fee tracking",
 			"Dynamic forms and advanced table UI (filter, sort, bulk actions)",
 		],
-		results: [{ title: "Centralized academic operations with secure role-based access" }, { title: "Reduced admin overhead via presets and bulk table actions" }, { title: "Improved data integrity through strict validation and policies" }],
+		results: [
+			{ title: "Centralized academic operations with secure role-based access" },
+			{ title: "Reduced admin overhead via presets and bulk table actions" },
+			{ title: "Improved data integrity through strict validation and policies" },
+		],
 		coverImage: {
 			src: projectImages.organizationCover,
 			alt: "Institution Management Suite Dashboard",
@@ -350,7 +365,7 @@ export const PERSONAL_INFO = {
 		category: "E‑Commerce",
 		tags: ["Laravel", "Laravel 12", "React", "Inertia.js", "Docker", "RBAC", "OTP", "Real‑time", "E‑Commerce"],
 		featured: false,
-		priority: 4,
+		priority: 2,
 		shortDescription: "Dockerized Laravel 12 + React (Inertia) multi‑vendor marketplace with role hierarchy, approvals, OTP auth, and real‑time updates.",
 		fullDescription:
 			"An ongoing Dockerized Laravel 12 e‑commerce application using Inertia.js and React for a SPA‑like experience. Supports multi‑vendor operations with a clear role hierarchy (Super Admin, Vendor, Staff, Customer), product and vendor approval workflows, OTP‑backed authentication with email verification and authorization (Spatie), real‑time notifications, advanced product listings, reviews and ratings, seller chat, cart, and live delivery state tracking.",
@@ -372,7 +387,7 @@ export const PERSONAL_INFO = {
 			{ title: "Real‑time notification and delivery tracking implemented" },
 		],
 		coverImage: {
-			src: projectImages.juktoCover,
+			src: projectImages.organizationCover,
 			alt: "Multi‑Vendor E‑Commerce Platform Dashboard",
 			caption: "Marketplace overview (placeholder image, will be updated)",
 		},
@@ -408,7 +423,7 @@ export const PERSONAL_INFO = {
 		links: [],
 		// Legacy support
 		link: "#",
-		image: projectImages.juktoCover,
+		image: projectImages.organizationCover,
 		description: "Dockerized Laravel 12 + Inertia React multi‑vendor marketplace with RBAC, approvals, OTP auth, real‑time notifications, reviews, chat, cart, and live delivery tracking.",
 		hasLiveDemo: false,
 		isComingSoon: true,
@@ -423,7 +438,7 @@ export const PERSONAL_INFO = {
 		category: "News & Media",
 		tags: ["Laravel", "React", "News", "Content Management"],
 		featured: false,
-		priority: 5,
+		priority: 3,
 		shortDescription: "A dynamic news aggregation platform with real-time updates and content management.",
 		fullDescription:
 			"A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement. Features advanced content scraping and automated news aggregation.",

@@ -1,6 +1,5 @@
 // Work cover images
 import organizationCover from "../workCoverImages/organization_cover.jpg";
-import juktoCover from "../workCoverImages/jukto_cover.png";
 import teamDocsCover from "../workCoverImages/teamDocsCoverPhoto.png";
 // Project-specific images
 import juktonewsCover from "./projects/juktonews_cover.png";
@@ -13,7 +12,6 @@ import memojiSmile from "./memoji-smile.png";
 
 export const projectImages = {
 	organizationCover,
-	juktoCover,
 	teamDocsCover,
 	// Jukto News
 	juktonewsCover,

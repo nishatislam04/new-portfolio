@@ -33,11 +33,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             src={project.coverImage.src}
             alt={project.coverImage.alt}
             fill
-            className={
-              project.id === 'jukto-news-platform'
-                ? 'object-contain object-center'
-                : 'object-cover object-center'
-            }
+            className={'object-contain object-center'}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
@@ -197,7 +193,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 autoPlayInterval={5000}
                 showThumbnails={true}
                 className="w-full"
-                imageFit={project.id === 'jukto-news-platform' ? 'contain' : 'cover'}
+                imageFit={'contain'}
               />
             </div>
           )}
