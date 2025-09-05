@@ -407,6 +407,14 @@ export const PERSONAL_INFO = {
         alt: "Organization Management System Dashboard",
         priority: true,
       },
+      images: [
+        { src: projectImages.organizationGallery1, alt: "Organization – Dashboard overview" },
+        { src: projectImages.organizationGallery2, alt: "Organization – Subscription management" },
+        { src: projectImages.organizationGallery3, alt: "Organization – Members list" },
+        { src: projectImages.organizationGallery4, alt: "Organization – Payment tracking" },
+        { src: projectImages.organizationGallery5, alt: "Organization – Penalty calculation" },
+        { src: projectImages.organizationGallery6, alt: "Organization – Notifications" },
+      ],
       technologies: ["Laravel", "TailwindCSS", "MySQL", "Gmail API", "Google OAuth"],
       links: [],
       // Legacy support
