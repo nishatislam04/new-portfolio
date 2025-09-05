@@ -103,7 +103,7 @@ export function ProjectCard({
               src={project.coverImage.src}
               alt={project.coverImage.alt}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
               priority={project.coverImage.priority}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -188,7 +188,7 @@ export function ProjectCard({
               src={project.coverImage.src}
               alt={project.coverImage.alt}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
@@ -263,7 +263,7 @@ export function ProjectCard({
             src={project.coverImage.src}
             alt={project.coverImage.alt}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           

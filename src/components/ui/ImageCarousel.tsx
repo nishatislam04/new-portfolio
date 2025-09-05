@@ -14,6 +14,7 @@ interface ImageCarouselProps {
   autoPlayInterval?: number;
   showThumbnails?: boolean;
   className?: string;
+  imageFit?: 'cover' | 'contain';
 }
 
 export function ImageCarousel({ 
@@ -21,7 +22,8 @@ export function ImageCarousel({
   autoPlay = true, 
   autoPlayInterval = 4000,
   showThumbnails = true,
-  className 
+  className,
+  imageFit = 'cover',
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -95,7 +97,11 @@ export function ImageCarousel({
     <div className={cn("space-y-4", className)}>
       {/* Main Carousel */}
       <div 
-        className="relative aspect-video rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/30 group"
+        className={cn(
+          "relative aspect-video rounded-xl overflow-hidden",
+          imageFit === 'contain' ? "bg-gray-900" : "bg-gray-800/50",
+          "border border-gray-700/30 group"
+        )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -112,7 +118,7 @@ export function ImageCarousel({
               src={images[currentIndex].src}
               alt={images[currentIndex].alt}
               fill
-              className="object-cover"
+              className={cn(imageFit === 'contain' ? 'object-contain object-center' : 'object-cover object-center')}
               priority={currentIndex === 0}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
             />
@@ -201,7 +207,7 @@ export function ImageCarousel({
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover"
+                className={cn(imageFit === 'contain' ? 'object-contain object-center bg-gray-900' : 'object-cover object-center')}
                 sizes="80px"
               />
               {index === currentIndex && (

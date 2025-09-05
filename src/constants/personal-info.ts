@@ -442,16 +442,21 @@ export const PERSONAL_INFO = {
 			{ title: "REST API integration for seamless data flow and updates" },
 		],
 		coverImage: {
-			src: projectImages.juktoCover,
+			src: projectImages.juktonewsCover,
 			alt: "Jukto News Platform Interface",
 		},
+		images: [
+			{ src: projectImages.juktonewsGallery1, alt: "Jukto News – Homepage feed" },
+			{ src: projectImages.juktonewsGallery2, alt: "Jukto News – Article details" },
+			{ src: projectImages.juktonewsGallery3, alt: "Jukto News – Category listing" },
+		],
 		technologies: ["Laravel", "React", "MySQL", "TailwindCSS", "REST APIs"],
 		links: [
 			{ type: "live" as const, url: "https://news.jukto.com", label: "View Live" }
 		],
 		// Legacy support
 		link: "https://news.jukto.com",
-		image: projectImages.juktoCover,
+		image: projectImages.juktonewsCover,
 		description:
 			"A dynamic news aggregation platform offering up-to-date articles from various categories with real-time updates, content management, and interactive user interface for enhanced engagement.",
 		hasLiveDemo: true,

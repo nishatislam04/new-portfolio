@@ -48,7 +48,7 @@ export default function ProjectCard({
             loading="lazy"
             quality={20}
             sizes="(max-width: 768px) 100vw, 450px"
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
