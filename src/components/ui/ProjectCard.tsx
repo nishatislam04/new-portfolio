@@ -160,7 +160,7 @@ export function ProjectCard({ project, variant = "compact", onProjectClick }: Pr
 							src={project.coverImage.src}
 							alt={project.coverImage.alt}
 							fill
-							className="object-cover object-top"
+							className={project.id === "multi-vendor-ecommerce" ? "object-contain object-top" : "object-cover object-top"}
 							sizes="(min-width: 1024px) 66vw, (min-width: 768px) 50vw, 100vw"
 						/>
 						<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -223,7 +223,7 @@ export function ProjectCard({ project, variant = "compact", onProjectClick }: Pr
 						src={project.coverImage.src}
 						alt={project.coverImage.alt}
 						fill
-						className="object-cover object-top"
+						className={project.id === "multi-vendor-ecommerce" ? "object-contain object-top" : "object-cover object-top"}
 						sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
