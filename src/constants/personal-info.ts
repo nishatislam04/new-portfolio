@@ -291,6 +291,40 @@ export const PERSONAL_INFO = {
 				alt: "Team-Docs Collaborative Platform Interface",
 				priority: true,
 			},
+			images: [
+				{
+					src: projectImages.teamDocsCover,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+				{
+					src: projectImages.teamDocsGallery1,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+				{
+					src: projectImages.teamDocsGallery2,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+				{
+					src: projectImages.teamDocsGallery3,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+				{
+					src: projectImages.teamDocsGallery4,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+				{
+					src: projectImages.teamDocsGallery5,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+				{
+					src: projectImages.teamDocsGallery6,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+				{
+					src: projectImages.teamDocsGallery7,
+					alt: "Team-Docs Collaborative Platform Interface",
+				},
+			],
 			technologies: [
 				"Next.js 15",
 				"PostgreSQL",
@@ -362,7 +396,7 @@ export const PERSONAL_INFO = {
 				},
 			],
 			coverImage: {
-				src: projectImages.organizationCover,
+				src: projectImages.institutionCover,
 				alt: "Institution Management Suite Dashboard",
 				caption: "Dashboard overview (placeholder image, will be updated)",
 			},
@@ -377,96 +411,208 @@ export const PERSONAL_INFO = {
 			links: [],
 			// Legacy support
 			link: "#",
-			image: projectImages.organizationCover,
+			image: projectImages.institutionCover,
 			description:
 				"Dockerized (Lando) Laravel app with Blade frontend for institution, teacher, and student management including assignments, presets, notifications, and robust CRUD.",
 			hasLiveDemo: false,
 			isPrivate: true,
 		},
+		// {
+		// 	id: "multi-vendor-ecommerce",
+		// 	company: "Personal Project",
+		// 	year: "2025",
+		// 	title: "Multi‑Vendor E‑Commerce Platform",
+		// 	status: "in-progress" as const,
+		// 	category: "E‑Commerce",
+		// 	tags: [
+		// 		"Laravel",
+		// 		"Laravel 12",
+		// 		"React",
+		// 		"Inertia.js",
+		// 		"Docker",
+		// 		"RBAC",
+		// 		"OTP",
+		// 		"Real‑time",
+		// 		"E‑Commerce",
+		// 	],
+		// 	featured: false,
+		// 	priority: 1,
+		// 	shortDescription:
+		// 		"Dockerized Laravel 12 + React (Inertia) multi‑vendor marketplace with role hierarchy, approvals, OTP auth, and real‑time updates.",
+		// 	fullDescription:
+		// 		"An ongoing Dockerized Laravel 12 e‑commerce application using Inertia.js and React for a SPA‑like experience. Supports multi‑vendor operations with a clear role hierarchy (Super Admin, Vendor, Staff, Customer), product and vendor approval workflows, OTP‑backed authentication with email verification and authorization (Spatie), real‑time notifications, advanced product listings, reviews and ratings, seller chat, cart, and live delivery state tracking.",
+		// 	keyFeatures: [
+		// 		"Multi‑vendor system with role hierarchy (Super Admin, Vendor, Staff, Customer)",
+		// 		"Product and vendor approval workflows",
+		// 		"Manual authentication with email verification and OTP",
+		// 		"RBAC using policies and permissions (Spatie)",
+		// 		"Real‑time notifications and delivery state updates",
+		// 		"Product CRUD with media, variants, and inventory basics",
+		// 		"Advanced product listings: search, filters, sort, pagination",
+		// 		"Product reviews and rating system",
+		// 		"Buyer‑seller chat",
+		// 		"Cart and checkout foundation",
+		// 	],
+		// 	results: [
+		// 		{
+		// 			title:
+		// 				"Secure role hierarchy established with fine‑grained permissions",
+		// 		},
+		// 		{ title: "Operational vendor onboarding with approval pipeline" },
+		// 		{ title: "Real‑time notification and delivery tracking implemented" },
+		// 	],
+		// 	coverImage: {
+		// 		src: projectImages.organizationCover,
+		// 		alt: "Multi‑Vendor E‑Commerce Platform Dashboard",
+		// 		caption: "Marketplace overview (placeholder image, will be updated)",
+		// 	},
+		// 	technologies: [
+		// 		"Laravel 12",
+		// 		"Inertia.js",
+		// 		"React",
+		// 		"TailwindCSS",
+		// 		"MySQL",
+		// 		"Docker",
+		// 		"Spatie Permission",
+		// 		"Laravel Sanctum",
+		// 		"Laravel Notifications",
+		// 	],
+		// 	architecture: [
+		// 		"Laravel monolith with Inertia SPA pattern",
+		// 		"React front‑end via Inertia.js",
+		// 		"RBAC with role hierarchy and policies",
+		// 		"Real‑time broadcasting for notifications and delivery state",
+		// 	],
+		// 	challenges: [
+		// 		"Designing scalable role hierarchy across vendors",
+		// 		"Building auditable approval workflows",
+		// 		"Maintaining responsive product listings with complex filters",
+		// 		"Ensuring consistent auth with OTP + email verification",
+		// 	],
+		// 	solutions: [
+		// 		"Leveraged Spatie Permission with policies/gates for granular RBAC",
+		// 		"Modeled approval states with clear transitions and audit trails",
+		// 		"Server‑side filtering/sorting with indexed queries and pagination",
+		// 		"Combined Sanctum session auth with OTP and verified email flow",
+		// 	],
+		// 	links: [],
+		// 	// Legacy support
+		// 	link: "#",
+		// 	image: projectImages.organizationCover,
+		// 	description:
+		// 		"Dockerized Laravel 12 + Inertia React multi‑vendor marketplace with RBAC, approvals, OTP auth, real‑time notifications, reviews, chat, cart, and live delivery tracking.",
+		// 	hasLiveDemo: false,
+		// 	isComingSoon: true,
+		// 	isPrivate: true,
+		// },
 		{
-			id: "multi-vendor-ecommerce",
+			id: "blogstream-cms",
 			company: "Personal Project",
 			year: "2025",
-			title: "Multi‑Vendor E‑Commerce Platform",
+			title: "BlogStream CMS – Modern Multi-Author Publishing",
 			status: "in-progress" as const,
-			category: "E‑Commerce",
+			category: "Content Platform",
 			tags: [
-				"Laravel",
-				"Laravel 12",
-				"React",
-				"Inertia.js",
+				"Next.js 16",
+				"React 19",
+				"Prisma",
+				"PostgreSQL",
+				"TailwindCSS v4",
+				"Better Auth",
+				"Resend",
+				"Server Actions",
+				"Bun",
 				"Docker",
-				"RBAC",
-				"OTP",
-				"Real‑time",
-				"E‑Commerce",
 			],
-			featured: false,
-			priority: 1,
+			featured: true,
+			priority: 3,
 			shortDescription:
-				"Dockerized Laravel 12 + React (Inertia) multi‑vendor marketplace with role hierarchy, approvals, OTP auth, and real‑time updates.",
+				"Smart publishing hub streaming the latest category-driven stories with rich author tooling and role-ready governance.",
 			fullDescription:
-				"An ongoing Dockerized Laravel 12 e‑commerce application using Inertia.js and React for a SPA‑like experience. Supports multi‑vendor operations with a clear role hierarchy (Super Admin, Vendor, Staff, Customer), product and vendor approval workflows, OTP‑backed authentication with email verification and authorization (Spatie), real‑time notifications, advanced product listings, reviews and ratings, seller chat, cart, and live delivery state tracking.",
+				"BlogStream CMS delivers a modern blog experience powered by Next.js 16 Cache Components and React 19 Suspense to surface fresh stories, category discovery, and popular author spotlights in real time. Authenticated writers craft long-form content with a JSON-backed rich text editor, media galleries, and personalized dashboards, while Better Auth, avatar uploads that adjust between local storage and Vercel Blob, and an emerging admin area lay the groundwork for moderation, featured curation, and user governance. It’s currently private, Docker-ready for local work, and prepping for a Vercel launch once the advanced moderation and analytics features land.",
 			keyFeatures: [
-				"Multi‑vendor system with role hierarchy (Super Admin, Vendor, Staff, Customer)",
-				"Product and vendor approval workflows",
-				"Manual authentication with email verification and OTP",
-				"RBAC using policies and permissions (Spatie)",
-				"Real‑time notifications and delivery state updates",
-				"Product CRUD with media, variants, and inventory basics",
-				"Advanced product listings: search, filters, sort, pagination",
-				"Product reviews and rating system",
-				"Buyer‑seller chat",
-				"Cart and checkout foundation",
+				"Featured hero, latest-feed pagination, and category browsing driven by Server Actions with cache lifetimes for fast homepage storytelling.",
+				"Rich-text authoring pipeline storing structured JSON, preview images, tags, reactions, and scheduled publishing metadata for future editorial workflows.",
+				"Role-aware UX that greets anonymous users with sign-in CTAs, switches to personal dashboards for writers, and routes admins into a dedicated panel.",
+				"Better Auth signup with email verification, password reset, and profile avatar uploads that automatically pick local disk or Vercel Blob storage depending on environment.",
+				"Planned enhancements include tag-powered search, homepage sorting/filtering modes, and social logins to demonstrate mastery over the React/Next.js ecosystem.",
 			],
 			results: [
 				{
-					title:
-						"Secure role hierarchy established with fine‑grained permissions",
+					title: "Suspense-backed feed loading",
+					description:
+						"Implemented Suspense-backed feed loading and toast-aware error states for seamless content browsing.",
 				},
-				{ title: "Operational vendor onboarding with approval pipeline" },
-				{ title: "Real‑time notification and delivery tracking implemented" },
+				{
+					title: "Prisma-backed content model",
+					description:
+						"Delivered a Prisma-backed content model with authors, categories, reactions, and media that’s ready for advanced editorial analytics.",
+				},
+				{
+					title: "Multi-environment file pipeline",
+					description:
+						"Shipped a multi-environment-ready file pipeline and email notifications through Resend to support branded onboarding flows.",
+				},
+				{
+					title: "Roadmapped moderation capabilities",
+					description:
+						"Roadmapped moderation dashboards, featured-story controls, and social identity providers to round out enterprise storytelling capabilities.",
+				},
 			],
 			coverImage: {
-				src: projectImages.organizationCover,
-				alt: "Multi‑Vendor E‑Commerce Platform Dashboard",
-				caption: "Marketplace overview (placeholder image, will be updated)",
+				src: projectImages.bloggishCover,
+				alt: "BlogStream CMS homepage with featured story hero",
+				priority: true,
 			},
+			images: [
+				{
+					src: projectImages.bloggishGallery1,
+					alt: "BlogStream – Featured hero with Server Actions",
+				},
+				{
+					src: projectImages.bloggishGallery2,
+					alt: "BlogStream – Latest posts with load more",
+				},
+				{
+					src: projectImages.bloggishGallery3,
+					alt: "BlogStream – Author dashboard view",
+				},
+				{
+					src: projectImages.bloggishGallery4,
+					alt: "BlogStream – Category and popular authors discovery",
+				},
+				{
+					src: projectImages.bloggishGallery5,
+					alt: "BlogStream – Better Auth verification and reset flow",
+				},
+				{
+					src: projectImages.bloggishGallery6,
+					alt: "BlogStream – Prisma content modeling overview",
+				},
+			],
 			technologies: [
-				"Laravel 12",
-				"Inertia.js",
-				"React",
-				"TailwindCSS",
-				"MySQL",
-				"Docker",
-				"Spatie Permission",
-				"Laravel Sanctum",
-				"Laravel Notifications",
+				"Next.js 16",
+				"React 19",
+				"Prisma ORM",
+				"PostgreSQL",
+				"Better Auth",
+				"TailwindCSS v4",
+				"Resend",
+				"@vercel/blob",
+				"Bun",
+				"Docker Compose",
 			],
-			architecture: [
-				"Laravel monolith with Inertia SPA pattern",
-				"React front‑end via Inertia.js",
-				"RBAC with role hierarchy and policies",
-				"Real‑time broadcasting for notifications and delivery state",
+			links: [
+				{
+					type: "preview" as const,
+					url: "#",
+					label: "Vercel Preview (Coming Soon)",
+				},
 			],
-			challenges: [
-				"Designing scalable role hierarchy across vendors",
-				"Building auditable approval workflows",
-				"Maintaining responsive product listings with complex filters",
-				"Ensuring consistent auth with OTP + email verification",
-			],
-			solutions: [
-				"Leveraged Spatie Permission with policies/gates for granular RBAC",
-				"Modeled approval states with clear transitions and audit trails",
-				"Server‑side filtering/sorting with indexed queries and pagination",
-				"Combined Sanctum session auth with OTP and verified email flow",
-			],
-			links: [],
-			// Legacy support
 			link: "#",
-			image: projectImages.organizationCover,
+			image: projectImages.bloggishCover,
 			description:
-				"Dockerized Laravel 12 + Inertia React multi‑vendor marketplace with RBAC, approvals, OTP auth, real‑time notifications, reviews, chat, cart, and live delivery tracking.",
+				"BlogStream CMS is a private Next.js 16 publishing platform pairing live blog feeds, rich text authoring, Better Auth security, and environment-aware media uploads—now gearing up for admin moderation and Vercel release.",
 			hasLiveDemo: false,
 			isComingSoon: true,
 			isPrivate: true,
@@ -480,7 +626,7 @@ export const PERSONAL_INFO = {
 			category: "Enterprise Software",
 			tags: ["Laravel", "Enterprise", "Management", "Authentication"],
 			featured: false,
-			priority: 2,
+			priority: 5,
 			shortDescription:
 				"A comprehensive organization management system with role-based permissions and automated payment tracking.",
 			fullDescription:
@@ -564,7 +710,7 @@ export const PERSONAL_INFO = {
 			category: "News & Media",
 			tags: ["Laravel", "React", "News", "Content Management"],
 			featured: false,
-			priority: 3,
+			priority: 4,
 			shortDescription:
 				"A dynamic news aggregation platform with real-time updates and content management.",
 			fullDescription:
