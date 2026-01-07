@@ -13,7 +13,12 @@ export default function Footer() {
 					<nav className="flex flex-col items-center gap-8 md:flex-row">
 						{PERSONAL_INFO.SOCIAL_LINKS.map((link) => {
 							return (
-								<a key={link.name} href={link.url} target="_blank" className="inline-flex items-center gap-1.5">
+								<a
+									key={link.name}
+									href={link.url}
+									target="_blank"
+									className="inline-flex items-center gap-1.5"
+								>
 									<span className="font-semibold">{link.name}</span>
 									<ArrowUpRightIcon className="size-4" />
 								</a>

@@ -46,7 +46,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
 4. **Start development server**
 
    ```bash
-   npm run dev
+   make dev
    ```
 
 5. **Open in browser**
@@ -59,9 +59,9 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
 1. **Prepare for Production**
 
    ```bash
-   npm run lint:fix
-   npm run type-check
-   npm run build
+   make lint:fix
+   make type-check
+   make build
    ```
 
 2. **Deploy to Vercel**
@@ -78,6 +78,6 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
 ### Manual Build
 
 ```bash
-npm run build
-npm start
+make build
+make start
 ```

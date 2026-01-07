@@ -1,10 +1,10 @@
-import { Section } from "@/components/ui";
-import { FadeIn, StaggerContainer } from "@/components/animations";
-import { workExperience } from "@/constants/personal-info";
 import BriefcaseIcon from "@/assets/icons/briefcase.svg";
-import MapPinIcon from "@/assets/icons/map-pin.svg";
 import CalendarIcon from "@/assets/icons/calendar.svg";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
+import MapPinIcon from "@/assets/icons/map-pin.svg";
+import { FadeIn, StaggerContainer } from "@/components/animations";
+import { Section } from "@/components/ui";
+import { workExperience } from "@/constants/personal-info";
 
 export default function WorkExperienceSection() {
 	return (
@@ -17,7 +17,9 @@ export default function WorkExperienceSection() {
 							<h2 className="heading-2 mb-4">
 								Work <span className="gradient-text">Experience</span>
 							</h2>
-							<p className="body-large text-gray-400 max-w-2xl mx-auto">Professional journey and contributions in software development</p>
+							<p className="body-large text-gray-400 max-w-2xl mx-auto">
+								Professional journey and contributions in software development
+							</p>
 						</div>
 					</FadeIn>
 
@@ -27,7 +29,9 @@ export default function WorkExperienceSection() {
 							<FadeIn key={index} delay={0.2 * (index + 1)}>
 								<div className="relative mb-8 last:mb-0">
 									{/* Timeline Line */}
-									{index < workExperience.length - 1 && <div className="absolute left-8 top-24 w-0.5 h-32 bg-gradient-to-b from-emerald-500/50 to-transparent" />}
+									{index < workExperience.length - 1 && (
+										<div className="absolute left-8 top-24 w-0.5 h-32 bg-gradient-to-b from-emerald-500/50 to-transparent" />
+									)}
 
 									{/* Experience Card */}
 									<div className="relative bg-gray-800/50 border border-gray-700/50 rounded-xl lg:p-8 p-6 hover:border-emerald-500/30 transition-all duration-300 group">
@@ -41,8 +45,12 @@ export default function WorkExperienceSection() {
 											{/* Header: Position & Company */}
 											<div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
 												<div className="space-y-2">
-													<h3 className="heading-3 text-white group-hover:text-emerald-400 transition-colors duration-300">{exp.position}</h3>
-													<p className="text-emerald-400 font-medium text-lg">{exp.company}</p>
+													<h3 className="heading-3 text-white group-hover:text-emerald-400 transition-colors duration-300">
+														{exp.position}
+													</h3>
+													<p className="text-emerald-400 font-medium text-lg">
+														{exp.company}
+													</p>
 												</div>
 
 												{/* Duration & Type Badge */}
@@ -60,27 +68,43 @@ export default function WorkExperienceSection() {
 
 											{/* Description */}
 											<div className="space-y-8 lg:space-y-6">
-												<p className="body-base text-gray-300 leading-relaxed">{exp.description}</p>
+												<p className="body-base text-gray-300 leading-relaxed">
+													{exp.description}
+												</p>
 
 												{/* Achievements */}
 												<div className="space-y-3">
-													<h4 className="text-white font-semibold">Key Achievements:</h4>
+													<h4 className="text-white font-semibold">
+														Key Achievements:
+													</h4>
 													<div className="grid gap-3">
-														{exp.achievements.map((achievement, achievementIndex) => (
-															<div key={achievementIndex} className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-colors duration-300">
-																<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-																<span className="text-gray-300 text-sm leading-relaxed">{achievement}</span>
-															</div>
-														))}
+														{exp.achievements.map(
+															(achievement, achievementIndex) => (
+																<div
+																	key={achievementIndex}
+																	className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-colors duration-300"
+																>
+																	<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+																	<span className="text-gray-300 text-sm leading-relaxed">
+																		{achievement}
+																	</span>
+																</div>
+															),
+														)}
 													</div>
 												</div>
 
 												{/* Technologies */}
 												<div className="space-y-4 mt-8">
-													<h4 className="text-white font-semibold">Technologies Learned:</h4>
+													<h4 className="text-white font-semibold">
+														Technologies Learned:
+													</h4>
 													<div className="flex flex-wrap gap-2">
 														{exp.technologies.map((tech, techIndex) => (
-															<span key={techIndex} className="px-3 py-1 bg-gray-700/50 border border-gray-600/50 rounded-full text-gray-300 text-sm hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300">
+															<span
+																key={techIndex}
+																className="px-3 py-1 bg-gray-700/50 border border-gray-600/50 rounded-full text-gray-300 text-sm hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300"
+															>
 																{tech}
 															</span>
 														))}
@@ -104,7 +128,9 @@ export default function WorkExperienceSection() {
 						<div className="text-center mt-16">
 							<div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500/10 to-sky-500/10 border border-emerald-500/20 rounded-full">
 								<BriefcaseIcon className="w-5 h-5 text-emerald-400" />
-								<span className="text-emerald-400 font-medium">Growing Professional Experience</span>
+								<span className="text-emerald-400 font-medium">
+									Growing Professional Experience
+								</span>
 							</div>
 						</div>
 					</FadeIn>

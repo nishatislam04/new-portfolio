@@ -1,17 +1,17 @@
-import { Section, Card } from "@/components/ui";
-import { FadeIn, StaggerContainer } from "@/components/animations";
 import Link from "next/link";
-import { PERSONAL_INFO } from "@/constants/personal-info";
-import WhatsAppIcon from "@/assets/icons/minified/Whatsapp.svg";
+import AvailabilityIcon from "@/assets/icons/availability.svg";
+import EmailIcon from "@/assets/icons/email.svg";
+import GithubIcon from "@/assets/icons/github.svg";
+import LocationIcon from "@/assets/icons/location.svg";
 import GmailIcon from "@/assets/icons/minified/Gmail.svg";
 import LinkedInIcon from "@/assets/icons/minified/Linkedin.svg";
 import MessengerIcon from "@/assets/icons/minified/Messenger.svg";
-import EmailIcon from "@/assets/icons/email.svg";
-import GithubIcon from "@/assets/icons/github.svg";
+import WhatsAppIcon from "@/assets/icons/minified/Whatsapp.svg";
 import PhoneIcon from "@/assets/icons/phone.svg";
-import LocationIcon from "@/assets/icons/location.svg";
-import AvailabilityIcon from "@/assets/icons/availability.svg";
 import ResponseTimeIcon from "@/assets/icons/response-time.svg";
+import { FadeIn, StaggerContainer } from "@/components/animations";
+import { Card, Section } from "@/components/ui";
+import { PERSONAL_INFO } from "@/constants/personal-info";
 import ContactForm from "./subComponents/ContactForm";
 
 export default function ContactSection() {
@@ -25,7 +25,10 @@ export default function ContactSection() {
 							<h2 className="heading-2 mb-4">
 								Let's <span className="gradient-text">Connect</span>
 							</h2>
-							<p className="body-large text-gray-400 max-w-2xl mx-auto">Ready to bring your ideas to life? Let's discuss your project and create something amazing together.</p>
+							<p className="body-large text-gray-400 max-w-2xl mx-auto">
+								Ready to bring your ideas to life? Let's discuss your project
+								and create something amazing together.
+							</p>
 						</div>
 					</FadeIn>
 
@@ -40,53 +43,109 @@ export default function ContactSection() {
 										<h3 className="heading-3 mb-6">Get in Touch</h3>
 										<div className="space-y-6 mb-8">
 											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<EmailIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
+												<EmailIcon
+													className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0"
+													aria-hidden="true"
+													focusable="false"
+												/>
 												<div>
-													<h4 className="font-semibold text-white mb-1">Email</h4>
-													<a href={`mailto:${PERSONAL_INFO.CONTACT_INFO.email}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													<h4 className="font-semibold text-white mb-1">
+														Email
+													</h4>
+													<a
+														href={`mailto:${PERSONAL_INFO.CONTACT_INFO.email}`}
+														className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200"
+													>
 														{PERSONAL_INFO.CONTACT_INFO.email}
 													</a>
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<GithubIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
+												<GithubIcon
+													className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0"
+													aria-hidden="true"
+													focusable="false"
+												/>
 												<div>
-													<h4 className="font-semibold text-white mb-1">GitHub</h4>
-													<Link href={PERSONAL_INFO.CONTACT_INFO.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													<h4 className="font-semibold text-white mb-1">
+														GitHub
+													</h4>
+													<Link
+														href={PERSONAL_INFO.CONTACT_INFO.github}
+														target="_blank"
+														rel="noopener noreferrer"
+														className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200"
+													>
 														github.com/nishatislam04
 													</Link>
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<PhoneIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
+												<PhoneIcon
+													className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0"
+													aria-hidden="true"
+													focusable="false"
+												/>
 												<div>
-													<h4 className="font-semibold text-white mb-1">Call Me</h4>
-													<a href={`tel:${PERSONAL_INFO.CONTACT_INFO.phone}`} className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													<h4 className="font-semibold text-white mb-1">
+														Call Me
+													</h4>
+													<a
+														href={`tel:${PERSONAL_INFO.CONTACT_INFO.phone}`}
+														className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200"
+													>
 														{PERSONAL_INFO.CONTACT_INFO.phone}
 													</a>
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<LocationIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
+												<LocationIcon
+													className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0"
+													aria-hidden="true"
+													focusable="false"
+												/>
 												<div>
-													<h4 className="font-semibold text-white mb-1">Location</h4>
-													<a href={PERSONAL_INFO.CONTACT_INFO.locationLink} target="_blank" rel="noopener noreferrer" className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200">
+													<h4 className="font-semibold text-white mb-1">
+														Location
+													</h4>
+													<a
+														href={PERSONAL_INFO.CONTACT_INFO.locationLink}
+														target="_blank"
+														rel="noopener noreferrer"
+														className="text-gray-400 underline underline-offset-4 hover:text-emerald-400 transition-colors duration-200"
+													>
 														{PERSONAL_INFO.CONTACT_INFO.location}
 													</a>
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<AvailabilityIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
+												<AvailabilityIcon
+													className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0"
+													aria-hidden="true"
+													focusable="false"
+												/>
 												<div>
-													<h4 className="font-semibold text-white mb-1">Availability</h4>
-													<p className="text-gray-400">{PERSONAL_INFO.CONTACT_INFO.availability}</p>
+													<h4 className="font-semibold text-white mb-1">
+														Availability
+													</h4>
+													<p className="text-gray-400">
+														{PERSONAL_INFO.CONTACT_INFO.availability}
+													</p>
 												</div>
 											</div>
 											<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
-												<ResponseTimeIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" aria-hidden="true" focusable="false" />
+												<ResponseTimeIcon
+													className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0"
+													aria-hidden="true"
+													focusable="false"
+												/>
 												<div>
-													<h4 className="font-semibold text-white mb-1">Response Time</h4>
-													<p className="text-gray-400">Usually within 24 hours</p>
+													<h4 className="font-semibold text-white mb-1">
+														Response Time
+													</h4>
+													<p className="text-gray-400">
+														Usually within 24 hours
+													</p>
 												</div>
 											</div>
 										</div>
@@ -94,28 +153,68 @@ export default function ContactSection() {
 
 									{/* Social Links */}
 									<div className="mt-8 pt-8 border-t border-gray-700/50">
-										<h4 className="font-semibold text-white mb-4">Connect With Me</h4>
+										<h4 className="font-semibold text-white mb-4">
+											Connect With Me
+										</h4>
 										<div className="grid grid-cols-2 gap-3">
 											{PERSONAL_INFO.SOCIAL_LINKS.map((social) => {
 												const getIcon = () => {
 													switch (social.icon) {
 														case "gmail":
-															return <GmailIcon className="w-5 h-5" aria-hidden="true" focusable="false" />;
+															return (
+																<GmailIcon
+																	className="w-5 h-5"
+																	aria-hidden="true"
+																	focusable="false"
+																/>
+															);
 														case "linkedin":
-															return <LinkedInIcon className="w-5 h-5 text-blue-500" aria-hidden="true" focusable="false" />;
+															return (
+																<LinkedInIcon
+																	className="w-5 h-5 text-blue-500"
+																	aria-hidden="true"
+																	focusable="false"
+																/>
+															);
 														case "whatsapp":
-															return <WhatsAppIcon className="w-5 h-5 text-green-500" aria-hidden="true" focusable="false" />;
+															return (
+																<WhatsAppIcon
+																	className="w-5 h-5 text-green-500"
+																	aria-hidden="true"
+																	focusable="false"
+																/>
+															);
 														case "messenger":
-															return <MessengerIcon className="w-5 h-5 text-blue-400" aria-hidden="true" focusable="false" />;
+															return (
+																<MessengerIcon
+																	className="w-5 h-5 text-blue-400"
+																	aria-hidden="true"
+																	focusable="false"
+																/>
+															);
 														default:
-															return <GmailIcon className="w-5 h-5" aria-hidden="true" focusable="false" />;
+															return (
+																<GmailIcon
+																	className="w-5 h-5"
+																	aria-hidden="true"
+																	focusable="false"
+																/>
+															);
 													}
 												};
 
 												return (
-													<Link key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300 group">
+													<Link
+														key={social.name}
+														href={social.url}
+														target="_blank"
+														rel="noopener noreferrer"
+														className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300 group"
+													>
 														{getIcon()}
-														<span className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300">{social.name}</span>
+														<span className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300">
+															{social.name}
+														</span>
 													</Link>
 												);
 											})}
@@ -127,11 +226,19 @@ export default function ContactSection() {
 							{/* Additional Contact Methods */}
 							<FadeIn delay={0.6}>
 								<Card variant="glass" className="p-6">
-									<h4 className="font-semibold text-white mb-4">Prefer Other Ways?</h4>
+									<h4 className="font-semibold text-white mb-4">
+										Prefer Other Ways?
+									</h4>
 									<div className="space-y-3 text-sm">
-										<p className="text-gray-400">📞 Schedule a call to discuss your project</p>
-										<p className="text-gray-400">💬 Send me a message on LinkedIn</p>
-										<p className="text-gray-400">⚡ Quick response within 24 hours</p>
+										<p className="text-gray-400">
+											📞 Schedule a call to discuss your project
+										</p>
+										<p className="text-gray-400">
+											💬 Send me a message on LinkedIn
+										</p>
+										<p className="text-gray-400">
+											⚡ Quick response within 24 hours
+										</p>
 									</div>
 								</Card>
 							</FadeIn>

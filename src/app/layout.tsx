@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Calistoga, JetBrains_Mono } from "next/font/google";
+import { Calistoga, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,8 +28,26 @@ export const metadata: Metadata = {
 		default: "Nishat Mazumder - Full Stack Web Developer",
 		template: "%s | Nishat Mazumder",
 	},
-	description: "Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
-	keywords: ["Full Stack Developer", "Next.js", "Laravel", "React", "TypeScript", "Web Development", "Frontend", "Backend", "PostgreSQL", "MySQL", "Prisma ORM", "Tailwind CSS", "JavaScript", "PHP", "Bangladesh Developer", "Dhaka Developer"],
+	description:
+		"Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
+	keywords: [
+		"Full Stack Developer",
+		"Next.js",
+		"Laravel",
+		"React",
+		"TypeScript",
+		"Web Development",
+		"Frontend",
+		"Backend",
+		"PostgreSQL",
+		"MySQL",
+		"Prisma ORM",
+		"Tailwind CSS",
+		"JavaScript",
+		"PHP",
+		"Bangladesh Developer",
+		"Dhaka Developer",
+	],
 	authors: [{ name: "Nishat Mazumder" }],
 	creator: "Nishat Mazumder",
 	openGraph: {
@@ -37,13 +55,15 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		url: "https://new-portfolio-psi-bice.vercel.app",
 		title: "Nishat Mazumder - Full Stack Web Developer",
-		description: "Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
+		description:
+			"Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
 		siteName: "Nishat Mazumder Portfolio",
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "Nishat Mazumder - Full Stack Web Developer",
-		description: "Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
+		description:
+			"Full Stack Web Developer specializing in Next.js, Laravel, and React. I build enterprise-grade applications with modern technologies and clean, scalable code.",
 	},
 	robots: {
 		index: true,
@@ -67,17 +87,28 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+				<link
+					rel="preconnect"
+					href="https://fonts.gstatic.com"
+					crossOrigin="anonymous"
+				/>
 				<meta name="theme-color" content="#0f172a" />
-				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-				
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1, viewport-fit=cover"
+				/>
+
 				{/* Favicon Implementation */}
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="icon" href="/favicon.ico" sizes="32x32" />
 				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 				<link rel="manifest" href="/site.webmanifest" />
 			</head>
-			<body className={`${inter.variable} ${calistoga.variable} ${jetbrainsMono.variable} font-sans relative`}>{children}</body>
+			<body
+				className={`${inter.variable} ${calistoga.variable} ${jetbrainsMono.variable} font-sans relative`}
+			>
+				{children}
+			</body>
 		</html>
 	);
 }

@@ -1,4 +1,4 @@
-import { HTMLAttributes, forwardRef } from "react";
+import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "@/utils";
 import { Container } from "./Container";
 
@@ -8,28 +8,33 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
 	padding?: "none" | "sm" | "md" | "lg";
 }
 
-const Section = forwardRef<HTMLElement, SectionProps>(({ className, children, containerSize = "lg", padding = "lg", ...props }, ref) => {
-	const paddingStyles = {
-		none: "",
-		sm: "py-8 md:py-12",
-		md: "py-12 md:py-16 lg:py-20",
-		lg: "py-16 md:py-24 lg:py-32",
-	};
+const Section = forwardRef<HTMLElement, SectionProps>(
+	(
+		{ className, children, containerSize = "lg", padding = "lg", ...props },
+		ref,
+	) => {
+		const paddingStyles = {
+			none: "",
+			sm: "py-8 md:py-12",
+			md: "py-12 md:py-16 lg:py-20",
+			lg: "py-16 md:py-24 lg:py-32",
+		};
 
-	return (
-		<section
-			className={cn(
-				"[content-visibility:auto] [contain-intrinsic-size:1px_1000px]",
-				paddingStyles[padding],
-				className
-			)}
-			ref={ref}
-			{...props}
-		>
-			<Container size={containerSize}>{children}</Container>
-		</section>
-	);
-});
+		return (
+			<section
+				className={cn(
+					"[content-visibility:auto] [contain-intrinsic-size:1px_1000px]",
+					paddingStyles[padding],
+					className,
+				)}
+				ref={ref}
+				{...props}
+			>
+				<Container size={containerSize}>{children}</Container>
+			</section>
+		);
+	},
+);
 
 Section.displayName = "Section";
 

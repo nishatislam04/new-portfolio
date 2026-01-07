@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
+import React from "react";
 import { cn } from "@/lib/utils";
 
 interface ToolboxItem {
@@ -70,7 +70,10 @@ const colorSchemes = {
 	},
 } as const;
 
-export default function ToolboxCategory({ category, index }: ToolboxCategoryProps) {
+export default function ToolboxCategory({
+	category,
+	index,
+}: ToolboxCategoryProps) {
 	const colors = colorSchemes[category.color];
 
 	return (
@@ -86,21 +89,25 @@ export default function ToolboxCategory({ category, index }: ToolboxCategoryProp
 				colors.border,
 				colors.bg,
 				"hover:shadow-lg",
-				colors.glowShadow
+				colors.glowShadow,
 			)}
 		>
 			{/* Category Header */}
 			<div className="mb-6">
-				<h3 className={cn(
-					"text-xl font-bold mb-2 transition-colors duration-300",
-					colors.titleText
-				)}>
+				<h3
+					className={cn(
+						"text-xl font-bold mb-2 transition-colors duration-300",
+						colors.titleText,
+					)}
+				>
 					{category.title}
 				</h3>
-				<div className={cn(
-					"h-1 w-12 rounded-full bg-gradient-to-r transition-all duration-300 group-hover:w-16",
-					colors.gradient
-				)} />
+				<div
+					className={cn(
+						"h-1 w-12 rounded-full bg-gradient-to-r transition-all duration-300 group-hover:w-16",
+						colors.gradient,
+					)}
+				/>
 			</div>
 
 			{/* Tools Grid */}
@@ -111,33 +118,34 @@ export default function ToolboxCategory({ category, index }: ToolboxCategoryProp
 						initial={{ opacity: 0, scale: 0.8 }}
 						whileInView={{ opacity: 1, scale: 1 }}
 						viewport={{ once: true }}
-						transition={{ 
-							duration: 0.4, 
-							delay: (index * 0.1) + (itemIndex * 0.05) 
+						transition={{
+							duration: 0.4,
+							delay: index * 0.1 + itemIndex * 0.05,
 						}}
 						whileHover={{ scale: 1.05, y: -2 }}
 						className={cn(
 							"flex flex-col items-center gap-2 p-3 rounded-xl",
 							"bg-gray-900/50 border border-gray-700/30",
 							"hover:bg-gray-800/50 hover:border-gray-600/50",
-							"transition-all duration-300 cursor-pointer"
+							"transition-all duration-300 cursor-pointer",
 						)}
 					>
 						{/* Icon with dynamic gradient */}
 						<div className="transition-all duration-300">
-							{React.isValidElement(item.icon) && item.icon.type !== 'div' ? 
-								React.cloneElement(item.icon as React.ReactElement, {
-									className: `size-10 fill-[url(#${category.id}-gradient)]`
-								}) : 
-								item.icon
-							}
+							{React.isValidElement(item.icon) && item.icon.type !== "div"
+								? React.cloneElement(item.icon as React.ReactElement, {
+										className: `size-10 fill-[url(#${category.id}-gradient)]`,
+									})
+								: item.icon}
 						</div>
-						
+
 						{/* Tool name */}
-						<span className={cn(
-							"text-sm font-medium text-center leading-tight transition-colors duration-300",
-							colors.titleText
-						)}>
+						<span
+							className={cn(
+								"text-sm font-medium text-center leading-tight transition-colors duration-300",
+								colors.titleText,
+							)}
+						>
 							{item.title}
 						</span>
 					</motion.div>
@@ -148,18 +156,38 @@ export default function ToolboxCategory({ category, index }: ToolboxCategoryProp
 			<svg className="size-0 absolute" aria-hidden="true" focusable="false">
 				<defs>
 					<linearGradient id={`${category.id}-gradient`}>
-						<stop offset="0%" stopColor={category.color === 'emerald' ? 'rgb(52 211 153)' : 
-							category.color === 'sky' ? 'rgb(56 189 248)' :
-							category.color === 'violet' ? 'rgb(139 92 246)' :
-							category.color === 'amber' ? 'rgb(251 191 36)' :
-							category.color === 'rose' ? 'rgb(251 113 133)' :
-							'rgb(148 163 184)'} />
-						<stop offset="100%" stopColor={category.color === 'emerald' ? 'rgb(16 185 129)' : 
-							category.color === 'sky' ? 'rgb(14 165 233)' :
-							category.color === 'violet' ? 'rgb(124 58 237)' :
-							category.color === 'amber' ? 'rgb(249 115 22)' :
-							category.color === 'rose' ? 'rgb(244 63 94)' :
-							'rgb(100 116 139)'} />
+						<stop
+							offset="0%"
+							stopColor={
+								category.color === "emerald"
+									? "rgb(52 211 153)"
+									: category.color === "sky"
+										? "rgb(56 189 248)"
+										: category.color === "violet"
+											? "rgb(139 92 246)"
+											: category.color === "amber"
+												? "rgb(251 191 36)"
+												: category.color === "rose"
+													? "rgb(251 113 133)"
+													: "rgb(148 163 184)"
+							}
+						/>
+						<stop
+							offset="100%"
+							stopColor={
+								category.color === "emerald"
+									? "rgb(16 185 129)"
+									: category.color === "sky"
+										? "rgb(14 165 233)"
+										: category.color === "violet"
+											? "rgb(124 58 237)"
+											: category.color === "amber"
+												? "rgb(249 115 22)"
+												: category.color === "rose"
+													? "rgb(244 63 94)"
+													: "rgb(100 116 139)"
+							}
+						/>
 					</linearGradient>
 				</defs>
 			</svg>

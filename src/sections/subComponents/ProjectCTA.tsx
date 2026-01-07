@@ -1,8 +1,8 @@
 "use client";
 
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { FadeIn } from "@/components/animations";
 import { Button } from "@/components/ui";
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 
 export default function ProjectCTA() {
 	return (
@@ -14,7 +14,8 @@ export default function ProjectCTA() {
 						const element = document.getElementById("contact");
 						element?.scrollIntoView({ behavior: "smooth" });
 					}}
-					className="group">
+					className="group"
+				>
 					Let's Talk
 					<ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
 				</Button>

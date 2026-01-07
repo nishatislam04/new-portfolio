@@ -1,16 +1,20 @@
 "use client";
 
-import { FadeIn } from "@/components/animations";
-import { Button, Card } from "@/components/ui";
 import { motion } from "framer-motion";
 import { useRef, useState, useTransition } from "react";
 import { sendEmail } from "@/actions/SendEmail";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import { FadeIn } from "@/components/animations";
+import { Button, Card } from "@/components/ui";
 
 export default function ContactForm() {
 	const formRef = useRef<HTMLFormElement>(null);
 	const [isPending, startTransition] = useTransition();
-	const [state, setState] = useState<{ success: boolean; error?: string; message?: string } | null>(null);
+	const [state, setState] = useState<{
+		success: boolean;
+		error?: string;
+		message?: string;
+	} | null>(null);
 
 	// Handle form submission
 	const handleSubmit = async (formData: FormData) => {
@@ -27,11 +31,20 @@ export default function ContactForm() {
 	return (
 		<FadeIn delay={0.2}>
 			<Card variant="glass" className="p-8 h-[860px]">
-				<form ref={formRef} action={handleSubmit} className="space-y-6 h-40 flex flex-col">
+				<form
+					ref={formRef}
+					action={handleSubmit}
+					className="space-y-6 h-40 flex flex-col"
+				>
 					<div className="flex-grow space-y-6">
 						<div>
-							<h3 className="heading-3 mb-8 capitalize">send me an business email</h3>
-							<label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+							<h3 className="heading-3 mb-8 capitalize">
+								send me an business email
+							</h3>
+							<label
+								htmlFor="name"
+								className="block text-sm font-medium text-gray-300 mb-2"
+							>
 								Name
 							</label>
 							<input
@@ -46,7 +59,10 @@ export default function ContactForm() {
 						</div>
 
 						<div>
-							<label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+							<label
+								htmlFor="email"
+								className="block text-sm font-medium text-gray-300 mb-2"
+							>
 								Email
 							</label>
 							<input
@@ -61,7 +77,10 @@ export default function ContactForm() {
 						</div>
 
 						<div>
-							<label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+							<label
+								htmlFor="message"
+								className="block text-sm font-medium text-gray-300 mb-2"
+							>
 								Message
 							</label>
 							<textarea
@@ -79,15 +98,26 @@ export default function ContactForm() {
 					<div className="pt-2">
 						<Button type="submit" disabled={isPending} className="w-full group">
 							{isPending ? "Sending..." : "Send Message"}
-							{!isPending && <ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />}
+							{!isPending && (
+								<ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+							)}
 						</Button>
 					</div>
 
 					{/* Success Message */}
-					{state?.success && <p className="text-sm text-emerald-400 text-center font-medium">{state.message || "Message sent successfully! I'll get back to you soon."}</p>}
+					{state?.success && (
+						<p className="text-sm text-emerald-400 text-center font-medium">
+							{state.message ||
+								"Message sent successfully! I'll get back to you soon."}
+						</p>
+					)}
 
 					{/* Error Message */}
-					{state?.error && <p className="text-sm text-red-400 text-center font-medium">{state.error}</p>}
+					{state?.error && (
+						<p className="text-sm text-red-400 text-center font-medium">
+							{state.error}
+						</p>
+					)}
 				</form>
 			</Card>
 		</FadeIn>

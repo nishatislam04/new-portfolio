@@ -1,8 +1,8 @@
-import { Section } from "@/components/ui";
-import { FadeIn, StaggerContainer } from "@/components/animations";
-import { education } from "@/constants/personal-info";
 import GraduationCapIcon from "@/assets/icons/graduation-cap.svg";
 import StarIcon from "@/assets/icons/star.svg";
+import { FadeIn, StaggerContainer } from "@/components/animations";
+import { Section } from "@/components/ui";
+import { education } from "@/constants/personal-info";
 
 export default function EducationSection() {
 	return (
@@ -15,7 +15,9 @@ export default function EducationSection() {
 							<h2 className="heading-2 mb-4">
 								My <span className="gradient-text">Education</span>
 							</h2>
-							<p className="body-large text-gray-400 max-w-2xl mx-auto">{education[0].description}</p>
+							<p className="body-large text-gray-400 max-w-2xl mx-auto">
+								{education[0].description}
+							</p>
 						</div>
 					</FadeIn>
 
@@ -25,7 +27,9 @@ export default function EducationSection() {
 							<FadeIn key={index} delay={0.2 * (index + 1)}>
 								<div className="relative mb-8 last:mb-0">
 									{/* Timeline Line */}
-									{index < education.length - 1 && <div className="absolute left-8 top-24 w-0.5 h-32 bg-gradient-to-b from-emerald-500/50 to-transparent" />}
+									{index < education.length - 1 && (
+										<div className="absolute left-8 top-24 w-0.5 h-32 bg-gradient-to-b from-emerald-500/50 to-transparent" />
+									)}
 
 									{/* Education Card */}
 									<div className="relative bg-gray-800/50 border border-gray-700/50 rounded-xl p-4 lg:p-8 hover:border-emerald-500/30 transition-all duration-300 group">
@@ -38,18 +42,26 @@ export default function EducationSection() {
 										<div className="space-y-12">
 											{/* Header: Degree & Institution */}
 											<div className="text-center lg:text-left mt-10 lg:mt-0">
-												<h3 className="heading-3 text-white group-hover:text-emerald-400 transition-colors duration-300 mb-2">{edu.degree}</h3>
-												<p className="text-emerald-400 font-medium text-lg">{edu.institution}</p>
+												<h3 className="heading-3 text-white group-hover:text-emerald-400 transition-colors duration-300 mb-2">
+													{edu.degree}
+												</h3>
+												<p className="text-emerald-400 font-medium text-lg">
+													{edu.institution}
+												</p>
 											</div>
 
 											{/* Details: Duration & GPA */}
 											<div className="flex flex-col sm:flex-row items-center justify-between lg:justify-start gap-4 lg:gap-6">
 												{/* GPA Display */}
 												<div className="flex items-center gap-3">
-													<span className="text-gray-400 font-medium text-xl">GPA:</span>
+													<span className="text-gray-400 font-medium text-xl">
+														GPA:
+													</span>
 													<div className="text-2xl font-bold text-white">
 														{edu.gpa}
-														<span className="text-lg text-gray-400 font-normal">/{edu.maxGpa}</span>
+														<span className="text-lg text-gray-400 font-normal">
+															/{edu.maxGpa}
+														</span>
 													</div>
 												</div>
 

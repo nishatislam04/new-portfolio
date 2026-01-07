@@ -1,7 +1,7 @@
 "use server";
 
-import { resend } from "@/lib/resend";
 import { PERSONAL_INFO } from "@/constants/personal-info";
+import { resend } from "@/lib/resend";
 
 interface EmailResponse {
 	success: boolean;
@@ -14,10 +14,19 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Sanitize HTML content to prevent XSS
 function sanitizeHtml(text: string): string {
-	return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;").replace(/\n/g, "<br>");
+	return text
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#x27;")
+		.replace(/\n/g, "<br>");
 }
 
-export async function sendEmail(_prevState: EmailResponse | null, formData: FormData): Promise<EmailResponse> {
+export async function sendEmail(
+	_prevState: EmailResponse | null,
+	formData: FormData,
+): Promise<EmailResponse> {
 	try {
 		// Extract and validate form data
 		const name = formData.get("name")?.toString()?.trim();
@@ -61,12 +70,15 @@ export async function sendEmail(_prevState: EmailResponse | null, formData: Form
 		];
 
 		const combinedText = `${name} ${email} ${message}`;
-		const hasSuspiciousContent = suspiciousPatterns.some((pattern) => pattern.test(combinedText));
+		const hasSuspiciousContent = suspiciousPatterns.some((pattern) =>
+			pattern.test(combinedText),
+		);
 
 		if (hasSuspiciousContent) {
 			return {
 				success: false,
-				error: "Message appears to be spam. Please contact me directly if this is a legitimate inquiry.",
+				error:
+					"Message appears to be spam. Please contact me directly if this is a legitimate inquiry.",
 			};
 		}
 
@@ -117,7 +129,8 @@ export async function sendEmail(_prevState: EmailResponse | null, formData: Form
 
 		return {
 			success: true,
-			message: "Thank you for your message! I'll get back to you within 24 hours.",
+			message:
+				"Thank you for your message! I'll get back to you within 24 hours.",
 		};
 	} catch (error) {
 		console.error("Email sending error:", error);
@@ -127,7 +140,8 @@ export async function sendEmail(_prevState: EmailResponse | null, formData: Form
 			if (error.message.includes("API key")) {
 				return {
 					success: false,
-					error: "Email service configuration error. Please contact me directly.",
+					error:
+						"Email service configuration error. Please contact me directly.",
 				};
 			}
 			if (error.message.includes("rate limit")) {
@@ -140,7 +154,8 @@ export async function sendEmail(_prevState: EmailResponse | null, formData: Form
 
 		return {
 			success: false,
-			error: "An unexpected error occurred. Please try again or contact me directly.",
+			error:
+				"An unexpected error occurred. Please try again or contact me directly.",
 		};
 	}
 }
