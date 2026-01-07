@@ -12,7 +12,7 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "./prismaNamespace"
+import type * as Prisma from "./prismaNamespace.ts"
 
 
 const config: runtime.GetPrismaClientConfig = {
@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  email String  @unique\n  name  String?\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider               = \"prisma-client\"\n  output                 = \"../src/generated\"\n  generatedFileExtension = \"ts\"\n  importFileExtension    = \"ts\"\n  moduleFormat           = \"esm\"\n  engineType             = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  email String  @unique\n  name  String?\n}\n\n/// Root profile for the portfolio. Everything else hangs off this.\nmodel Profile {\n  id   String @id @default(cuid())\n  /// Stable identifier to address this profile (e.g. \"nishat-mazumder\").\n  slug String @unique\n\n  /// Basic identity\n  name  String\n  title String?\n  /// Long-form bio / profile text from PERSONAL_INFO.profile\n  bio   String?\n\n  /// Contact information (mirrors CONTACT_INFO in constants)\n  email        String?\n  phone        String?\n  location     String?\n  locationLink String?\n  availability String?\n\n  /// Flexible skill buckets as JSON string arrays\n  /// PERSONAL_INFO.skills\n  skills    Json?\n  /// PERSONAL_INFO.techStack\n  techStack Json?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  /// Relations into more detailed, editable structures\n  socialLinks       SocialLink[]\n  workExperiences   WorkExperience[]\n  educationEntries  Education[]\n  toolboxCategories ToolboxCategory[]\n  portfolioProjects PortfolioProject[]\n  achievements      Achievement[]\n  stats             ProfileStats?\n  navigationItems   NavigationItem[]\n  tapeWords         TapeWord[]\n}\n\n/// Social/contact links such as Gmail, LinkedIn, WhatsApp, etc.\n/// Represents PERSONAL_INFO.SOCIAL_LINKS and other future link groups.\nmodel SocialLink {\n  id        String @id @default(cuid())\n  profileId String\n\n  /// Public-facing label, e.g. \"Gmail\", \"LinkedIn\"\n  label String\n  url   String\n\n  /// Icon key used by the UI (e.g. \"gmail\", \"linkedin\").\n  icon String?\n\n  /// Optional grouping context (\"contact\", \"footer\", etc.).\n  kind String?\n\n  isPrimary Boolean @default(true)\n  isPublic  Boolean @default(true)\n  sortOrder Int     @default(0)\n\n  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)\n\n  @@index([profileId])\n}\n\n/// Work experience timeline entries with nested achievements and technologies.\n/// Mirrors PERSONAL_INFO.workExperience.\nmodel WorkExperience {\n  id        String @id @default(cuid())\n  profileId String\n\n  company       String\n  position      String\n  location      String?\n  /// Employment type, e.g. \"Full-time\"\n  type          String?\n  /// Display-friendly duration, e.g. \"July 2024 - Current\"\n  durationLabel String?\n  /// Optional textual start/end labels (kept loose instead of strict dates)\n  startLabel    String?\n  endLabel      String?\n\n  description String?\n\n  /// JSON arrays for achievements and technologies for maximum flexibility.\n  /// achievements: string[]\n  achievements Json?\n  /// technologies: string[]\n  technologies Json?\n\n  isCurrent Boolean  @default(false)\n  isPublic  Boolean  @default(true)\n  sortOrder Int      @default(0)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)\n\n  @@index([profileId])\n}\n\n/// Education history with GPA and bullet highlights.\n/// Mirrors PERSONAL_INFO.education.\nmodel Education {\n  id        String @id @default(cuid())\n  profileId String\n\n  degree        String?\n  institution   String?\n  /// Display-friendly duration label (e.g. \"2021 - 2024\")\n  durationLabel String?\n  /// Stored as strings for flexibility (no strict numeric GPA typing needed).\n  gpa           String?\n  maxGpa        String?\n  description   String?\n\n  /// JSON array of bullet points describing the education highlights.\n  /// highlights: string[]\n  highlights Json?\n\n  isPublic  Boolean  @default(true)\n  sortOrder Int      @default(0)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)\n\n  @@index([profileId])\n}\n\n/// Horizontal toolbox rows with nested items like { title, icon }.\n/// Mirrors PERSONAL_INFO.toolboxCategories.\nmodel ToolboxCategory {\n  id        String @id @default(cuid())\n  profileId String\n\n  /// Stable identifier used in the app (e.g. \"languages\", \"frontend\").\n  slug  String\n  title String\n  /// Tailwind-ish color token (e.g. \"emerald\", \"sky\").\n  color String?\n\n  /// JSON array of items: [{ title: string, icon: string }].\n  items Json\n\n  isPublic  Boolean  @default(true)\n  sortOrder Int      @default(0)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)\n\n  @@unique([profileId, slug])\n  @@index([profileId])\n}\n\n/// Detailed project/case-study representation for the Projects section.\n/// Mirrors PERSONAL_INFO.portfolioProjects and the Project type.\nmodel PortfolioProject {\n  id        String @id @default(cuid())\n  profileId String\n\n  /// Human-friendly, URL-safe identifier (usually the constant's id).\n  slug    String\n  title   String\n  company String?\n  /// Kept as string for flexibility (e.g. \"2024\", \"2024–2025\").\n  year    String?\n\n  /// Free-form status string (\"completed\", \"in-progress\", \"coming-soon\", ...).\n  status   String?\n  category String?\n\n  shortDescription String?\n  fullDescription  String?\n\n  /// Deeply nested content stored as JSON for maximum schema flexibility.\n  /// keyFeatures: string[]\n  keyFeatures  Json?\n  /// results: { title: string; description?: string; ... }[]\n  results      Json?\n  /// coverImage: { key?: string; src?: string; alt: string; priority?: boolean; ... }\n  coverImage   Json?\n  /// images: { key?: string; src?: string; alt: string; caption?: string }[]\n  images       Json?\n  /// technologies: (string | { name: string; category?: string; icon?: string })[]\n  technologies Json?\n  /// architecture, challenges, solutions: string[] or richer structures.\n  architecture Json?\n  challenges   Json?\n  solutions    Json?\n  /// links: { type: string; url: string; label: string; icon?: string }[]\n  links        Json?\n  /// tags: string[]\n  tags         Json?\n\n  featured Boolean @default(false)\n  priority Int     @default(0)\n\n  hasLiveDemo  Boolean? @default(false)\n  isPrivate    Boolean? @default(false)\n  isComingSoon Boolean? @default(false)\n  isPublic     Boolean  @default(true)\n  sortOrder    Int      @default(0)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)\n\n  @@unique([profileId, slug])\n  @@index([profileId])\n}\n\n/// Aggregated stats used in CTA, e.g. experience years, projects, etc.\n/// Mirrors PERSONAL_INFO.stats.\nmodel ProfileStats {\n  id        String @id @default(cuid())\n  profileId String @unique\n\n  /// These are display labels (e.g. \"1+\", \"10+\", \"100%\"), not numeric values.\n  experienceLabel         String?\n  projectsCompletedLabel  String?\n  technologiesLabel       String?\n  clientSatisfactionLabel String?\n\n  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)\n}\n\n/// High-level achievements cards in the About section.\n/// Mirrors PERSONAL_INFO.achievements.\nmodel Achievement {\n  id        String @id @default(cuid())\n  profileId String\n\n  info   String?\n  number String?\n  text   String?\n\n  isPublic  Boolean  @default(true)\n  sortOrder Int      @default(0)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)\n\n  @@index([profileId])\n}\n\n/// Navigation items for the main header.\n/// Mirrors NAV_ITEMS in src/constants/index.ts.\nmodel NavigationItem {\n  id        String  @id @default(cuid())\n  profileId String?\n\n  label String\n  href  String\n\n  sortOrder Int     @default(0)\n  isPublic  Boolean @default(true)\n\n  profile Profile? @relation(fields: [profileId], references: [id], onDelete: SetNull)\n\n  @@index([profileId])\n}\n\n/// Scrolling tape words used in the hero/tape section.\n/// Mirrors TAPE_WORDS in src/constants/index.ts.\nmodel TapeWord {\n  id        String  @id @default(cuid())\n  profileId String?\n\n  value String\n\n  sortOrder Int     @default(0)\n  isPublic  Boolean @default(true)\n\n  profile Profile? @relation(fields: [profileId], references: [id], onDelete: SetNull)\n\n  @@index([profileId])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Profile\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bio\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"location\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"locationLink\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"availability\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"skills\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"techStack\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"socialLinks\",\"kind\":\"object\",\"type\":\"SocialLink\",\"relationName\":\"ProfileToSocialLink\"},{\"name\":\"workExperiences\",\"kind\":\"object\",\"type\":\"WorkExperience\",\"relationName\":\"ProfileToWorkExperience\"},{\"name\":\"educationEntries\",\"kind\":\"object\",\"type\":\"Education\",\"relationName\":\"EducationToProfile\"},{\"name\":\"toolboxCategories\",\"kind\":\"object\",\"type\":\"ToolboxCategory\",\"relationName\":\"ProfileToToolboxCategory\"},{\"name\":\"portfolioProjects\",\"kind\":\"object\",\"type\":\"PortfolioProject\",\"relationName\":\"PortfolioProjectToProfile\"},{\"name\":\"achievements\",\"kind\":\"object\",\"type\":\"Achievement\",\"relationName\":\"AchievementToProfile\"},{\"name\":\"stats\",\"kind\":\"object\",\"type\":\"ProfileStats\",\"relationName\":\"ProfileToProfileStats\"},{\"name\":\"navigationItems\",\"kind\":\"object\",\"type\":\"NavigationItem\",\"relationName\":\"NavigationItemToProfile\"},{\"name\":\"tapeWords\",\"kind\":\"object\",\"type\":\"TapeWord\",\"relationName\":\"ProfileToTapeWord\"}],\"dbName\":null},\"SocialLink\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"label\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"icon\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"kind\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isPrimary\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"ProfileToSocialLink\"}],\"dbName\":null},\"WorkExperience\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"company\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"position\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"location\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"durationLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"endLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"achievements\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"technologies\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"isCurrent\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"ProfileToWorkExperience\"}],\"dbName\":null},\"Education\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"degree\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"institution\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"durationLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"gpa\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"maxGpa\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"highlights\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"EducationToProfile\"}],\"dbName\":null},\"ToolboxCategory\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"color\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"items\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"ProfileToToolboxCategory\"}],\"dbName\":null},\"PortfolioProject\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"company\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"year\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"shortDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"keyFeatures\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"results\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"coverImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"images\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"technologies\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"architecture\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"challenges\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"solutions\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"links\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"tags\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"featured\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"priority\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"hasLiveDemo\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isPrivate\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isComingSoon\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"PortfolioProjectToProfile\"}],\"dbName\":null},\"ProfileStats\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"projectsCompletedLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"technologiesLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"clientSatisfactionLabel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"ProfileToProfileStats\"}],\"dbName\":null},\"Achievement\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"info\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"number\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"AchievementToProfile\"}],\"dbName\":null},\"NavigationItem\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"label\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"href\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"NavigationItemToProfile\"}],\"dbName\":null},\"TapeWord\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"profileId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"value\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sortOrder\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"isPublic\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"profile\",\"kind\":\"object\",\"type\":\"Profile\",\"relationName\":\"ProfileToTapeWord\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -183,6 +183,106 @@ export interface PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.profile`: Exposes CRUD operations for the **Profile** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Profiles
+    * const profiles = await prisma.profile.findMany()
+    * ```
+    */
+  get profile(): Prisma.ProfileDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.socialLink`: Exposes CRUD operations for the **SocialLink** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SocialLinks
+    * const socialLinks = await prisma.socialLink.findMany()
+    * ```
+    */
+  get socialLink(): Prisma.SocialLinkDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.workExperience`: Exposes CRUD operations for the **WorkExperience** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WorkExperiences
+    * const workExperiences = await prisma.workExperience.findMany()
+    * ```
+    */
+  get workExperience(): Prisma.WorkExperienceDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.education`: Exposes CRUD operations for the **Education** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Educations
+    * const educations = await prisma.education.findMany()
+    * ```
+    */
+  get education(): Prisma.EducationDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.toolboxCategory`: Exposes CRUD operations for the **ToolboxCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ToolboxCategories
+    * const toolboxCategories = await prisma.toolboxCategory.findMany()
+    * ```
+    */
+  get toolboxCategory(): Prisma.ToolboxCategoryDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.portfolioProject`: Exposes CRUD operations for the **PortfolioProject** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PortfolioProjects
+    * const portfolioProjects = await prisma.portfolioProject.findMany()
+    * ```
+    */
+  get portfolioProject(): Prisma.PortfolioProjectDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.profileStats`: Exposes CRUD operations for the **ProfileStats** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProfileStats
+    * const profileStats = await prisma.profileStats.findMany()
+    * ```
+    */
+  get profileStats(): Prisma.ProfileStatsDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.achievement`: Exposes CRUD operations for the **Achievement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Achievements
+    * const achievements = await prisma.achievement.findMany()
+    * ```
+    */
+  get achievement(): Prisma.AchievementDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.navigationItem`: Exposes CRUD operations for the **NavigationItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NavigationItems
+    * const navigationItems = await prisma.navigationItem.findMany()
+    * ```
+    */
+  get navigationItem(): Prisma.NavigationItemDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.tapeWord`: Exposes CRUD operations for the **TapeWord** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TapeWords
+    * const tapeWords = await prisma.tapeWord.findMany()
+    * ```
+    */
+  get tapeWord(): Prisma.TapeWordDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

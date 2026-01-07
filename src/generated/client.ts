@@ -16,12 +16,12 @@ import { fileURLToPath } from 'node:url'
 globalThis['__dirname'] = path.dirname(fileURLToPath(import.meta.url))
 
 import * as runtime from "@prisma/client/runtime/client"
-import * as $Enums from "./enums"
-import * as $Class from "./internal/class"
-import * as Prisma from "./internal/prismaNamespace"
+import * as $Enums from "./enums.ts"
+import * as $Class from "./internal/class.ts"
+import * as Prisma from "./internal/prismaNamespace.ts"
 
-export * as $Enums from './enums'
-export * from "./enums"
+export * as $Enums from './enums.ts'
+export * from "./enums.ts"
 /**
  * ## Prisma Client
  * 
@@ -44,3 +44,62 @@ export { Prisma }
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Profile
+ * Root profile for the portfolio. Everything else hangs off this.
+ */
+export type Profile = Prisma.ProfileModel
+/**
+ * Model SocialLink
+ * Social/contact links such as Gmail, LinkedIn, WhatsApp, etc.
+ * Represents PERSONAL_INFO.SOCIAL_LINKS and other future link groups.
+ */
+export type SocialLink = Prisma.SocialLinkModel
+/**
+ * Model WorkExperience
+ * Work experience timeline entries with nested achievements and technologies.
+ * Mirrors PERSONAL_INFO.workExperience.
+ */
+export type WorkExperience = Prisma.WorkExperienceModel
+/**
+ * Model Education
+ * Education history with GPA and bullet highlights.
+ * Mirrors PERSONAL_INFO.education.
+ */
+export type Education = Prisma.EducationModel
+/**
+ * Model ToolboxCategory
+ * Horizontal toolbox rows with nested items like { title, icon }.
+ * Mirrors PERSONAL_INFO.toolboxCategories.
+ */
+export type ToolboxCategory = Prisma.ToolboxCategoryModel
+/**
+ * Model PortfolioProject
+ * Detailed project/case-study representation for the Projects section.
+ * Mirrors PERSONAL_INFO.portfolioProjects and the Project type.
+ */
+export type PortfolioProject = Prisma.PortfolioProjectModel
+/**
+ * Model ProfileStats
+ * Aggregated stats used in CTA, e.g. experience years, projects, etc.
+ * Mirrors PERSONAL_INFO.stats.
+ */
+export type ProfileStats = Prisma.ProfileStatsModel
+/**
+ * Model Achievement
+ * High-level achievements cards in the About section.
+ * Mirrors PERSONAL_INFO.achievements.
+ */
+export type Achievement = Prisma.AchievementModel
+/**
+ * Model NavigationItem
+ * Navigation items for the main header.
+ * Mirrors NAV_ITEMS in src/constants/index.ts.
+ */
+export type NavigationItem = Prisma.NavigationItemModel
+/**
+ * Model TapeWord
+ * Scrolling tape words used in the hero/tape section.
+ * Mirrors TAPE_WORDS in src/constants/index.ts.
+ */
+export type TapeWord = Prisma.TapeWordModel

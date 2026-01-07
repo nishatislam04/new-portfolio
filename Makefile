@@ -39,6 +39,9 @@ type-check:
 	npm run type-check
 
 # Database operations
+generate:
+	npx prisma generate
+	
 seed:
 	npm run db:seed
 

@@ -17,8 +17,8 @@
 
 import * as runtime from "@prisma/client/runtime/index-browser"
 
-export type * from '../models'
-export type * from './prismaNamespace'
+export type * from '../models.ts'
+export type * from './prismaNamespace.ts'
 
 export const Decimal = runtime.Decimal
 
@@ -51,7 +51,17 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  Profile: 'Profile',
+  SocialLink: 'SocialLink',
+  WorkExperience: 'WorkExperience',
+  Education: 'Education',
+  ToolboxCategory: 'ToolboxCategory',
+  PortfolioProject: 'PortfolioProject',
+  ProfileStats: 'ProfileStats',
+  Achievement: 'Achievement',
+  NavigationItem: 'NavigationItem',
+  TapeWord: 'TapeWord'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -79,12 +89,205 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const ProfileScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  title: 'title',
+  bio: 'bio',
+  email: 'email',
+  phone: 'phone',
+  location: 'location',
+  locationLink: 'locationLink',
+  availability: 'availability',
+  skills: 'skills',
+  techStack: 'techStack',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
+
+
+export const SocialLinkScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  label: 'label',
+  url: 'url',
+  icon: 'icon',
+  kind: 'kind',
+  isPrimary: 'isPrimary',
+  isPublic: 'isPublic',
+  sortOrder: 'sortOrder'
+} as const
+
+export type SocialLinkScalarFieldEnum = (typeof SocialLinkScalarFieldEnum)[keyof typeof SocialLinkScalarFieldEnum]
+
+
+export const WorkExperienceScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  company: 'company',
+  position: 'position',
+  location: 'location',
+  type: 'type',
+  durationLabel: 'durationLabel',
+  startLabel: 'startLabel',
+  endLabel: 'endLabel',
+  description: 'description',
+  achievements: 'achievements',
+  technologies: 'technologies',
+  isCurrent: 'isCurrent',
+  isPublic: 'isPublic',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WorkExperienceScalarFieldEnum = (typeof WorkExperienceScalarFieldEnum)[keyof typeof WorkExperienceScalarFieldEnum]
+
+
+export const EducationScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  degree: 'degree',
+  institution: 'institution',
+  durationLabel: 'durationLabel',
+  gpa: 'gpa',
+  maxGpa: 'maxGpa',
+  description: 'description',
+  highlights: 'highlights',
+  isPublic: 'isPublic',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
+
+
+export const ToolboxCategoryScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  slug: 'slug',
+  title: 'title',
+  color: 'color',
+  items: 'items',
+  isPublic: 'isPublic',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ToolboxCategoryScalarFieldEnum = (typeof ToolboxCategoryScalarFieldEnum)[keyof typeof ToolboxCategoryScalarFieldEnum]
+
+
+export const PortfolioProjectScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  slug: 'slug',
+  title: 'title',
+  company: 'company',
+  year: 'year',
+  status: 'status',
+  category: 'category',
+  shortDescription: 'shortDescription',
+  fullDescription: 'fullDescription',
+  keyFeatures: 'keyFeatures',
+  results: 'results',
+  coverImage: 'coverImage',
+  images: 'images',
+  technologies: 'technologies',
+  architecture: 'architecture',
+  challenges: 'challenges',
+  solutions: 'solutions',
+  links: 'links',
+  tags: 'tags',
+  featured: 'featured',
+  priority: 'priority',
+  hasLiveDemo: 'hasLiveDemo',
+  isPrivate: 'isPrivate',
+  isComingSoon: 'isComingSoon',
+  isPublic: 'isPublic',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PortfolioProjectScalarFieldEnum = (typeof PortfolioProjectScalarFieldEnum)[keyof typeof PortfolioProjectScalarFieldEnum]
+
+
+export const ProfileStatsScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  experienceLabel: 'experienceLabel',
+  projectsCompletedLabel: 'projectsCompletedLabel',
+  technologiesLabel: 'technologiesLabel',
+  clientSatisfactionLabel: 'clientSatisfactionLabel'
+} as const
+
+export type ProfileStatsScalarFieldEnum = (typeof ProfileStatsScalarFieldEnum)[keyof typeof ProfileStatsScalarFieldEnum]
+
+
+export const AchievementScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  info: 'info',
+  number: 'number',
+  text: 'text',
+  isPublic: 'isPublic',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AchievementScalarFieldEnum = (typeof AchievementScalarFieldEnum)[keyof typeof AchievementScalarFieldEnum]
+
+
+export const NavigationItemScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  label: 'label',
+  href: 'href',
+  sortOrder: 'sortOrder',
+  isPublic: 'isPublic'
+} as const
+
+export type NavigationItemScalarFieldEnum = (typeof NavigationItemScalarFieldEnum)[keyof typeof NavigationItemScalarFieldEnum]
+
+
+export const TapeWordScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  value: 'value',
+  sortOrder: 'sortOrder',
+  isPublic: 'isPublic'
+} as const
+
+export type TapeWordScalarFieldEnum = (typeof TapeWordScalarFieldEnum)[keyof typeof TapeWordScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: 'DbNull',
+  JsonNull: 'JsonNull'
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: 'JsonNull'
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -101,4 +304,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: 'DbNull',
+  JsonNull: 'JsonNull',
+  AnyNull: 'AnyNull'
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

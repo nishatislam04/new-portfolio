@@ -8,5 +8,15 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/User'
-export type * from './commonInputTypes'
+export type * from './models/User.ts'
+export type * from './models/Profile.ts'
+export type * from './models/SocialLink.ts'
+export type * from './models/WorkExperience.ts'
+export type * from './models/Education.ts'
+export type * from './models/ToolboxCategory.ts'
+export type * from './models/PortfolioProject.ts'
+export type * from './models/ProfileStats.ts'
+export type * from './models/Achievement.ts'
+export type * from './models/NavigationItem.ts'
+export type * from './models/TapeWord.ts'
+export type * from './commonInputTypes.ts'

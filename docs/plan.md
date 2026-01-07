@@ -5,8 +5,8 @@
 
 ## checklist
 
-- [] database working
-- [] prisma working
+- [x] database working
+- [x] prisma working
 - [] create prisma schema
 - [] add a detailed docs about the schema
 - [] plan about the admin panel ui where we can manage the portfolio like adding projects, skills, etc.

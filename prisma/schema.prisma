@@ -19,6 +19,288 @@ datasource db {
 
 model User {
   id    Int     @id @default(autoincrement())
-  email String @unique
+  email String  @unique
   name  String?
+}
+
+/// Root profile for the portfolio. Everything else hangs off this.
+model Profile {
+  id           String   @id @default(cuid())
+  /// Stable identifier to address this profile (e.g. "nishat-mazumder").
+  slug         String   @unique
+
+  /// Basic identity
+  name         String
+  title        String?
+  /// Long-form bio / profile text from PERSONAL_INFO.profile
+  bio          String?
+
+  /// Contact information (mirrors CONTACT_INFO in constants)
+  email        String?
+  phone        String?
+  location     String?
+  locationLink String?
+  availability String?
+
+  /// Flexible skill buckets as JSON string arrays
+  /// PERSONAL_INFO.skills
+  skills       Json?
+  /// PERSONAL_INFO.techStack
+  techStack    Json?
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  /// Relations into more detailed, editable structures
+  socialLinks       SocialLink[]
+  workExperiences  WorkExperience[]
+  educationEntries Education[]
+  toolboxCategories ToolboxCategory[]
+  portfolioProjects PortfolioProject[]
+  achievements     Achievement[]
+  stats            ProfileStats?
+  navigationItems  NavigationItem[]
+  tapeWords        TapeWord[]
+}
+
+/// Social/contact links such as Gmail, LinkedIn, WhatsApp, etc.
+/// Represents PERSONAL_INFO.SOCIAL_LINKS and other future link groups.
+model SocialLink {
+  id        String  @id @default(cuid())
+  profileId String
+
+  /// Public-facing label, e.g. "Gmail", "LinkedIn"
+  label     String
+  url       String
+
+  /// Icon key used by the UI (e.g. "gmail", "linkedin").
+  icon      String?
+
+  /// Optional grouping context ("contact", "footer", etc.).
+  kind      String?
+
+  isPrimary Boolean @default(true)
+  isPublic  Boolean @default(true)
+  sortOrder Int     @default(0)
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+}
+
+/// Work experience timeline entries with nested achievements and technologies.
+/// Mirrors PERSONAL_INFO.workExperience.
+model WorkExperience {
+  id        String   @id @default(cuid())
+  profileId String
+
+  company   String
+  position  String
+  location  String?
+  /// Employment type, e.g. "Full-time"
+  type          String?
+  /// Display-friendly duration, e.g. "July 2024 - Current"
+  durationLabel String?
+  /// Optional textual start/end labels (kept loose instead of strict dates)
+  startLabel    String?
+  endLabel      String?
+
+  description String?
+
+  /// JSON arrays for achievements and technologies for maximum flexibility.
+  /// achievements: string[]
+  achievements Json?
+  /// technologies: string[]
+  technologies Json?
+
+  isCurrent Boolean  @default(false)
+  isPublic  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+}
+
+/// Education history with GPA and bullet highlights.
+/// Mirrors PERSONAL_INFO.education.
+model Education {
+  id        String   @id @default(cuid())
+  profileId String
+
+  degree        String?
+  institution   String?
+  /// Display-friendly duration label (e.g. "2021 - 2024")
+  durationLabel String?
+  /// Stored as strings for flexibility (no strict numeric GPA typing needed).
+  gpa           String?
+  maxGpa        String?
+  description   String?
+
+  /// JSON array of bullet points describing the education highlights.
+  /// highlights: string[]
+  highlights Json?
+
+  isPublic  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+}
+
+/// Horizontal toolbox rows with nested items like { title, icon }.
+/// Mirrors PERSONAL_INFO.toolboxCategories.
+model ToolboxCategory {
+  id        String   @id @default(cuid())
+  profileId String
+
+  /// Stable identifier used in the app (e.g. "languages", "frontend").
+  slug      String
+  title     String
+  /// Tailwind-ish color token (e.g. "emerald", "sky").
+  color     String?
+
+  /// JSON array of items: [{ title: string, icon: string }].
+  items     Json
+
+  isPublic  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+  @@unique([profileId, slug])
+}
+
+/// Detailed project/case-study representation for the Projects section.
+/// Mirrors PERSONAL_INFO.portfolioProjects and the Project type.
+model PortfolioProject {
+  id        String   @id @default(cuid())
+  profileId String
+
+  /// Human-friendly, URL-safe identifier (usually the constant's id).
+  slug   String
+  title  String
+  company String?
+  /// Kept as string for flexibility (e.g. "2024", "2024–2025").
+  year    String?
+
+  /// Free-form status string ("completed", "in-progress", "coming-soon", ...).
+  status   String?
+  category String?
+
+  shortDescription String?
+  fullDescription  String?
+
+  /// Deeply nested content stored as JSON for maximum schema flexibility.
+  /// keyFeatures: string[]
+  keyFeatures Json?
+  /// results: { title: string; description?: string; ... }[]
+  results     Json?
+  /// coverImage: { key?: string; src?: string; alt: string; priority?: boolean; ... }
+  coverImage  Json?
+  /// images: { key?: string; src?: string; alt: string; caption?: string }[]
+  images      Json?
+  /// technologies: (string | { name: string; category?: string; icon?: string })[]
+  technologies Json?
+  /// architecture, challenges, solutions: string[] or richer structures.
+  architecture Json?
+  challenges   Json?
+  solutions    Json?
+  /// links: { type: string; url: string; label: string; icon?: string }[]
+  links Json?
+  /// tags: string[]
+  tags  Json?
+
+  featured Boolean @default(false)
+  priority Int     @default(0)
+
+  hasLiveDemo Boolean? @default(false)
+  isPrivate    Boolean? @default(false)
+  isComingSoon Boolean? @default(false)
+  isPublic     Boolean  @default(true)
+  sortOrder    Int      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+  @@unique([profileId, slug])
+}
+
+/// Aggregated stats used in CTA, e.g. experience years, projects, etc.
+/// Mirrors PERSONAL_INFO.stats.
+model ProfileStats {
+  id        String @id @default(cuid())
+  profileId String @unique
+
+  /// These are display labels (e.g. "1+", "10+", "100%"), not numeric values.
+  experienceLabel        String?
+  projectsCompletedLabel String?
+  technologiesLabel      String?
+  clientSatisfactionLabel String?
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+}
+
+/// High-level achievements cards in the About section.
+/// Mirrors PERSONAL_INFO.achievements.
+model Achievement {
+  id        String   @id @default(cuid())
+  profileId String
+
+  info   String?
+  number String?
+  text   String?
+
+  isPublic  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+}
+
+/// Navigation items for the main header.
+/// Mirrors NAV_ITEMS in src/constants/index.ts.
+model NavigationItem {
+  id        String   @id @default(cuid())
+  profileId String?
+
+  label     String
+  href      String
+
+  sortOrder Int      @default(0)
+  isPublic  Boolean  @default(true)
+
+  profile Profile? @relation(fields: [profileId], references: [id], onDelete: SetNull)
+
+  @@index([profileId])
+}
+
+/// Scrolling tape words used in the hero/tape section.
+/// Mirrors TAPE_WORDS in src/constants/index.ts.
+model TapeWord {
+  id        String   @id @default(cuid())
+  profileId String?
+
+  value     String
+
+  sortOrder Int      @default(0)
+  isPublic  Boolean  @default(true)
+
+  profile Profile? @relation(fields: [profileId], references: [id], onDelete: SetNull)
+
+  @@index([profileId])
 }
