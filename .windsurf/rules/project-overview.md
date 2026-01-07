@@ -331,3 +331,7 @@ export { Component };
 These rules ensure consistent, professional, and accessible UI components that align with the portfolio's design system. Always prioritize user experience, performance, and maintainability when developing new features.
 
 **Remember**: Consistency is key to a professional portfolio. Every component should feel like part of a cohesive system, not a collection of disparate elements.
+
+# project bootstrap details
+
+Project runs Next.js dev server bound to host 192.168.0.103 on port 3000 (scripts use -H 192.168.0.103). Use this when invoking MCP/browser to target http://192.168.0.103:3000. MCP Next.js tools are available for server management.
