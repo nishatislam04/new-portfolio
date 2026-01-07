@@ -50,13 +50,13 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
    ```
 
 5. **Open in browser**
-   Navigate to [http://192.168.0.106:3000](http://192.168.0.106:3000)
+   Navigate to [http://192.168.0.103:3000](http://192.168.0.103:3000)
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
 
-1. **Prepare for Production**
+1. **Prepare for Production in local development**
 
    ```bash
    make lint:fix
@@ -66,14 +66,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
 
 2. **Deploy to Vercel**
    - Push your code to GitHub
-   - Connect your repository to Vercel
    - Set environment variables in Vercel dashboard
-   - Deploy automatically with each push
-
-3. **Environment Variables**
-   - Copy `.env.example` to `.env.local`
-   - Fill in your actual values
-   - Add the same variables to Vercel dashboard
 
 ### Manual Build
 

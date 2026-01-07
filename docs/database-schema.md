@@ -1,6 +1,6 @@
 # Portfolio Database & Prisma Schema Design
 
-This document explains the **data model** that powers the portfolio, how it maps from the current `src/constants` data, and why it is intentionally designed to be **flexible, loosely-typed where it matters, and admin‑UI friendly**.
+This document explains the **data model** that powers the portfolio
 
 The goal is:
 
@@ -47,8 +47,8 @@ model Profile {
   title        String?
   bio          String?
 
-  email        String?
-  phone        String?
+  email        String @unique
+  phone        String @unique
   location     String?
   locationLink String?
   availability String?
@@ -71,7 +71,7 @@ model Profile {
 }
 ```
 
-### Mapping from constants
+### Mapping from constants for profile
 
 From `src/constants/personal-info.ts`:
 
@@ -109,7 +109,7 @@ model SocialLink {
   label     String
   url       String
   icon      String?
-  kind      String?
+  kind      String? // did not understood yet
 
   isPrimary Boolean @default(true)
   isPublic  Boolean @default(true)
@@ -121,7 +121,7 @@ model SocialLink {
 }
 ```
 
-### Mapping from constants
+### Mapping from constants for social links
 
 From `PERSONAL_INFO.SOCIAL_LINKS` (used in Contact + Footer):
 
@@ -171,7 +171,7 @@ model WorkExperience {
 }
 ```
 
-### Mapping from constants
+### Mapping from constants for work experience
 
 From `PERSONAL_INFO.workExperience`:
 
@@ -235,7 +235,7 @@ model Education {
 }
 ```
 
-### Mapping from constants
+### Mapping from constants for education
 
 From `PERSONAL_INFO.education`:
 
@@ -287,7 +287,7 @@ model ToolboxCategory {
 }
 ```
 
-### Mapping from constants
+### Mapping from constants for toolbox categories
 
 From `PERSONAL_INFO.toolboxCategories`:
 
@@ -405,7 +405,7 @@ model ProfileStats {
 }
 ```
 
-### Mapping from constants
+### Mapping from constants for profile stats
 
 From `PERSONAL_INFO.stats`:
 
@@ -413,11 +413,6 @@ From `PERSONAL_INFO.stats`:
 - `projectsCompleted` (`"10+"`) → `projectsCompletedLabel`
 - `technologies` (`"20+"`) → `technologiesLabel`
 - `clientSatisfaction` (`"100%"`) → `clientSatisfactionLabel`
-
-### Why labels instead of numbers?
-
-- The CTA section (`AnimatedCounter`) uses these as **display values** and they can include `+` or `%`.
-- They are not real numeric KPIs – no need for numeric types and parsing.
 
 ---
 
@@ -443,7 +438,7 @@ model Achievement {
 }
 ```
 
-### Mapping from constants
+### Mapping from constants for achievements
 
 From `PERSONAL_INFO.achievements`:
 
@@ -453,29 +448,13 @@ From `PERSONAL_INFO.achievements`:
 
 These drive the **About → Key Highlights** cards.
 
-
 ---
 
-## 10. NavigationItem & TapeWord
+## 10. TapeWord
 
-These two models cover **`src/constants/index.ts`**, which is currently also hardcoded.
+This model covers **`src/constants/index.ts`**, which is currently also hardcoded.
 
 ```prisma
-model NavigationItem {
-  id        String   @id @default(cuid())
-  profileId String?
-
-  label     String
-  href      String
-
-  sortOrder Int      @default(0)
-  isPublic  Boolean  @default(true)
-
-  profile Profile? @relation(fields: [profileId], references: [id], onDelete: SetNull)
-
-  @@index([profileId])
-}
-
 model TapeWord {
   id        String   @id @default(cuid())
   profileId String?
@@ -491,14 +470,13 @@ model TapeWord {
 }
 ```
 
-### Mapping from constants
+### Mapping from Constants for tape words
 
 From `src/constants/index.ts`:
 
-- `NAV_ITEMS: { name, href }[]` → `NavigationItem` rows (`label`, `href`, `sortOrder`)
 - `TAPE_WORDS: string[]` → `TapeWord` rows (`value`, `sortOrder`)
 
-This means your **header navigation** and **tape section** become editable through the admin panel as well.
+This means your **tape section** becomes editable through the admin panel.
 
 ---
 
@@ -512,100 +490,3 @@ Your draft schema from the previous chat was more normalized and strict. Here ar
 - **`EducationHighlight`** → replaced by `highlights: Json` on `Education`.
 - **`Skill`** model → replaced by `skills: Json` and `techStack: Json` on `Profile`.
 - **`Status` enum** → replaced by free‑form `status: String?` on `PortfolioProject`.
-
-### Why this is better for your use‑case
-
-- These values are **presentation‑only**, not used for complex relational queries.
-- You often deal with them as **arrays on a single card** (work entry, education entry, project), not as standalone entities.
-- JSON keeps things **loose and easy to change** while still being strongly typed in TypeScript at the app layer.
-
-### What we added beyond the draft
-
-- **`NavigationItem`** and **`TapeWord`** to remove remaining hardcoded UI constants.
-- **`slug`** on `Profile` and `PortfolioProject` for admin‑friendly routing.
-- Flexible **JSON columns** for project details (`coverImage`, `images`, `architecture`, `challenges`, `solutions`, `links`, `tags`).
-
----
-
-## 12. Seed Strategy
-
-We introduced two pieces for seeding:
-
-- `prisma/seed-data.ts` – a **typed snapshot** of the current constants, but without image imports.
-- `prisma/seed.ts` – the **Prisma seeder** that writes this data into the DB.
-
-### Why a separate `seed-data.ts` instead of importing directly from `src/constants/personal-info.ts`?
-
-- Your constants file imports **Next.js image modules**, which don’t make sense in a pure Node.js seed context.
-- The seed only needs **semantic keys** (like `"teamDocsCover"`), not actual image binaries.
-- Keeping seed data **framework‑agnostic** avoids coupling Prisma seeding to Next.js build behavior.
-
-### How the seed works
-
-1. Connects to Postgres using `DATABASE_URL`.
-2. Looks for an existing `Profile` with the `seedProfile.slug`.
-   - If found, deletes it for a **clean, idempotent** reseed.
-3. Creates the `Profile` root.
-4. Inserts child data in this order:
-   - `SocialLink` (from `seedProfile.socialLinks`)
-   - `WorkExperience` (from `seedProfile.workExperience`)
-   - `Education` (from `seedProfile.education`)
-   - `ProfileStats` (from `seedProfile.stats`)
-   - `Achievement` (from `seedProfile.achievements`)
-   - `ToolboxCategory` (from `seedProfile.toolbox`)
-   - `PortfolioProject` (from `seedProfile.projects`)
-   - `NavigationItem` (from `NAV_ITEMS` constants)
-   - `TapeWord` (from `TAPE_WORDS` constants)
-
-Running:
-
-```bash
-npm run db:generate    # npx prisma generate
-npm run db:push        # or db:migrate when you start using migrations
-npm run db:seed
-```
-
-will populate the database so that **all sections of your portfolio can be powered by the DB** instead of hardcoded constants.
-
-> **Note:** After editing `schema.prisma`, always re‑run `npm run db:generate` so that TypeScript types for `PrismaClient` include all the new models.
-
----
-
-## 13. How This Supports the Future Admin Panel
-
-With this schema:
-
-- The admin UI can use **simple CRUD screens** per entity:
-  - Profile basics (name, title, bio, contact info, skills, tech stack)
-  - Social links (list + reorder)
-  - Work experiences (list with achievements/technologies arrays)
-  - Education entries (GPA + highlights)
-  - Toolbox categories with items (nested array editor)
-  - Projects (rich forms, repeaters for features/results, JSON‑backed advanced fields)
-  - Stats, Achievements, Navigation, Tape words
-- Relations are **straightforward** (mostly `profileId` foreign keys).
-- JSON fields give you room to **iterate the content model** without constant DB migrations.
-- You can add **visibility flags** (`isPublic`, `isPrivate`, `isComingSoon`) to control what is shown.
-
----
-
-## 14. What Might Still Be Missing / Future Extensions
-
-A few ideas you might want later (but we intentionally did not bake into the first version):
-
-- **Auth & Admin users** – currently the `User` model is still just a placeholder. Once you finalize how `better-auth` will be used, you can extend or replace it.
-- **Audit fields** like `createdBy` / `updatedBy` (admins) on key content tables.
-- **Draft vs published** states for projects or major sections.
-- **Multi‑profile** support: additional `Profile` rows, each with their own content, reusing the same schema.
-- **More structured project tech**: if you ever need **tech filters** (e.g. query DB for all `Next.js` projects), you might normalize technologies into a separate table instead of JSON.
-
----
-
-## 15. Summary of Improvements
-
-- **Constants → Database**: Everything previously hardcoded (`PERSONAL_INFO`, `NAV_ITEMS`, `TAPE_WORDS`) now has a home in the DB.
-- **Flexible, not over‑normalized**: We avoided unnecessary join tables by pushing bullets, lists, and nested objects into JSON fields where that makes sense.
-- **Admin‑friendly**: Every piece of content your UI uses lives in its own table or JSON field, ready for a CRUD UI.
-- **Future‑proof**: You can grow the content model (especially for projects and toolbox) without major DB migrations.
-
-This schema is designed to be **practical for a portfolio**: easy to reason about, straightforward to seed, and flexible enough to support a rich admin panel experience without becoming an over‑engineered CMS.
