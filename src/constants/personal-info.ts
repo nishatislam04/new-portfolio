@@ -524,7 +524,7 @@ export const PERSONAL_INFO = {
 				"Bun",
 				"Docker",
 			],
-			featured: true,
+			featured: false,
 			priority: 3,
 			shortDescription:
 				"Smart publishing hub streaming the latest category-driven stories with rich author tooling and role-ready governance.",
