@@ -11,11 +11,18 @@
 		"type-check": "tsc --noEmit",
 		"build:analyze": "ANALYZE=true next build",
 		"preview": "next build && next start -H 192.168.0.103",
-		"db:seed": "tsx prisma/seed.ts"
+		"db:seed": "tsx prisma/seed.ts",
+		"db:generate": "npx prisma generate",
+		"db:push": "npx prisma db push",
+		"db:migrate": "npx prisma migrate dev",
+		"db:studio": "npx prisma studio",
+		"db:reset": "npx prisma migrate reset"
 	},
 	"dependencies": {
+		"@prisma/adapter-pg": "^7.2.0",
 		"@radix-ui/react-dialog": "^1.1.15",
 		"@svgr/webpack": "^8.1.0",
+		"better-auth": "^1.4.10",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"dotenv": "^17.2.0",

@@ -7,6 +7,10 @@
 generator client {
   provider = "prisma-client"
   output   = "../src/generated"
+  generatedFileExtension = "ts"
+  importFileExtension    = "ts"
+  moduleFormat           = "esm"
+  engineType             = "client"
 }
 
 datasource db {
@@ -18,4 +22,3 @@ model User {
   email String @unique
   name  String?
 }
-

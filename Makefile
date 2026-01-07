@@ -39,19 +39,22 @@ type-check:
 	npm run type-check
 
 # Database operations
-db-seed:
+seed:
 	npm run db:seed
 
-db-push:
+push:
 	npx prisma db push
 
-db-migrate:
+migrate:
 	npx prisma migrate dev
 
-db-studio:
+reset:
+	npx prisma migrate reset
+
+studio:
 	npx prisma studio
 
-db-up:
+up:
 	@echo "Starting Docker services..."
 	docker-compose up -d
 
