@@ -92,12 +92,6 @@ export type ProfileStats = Prisma.ProfileStatsModel
  */
 export type Achievement = Prisma.AchievementModel
 /**
- * Model NavigationItem
- * Navigation items for the main header.
- * Mirrors NAV_ITEMS in src/constants/index.ts.
- */
-export type NavigationItem = Prisma.NavigationItemModel
-/**
  * Model TapeWord
  * Scrolling tape words used in the hero/tape section.
  * Mirrors TAPE_WORDS in src/constants/index.ts.

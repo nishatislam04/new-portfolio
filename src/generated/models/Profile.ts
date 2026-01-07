@@ -199,8 +199,8 @@ export type ProfileGroupByOutputType = {
   name: string
   title: string | null
   bio: string | null
-  email: string | null
-  phone: string | null
+  email: string
+  phone: string
   location: string | null
   locationLink: string | null
   availability: string | null
@@ -237,8 +237,8 @@ export type ProfileWhereInput = {
   name?: Prisma.StringFilter<"Profile"> | string
   title?: Prisma.StringNullableFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
-  email?: Prisma.StringNullableFilter<"Profile"> | string | null
-  phone?: Prisma.StringNullableFilter<"Profile"> | string | null
+  email?: Prisma.StringFilter<"Profile"> | string
+  phone?: Prisma.StringFilter<"Profile"> | string
   location?: Prisma.StringNullableFilter<"Profile"> | string | null
   locationLink?: Prisma.StringNullableFilter<"Profile"> | string | null
   availability?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -253,7 +253,6 @@ export type ProfileWhereInput = {
   portfolioProjects?: Prisma.PortfolioProjectListRelationFilter
   achievements?: Prisma.AchievementListRelationFilter
   stats?: Prisma.XOR<Prisma.ProfileStatsNullableScalarRelationFilter, Prisma.ProfileStatsWhereInput> | null
-  navigationItems?: Prisma.NavigationItemListRelationFilter
   tapeWords?: Prisma.TapeWordListRelationFilter
 }
 
@@ -263,8 +262,8 @@ export type ProfileOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLink?: Prisma.SortOrderInput | Prisma.SortOrder
   availability?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -279,21 +278,20 @@ export type ProfileOrderByWithRelationInput = {
   portfolioProjects?: Prisma.PortfolioProjectOrderByRelationAggregateInput
   achievements?: Prisma.AchievementOrderByRelationAggregateInput
   stats?: Prisma.ProfileStatsOrderByWithRelationInput
-  navigationItems?: Prisma.NavigationItemOrderByRelationAggregateInput
   tapeWords?: Prisma.TapeWordOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   slug?: string
+  email?: string
+  phone?: string
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   name?: Prisma.StringFilter<"Profile"> | string
   title?: Prisma.StringNullableFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
-  email?: Prisma.StringNullableFilter<"Profile"> | string | null
-  phone?: Prisma.StringNullableFilter<"Profile"> | string | null
   location?: Prisma.StringNullableFilter<"Profile"> | string | null
   locationLink?: Prisma.StringNullableFilter<"Profile"> | string | null
   availability?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -308,9 +306,8 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   portfolioProjects?: Prisma.PortfolioProjectListRelationFilter
   achievements?: Prisma.AchievementListRelationFilter
   stats?: Prisma.XOR<Prisma.ProfileStatsNullableScalarRelationFilter, Prisma.ProfileStatsWhereInput> | null
-  navigationItems?: Prisma.NavigationItemListRelationFilter
   tapeWords?: Prisma.TapeWordListRelationFilter
-}, "id" | "slug">
+}, "id" | "slug" | "email" | "phone">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -318,8 +315,8 @@ export type ProfileOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLink?: Prisma.SortOrderInput | Prisma.SortOrder
   availability?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -341,8 +338,8 @@ export type ProfileScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   title?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
-  email?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
-  phone?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
+  email?: Prisma.StringWithAggregatesFilter<"Profile"> | string
+  phone?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   location?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   locationLink?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   availability?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
@@ -358,8 +355,8 @@ export type ProfileCreateInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -374,7 +371,6 @@ export type ProfileCreateInput = {
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -384,8 +380,8 @@ export type ProfileUncheckedCreateInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -400,7 +396,6 @@ export type ProfileUncheckedCreateInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -410,8 +405,8 @@ export type ProfileUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -426,7 +421,6 @@ export type ProfileUpdateInput = {
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -436,8 +430,8 @@ export type ProfileUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -452,7 +446,6 @@ export type ProfileUncheckedUpdateInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
 
@@ -462,8 +455,8 @@ export type ProfileCreateManyInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -479,8 +472,8 @@ export type ProfileUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -496,8 +489,8 @@ export type ProfileUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -666,22 +659,6 @@ export type ProfileUpdateOneRequiredWithoutAchievementsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutAchievementsInput, Prisma.ProfileUpdateWithoutAchievementsInput>, Prisma.ProfileUncheckedUpdateWithoutAchievementsInput>
 }
 
-export type ProfileCreateNestedOneWithoutNavigationItemsInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutNavigationItemsInput, Prisma.ProfileUncheckedCreateWithoutNavigationItemsInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutNavigationItemsInput
-  connect?: Prisma.ProfileWhereUniqueInput
-}
-
-export type ProfileUpdateOneWithoutNavigationItemsNestedInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutNavigationItemsInput, Prisma.ProfileUncheckedCreateWithoutNavigationItemsInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutNavigationItemsInput
-  upsert?: Prisma.ProfileUpsertWithoutNavigationItemsInput
-  disconnect?: Prisma.ProfileWhereInput | boolean
-  delete?: Prisma.ProfileWhereInput | boolean
-  connect?: Prisma.ProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutNavigationItemsInput, Prisma.ProfileUpdateWithoutNavigationItemsInput>, Prisma.ProfileUncheckedUpdateWithoutNavigationItemsInput>
-}
-
 export type ProfileCreateNestedOneWithoutTapeWordsInput = {
   create?: Prisma.XOR<Prisma.ProfileCreateWithoutTapeWordsInput, Prisma.ProfileUncheckedCreateWithoutTapeWordsInput>
   connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutTapeWordsInput
@@ -704,8 +681,8 @@ export type ProfileCreateWithoutSocialLinksInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -719,7 +696,6 @@ export type ProfileCreateWithoutSocialLinksInput = {
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -729,8 +705,8 @@ export type ProfileUncheckedCreateWithoutSocialLinksInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -744,7 +720,6 @@ export type ProfileUncheckedCreateWithoutSocialLinksInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -770,8 +745,8 @@ export type ProfileUpdateWithoutSocialLinksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -785,7 +760,6 @@ export type ProfileUpdateWithoutSocialLinksInput = {
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -795,8 +769,8 @@ export type ProfileUncheckedUpdateWithoutSocialLinksInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -810,7 +784,6 @@ export type ProfileUncheckedUpdateWithoutSocialLinksInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
 
@@ -820,8 +793,8 @@ export type ProfileCreateWithoutWorkExperiencesInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -835,7 +808,6 @@ export type ProfileCreateWithoutWorkExperiencesInput = {
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -845,8 +817,8 @@ export type ProfileUncheckedCreateWithoutWorkExperiencesInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -860,7 +832,6 @@ export type ProfileUncheckedCreateWithoutWorkExperiencesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -886,8 +857,8 @@ export type ProfileUpdateWithoutWorkExperiencesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -901,7 +872,6 @@ export type ProfileUpdateWithoutWorkExperiencesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -911,8 +881,8 @@ export type ProfileUncheckedUpdateWithoutWorkExperiencesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -926,7 +896,6 @@ export type ProfileUncheckedUpdateWithoutWorkExperiencesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
 
@@ -936,8 +905,8 @@ export type ProfileCreateWithoutEducationEntriesInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -951,7 +920,6 @@ export type ProfileCreateWithoutEducationEntriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -961,8 +929,8 @@ export type ProfileUncheckedCreateWithoutEducationEntriesInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -976,7 +944,6 @@ export type ProfileUncheckedCreateWithoutEducationEntriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -1002,8 +969,8 @@ export type ProfileUpdateWithoutEducationEntriesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1017,7 +984,6 @@ export type ProfileUpdateWithoutEducationEntriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -1027,8 +993,8 @@ export type ProfileUncheckedUpdateWithoutEducationEntriesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1042,7 +1008,6 @@ export type ProfileUncheckedUpdateWithoutEducationEntriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
 
@@ -1052,8 +1017,8 @@ export type ProfileCreateWithoutToolboxCategoriesInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1067,7 +1032,6 @@ export type ProfileCreateWithoutToolboxCategoriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -1077,8 +1041,8 @@ export type ProfileUncheckedCreateWithoutToolboxCategoriesInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1092,7 +1056,6 @@ export type ProfileUncheckedCreateWithoutToolboxCategoriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -1118,8 +1081,8 @@ export type ProfileUpdateWithoutToolboxCategoriesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1133,7 +1096,6 @@ export type ProfileUpdateWithoutToolboxCategoriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -1143,8 +1105,8 @@ export type ProfileUncheckedUpdateWithoutToolboxCategoriesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1158,7 +1120,6 @@ export type ProfileUncheckedUpdateWithoutToolboxCategoriesInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
 
@@ -1168,8 +1129,8 @@ export type ProfileCreateWithoutPortfolioProjectsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1183,7 +1144,6 @@ export type ProfileCreateWithoutPortfolioProjectsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -1193,8 +1153,8 @@ export type ProfileUncheckedCreateWithoutPortfolioProjectsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1208,7 +1168,6 @@ export type ProfileUncheckedCreateWithoutPortfolioProjectsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -1234,8 +1193,8 @@ export type ProfileUpdateWithoutPortfolioProjectsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1249,7 +1208,6 @@ export type ProfileUpdateWithoutPortfolioProjectsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -1259,8 +1217,8 @@ export type ProfileUncheckedUpdateWithoutPortfolioProjectsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1274,7 +1232,6 @@ export type ProfileUncheckedUpdateWithoutPortfolioProjectsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
 
@@ -1284,8 +1241,8 @@ export type ProfileCreateWithoutStatsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1299,7 +1256,6 @@ export type ProfileCreateWithoutStatsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryCreateNestedManyWithoutProfileInput
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -1309,8 +1265,8 @@ export type ProfileUncheckedCreateWithoutStatsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1324,7 +1280,6 @@ export type ProfileUncheckedCreateWithoutStatsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUncheckedCreateNestedManyWithoutProfileInput
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -1350,8 +1305,8 @@ export type ProfileUpdateWithoutStatsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1365,7 +1320,6 @@ export type ProfileUpdateWithoutStatsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUpdateManyWithoutProfileNestedInput
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -1375,8 +1329,8 @@ export type ProfileUncheckedUpdateWithoutStatsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1390,7 +1344,6 @@ export type ProfileUncheckedUpdateWithoutStatsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUncheckedUpdateManyWithoutProfileNestedInput
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
 
@@ -1400,8 +1353,8 @@ export type ProfileCreateWithoutAchievementsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1415,7 +1368,6 @@ export type ProfileCreateWithoutAchievementsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryCreateNestedManyWithoutProfileInput
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
 }
 
@@ -1425,8 +1377,8 @@ export type ProfileUncheckedCreateWithoutAchievementsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1440,7 +1392,6 @@ export type ProfileUncheckedCreateWithoutAchievementsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUncheckedCreateNestedManyWithoutProfileInput
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
   tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
 }
 
@@ -1466,8 +1417,8 @@ export type ProfileUpdateWithoutAchievementsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1481,7 +1432,6 @@ export type ProfileUpdateWithoutAchievementsInput = {
   toolboxCategories?: Prisma.ToolboxCategoryUpdateManyWithoutProfileNestedInput
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
 }
 
@@ -1491,8 +1441,8 @@ export type ProfileUncheckedUpdateWithoutAchievementsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1505,123 +1455,6 @@ export type ProfileUncheckedUpdateWithoutAchievementsInput = {
   educationEntries?: Prisma.EducationUncheckedUpdateManyWithoutProfileNestedInput
   toolboxCategories?: Prisma.ToolboxCategoryUncheckedUpdateManyWithoutProfileNestedInput
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
-  stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
-  tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
-}
-
-export type ProfileCreateWithoutNavigationItemsInput = {
-  id?: string
-  slug: string
-  name: string
-  title?: string | null
-  bio?: string | null
-  email?: string | null
-  phone?: string | null
-  location?: string | null
-  locationLink?: string | null
-  availability?: string | null
-  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  techStack?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  socialLinks?: Prisma.SocialLinkCreateNestedManyWithoutProfileInput
-  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutProfileInput
-  educationEntries?: Prisma.EducationCreateNestedManyWithoutProfileInput
-  toolboxCategories?: Prisma.ToolboxCategoryCreateNestedManyWithoutProfileInput
-  portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
-  achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
-  stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  tapeWords?: Prisma.TapeWordCreateNestedManyWithoutProfileInput
-}
-
-export type ProfileUncheckedCreateWithoutNavigationItemsInput = {
-  id?: string
-  slug: string
-  name: string
-  title?: string | null
-  bio?: string | null
-  email?: string | null
-  phone?: string | null
-  location?: string | null
-  locationLink?: string | null
-  availability?: string | null
-  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  techStack?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  socialLinks?: Prisma.SocialLinkUncheckedCreateNestedManyWithoutProfileInput
-  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutProfileInput
-  educationEntries?: Prisma.EducationUncheckedCreateNestedManyWithoutProfileInput
-  toolboxCategories?: Prisma.ToolboxCategoryUncheckedCreateNestedManyWithoutProfileInput
-  portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
-  achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
-  stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  tapeWords?: Prisma.TapeWordUncheckedCreateNestedManyWithoutProfileInput
-}
-
-export type ProfileCreateOrConnectWithoutNavigationItemsInput = {
-  where: Prisma.ProfileWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProfileCreateWithoutNavigationItemsInput, Prisma.ProfileUncheckedCreateWithoutNavigationItemsInput>
-}
-
-export type ProfileUpsertWithoutNavigationItemsInput = {
-  update: Prisma.XOR<Prisma.ProfileUpdateWithoutNavigationItemsInput, Prisma.ProfileUncheckedUpdateWithoutNavigationItemsInput>
-  create: Prisma.XOR<Prisma.ProfileCreateWithoutNavigationItemsInput, Prisma.ProfileUncheckedCreateWithoutNavigationItemsInput>
-  where?: Prisma.ProfileWhereInput
-}
-
-export type ProfileUpdateToOneWithWhereWithoutNavigationItemsInput = {
-  where?: Prisma.ProfileWhereInput
-  data: Prisma.XOR<Prisma.ProfileUpdateWithoutNavigationItemsInput, Prisma.ProfileUncheckedUpdateWithoutNavigationItemsInput>
-}
-
-export type ProfileUpdateWithoutNavigationItemsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  techStack?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  socialLinks?: Prisma.SocialLinkUpdateManyWithoutProfileNestedInput
-  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutProfileNestedInput
-  educationEntries?: Prisma.EducationUpdateManyWithoutProfileNestedInput
-  toolboxCategories?: Prisma.ToolboxCategoryUpdateManyWithoutProfileNestedInput
-  portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
-  achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
-  stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  tapeWords?: Prisma.TapeWordUpdateManyWithoutProfileNestedInput
-}
-
-export type ProfileUncheckedUpdateWithoutNavigationItemsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  techStack?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  socialLinks?: Prisma.SocialLinkUncheckedUpdateManyWithoutProfileNestedInput
-  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutProfileNestedInput
-  educationEntries?: Prisma.EducationUncheckedUpdateManyWithoutProfileNestedInput
-  toolboxCategories?: Prisma.ToolboxCategoryUncheckedUpdateManyWithoutProfileNestedInput
-  portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
-  achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
   tapeWords?: Prisma.TapeWordUncheckedUpdateManyWithoutProfileNestedInput
 }
@@ -1632,8 +1465,8 @@ export type ProfileCreateWithoutTapeWordsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1648,7 +1481,6 @@ export type ProfileCreateWithoutTapeWordsInput = {
   portfolioProjects?: Prisma.PortfolioProjectCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutTapeWordsInput = {
@@ -1657,8 +1489,8 @@ export type ProfileUncheckedCreateWithoutTapeWordsInput = {
   name: string
   title?: string | null
   bio?: string | null
-  email?: string | null
-  phone?: string | null
+  email: string
+  phone: string
   location?: string | null
   locationLink?: string | null
   availability?: string | null
@@ -1673,7 +1505,6 @@ export type ProfileUncheckedCreateWithoutTapeWordsInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedCreateNestedManyWithoutProfileInput
   achievements?: Prisma.AchievementUncheckedCreateNestedManyWithoutProfileInput
   stats?: Prisma.ProfileStatsUncheckedCreateNestedOneWithoutProfileInput
-  navigationItems?: Prisma.NavigationItemUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutTapeWordsInput = {
@@ -1698,8 +1529,8 @@ export type ProfileUpdateWithoutTapeWordsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1714,7 +1545,6 @@ export type ProfileUpdateWithoutTapeWordsInput = {
   portfolioProjects?: Prisma.PortfolioProjectUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutTapeWordsInput = {
@@ -1723,8 +1553,8 @@ export type ProfileUncheckedUpdateWithoutTapeWordsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   availability?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1739,7 +1569,6 @@ export type ProfileUncheckedUpdateWithoutTapeWordsInput = {
   portfolioProjects?: Prisma.PortfolioProjectUncheckedUpdateManyWithoutProfileNestedInput
   achievements?: Prisma.AchievementUncheckedUpdateManyWithoutProfileNestedInput
   stats?: Prisma.ProfileStatsUncheckedUpdateOneWithoutProfileNestedInput
-  navigationItems?: Prisma.NavigationItemUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 
@@ -1754,7 +1583,6 @@ export type ProfileCountOutputType = {
   toolboxCategories: number
   portfolioProjects: number
   achievements: number
-  navigationItems: number
   tapeWords: number
 }
 
@@ -1765,7 +1593,6 @@ export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   toolboxCategories?: boolean | ProfileCountOutputTypeCountToolboxCategoriesArgs
   portfolioProjects?: boolean | ProfileCountOutputTypeCountPortfolioProjectsArgs
   achievements?: boolean | ProfileCountOutputTypeCountAchievementsArgs
-  navigationItems?: boolean | ProfileCountOutputTypeCountNavigationItemsArgs
   tapeWords?: boolean | ProfileCountOutputTypeCountTapeWordsArgs
 }
 
@@ -1824,13 +1651,6 @@ export type ProfileCountOutputTypeCountAchievementsArgs<ExtArgs extends runtime.
 /**
  * ProfileCountOutputType without action
  */
-export type ProfileCountOutputTypeCountNavigationItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.NavigationItemWhereInput
-}
-
-/**
- * ProfileCountOutputType without action
- */
 export type ProfileCountOutputTypeCountTapeWordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.TapeWordWhereInput
 }
@@ -1858,7 +1678,6 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   portfolioProjects?: boolean | Prisma.Profile$portfolioProjectsArgs<ExtArgs>
   achievements?: boolean | Prisma.Profile$achievementsArgs<ExtArgs>
   stats?: boolean | Prisma.Profile$statsArgs<ExtArgs>
-  navigationItems?: boolean | Prisma.Profile$navigationItemsArgs<ExtArgs>
   tapeWords?: boolean | Prisma.Profile$tapeWordsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
@@ -1923,7 +1742,6 @@ export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   portfolioProjects?: boolean | Prisma.Profile$portfolioProjectsArgs<ExtArgs>
   achievements?: boolean | Prisma.Profile$achievementsArgs<ExtArgs>
   stats?: boolean | Prisma.Profile$statsArgs<ExtArgs>
-  navigationItems?: boolean | Prisma.Profile$navigationItemsArgs<ExtArgs>
   tapeWords?: boolean | Prisma.Profile$tapeWordsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1943,7 +1761,6 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     portfolioProjects: Prisma.$PortfolioProjectPayload<ExtArgs>[]
     achievements: Prisma.$AchievementPayload<ExtArgs>[]
     stats: Prisma.$ProfileStatsPayload<ExtArgs> | null
-    navigationItems: Prisma.$NavigationItemPayload<ExtArgs>[]
     tapeWords: Prisma.$TapeWordPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1964,8 +1781,8 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     /**
      * Contact information (mirrors CONTACT_INFO in constants)
      */
-    email: string | null
-    phone: string | null
+    email: string
+    phone: string
     location: string | null
     locationLink: string | null
     availability: string | null
@@ -2381,7 +2198,6 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
   portfolioProjects<T extends Prisma.Profile$portfolioProjectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$portfolioProjectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   achievements<T extends Prisma.Profile$achievementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$achievementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AchievementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   stats<T extends Prisma.Profile$statsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$statsArgs<ExtArgs>>): Prisma.Prisma__ProfileStatsClient<runtime.Types.Result.GetResult<Prisma.$ProfileStatsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  navigationItems<T extends Prisma.Profile$navigationItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$navigationItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NavigationItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tapeWords<T extends Prisma.Profile$tapeWordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$tapeWordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TapeWordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2974,30 +2790,6 @@ export type Profile$statsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   include?: Prisma.ProfileStatsInclude<ExtArgs> | null
   where?: Prisma.ProfileStatsWhereInput
-}
-
-/**
- * Profile.navigationItems
- */
-export type Profile$navigationItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the NavigationItem
-   */
-  select?: Prisma.NavigationItemSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the NavigationItem
-   */
-  omit?: Prisma.NavigationItemOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.NavigationItemInclude<ExtArgs> | null
-  where?: Prisma.NavigationItemWhereInput
-  orderBy?: Prisma.NavigationItemOrderByWithRelationInput | Prisma.NavigationItemOrderByWithRelationInput[]
-  cursor?: Prisma.NavigationItemWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.NavigationItemScalarFieldEnum | Prisma.NavigationItemScalarFieldEnum[]
 }
 
 /**

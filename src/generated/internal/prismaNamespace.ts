@@ -393,7 +393,6 @@ export const ModelName = {
   PortfolioProject: 'PortfolioProject',
   ProfileStats: 'ProfileStats',
   Achievement: 'Achievement',
-  NavigationItem: 'NavigationItem',
   TapeWord: 'TapeWord'
 } as const
 
@@ -410,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "profile" | "socialLink" | "workExperience" | "education" | "toolboxCategory" | "portfolioProject" | "profileStats" | "achievement" | "navigationItem" | "tapeWord"
+    modelProps: "user" | "profile" | "socialLink" | "workExperience" | "education" | "toolboxCategory" | "portfolioProject" | "profileStats" | "achievement" | "tapeWord"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1080,80 +1079,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    NavigationItem: {
-      payload: Prisma.$NavigationItemPayload<ExtArgs>
-      fields: Prisma.NavigationItemFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.NavigationItemFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.NavigationItemFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>
-        }
-        findFirst: {
-          args: Prisma.NavigationItemFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.NavigationItemFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>
-        }
-        findMany: {
-          args: Prisma.NavigationItemFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>[]
-        }
-        create: {
-          args: Prisma.NavigationItemCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>
-        }
-        createMany: {
-          args: Prisma.NavigationItemCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.NavigationItemCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>[]
-        }
-        delete: {
-          args: Prisma.NavigationItemDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>
-        }
-        update: {
-          args: Prisma.NavigationItemUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>
-        }
-        deleteMany: {
-          args: Prisma.NavigationItemDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.NavigationItemUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.NavigationItemUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>[]
-        }
-        upsert: {
-          args: Prisma.NavigationItemUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$NavigationItemPayload>
-        }
-        aggregate: {
-          args: Prisma.NavigationItemAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateNavigationItem>
-        }
-        groupBy: {
-          args: Prisma.NavigationItemGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.NavigationItemGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.NavigationItemCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.NavigationItemCountAggregateOutputType> | number
-        }
-      }
-    }
     TapeWord: {
       payload: Prisma.$TapeWordPayload<ExtArgs>
       fields: Prisma.TapeWordFieldRefs
@@ -1431,18 +1356,6 @@ export const AchievementScalarFieldEnum = {
 export type AchievementScalarFieldEnum = (typeof AchievementScalarFieldEnum)[keyof typeof AchievementScalarFieldEnum]
 
 
-export const NavigationItemScalarFieldEnum = {
-  id: 'id',
-  profileId: 'profileId',
-  label: 'label',
-  href: 'href',
-  sortOrder: 'sortOrder',
-  isPublic: 'isPublic'
-} as const
-
-export type NavigationItemScalarFieldEnum = (typeof NavigationItemScalarFieldEnum)[keyof typeof NavigationItemScalarFieldEnum]
-
-
 export const TapeWordScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -1688,7 +1601,6 @@ export type GlobalOmitConfig = {
   portfolioProject?: Prisma.PortfolioProjectOmit
   profileStats?: Prisma.ProfileStatsOmit
   achievement?: Prisma.AchievementOmit
-  navigationItem?: Prisma.NavigationItemOmit
   tapeWord?: Prisma.TapeWordOmit
 }
 

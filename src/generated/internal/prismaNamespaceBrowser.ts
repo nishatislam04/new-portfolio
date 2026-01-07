@@ -60,7 +60,6 @@ export const ModelName = {
   PortfolioProject: 'PortfolioProject',
   ProfileStats: 'ProfileStats',
   Achievement: 'Achievement',
-  NavigationItem: 'NavigationItem',
   TapeWord: 'TapeWord'
 } as const
 
@@ -242,18 +241,6 @@ export const AchievementScalarFieldEnum = {
 } as const
 
 export type AchievementScalarFieldEnum = (typeof AchievementScalarFieldEnum)[keyof typeof AchievementScalarFieldEnum]
-
-
-export const NavigationItemScalarFieldEnum = {
-  id: 'id',
-  profileId: 'profileId',
-  label: 'label',
-  href: 'href',
-  sortOrder: 'sortOrder',
-  isPublic: 'isPublic'
-} as const
-
-export type NavigationItemScalarFieldEnum = (typeof NavigationItemScalarFieldEnum)[keyof typeof NavigationItemScalarFieldEnum]
 
 
 export const TapeWordScalarFieldEnum = {
