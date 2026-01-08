@@ -4,7 +4,7 @@ import StarIcon from "@/assets/icons/star.svg";
 import grainImage from "@/assets/images/grain.jpg";
 import HeroOrbit from "@/components/block/HeroOrbit";
 import { Section } from "@/components/ui";
-import HeroBottomContents from "./subComponents/heroBottomContents";
+import HeroBottomContents from "./_components/heroBottomContents";
 
 export default function HeroSection() {
 	return (

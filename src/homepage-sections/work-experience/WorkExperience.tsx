@@ -1,8 +1,8 @@
 import { StaggerContainer } from "@/components/animations";
 import { Section } from "@/components/ui";
-import WorkExperienceBottom from "./subComponents/workExpBottom";
-import WorkExperienceCard from "./subComponents/workExpCard";
-import WorkExperienceHeader from "./subComponents/workExpHeader";
+import WorkExperienceBottom from "./_components/workExpBottom";
+import WorkExperienceCard from "./_components/workExpCard";
+import WorkExperienceHeader from "./_components/workExpHeader";
 
 export default function WorkExperienceSection() {
 	return (

@@ -1,8 +1,8 @@
 import { StaggerContainer } from "@/components/animations";
 import { Section } from "@/components/ui";
-import AboutSectionHeader from "./subComponents/aboutSectionHeader";
-import AboutSectionLeftSide from "./subComponents/aboutSectionLeftSide";
-import AboutSectionRightSide from "./subComponents/aboutSectionRightSide";
+import AboutSectionHeader from "./_components/aboutSectionHeader";
+import AboutSectionLeftSide from "./_components/aboutSectionLeftSide";
+import AboutSectionRightSide from "./_components/aboutSectionRightSide";
 
 export default function AboutSection() {
 	return (

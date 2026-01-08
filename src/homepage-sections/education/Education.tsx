@@ -1,7 +1,7 @@
 import { StaggerContainer } from "@/components/animations";
 import { Section } from "@/components/ui";
-import EducationCard from "./subComponents/educationCard";
-import EducationSectionHeader from "./subComponents/educationSectionHeader";
+import EducationCard from "./_components/educationCard";
+import EducationSectionHeader from "./_components/educationSectionHeader";
 
 export default function EducationSection() {
 	return (

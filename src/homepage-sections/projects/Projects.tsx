@@ -2,10 +2,13 @@ import { FadeIn, StaggerContainer } from "@/components/animations";
 import { ProjectGrid, Section } from "@/components/ui";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import type { Project } from "@/types/project";
-import ProjectCTA from "./subComponents/ProjectCTA";
+import ProjectCTA from "./_components/ProjectCTA";
+import ProjectHeader from "./_components/projectHeader";
 
 export default function ProjectsSection() {
 	// Convert legacy project data to new Project type
+	// ignore this type error. as we will discard it later anyway
+
 	const projects: Project[] = PERSONAL_INFO.portfolioProjects.map(
 		(project) => ({
 			...project,
@@ -44,18 +47,7 @@ export default function ProjectsSection() {
 			<div className="relative z-10">
 				<StaggerContainer>
 					{/* Section header */}
-					<FadeIn>
-						<div className="text-center flex flex-col justify-center mb-16">
-							<h2 className="heading-2 uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text">
-								Featured <span className="gradient-text">Projects</span>
-							</h2>
-							<p className="body-large text-gray-400 max-w-3xl mx-auto pt-4 text-base">
-								Showcasing my professional contributions and personal projects,
-								featuring comprehensive web applications with real-world impact,
-								advanced functionality, and modern technology stacks.
-							</p>
-						</div>
-					</FadeIn>
+					<ProjectHeader />
 
 					{/* New Flexible Project Grid */}
 					<ProjectGrid projects={projects} showFeatured={true} layout="bento" />

@@ -1,7 +1,9 @@
 import { FadeIn, StaggerContainer } from "@/components/animations";
-import ToolboxRow from "@/components/block/ToolboxRow";
 import { Section } from "@/components/ui";
 import { PERSONAL_INFO } from "@/constants/personal-info";
+import ToolboxRow from "@/homepage-sections/toolboxes/_components/ToolboxRow";
+import ToolboxAdditional from "./_components/toolboxAdditional";
+import ToolboxHeader from "./_components/toolboxHeader";
 
 export default function ToolboxSection() {
 	return (
@@ -9,17 +11,7 @@ export default function ToolboxSection() {
 			<div className="relative z-10">
 				<StaggerContainer>
 					{/* Section header */}
-					<FadeIn>
-						<div className="text-center mb-20">
-							<h2 className="heading-2 mb-4">
-								My <span className="gradient-text">Toolbox</span>
-							</h2>
-							<p className="body-large text-gray-400 max-w-2xl mx-auto">
-								Explore the technologies and tools I use to craft exceptional
-								digital experiences.
-							</p>
-						</div>
-					</FadeIn>
+					<ToolboxHeader />
 
 					{/* Horizontal Toolbox Rows */}
 					<div className="space-y-8">
@@ -31,14 +23,7 @@ export default function ToolboxSection() {
 					</div>
 
 					{/* Additional info */}
-					<FadeIn delay={0.4}>
-						<div className="text-center mt-12">
-							<p className="text-gray-400 text-sm">
-								And many more tools and technologies that I continue to explore
-								and master.
-							</p>
-						</div>
-					</FadeIn>
+					<ToolboxAdditional />
 				</StaggerContainer>
 			</div>
 		</Section>

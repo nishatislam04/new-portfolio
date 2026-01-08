@@ -1,4 +1,4 @@
-export default function ClientCurrentYear() {
+export default function CurrentYear() {
 	const currentYear = new Date().getFullYear();
 	return (
 		<div className="text-white/40">
