@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+	darkMode: ["class"],
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
@@ -43,6 +44,16 @@ const config: Config = {
 					"300": "rgb(var(--color-sky-300) / <alpha-value>)",
 					"400": "rgb(var(--color-sky-400) / <alpha-value>)",
 					"500": "rgb(var(--color-sky-500) / <alpha-value>)",
+				},
+				sidebar: {
+					DEFAULT: "hsl(var(--sidebar-background))",
+					foreground: "hsl(var(--sidebar-foreground))",
+					primary: "hsl(var(--sidebar-primary))",
+					"primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+					accent: "hsl(var(--sidebar-accent))",
+					"accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+					border: "hsl(var(--sidebar-border))",
+					ring: "hsl(var(--sidebar-ring))",
 				},
 			},
 			fontFamily: {

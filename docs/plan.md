@@ -111,3 +111,4 @@ These fields contribute to a single achievement card.
 - [] implement the admin panel ui
 - [] the portfolio is properly managed via admin panel
 - [] add a password protection to the admin panel
+- [] update projects-section like refactor it with shadcn components and modularize it
