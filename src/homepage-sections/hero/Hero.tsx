@@ -2,8 +2,8 @@ import Image from "next/image";
 import SparkleIcon from "@/assets/icons/sparkle.svg";
 import StarIcon from "@/assets/icons/star.svg";
 import grainImage from "@/assets/images/grain.jpg";
-import HeroOrbit from "@/components/block/HeroOrbit";
 import { Section } from "@/components/ui";
+import HeroOrbit from "@/homepage-sections/hero/_components/HeroOrbit";
 import HeroBottomContents from "./_components/heroBottomContents";
 
 export default function HeroSection() {

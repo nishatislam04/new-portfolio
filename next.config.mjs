@@ -32,11 +32,6 @@ const nextConfig = {
 		},
 	},
 
-	// --- ✅ Experimental Flags ---
-	experimental: {
-		devtoolSegmentExplorer: true,
-	},
-
 	// --- ✅ Optimizations ---
 	compress: true,
 	poweredByHeader: false,
