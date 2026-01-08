@@ -40,7 +40,6 @@ export type TapeWordMinAggregateOutputType = {
   profileId: string | null
   value: string | null
   sortOrder: number | null
-  isPublic: boolean | null
 }
 
 export type TapeWordMaxAggregateOutputType = {
@@ -48,7 +47,6 @@ export type TapeWordMaxAggregateOutputType = {
   profileId: string | null
   value: string | null
   sortOrder: number | null
-  isPublic: boolean | null
 }
 
 export type TapeWordCountAggregateOutputType = {
@@ -56,7 +54,6 @@ export type TapeWordCountAggregateOutputType = {
   profileId: number
   value: number
   sortOrder: number
-  isPublic: number
   _all: number
 }
 
@@ -74,7 +71,6 @@ export type TapeWordMinAggregateInputType = {
   profileId?: true
   value?: true
   sortOrder?: true
-  isPublic?: true
 }
 
 export type TapeWordMaxAggregateInputType = {
@@ -82,7 +78,6 @@ export type TapeWordMaxAggregateInputType = {
   profileId?: true
   value?: true
   sortOrder?: true
-  isPublic?: true
 }
 
 export type TapeWordCountAggregateInputType = {
@@ -90,7 +85,6 @@ export type TapeWordCountAggregateInputType = {
   profileId?: true
   value?: true
   sortOrder?: true
-  isPublic?: true
   _all?: true
 }
 
@@ -185,7 +179,6 @@ export type TapeWordGroupByOutputType = {
   profileId: string | null
   value: string
   sortOrder: number
-  isPublic: boolean
   _count: TapeWordCountAggregateOutputType | null
   _avg: TapeWordAvgAggregateOutputType | null
   _sum: TapeWordSumAggregateOutputType | null
@@ -216,7 +209,6 @@ export type TapeWordWhereInput = {
   profileId?: Prisma.StringNullableFilter<"TapeWord"> | string | null
   value?: Prisma.StringFilter<"TapeWord"> | string
   sortOrder?: Prisma.IntFilter<"TapeWord"> | number
-  isPublic?: Prisma.BoolFilter<"TapeWord"> | boolean
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
 }
 
@@ -225,7 +217,6 @@ export type TapeWordOrderByWithRelationInput = {
   profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   value?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
 }
 
@@ -237,7 +228,6 @@ export type TapeWordWhereUniqueInput = Prisma.AtLeast<{
   profileId?: Prisma.StringNullableFilter<"TapeWord"> | string | null
   value?: Prisma.StringFilter<"TapeWord"> | string
   sortOrder?: Prisma.IntFilter<"TapeWord"> | number
-  isPublic?: Prisma.BoolFilter<"TapeWord"> | boolean
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
 }, "id">
 
@@ -246,7 +236,6 @@ export type TapeWordOrderByWithAggregationInput = {
   profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   value?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   _count?: Prisma.TapeWordCountOrderByAggregateInput
   _avg?: Prisma.TapeWordAvgOrderByAggregateInput
   _max?: Prisma.TapeWordMaxOrderByAggregateInput
@@ -262,14 +251,12 @@ export type TapeWordScalarWhereWithAggregatesInput = {
   profileId?: Prisma.StringNullableWithAggregatesFilter<"TapeWord"> | string | null
   value?: Prisma.StringWithAggregatesFilter<"TapeWord"> | string
   sortOrder?: Prisma.IntWithAggregatesFilter<"TapeWord"> | number
-  isPublic?: Prisma.BoolWithAggregatesFilter<"TapeWord"> | boolean
 }
 
 export type TapeWordCreateInput = {
   id?: string
   value: string
   sortOrder?: number
-  isPublic?: boolean
   profile?: Prisma.ProfileCreateNestedOneWithoutTapeWordsInput
 }
 
@@ -278,14 +265,12 @@ export type TapeWordUncheckedCreateInput = {
   profileId?: string | null
   value: string
   sortOrder?: number
-  isPublic?: boolean
 }
 
 export type TapeWordUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   profile?: Prisma.ProfileUpdateOneWithoutTapeWordsNestedInput
 }
 
@@ -294,7 +279,6 @@ export type TapeWordUncheckedUpdateInput = {
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   value?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type TapeWordCreateManyInput = {
@@ -302,14 +286,12 @@ export type TapeWordCreateManyInput = {
   profileId?: string | null
   value: string
   sortOrder?: number
-  isPublic?: boolean
 }
 
 export type TapeWordUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type TapeWordUncheckedUpdateManyInput = {
@@ -317,7 +299,6 @@ export type TapeWordUncheckedUpdateManyInput = {
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   value?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type TapeWordListRelationFilter = {
@@ -335,7 +316,6 @@ export type TapeWordCountOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   value?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
 }
 
 export type TapeWordAvgOrderByAggregateInput = {
@@ -347,7 +327,6 @@ export type TapeWordMaxOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   value?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
 }
 
 export type TapeWordMinOrderByAggregateInput = {
@@ -355,7 +334,6 @@ export type TapeWordMinOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   value?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
 }
 
 export type TapeWordSumOrderByAggregateInput = {
@@ -408,14 +386,12 @@ export type TapeWordCreateWithoutProfileInput = {
   id?: string
   value: string
   sortOrder?: number
-  isPublic?: boolean
 }
 
 export type TapeWordUncheckedCreateWithoutProfileInput = {
   id?: string
   value: string
   sortOrder?: number
-  isPublic?: boolean
 }
 
 export type TapeWordCreateOrConnectWithoutProfileInput = {
@@ -452,35 +428,30 @@ export type TapeWordScalarWhereInput = {
   profileId?: Prisma.StringNullableFilter<"TapeWord"> | string | null
   value?: Prisma.StringFilter<"TapeWord"> | string
   sortOrder?: Prisma.IntFilter<"TapeWord"> | number
-  isPublic?: Prisma.BoolFilter<"TapeWord"> | boolean
 }
 
 export type TapeWordCreateManyProfileInput = {
   id?: string
   value: string
   sortOrder?: number
-  isPublic?: boolean
 }
 
 export type TapeWordUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type TapeWordUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type TapeWordUncheckedUpdateManyWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -490,7 +461,6 @@ export type TapeWordSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   profileId?: boolean
   value?: boolean
   sortOrder?: boolean
-  isPublic?: boolean
   profile?: boolean | Prisma.TapeWord$profileArgs<ExtArgs>
 }, ExtArgs["result"]["tapeWord"]>
 
@@ -499,7 +469,6 @@ export type TapeWordSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   profileId?: boolean
   value?: boolean
   sortOrder?: boolean
-  isPublic?: boolean
   profile?: boolean | Prisma.TapeWord$profileArgs<ExtArgs>
 }, ExtArgs["result"]["tapeWord"]>
 
@@ -508,7 +477,6 @@ export type TapeWordSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   profileId?: boolean
   value?: boolean
   sortOrder?: boolean
-  isPublic?: boolean
   profile?: boolean | Prisma.TapeWord$profileArgs<ExtArgs>
 }, ExtArgs["result"]["tapeWord"]>
 
@@ -517,10 +485,9 @@ export type TapeWordSelectScalar = {
   profileId?: boolean
   value?: boolean
   sortOrder?: boolean
-  isPublic?: boolean
 }
 
-export type TapeWordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "value" | "sortOrder" | "isPublic", ExtArgs["result"]["tapeWord"]>
+export type TapeWordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "value" | "sortOrder", ExtArgs["result"]["tapeWord"]>
 export type TapeWordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.TapeWord$profileArgs<ExtArgs>
 }
@@ -541,7 +508,6 @@ export type $TapeWordPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     profileId: string | null
     value: string
     sortOrder: number
-    isPublic: boolean
   }, ExtArgs["result"]["tapeWord"]>
   composites: {}
 }
@@ -970,7 +936,6 @@ export interface TapeWordFieldRefs {
   readonly profileId: Prisma.FieldRef<"TapeWord", 'String'>
   readonly value: Prisma.FieldRef<"TapeWord", 'String'>
   readonly sortOrder: Prisma.FieldRef<"TapeWord", 'Int'>
-  readonly isPublic: Prisma.FieldRef<"TapeWord", 'Boolean'>
 }
     
 

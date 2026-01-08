@@ -41,7 +41,6 @@ export type AchievementMinAggregateOutputType = {
   info: string | null
   number: string | null
   text: string | null
-  isPublic: boolean | null
   sortOrder: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -53,7 +52,6 @@ export type AchievementMaxAggregateOutputType = {
   info: string | null
   number: string | null
   text: string | null
-  isPublic: boolean | null
   sortOrder: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -65,7 +63,6 @@ export type AchievementCountAggregateOutputType = {
   info: number
   number: number
   text: number
-  isPublic: number
   sortOrder: number
   createdAt: number
   updatedAt: number
@@ -87,7 +84,6 @@ export type AchievementMinAggregateInputType = {
   info?: true
   number?: true
   text?: true
-  isPublic?: true
   sortOrder?: true
   createdAt?: true
   updatedAt?: true
@@ -99,7 +95,6 @@ export type AchievementMaxAggregateInputType = {
   info?: true
   number?: true
   text?: true
-  isPublic?: true
   sortOrder?: true
   createdAt?: true
   updatedAt?: true
@@ -111,7 +106,6 @@ export type AchievementCountAggregateInputType = {
   info?: true
   number?: true
   text?: true
-  isPublic?: true
   sortOrder?: true
   createdAt?: true
   updatedAt?: true
@@ -210,7 +204,6 @@ export type AchievementGroupByOutputType = {
   info: string | null
   number: string | null
   text: string | null
-  isPublic: boolean
   sortOrder: number
   createdAt: Date
   updatedAt: Date
@@ -245,7 +238,6 @@ export type AchievementWhereInput = {
   info?: Prisma.StringNullableFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableFilter<"Achievement"> | string | null
-  isPublic?: Prisma.BoolFilter<"Achievement"> | boolean
   sortOrder?: Prisma.IntFilter<"Achievement"> | number
   createdAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
@@ -258,7 +250,6 @@ export type AchievementOrderByWithRelationInput = {
   info?: Prisma.SortOrderInput | Prisma.SortOrder
   number?: Prisma.SortOrderInput | Prisma.SortOrder
   text?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -274,7 +265,6 @@ export type AchievementWhereUniqueInput = Prisma.AtLeast<{
   info?: Prisma.StringNullableFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableFilter<"Achievement"> | string | null
-  isPublic?: Prisma.BoolFilter<"Achievement"> | boolean
   sortOrder?: Prisma.IntFilter<"Achievement"> | number
   createdAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
@@ -287,7 +277,6 @@ export type AchievementOrderByWithAggregationInput = {
   info?: Prisma.SortOrderInput | Prisma.SortOrder
   number?: Prisma.SortOrderInput | Prisma.SortOrder
   text?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -307,7 +296,6 @@ export type AchievementScalarWhereWithAggregatesInput = {
   info?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
-  isPublic?: Prisma.BoolWithAggregatesFilter<"Achievement"> | boolean
   sortOrder?: Prisma.IntWithAggregatesFilter<"Achievement"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Achievement"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Achievement"> | Date | string
@@ -318,7 +306,6 @@ export type AchievementCreateInput = {
   info?: string | null
   number?: string | null
   text?: string | null
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -331,7 +318,6 @@ export type AchievementUncheckedCreateInput = {
   info?: string | null
   number?: string | null
   text?: string | null
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -342,7 +328,6 @@ export type AchievementUpdateInput = {
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -355,7 +340,6 @@ export type AchievementUncheckedUpdateInput = {
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -367,7 +351,6 @@ export type AchievementCreateManyInput = {
   info?: string | null
   number?: string | null
   text?: string | null
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -378,7 +361,6 @@ export type AchievementUpdateManyMutationInput = {
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -390,7 +372,6 @@ export type AchievementUncheckedUpdateManyInput = {
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -412,7 +393,6 @@ export type AchievementCountOrderByAggregateInput = {
   info?: Prisma.SortOrder
   number?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -428,7 +408,6 @@ export type AchievementMaxOrderByAggregateInput = {
   info?: Prisma.SortOrder
   number?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -440,7 +419,6 @@ export type AchievementMinOrderByAggregateInput = {
   info?: Prisma.SortOrder
   number?: Prisma.SortOrder
   text?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -497,7 +475,6 @@ export type AchievementCreateWithoutProfileInput = {
   info?: string | null
   number?: string | null
   text?: string | null
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -508,7 +485,6 @@ export type AchievementUncheckedCreateWithoutProfileInput = {
   info?: string | null
   number?: string | null
   text?: string | null
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -549,7 +525,6 @@ export type AchievementScalarWhereInput = {
   info?: Prisma.StringNullableFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableFilter<"Achievement"> | string | null
-  isPublic?: Prisma.BoolFilter<"Achievement"> | boolean
   sortOrder?: Prisma.IntFilter<"Achievement"> | number
   createdAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
@@ -560,7 +535,6 @@ export type AchievementCreateManyProfileInput = {
   info?: string | null
   number?: string | null
   text?: string | null
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -571,7 +545,6 @@ export type AchievementUpdateWithoutProfileInput = {
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -582,7 +555,6 @@ export type AchievementUncheckedUpdateWithoutProfileInput = {
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -593,7 +565,6 @@ export type AchievementUncheckedUpdateManyWithoutProfileInput = {
   info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -607,7 +578,6 @@ export type AchievementSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   info?: boolean
   number?: boolean
   text?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -620,7 +590,6 @@ export type AchievementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   info?: boolean
   number?: boolean
   text?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -633,7 +602,6 @@ export type AchievementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   info?: boolean
   number?: boolean
   text?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -646,13 +614,12 @@ export type AchievementSelectScalar = {
   info?: boolean
   number?: boolean
   text?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AchievementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "info" | "number" | "text" | "isPublic" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["achievement"]>
+export type AchievementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "info" | "number" | "text" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["achievement"]>
 export type AchievementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -674,7 +641,6 @@ export type $AchievementPayload<ExtArgs extends runtime.Types.Extensions.Interna
     info: string | null
     number: string | null
     text: string | null
-    isPublic: boolean
     sortOrder: number
     createdAt: Date
     updatedAt: Date
@@ -1107,7 +1073,6 @@ export interface AchievementFieldRefs {
   readonly info: Prisma.FieldRef<"Achievement", 'String'>
   readonly number: Prisma.FieldRef<"Achievement", 'String'>
   readonly text: Prisma.FieldRef<"Achievement", 'String'>
-  readonly isPublic: Prisma.FieldRef<"Achievement", 'Boolean'>
   readonly sortOrder: Prisma.FieldRef<"Achievement", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Achievement", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Achievement", 'DateTime'>

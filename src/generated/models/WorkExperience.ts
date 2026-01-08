@@ -47,7 +47,6 @@ export type WorkExperienceMinAggregateOutputType = {
   endLabel: string | null
   description: string | null
   isCurrent: boolean | null
-  isPublic: boolean | null
   sortOrder: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -65,7 +64,6 @@ export type WorkExperienceMaxAggregateOutputType = {
   endLabel: string | null
   description: string | null
   isCurrent: boolean | null
-  isPublic: boolean | null
   sortOrder: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -85,7 +83,6 @@ export type WorkExperienceCountAggregateOutputType = {
   achievements: number
   technologies: number
   isCurrent: number
-  isPublic: number
   sortOrder: number
   createdAt: number
   updatedAt: number
@@ -113,7 +110,6 @@ export type WorkExperienceMinAggregateInputType = {
   endLabel?: true
   description?: true
   isCurrent?: true
-  isPublic?: true
   sortOrder?: true
   createdAt?: true
   updatedAt?: true
@@ -131,7 +127,6 @@ export type WorkExperienceMaxAggregateInputType = {
   endLabel?: true
   description?: true
   isCurrent?: true
-  isPublic?: true
   sortOrder?: true
   createdAt?: true
   updatedAt?: true
@@ -151,7 +146,6 @@ export type WorkExperienceCountAggregateInputType = {
   achievements?: true
   technologies?: true
   isCurrent?: true
-  isPublic?: true
   sortOrder?: true
   createdAt?: true
   updatedAt?: true
@@ -249,7 +243,7 @@ export type WorkExperienceGroupByOutputType = {
   profileId: string
   company: string
   position: string
-  location: string | null
+  location: string
   type: string | null
   durationLabel: string | null
   startLabel: string | null
@@ -258,7 +252,6 @@ export type WorkExperienceGroupByOutputType = {
   achievements: runtime.JsonValue | null
   technologies: runtime.JsonValue | null
   isCurrent: boolean
-  isPublic: boolean
   sortOrder: number
   createdAt: Date
   updatedAt: Date
@@ -292,7 +285,7 @@ export type WorkExperienceWhereInput = {
   profileId?: Prisma.StringFilter<"WorkExperience"> | string
   company?: Prisma.StringFilter<"WorkExperience"> | string
   position?: Prisma.StringFilter<"WorkExperience"> | string
-  location?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
+  location?: Prisma.StringFilter<"WorkExperience"> | string
   type?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
   durationLabel?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
   startLabel?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
@@ -301,7 +294,6 @@ export type WorkExperienceWhereInput = {
   achievements?: Prisma.JsonNullableFilter<"WorkExperience">
   technologies?: Prisma.JsonNullableFilter<"WorkExperience">
   isCurrent?: Prisma.BoolFilter<"WorkExperience"> | boolean
-  isPublic?: Prisma.BoolFilter<"WorkExperience"> | boolean
   sortOrder?: Prisma.IntFilter<"WorkExperience"> | number
   createdAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string
@@ -313,7 +305,7 @@ export type WorkExperienceOrderByWithRelationInput = {
   profileId?: Prisma.SortOrder
   company?: Prisma.SortOrder
   position?: Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
+  location?: Prisma.SortOrder
   type?: Prisma.SortOrderInput | Prisma.SortOrder
   durationLabel?: Prisma.SortOrderInput | Prisma.SortOrder
   startLabel?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -322,7 +314,6 @@ export type WorkExperienceOrderByWithRelationInput = {
   achievements?: Prisma.SortOrderInput | Prisma.SortOrder
   technologies?: Prisma.SortOrderInput | Prisma.SortOrder
   isCurrent?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -337,7 +328,7 @@ export type WorkExperienceWhereUniqueInput = Prisma.AtLeast<{
   profileId?: Prisma.StringFilter<"WorkExperience"> | string
   company?: Prisma.StringFilter<"WorkExperience"> | string
   position?: Prisma.StringFilter<"WorkExperience"> | string
-  location?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
+  location?: Prisma.StringFilter<"WorkExperience"> | string
   type?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
   durationLabel?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
   startLabel?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
@@ -346,7 +337,6 @@ export type WorkExperienceWhereUniqueInput = Prisma.AtLeast<{
   achievements?: Prisma.JsonNullableFilter<"WorkExperience">
   technologies?: Prisma.JsonNullableFilter<"WorkExperience">
   isCurrent?: Prisma.BoolFilter<"WorkExperience"> | boolean
-  isPublic?: Prisma.BoolFilter<"WorkExperience"> | boolean
   sortOrder?: Prisma.IntFilter<"WorkExperience"> | number
   createdAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string
@@ -358,7 +348,7 @@ export type WorkExperienceOrderByWithAggregationInput = {
   profileId?: Prisma.SortOrder
   company?: Prisma.SortOrder
   position?: Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
+  location?: Prisma.SortOrder
   type?: Prisma.SortOrderInput | Prisma.SortOrder
   durationLabel?: Prisma.SortOrderInput | Prisma.SortOrder
   startLabel?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -367,7 +357,6 @@ export type WorkExperienceOrderByWithAggregationInput = {
   achievements?: Prisma.SortOrderInput | Prisma.SortOrder
   technologies?: Prisma.SortOrderInput | Prisma.SortOrder
   isCurrent?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -386,7 +375,7 @@ export type WorkExperienceScalarWhereWithAggregatesInput = {
   profileId?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string
   company?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string
   position?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string
-  location?: Prisma.StringNullableWithAggregatesFilter<"WorkExperience"> | string | null
+  location?: Prisma.StringWithAggregatesFilter<"WorkExperience"> | string
   type?: Prisma.StringNullableWithAggregatesFilter<"WorkExperience"> | string | null
   durationLabel?: Prisma.StringNullableWithAggregatesFilter<"WorkExperience"> | string | null
   startLabel?: Prisma.StringNullableWithAggregatesFilter<"WorkExperience"> | string | null
@@ -395,7 +384,6 @@ export type WorkExperienceScalarWhereWithAggregatesInput = {
   achievements?: Prisma.JsonNullableWithAggregatesFilter<"WorkExperience">
   technologies?: Prisma.JsonNullableWithAggregatesFilter<"WorkExperience">
   isCurrent?: Prisma.BoolWithAggregatesFilter<"WorkExperience"> | boolean
-  isPublic?: Prisma.BoolWithAggregatesFilter<"WorkExperience"> | boolean
   sortOrder?: Prisma.IntWithAggregatesFilter<"WorkExperience"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"WorkExperience"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"WorkExperience"> | Date | string
@@ -405,7 +393,7 @@ export type WorkExperienceCreateInput = {
   id?: string
   company: string
   position: string
-  location?: string | null
+  location: string
   type?: string | null
   durationLabel?: string | null
   startLabel?: string | null
@@ -414,7 +402,6 @@ export type WorkExperienceCreateInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -426,7 +413,7 @@ export type WorkExperienceUncheckedCreateInput = {
   profileId: string
   company: string
   position: string
-  location?: string | null
+  location: string
   type?: string | null
   durationLabel?: string | null
   startLabel?: string | null
@@ -435,7 +422,6 @@ export type WorkExperienceUncheckedCreateInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -445,7 +431,7 @@ export type WorkExperienceUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   durationLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -454,7 +440,6 @@ export type WorkExperienceUpdateInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -466,7 +451,7 @@ export type WorkExperienceUncheckedUpdateInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   durationLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -475,7 +460,6 @@ export type WorkExperienceUncheckedUpdateInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -486,7 +470,7 @@ export type WorkExperienceCreateManyInput = {
   profileId: string
   company: string
   position: string
-  location?: string | null
+  location: string
   type?: string | null
   durationLabel?: string | null
   startLabel?: string | null
@@ -495,7 +479,6 @@ export type WorkExperienceCreateManyInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -505,7 +488,7 @@ export type WorkExperienceUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   durationLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -514,7 +497,6 @@ export type WorkExperienceUpdateManyMutationInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -525,7 +507,7 @@ export type WorkExperienceUncheckedUpdateManyInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   durationLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -534,7 +516,6 @@ export type WorkExperienceUncheckedUpdateManyInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -564,7 +545,6 @@ export type WorkExperienceCountOrderByAggregateInput = {
   achievements?: Prisma.SortOrder
   technologies?: Prisma.SortOrder
   isCurrent?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -586,7 +566,6 @@ export type WorkExperienceMaxOrderByAggregateInput = {
   endLabel?: Prisma.SortOrder
   description?: Prisma.SortOrder
   isCurrent?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -604,7 +583,6 @@ export type WorkExperienceMinOrderByAggregateInput = {
   endLabel?: Prisma.SortOrder
   description?: Prisma.SortOrder
   isCurrent?: Prisma.SortOrder
-  isPublic?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -656,11 +634,15 @@ export type WorkExperienceUncheckedUpdateManyWithoutProfileNestedInput = {
   deleteMany?: Prisma.WorkExperienceScalarWhereInput | Prisma.WorkExperienceScalarWhereInput[]
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 export type WorkExperienceCreateWithoutProfileInput = {
   id?: string
   company: string
   position: string
-  location?: string | null
+  location: string
   type?: string | null
   durationLabel?: string | null
   startLabel?: string | null
@@ -669,7 +651,6 @@ export type WorkExperienceCreateWithoutProfileInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -679,7 +660,7 @@ export type WorkExperienceUncheckedCreateWithoutProfileInput = {
   id?: string
   company: string
   position: string
-  location?: string | null
+  location: string
   type?: string | null
   durationLabel?: string | null
   startLabel?: string | null
@@ -688,7 +669,6 @@ export type WorkExperienceUncheckedCreateWithoutProfileInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -728,7 +708,7 @@ export type WorkExperienceScalarWhereInput = {
   profileId?: Prisma.StringFilter<"WorkExperience"> | string
   company?: Prisma.StringFilter<"WorkExperience"> | string
   position?: Prisma.StringFilter<"WorkExperience"> | string
-  location?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
+  location?: Prisma.StringFilter<"WorkExperience"> | string
   type?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
   durationLabel?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
   startLabel?: Prisma.StringNullableFilter<"WorkExperience"> | string | null
@@ -737,7 +717,6 @@ export type WorkExperienceScalarWhereInput = {
   achievements?: Prisma.JsonNullableFilter<"WorkExperience">
   technologies?: Prisma.JsonNullableFilter<"WorkExperience">
   isCurrent?: Prisma.BoolFilter<"WorkExperience"> | boolean
-  isPublic?: Prisma.BoolFilter<"WorkExperience"> | boolean
   sortOrder?: Prisma.IntFilter<"WorkExperience"> | number
   createdAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WorkExperience"> | Date | string
@@ -747,7 +726,7 @@ export type WorkExperienceCreateManyProfileInput = {
   id?: string
   company: string
   position: string
-  location?: string | null
+  location: string
   type?: string | null
   durationLabel?: string | null
   startLabel?: string | null
@@ -756,7 +735,6 @@ export type WorkExperienceCreateManyProfileInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -766,7 +744,7 @@ export type WorkExperienceUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   durationLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -775,7 +753,6 @@ export type WorkExperienceUpdateWithoutProfileInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -785,7 +762,7 @@ export type WorkExperienceUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   durationLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -794,7 +771,6 @@ export type WorkExperienceUncheckedUpdateWithoutProfileInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -804,7 +780,7 @@ export type WorkExperienceUncheckedUpdateManyWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   durationLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startLabel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -813,7 +789,6 @@ export type WorkExperienceUncheckedUpdateManyWithoutProfileInput = {
   achievements?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   technologies?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isPublic?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -835,7 +810,6 @@ export type WorkExperienceSelect<ExtArgs extends runtime.Types.Extensions.Intern
   achievements?: boolean
   technologies?: boolean
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -856,7 +830,6 @@ export type WorkExperienceSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   achievements?: boolean
   technologies?: boolean
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -877,7 +850,6 @@ export type WorkExperienceSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   achievements?: boolean
   technologies?: boolean
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -898,13 +870,12 @@ export type WorkExperienceSelectScalar = {
   achievements?: boolean
   technologies?: boolean
   isCurrent?: boolean
-  isPublic?: boolean
   sortOrder?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type WorkExperienceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "company" | "position" | "location" | "type" | "durationLabel" | "startLabel" | "endLabel" | "description" | "achievements" | "technologies" | "isCurrent" | "isPublic" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["workExperience"]>
+export type WorkExperienceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "company" | "position" | "location" | "type" | "durationLabel" | "startLabel" | "endLabel" | "description" | "achievements" | "technologies" | "isCurrent" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["workExperience"]>
 export type WorkExperienceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -925,7 +896,7 @@ export type $WorkExperiencePayload<ExtArgs extends runtime.Types.Extensions.Inte
     profileId: string
     company: string
     position: string
-    location: string | null
+    location: string
     /**
      * Employment type, e.g. "Full-time"
      */
@@ -950,7 +921,6 @@ export type $WorkExperiencePayload<ExtArgs extends runtime.Types.Extensions.Inte
      */
     technologies: runtime.JsonValue | null
     isCurrent: boolean
-    isPublic: boolean
     sortOrder: number
     createdAt: Date
     updatedAt: Date
@@ -1391,7 +1361,6 @@ export interface WorkExperienceFieldRefs {
   readonly achievements: Prisma.FieldRef<"WorkExperience", 'Json'>
   readonly technologies: Prisma.FieldRef<"WorkExperience", 'Json'>
   readonly isCurrent: Prisma.FieldRef<"WorkExperience", 'Boolean'>
-  readonly isPublic: Prisma.FieldRef<"WorkExperience", 'Boolean'>
   readonly sortOrder: Prisma.FieldRef<"WorkExperience", 'Int'>
   readonly createdAt: Prisma.FieldRef<"WorkExperience", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"WorkExperience", 'DateTime'>

@@ -1,6 +1,6 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated"
+  provider               = "prisma-client"
+  output                 = "../src/generated"
   generatedFileExtension = "ts"
   importFileExtension    = "ts"
   moduleFormat           = "esm"
@@ -15,66 +15,68 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
+
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?
 }
 
 /// Root profile for the portfolio. Everything else hangs off this.
 model Profile {
-  id           String   @id @default(cuid())
+  id   String @id @default(cuid())
   /// Stable identifier to address this profile (e.g. "nishat-mazumder").
-  slug         String   @unique
+  slug String @unique
 
   /// Basic identity
-  name         String
-  title        String?
+  name  String
+  title String // designation
   /// Long-form bio / profile text from PERSONAL_INFO.profile
-  bio          String?
+  bio   String
 
   /// Contact information (mirrors CONTACT_INFO in constants)
-  email        String @unique
-  phone        String @unique
-  location     String?
-  locationLink String?
-  availability String?
+  email         String @unique
+  phone         String @unique
+  locationLabel String
+  locationLink  String
+  availability  String
 
   /// Flexible skill buckets as JSON string arrays
   /// PERSONAL_INFO.skills
-  skills       Json?
+  skills    Json?
   /// PERSONAL_INFO.techStack
-  techStack    Json?
+  techStack Json?
 
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   /// Relations into more detailed, editable structures
   socialLinks       SocialLink[]
-  workExperiences  WorkExperience[]
-  educationEntries Education[]
+  workExperiences   WorkExperience[]
+  educationEntries  Education[]
   toolboxCategories ToolboxCategory[]
   portfolioProjects PortfolioProject[]
-  achievements     Achievement[]
-  stats            ProfileStats?
-  tapeWords        TapeWord[]
+  achievements      Achievement[]
+  stats             ProfileStats?
+  tapeWords         TapeWord[]
+  users             User[]
 }
 
 /// Social/contact links such as Gmail, LinkedIn, WhatsApp, etc.
 /// Represents PERSONAL_INFO.SOCIAL_LINKS and other future link groups.
 model SocialLink {
-  id        String  @id @default(cuid())
+  id        String @id @default(cuid())
   profileId String
 
   /// Public-facing label, e.g. "Gmail", "LinkedIn"
-  label     String
-  url       String
+  label String
+  url   String
 
   /// Icon key used by the UI (e.g. "gmail", "linkedin").
-  icon      String?
+  icon String?
 
-  /// Optional grouping context ("contact", "footer", etc.).
-  kind      String?  // did not understood yet
+  /// Optional grouping context ("contact", "footer" dropdown).
+  kind String?
 
-  isPrimary Boolean @default(true)
-  isPublic  Boolean @default(true)
-  sortOrder Int     @default(0)
+  sortOrder Int @default(0)
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
@@ -84,12 +86,12 @@ model SocialLink {
 /// Work experience timeline entries with nested achievements and technologies.
 /// Mirrors PERSONAL_INFO.workExperience.
 model WorkExperience {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   profileId String
 
-  company   String
-  position  String
-  location  String?
+  company       String
+  position      String
+  location      String
   /// Employment type, e.g. "Full-time"
   type          String?
   /// Display-friendly duration, e.g. "July 2024 - Current"
@@ -107,7 +109,6 @@ model WorkExperience {
   technologies Json?
 
   isCurrent Boolean  @default(false)
-  isPublic  Boolean  @default(true)
   sortOrder Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -120,7 +121,7 @@ model WorkExperience {
 /// Education history with GPA and bullet highlights.
 /// Mirrors PERSONAL_INFO.education.
 model Education {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   profileId String
 
   degree        String?
@@ -129,14 +130,11 @@ model Education {
   durationLabel String?
   /// Stored as strings for flexibility (no strict numeric GPA typing needed).
   gpa           String?
-  maxGpa        String?
   description   String?
 
   /// JSON array of bullet points describing the education highlights.
-  /// highlights: string[]
   highlights Json?
 
-  isPublic  Boolean  @default(true)
   sortOrder Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -149,17 +147,17 @@ model Education {
 /// Horizontal toolbox rows with nested items like { title, icon }.
 /// Mirrors PERSONAL_INFO.toolboxCategories.
 model ToolboxCategory {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   profileId String
 
   /// Stable identifier used in the app (e.g. "languages", "frontend").
-  slug      String
-  title     String
+  slug  String
+  title String
   /// Tailwind-ish color token (e.g. "emerald", "sky").
-  color     String?
+  color String?
 
   /// JSON array of items: [{ title: string, icon: string }].
-  items     Json
+  items Json
 
   isPublic  Boolean  @default(true)
   sortOrder Int      @default(0)
@@ -168,19 +166,19 @@ model ToolboxCategory {
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-  @@index([profileId])
   @@unique([profileId, slug])
+  @@index([profileId])
 }
 
 /// Detailed project/case-study representation for the Projects section.
 /// Mirrors PERSONAL_INFO.portfolioProjects and the Project type.
 model PortfolioProject {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   profileId String
 
   /// Human-friendly, URL-safe identifier (usually the constant's id).
-  slug   String
-  title  String
+  slug    String
+  title   String
   company String?
   /// Kept as string for flexibility (e.g. "2024", "2024–2025").
   year    String?
@@ -194,13 +192,13 @@ model PortfolioProject {
 
   /// Deeply nested content stored as JSON for maximum schema flexibility.
   /// keyFeatures: string[]
-  keyFeatures Json?
+  keyFeatures  Json?
   /// results: { title: string; description?: string; ... }[]
-  results     Json?
+  results      Json?
   /// coverImage: { key?: string; src?: string; alt: string; priority?: boolean; ... }
-  coverImage  Json?
+  coverImage   Json?
   /// images: { key?: string; src?: string; alt: string; caption?: string }[]
-  images      Json?
+  images       Json?
   /// technologies: (string | { name: string; category?: string; icon?: string })[]
   technologies Json?
   /// architecture, challenges, solutions: string[] or richer structures.
@@ -208,14 +206,14 @@ model PortfolioProject {
   challenges   Json?
   solutions    Json?
   /// links: { type: string; url: string; label: string; icon?: string }[]
-  links Json?
+  links        Json?
   /// tags: string[]
-  tags  Json?
+  tags         Json?
 
   featured Boolean @default(false)
   priority Int     @default(0)
 
-  hasLiveDemo Boolean? @default(false)
+  hasLiveDemo  Boolean? @default(false)
   isPrivate    Boolean? @default(false)
   isComingSoon Boolean? @default(false)
   isPublic     Boolean  @default(true)
@@ -226,8 +224,8 @@ model PortfolioProject {
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-  @@index([profileId])
   @@unique([profileId, slug])
+  @@index([profileId])
 }
 
 /// Aggregated stats used in CTA, e.g. experience years, projects, etc.
@@ -237,9 +235,9 @@ model ProfileStats {
   profileId String @unique
 
   /// These are display labels (e.g. "1+", "10+", "100%"), not numeric values.
-  experienceLabel        String?
-  projectsCompletedLabel String?
-  technologiesLabel      String?
+  experienceLabel         String?
+  projectsCompletedLabel  String?
+  technologiesLabel       String?
   clientSatisfactionLabel String?
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
@@ -248,14 +246,13 @@ model ProfileStats {
 /// High-level achievements cards in the About section.
 /// Mirrors PERSONAL_INFO.achievements.
 model Achievement {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   profileId String
 
   info   String?
   number String?
   text   String?
 
-  isPublic  Boolean  @default(true)
   sortOrder Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -268,13 +265,12 @@ model Achievement {
 /// Scrolling tape words used in the hero/tape section.
 /// Mirrors TAPE_WORDS in src/constants/index.ts.
 model TapeWord {
-  id        String   @id @default(cuid())
+  id        String  @id @default(cuid())
   profileId String?
 
-  value     String
+  value String
 
-  sortOrder Int      @default(0)
-  isPublic  Boolean  @default(true)
+  sortOrder Int @default(0)
 
   profile Profile? @relation(fields: [profileId], references: [id], onDelete: SetNull)
 

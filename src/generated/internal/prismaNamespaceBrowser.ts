@@ -82,7 +82,8 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name'
+  name: 'name',
+  profileId: 'profileId'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -96,7 +97,7 @@ export const ProfileScalarFieldEnum = {
   bio: 'bio',
   email: 'email',
   phone: 'phone',
-  location: 'location',
+  locationLabel: 'locationLabel',
   locationLink: 'locationLink',
   availability: 'availability',
   skills: 'skills',
@@ -115,8 +116,6 @@ export const SocialLinkScalarFieldEnum = {
   url: 'url',
   icon: 'icon',
   kind: 'kind',
-  isPrimary: 'isPrimary',
-  isPublic: 'isPublic',
   sortOrder: 'sortOrder'
 } as const
 
@@ -137,7 +136,6 @@ export const WorkExperienceScalarFieldEnum = {
   achievements: 'achievements',
   technologies: 'technologies',
   isCurrent: 'isCurrent',
-  isPublic: 'isPublic',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -153,10 +151,8 @@ export const EducationScalarFieldEnum = {
   institution: 'institution',
   durationLabel: 'durationLabel',
   gpa: 'gpa',
-  maxGpa: 'maxGpa',
   description: 'description',
   highlights: 'highlights',
-  isPublic: 'isPublic',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -234,7 +230,6 @@ export const AchievementScalarFieldEnum = {
   info: 'info',
   number: 'number',
   text: 'text',
-  isPublic: 'isPublic',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -247,8 +242,7 @@ export const TapeWordScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
   value: 'value',
-  sortOrder: 'sortOrder',
-  isPublic: 'isPublic'
+  sortOrder: 'sortOrder'
 } as const
 
 export type TapeWordScalarFieldEnum = (typeof TapeWordScalarFieldEnum)[keyof typeof TapeWordScalarFieldEnum]
