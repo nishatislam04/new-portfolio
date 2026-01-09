@@ -107,8 +107,12 @@ These fields contribute to a single achievement card.
 - [x] prisma working
 - [x] create prisma schema
 - [x] add a detailed docs about the schema
-- [] plan about the admin panel ui where we can manage the portfolio like adding projects, skills, etc.
-- [] implement the admin panel ui
+- [x] plan about the admin panel ui where we can manage the portfolio like adding projects, skills, etc.
+- [x] implement the admin panel ui
 - [] the portfolio is properly managed via admin panel
 - [] add a password protection to the admin panel
 - [] update projects-section like refactor it with shadcn components and modularize it
+
+- [] user info form create
+- [] user info form update
+- [] user info form delete

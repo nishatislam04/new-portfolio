@@ -1,0 +1,363 @@
+"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import type { z } from "zod";
+import { updateUserInfoForm } from "@/actions/user-info-form-actions";
+import { Button } from "@/components/ui";
+import {
+	Field,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { UserInfoUpdateSchema } from "@/schema/user-info-form-schema";
+
+interface UserInfoEditProps {
+	user: {
+		id: string;
+		firstName: string | null;
+		lastName: string | null;
+		email: string | null;
+		title: string | null;
+		bio: string | null;
+		phone: string | null;
+		locationLabel: string | null;
+		locationLink: string | null;
+		availability: string | null;
+	};
+}
+
+export default function UserInfoEdit({ user }: UserInfoEditProps) {
+	const router = useRouter();
+	const form = useForm<z.infer<typeof UserInfoUpdateSchema>>({
+		mode: "onBlur",
+		resolver: zodResolver(UserInfoUpdateSchema),
+		defaultValues: {
+			id: user.id,
+			firstName: user.firstName ?? "",
+			lastName: user.lastName ?? "",
+			email: user.email ?? "",
+			title: user.title ?? "",
+			bio: user.bio ?? "",
+			phone: user.phone ?? "",
+			locationLabel: user.locationLabel ?? "",
+			locationLink: user.locationLink ?? "",
+			availability: user.availability ?? "",
+		},
+	});
+
+	async function onSubmit(data: z.infer<typeof UserInfoUpdateSchema>) {
+		const result = await updateUserInfoForm(data);
+		if (!result.success) {
+			if (result.type === "validation") {
+				// Set field errors from server validation
+				Object.entries(result.fieldErrors).forEach(([field, messages]) => {
+					form.setError(field as Parameters<typeof form.setError>[0], {
+						message: messages.join(", "),
+					});
+				});
+			}
+			if (result.type === "server-error" && result.error.field) {
+				form.setError(
+					result.error.field as keyof z.infer<typeof UserInfoUpdateSchema>,
+					{
+						message: result.message,
+					},
+				);
+			} else {
+				form.setError("root", {
+					message: result.message,
+				});
+			}
+		}
+
+		// success
+		if (result.success) {
+			router.refresh();
+			toast.success(result.data.message);
+		}
+	}
+
+	// Check if form has any validation errors
+	const isSubmitting = form.formState.isSubmitting;
+	const isDirty = form.formState.isDirty;
+
+	return (
+		<form onSubmit={form.handleSubmit(onSubmit)}>
+			<Controller
+				name="firstName"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							First Name
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter your first name"
+							autoComplete="first-name"
+						/>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="lastName"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Last Name
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter your last name"
+							autoComplete="name"
+						/>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="email"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Email
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter your email"
+							autoComplete="email"
+						/>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="title"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Title
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter your title"
+							autoComplete="title"
+						/>
+						<FieldDescription className="text-sm text-gray-400">
+							Enter your title (Designation).
+						</FieldDescription>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="bio"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Bio
+						</FieldLabel>
+						<Textarea
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter your bio"
+							autoComplete="bio"
+						/>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="phone"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Phone Number
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter your phone number"
+							autoComplete="phone"
+						/>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="locationLabel"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Location Label
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter location label"
+							autoComplete="location-label"
+						/>
+						<FieldDescription className="text-sm text-gray-400">
+							Enter location label (address name).
+						</FieldDescription>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="locationLink"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Location Link
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter location link"
+							autoComplete="location-link"
+						/>
+						<FieldDescription className="text-sm text-gray-400">
+							Enter location link(google map link).
+						</FieldDescription>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			<Controller
+				name="availability"
+				control={form.control}
+				render={({ field, fieldState }) => (
+					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
+						<FieldLabel
+							className="text-lg text-gray-300/90 -mb-1"
+							htmlFor={field.name}
+						>
+							Available
+						</FieldLabel>
+						<Input
+							{...field}
+							id={field.name}
+							aria-invalid={fieldState.invalid}
+							placeholder="Enter availability"
+							autoComplete="availability"
+						/>
+						<FieldDescription className="text-sm text-gray-400">
+							Enter your availability status.
+						</FieldDescription>
+						{fieldState.invalid && (
+							<FieldError
+								className="text-red-500 -mt-1"
+								errors={[fieldState.error]}
+							/>
+						)}
+					</Field>
+				)}
+			/>
+			{form.formState.errors.root && (
+				<div className="mb-8 text-red-500">
+					{form.formState.errors.root.message}
+				</div>
+			)}
+			<div className="flex gap-4">
+				<Button
+					type="submit"
+					variant="primary"
+					disabled={isSubmitting || !isDirty}
+					className="flex-1"
+				>
+					{isSubmitting ? "Updating..." : "Update User Info"}
+				</Button>
+			</div>
+		</form>
+	);
+}
