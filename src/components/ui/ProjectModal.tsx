@@ -6,7 +6,6 @@ import GithubIcon from "@/assets/icons/minified/github.svg";
 import PlayIcon from "@/assets/icons/minified/play.svg";
 import XIcon from "@/assets/icons/minified/x.svg";
 import {
-	Button,
 	Dialog,
 	DialogClose,
 	DialogContent,
@@ -14,6 +13,7 @@ import {
 } from "@/components/ui";
 import { TechBadges } from "@/components/ui/TechBadges";
 import type { Project } from "@/types/project";
+import { Button } from "./button";
 
 interface ProjectModalProps {
 	project: Project | null;

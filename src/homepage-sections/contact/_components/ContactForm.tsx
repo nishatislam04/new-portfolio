@@ -4,7 +4,8 @@ import { useRef, useState, useTransition } from "react";
 import { sendEmail } from "@/actions/SendEmail";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { FadeIn } from "@/components/animations";
-import { Button, Card } from "@/components/ui";
+import { Card } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 
 export default function ContactForm() {
 	const formRef = useRef<HTMLFormElement>(null);

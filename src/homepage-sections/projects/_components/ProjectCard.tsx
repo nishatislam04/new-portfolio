@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-import { Button, Card, CardContent } from "@/components/ui";
+import { Card, CardContent } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 import { TechBadges } from "@/components/ui/TechBadges";
 
 export default function ProjectCard({

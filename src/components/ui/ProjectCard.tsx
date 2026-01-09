@@ -6,9 +6,10 @@ import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import ClockIcon from "@/assets/icons/minified/clock.svg";
 import LockIcon from "@/assets/icons/minified/lock.svg";
 import PlayIcon from "@/assets/icons/minified/play.svg";
-import { Button, Card, CardContent } from "@/components/ui";
+import { Card, CardContent } from "@/components/ui";
 import { TechBadges } from "@/components/ui/TechBadges";
 import type { Project } from "@/types/project";
+import { Button } from "./button";
 
 interface ProjectCardProps {
 	project: Project;

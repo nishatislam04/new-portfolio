@@ -2,7 +2,7 @@
 
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { FadeIn } from "@/components/animations";
-import { Button } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 
 export default function ProjectCTA() {
 	return (

@@ -11,12 +11,12 @@ import {
 	updateUserInfoForm,
 } from "@/actions/user-info-form-actions";
 import {
-	Button,
 	Dialog,
 	DialogClose,
 	DialogContent,
 	DialogHeader,
 } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 import {
 	Field,
 	FieldDescription,

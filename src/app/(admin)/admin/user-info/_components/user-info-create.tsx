@@ -4,7 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type { z } from "zod";
 import { submitUserInfoForm } from "@/actions/user-info-form-actions";
-import { Button } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 import {
 	Field,
 	FieldDescription,
