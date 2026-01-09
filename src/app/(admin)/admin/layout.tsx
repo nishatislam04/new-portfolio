@@ -7,7 +7,7 @@ import {
 	SidebarProvider,
 	SidebarTrigger,
 } from "@/components/ui/sidebar";
-
+import { Toaster } from "@/components/ui/sonner";
 import { AdminSidebar } from "../_components/admin-sidebar";
 
 export default function AdminRootLayout({
@@ -38,6 +38,7 @@ export default function AdminRootLayout({
 					</header>
 					<main className="flex flex-1 flex-col gap-6 bg-gray-900/60 p-8">
 						<div className="rounded-3xl border border-white/5 bg-gray-900/80 p-6 shadow-[0_0_60px_rgba(13,148,136,0.08)]">
+							<Toaster position="top-center" closeButton />
 							{children}
 						</div>
 					</main>

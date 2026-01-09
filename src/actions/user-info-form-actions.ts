@@ -1,23 +1,17 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import { UserInfoFormSchema } from "@/schema/user-info-form-schema";
+import { safeServerAction } from "@/utils/validation";
 
-export async function submitUserInfoForm(data: {
-	firstName: string;
-	lastName: string;
-	email: string;
-	title: string;
-	bio: string;
-	phone: string;
-	locationLabel: string;
-	locationLink: string;
-	availability: string;
-}) {
-	try {
-		const slug = `${data.firstName}-${data.lastName}`.toLowerCase();
+export const submitUserInfoForm = async (data: unknown) =>
+	safeServerAction(UserInfoFormSchema, data, async (validatedData) => {
+		const slug =
+			`${validatedData.firstName}-${validatedData.lastName}-${validatedData.phone.slice(-4)}`.toLowerCase();
+
 		await prisma.profile.create({
 			data: {
-				...data,
+				...validatedData,
 				slug,
 			},
 		});
@@ -26,12 +20,4 @@ export async function submitUserInfoForm(data: {
 			success: true,
 			message: "User info submitted successfully",
 		};
-	} catch (error: unknown) {
-		console.error("Error submitting user info form:", (error as Error).message);
-		return {
-			success: false,
-			message: "Failed to submit user info form",
-			rawMessage: error,
-		};
-	}
-}
+	});
