@@ -22,7 +22,9 @@ export default function AdminRootLayout({
 				<SidebarInset className="bg-gray-900/90">
 					<header className="flex h-20 items-center gap-4 border-b border-white/10 bg-gray-900/80 px-6 backdrop-blur">
 						<div className="w-full flex items-center justify-between gap-3">
-							<SidebarTrigger className=" bg-gray-900/80 text-gray-200 hover:bg-white/10" />
+							<SidebarTrigger className=" bg-gray-900/80 text-gray-200 hover:bg-white/10">
+								Menu
+							</SidebarTrigger>
 							<div className="space-y-1 ml-4">
 								<p className="text-sm uppercase tracking-[0.3em] text-emerald-300">
 									Control Center

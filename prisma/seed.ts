@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { TAPE_WORDS } from "../src/constants";
 import { PrismaClient } from "../src/generated/client";
-import { NAV_ITEMS, TAPE_WORDS } from "../src/constants";
 import { seedProfile } from "./seed-data";
 
 // Prisma setup (uses same adapter/config as the app)
@@ -18,7 +18,9 @@ async function main() {
 
 	// Ensure we have a connection string
 	if (!process.env.DATABASE_URL) {
-		throw new Error("DATABASE_URL is not set. Please configure your database connection.");
+		throw new Error(
+			"DATABASE_URL is not set. Please configure your database connection.",
+		);
 	}
 
 	// Start with a clean slate for this profile slug to keep the seed idempotent.
@@ -28,7 +30,9 @@ async function main() {
 	});
 
 	if (existingProfile) {
-		console.log(`Found existing profile for slug "${seedProfile.slug}" – deleting for a clean reseed...`);
+		console.log(
+			`Found existing profile for slug "${seedProfile.slug}" – deleting for a clean reseed...`,
+		);
 		await prisma.profile.delete({ where: { id: existingProfile.id } });
 	}
 
@@ -36,12 +40,13 @@ async function main() {
 	const profile = await prisma.profile.create({
 		data: {
 			slug: seedProfile.slug,
-			name: seedProfile.name,
+			firstName: seedProfile.firstName,
+			lastName: seedProfile.lastName,
 			title: seedProfile.title,
 			bio: seedProfile.bio,
 			email: seedProfile.email,
 			phone: seedProfile.phone,
-			location: seedProfile.location,
+			locationLabel: seedProfile.location,
 			locationLink: seedProfile.locationLink,
 			availability: seedProfile.availability,
 			// JSON columns
@@ -91,7 +96,9 @@ async function main() {
 				sortOrder: index,
 			})),
 		});
-		console.log(`Created ${seedProfile.workExperience.length} work experience entries.`);
+		console.log(
+			`Created ${seedProfile.workExperience.length} work experience entries.`,
+		);
 	}
 
 	// 4. Education entries
@@ -175,19 +182,29 @@ async function main() {
 				company: project.company,
 				year: project.year,
 				status: project.status,
-				category: project.category,
+				category: project.category || "",
 				shortDescription: project.shortDescription,
 				fullDescription: project.fullDescription,
 				keyFeatures: project.keyFeatures,
-				results: project.results,
-				coverImage: project.coverImage,
-				images: project.images,
-				technologies: project.technologies,
-				architecture: project.architecture,
-				challenges: project.challenges,
-				solutions: project.solutions,
-				links: project.links,
-				tags: project.tags,
+				results: JSON.stringify(project.results), // Serialize array to JSON string
+				coverImage: project.coverImage
+					? JSON.stringify(project.coverImage)
+					: undefined,
+				images: project.images ? JSON.stringify(project.images) : undefined,
+				technologies: project.technologies
+					? JSON.stringify(project.technologies)
+					: undefined,
+				architecture: project.architecture
+					? JSON.stringify(project.architecture)
+					: undefined,
+				challenges: project.challenges
+					? JSON.stringify(project.challenges)
+					: undefined,
+				solutions: project.solutions
+					? JSON.stringify(project.solutions)
+					: undefined,
+				links: project.links ? JSON.stringify(project.links) : undefined,
+				tags: project.tags ? JSON.stringify(project.tags) : undefined,
 				featured: project.featured ?? false,
 				priority: project.priority ?? index + 1,
 				hasLiveDemo: project.hasLiveDemo,
@@ -198,20 +215,6 @@ async function main() {
 			})),
 		});
 		console.log(`Created ${seedProfile.projects.length} portfolio projects.`);
-	}
-
-	// 9. Navigation items and tape words from constants
-	if (NAV_ITEMS?.length) {
-		await prisma.navigationItem.createMany({
-			data: NAV_ITEMS.map((item, index) => ({
-				profileId,
-				label: item.name,
-				href: item.href,
-				isPublic: true,
-				sortOrder: index,
-			})),
-		});
-		console.log(`Created ${NAV_ITEMS.length} navigation items.`);
 	}
 
 	if (TAPE_WORDS?.length) {

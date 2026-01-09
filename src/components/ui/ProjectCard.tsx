@@ -112,11 +112,11 @@ export function ProjectCard({
 					{/* Featured Project Image */}
 					<div className="relative h-64 md:h-80 overflow-hidden">
 						<Image
-							src={project.coverImage.src}
-							alt={project.coverImage.alt}
+							src={project.coverImage?.src || ""}
+							alt={project.coverImage?.alt || ""}
 							fill
 							className="object-contain object-top"
-							priority={project.coverImage.priority}
+							priority={project.coverImage?.priority}
 							sizes="(min-width: 1024px) 50vw, 100vw"
 						/>
 						<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -208,8 +208,8 @@ export function ProjectCard({
 					{/* Project Image */}
 					<div className="relative h-48 md:h-56 overflow-hidden">
 						<Image
-							src={project.coverImage.src}
-							alt={project.coverImage.alt}
+							src={project.coverImage?.src || ""}
+							alt={project.coverImage?.alt || ""}
 							fill
 							className={
 								project.id === "multi-vendor-ecommerce"
@@ -296,8 +296,8 @@ export function ProjectCard({
 				{/* Project Image */}
 				<div className="relative h-48 overflow-hidden">
 					<Image
-						src={project.coverImage.src}
-						alt={project.coverImage.alt}
+						src={project.coverImage?.src || ""}
+						alt={project.coverImage?.alt || ""}
 						fill
 						className={
 							project.id === "multi-vendor-ecommerce"

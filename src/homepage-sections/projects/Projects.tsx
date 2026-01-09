@@ -12,8 +12,9 @@ export default function ProjectsSection() {
 	const projects: Project[] = PERSONAL_INFO.portfolioProjects.map(
 		(project) => ({
 			...project,
+			slug: project.id,
 			coverImage: project.coverImage || {
-				src: project.image!,
+				src: project.image || "",
 				alt: `${project.title} Screenshot`,
 				priority: project.featured,
 			},

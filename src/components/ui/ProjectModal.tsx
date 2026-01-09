@@ -36,8 +36,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 				{/* Hero Section */}
 				<div className="relative h-80 md:h-96 lg:h-[28rem]">
 					<Image
-						src={project.coverImage.src}
-						alt={project.coverImage.alt}
+						src={project.coverImage?.src || ""}
+						alt={project.coverImage?.alt || ""}
 						fill
 						className={"object-contain object-center"}
 						priority

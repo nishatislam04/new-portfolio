@@ -40,7 +40,14 @@ interface ToolboxRowProps {
 	category: {
 		readonly id: string;
 		readonly title: string;
-		readonly color: "emerald" | "sky" | "violet" | "amber" | "slate" | "rose";
+		readonly color:
+			| "emerald"
+			| "sky"
+			| "violet"
+			| "amber"
+			| "slate"
+			| "rose"
+			| "indigo";
 		readonly items: readonly ToolboxItem[];
 	};
 	index: number;

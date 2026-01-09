@@ -61,9 +61,9 @@ export default function WorkExperienceCard() {
 											Key Achievements:
 										</h4>
 										<div className="grid gap-3">
-											{exp.achievements.map((achievement, achievementIndex) => (
+											{exp.achievements.map((achievement) => (
 												<div
-													key={`${crypto.randomUUID()}-${achievementIndex}`}
+													key={`achievement-${achievement.replace(/\s+/g, "-").slice(0, 20)}`}
 													className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-colors duration-300"
 												>
 													<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
@@ -81,9 +81,9 @@ export default function WorkExperienceCard() {
 											Technologies Learned:
 										</h4>
 										<div className="flex flex-wrap gap-2">
-											{exp.technologies.map((tech, techIndex) => (
+											{exp.technologies.map((tech) => (
 												<span
-													key={`${crypto.randomUUID()}-${techIndex}`}
+													key={`tech-${tech.replace(/\s+/g, "-").toLowerCase()}`}
 													className="px-3 py-1 bg-gray-700/50 border border-gray-600/50 rounded-full text-gray-300 text-sm hover:border-emerald-500/30 hover:text-emerald-400 transition-colors duration-300"
 												>
 													{tech}

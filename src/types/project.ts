@@ -14,7 +14,7 @@ export interface Technology {
 }
 
 export interface ProjectLink {
-	type: "live" | "github" | "case-study" | "demo" | "documentation";
+	type: "live" | "github" | "case-study" | "demo" | "documentation" | "preview";
 	url: string;
 	label: string;
 	icon?: string;
@@ -31,43 +31,34 @@ export interface Project {
 	// Basic Info
 	id: string;
 	title: string;
-	company: string;
+	slug: string;
+	company?: string;
 	year: string;
-	status: "completed" | "in-progress" | "coming-soon";
-
-	// Content
-	shortDescription: string;
+	status: string;
+	category?: string;
+	tags: string[];
+	featured?: boolean;
+	priority?: number;
+	shortDescription?: string;
 	fullDescription?: string;
-	keyFeatures: string[];
-	results: ProjectResult[];
-
-	// Media
-	coverImage: ProjectImage;
+	keyFeatures?: string[];
+	results?: ProjectResult[];
+	coverImage?: ProjectImage;
 	images?: ProjectImage[];
-	videoUrl?: string;
-
-	// Technical
-	technologies: (string | Technology)[];
+	technologies?: string[];
 	architecture?: string[];
 	challenges?: string[];
 	solutions?: string[];
-
-	// Links & Actions
-	links: ProjectLink[];
-
-	// Metadata
-	category: string;
-	tags: string[];
-	featured: boolean;
-	priority: number;
+	links?: ProjectLink[];
+	hasLiveDemo?: boolean;
+	isComingSoon?: boolean;
+	isPrivate?: boolean;
+	videoUrl?: string;
 
 	// Legacy support (for backward compatibility)
 	link?: string;
 	image?: StaticImageData;
 	description?: string;
-	hasLiveDemo?: boolean;
-	isPrivate?: boolean;
-	isComingSoon?: boolean;
 }
 
 export interface ProjectGridProps {

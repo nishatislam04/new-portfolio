@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import type { Technology } from "@/types/project";
 
 interface TechBadgesProps {
-	items: (string | Technology)[];
+	items: (string | Technology)[] | undefined;
 	limit?: number;
 	className?: string;
 	size?: "sm" | "md";
@@ -28,6 +28,10 @@ export function TechBadges({
 	className,
 	size = "sm",
 }: TechBadgesProps) {
+	if (!items || items.length === 0) {
+		return null;
+	}
+
 	const list = limit ? items.slice(0, limit) : items;
 
 	return (
@@ -42,7 +46,7 @@ export function TechBadges({
 
 				return (
 					<span
-						key={`${name}-${idx}`}
+						key={isObj ? `${item.name}-${idx}` : `${item}-${idx}`}
 						className={cn(
 							base,
 							"rounded-full font-medium border",
