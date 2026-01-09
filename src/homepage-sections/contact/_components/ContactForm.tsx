@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useRef, useState, useTransition } from "react";
 import { sendEmail } from "@/actions/SendEmail";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";

@@ -12,9 +12,8 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id    Int    @id @default(autoincrement())
+  email String @unique
 
   profile   Profile? @relation(fields: [profileId], references: [id])
   profileId String?
@@ -27,10 +26,13 @@ model Profile {
   slug String @unique
 
   /// Basic identity
-  name  String
-  title String // designation
+  userName  String?
+  firstName String?
+  lastName  String?
+  surName   String?
+  title     String // designation
   /// Long-form bio / profile text from PERSONAL_INFO.profile
-  bio   String
+  bio       String
 
   /// Contact information (mirrors CONTACT_INFO in constants)
   email         String @unique

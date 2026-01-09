@@ -46,7 +46,7 @@ seed:
 	npm run db:seed
 
 push:
-	npx prisma db push
+	npx prisma db push --force-reset
 
 migrate:
 	npx prisma migrate dev
