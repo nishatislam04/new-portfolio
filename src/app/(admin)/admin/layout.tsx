@@ -14,9 +14,7 @@ export default function AdminRootLayout({
 	children,
 }: Readonly<{ children: ReactNode }>) {
 	return (
-		<div
-			className={`${fontClassName} flex min-h-svh bg-gray-900 text-gray-100`}
-		>
+		<div className="flex min-h-svh bg-gray-900 text-gray-100">
 			<SidebarProvider>
 				<AdminSidebar />
 				<SidebarInset className="bg-gray-900/90">

@@ -80,10 +80,6 @@ export default function PublicRootLayout({
 	children: ReactNode;
 }>) {
 	return (
-		<div
-			className={`${fontClassName} bg-gray-900 text-white min-h-svh relative`}
-		>
-			{children}
-		</div>
+		<div className="bg-gray-900 text-white min-h-svh relative">{children}</div>
 	);
 }

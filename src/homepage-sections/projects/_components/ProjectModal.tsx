@@ -13,7 +13,7 @@ import {
 } from "@/components/ui";
 import { TechBadges } from "@/components/ui/TechBadges";
 import type { Project } from "@/types/project";
-import { Button } from "./button";
+import { Button } from "../../../components/ui/button";
 
 interface ProjectModalProps {
 	project: Project | null;
@@ -34,7 +34,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
 			<DialogContent>
 				{/* Hero Section */}
-				<div className="relative h-80 md:h-96 lg:h-[28rem]">
+				<div className="relative h-80 md:h-96 lg:h-[28rem] font-sans">
 					<Image
 						src={project.coverImage?.src || ""}
 						alt={project.coverImage?.alt || ""}
@@ -54,7 +54,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 								{project.year}
 							</span>
 						</div>
-						<h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
+						<h1 className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
 							{project.title}
 						</h1>
 						<p className="text-emerald-400 font-medium text-lg">
@@ -70,7 +70,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 						<div className="flex flex-wrap gap-3">
 							{project.links.map((link, index) => (
 								<Button
-									key={index}
+									key={`${index}-${crypto.randomUUID}`}
 									onClick={() => window.open(link.url, "_blank")}
 									className="flex items-center gap-2 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-white"
 								>
@@ -92,7 +92,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 						<h2 className="text-2xl font-semibold text-white mb-6">
 							Project Overview
 						</h2>
-						<p className="text-gray-300 leading-relaxed text-lg max-w-4xl">
+						<p className="text-gray-300 leading-relaxed text-lg max-w-4xl font-sans">
 							{project.fullDescription || project.shortDescription}
 						</p>
 					</div>
@@ -106,7 +106,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 							<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 								{project.keyFeatures.map((feature, index) => (
 									<div
-										key={index}
+										key={`${index}-${crypto.randomUUID}`}
 										className="flex items-start gap-4 p-4 bg-gray-800/30 rounded-lg border border-gray-700/30 hover:border-gray-600/50 transition-colors"
 									>
 										<span className="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
@@ -143,7 +143,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 										<ul className="space-y-3">
 											{project.architecture.map((item, index) => (
 												<li
-													key={index}
+													key={`${index}-${crypto.randomUUID}`}
 													className="text-gray-300 flex items-start gap-3"
 												>
 													<span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
@@ -163,7 +163,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 										<ul className="space-y-3">
 											{project.challenges.map((item, index) => (
 												<li
-													key={index}
+													key={`${index}-${crypto.randomUUID}`}
 													className="text-gray-300 flex items-start gap-3"
 												>
 													<span className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
@@ -183,7 +183,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 										<ul className="space-y-3">
 											{project.solutions.map((item, index) => (
 												<li
-													key={index}
+													key={`${index}-${crypto.randomUUID}`}
 													className="text-gray-300 flex items-start gap-3"
 												>
 													<span className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
@@ -206,7 +206,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 							<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 								{project.results.map((result, index) => (
 									<div
-										key={index}
+										key={`${index}-${crypto.randomUUID}`}
 										className="p-6 bg-gradient-to-r from-emerald-500/10 to-sky-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/30 transition-colors"
 									>
 										<h4 className="text-white font-semibold mb-3 text-lg">

@@ -51,7 +51,7 @@ export default function ProjectsSection() {
 					<ProjectHeader />
 
 					{/* New Flexible Project Grid */}
-					<ProjectGrid projects={projects} showFeatured={true} layout="bento" />
+					<ProjectGrid projects={projects} showFeatured={true} />
 
 					{/* Call-to-action */}
 					<FadeIn delay={0.4}>

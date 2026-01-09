@@ -21,3 +21,6 @@ export const jetbrainsMono = JetBrains_Mono({
 });
 
 export const fontClassName = `${inter.variable} ${calistoga.variable} ${jetbrainsMono.variable} font-sans`;
+export const InterFont = inter;
+export const CalistogaFont = calistoga;
+export const JetBrainsMonoFont = jetbrainsMono;

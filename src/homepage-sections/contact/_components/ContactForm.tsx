@@ -96,7 +96,12 @@ export default function ContactForm() {
 					</div>
 
 					<div className="pt-2">
-						<Button type="submit" disabled={isPending} className="w-full group">
+						<Button
+							variant="oldButtonPrimary"
+							type="submit"
+							disabled={isPending}
+							className="w-full group"
+						>
 							{isPending ? "Sending..." : "Send Message"}
 							{!isPending && (
 								<ArrowUpRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
