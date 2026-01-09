@@ -41,3 +41,8 @@ export const UserInfoUpdateSchema = z.object({
 		.optional(),
 	availability: z.string().min(1, "Availability is required").trim().optional(),
 });
+
+export const UserInfoDeleteSchema = z.object({
+	id: z.string().min(1, "Profile ID is required"),
+	password: z.string().min(1, "Password is required").trim(),
+});

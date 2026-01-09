@@ -3,6 +3,7 @@
 import { cacheLife, cacheTag, updateTag } from "next/cache";
 import prisma from "@/lib/prisma";
 import {
+	UserInfoDeleteSchema,
 	UserInfoFormSchema,
 	UserInfoUpdateSchema,
 } from "@/schema/user-info-form-schema";
@@ -85,3 +86,14 @@ export const getUserInfo = async () => {
 		};
 	}
 };
+
+export const deleteUserInfo = async (data: unknown) =>
+	safeServerAction(UserInfoDeleteSchema, data, async () => {
+		safeServerAction(UserInfoDeleteSchema, null, async (_) => {
+			// Placeholder: delete logic not implemented yet
+			return {
+				success: false,
+				message: "Delete functionality is not implemented yet",
+			};
+		});
+	});

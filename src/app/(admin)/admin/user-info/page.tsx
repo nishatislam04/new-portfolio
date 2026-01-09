@@ -11,9 +11,8 @@ export default async function UserInfoPage(): Promise<ReactElement> {
 
 	if (userAlredyExist.success && userAlredyExist.data) {
 		return (
-			<AdminPageShell title="User Edit Management" description="">
-				<UserInfoEdit user={userAlredyExist.data} />
-			</AdminPageShell>
+			// <AdminPageShell title="User Edit Management" description="">
+			<UserInfoEdit user={userAlredyExist.data} />
 		);
 	}
 
