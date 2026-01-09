@@ -1,3 +1,4 @@
+"use cache";
 import type { ReactElement } from "react";
 import { getUserInfo } from "@/actions/user-info-form-actions";
 import { AdminPageShell } from "@/app/(admin)/_components/admin-page-shell";
