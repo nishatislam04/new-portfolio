@@ -30,11 +30,11 @@ export default function ContactForm() {
 	};
 	return (
 		<FadeIn delay={0.2}>
-			<Card variant="glass" className="p-8 h-[860px]">
+			<Card variant="glass" className="p-8 h-auto">
 				<form
 					ref={formRef}
 					action={handleSubmit}
-					className="space-y-6 h-40 flex flex-col"
+					className="space-y-6 h-auto flex flex-col"
 				>
 					<div className="flex-grow space-y-6">
 						<div>

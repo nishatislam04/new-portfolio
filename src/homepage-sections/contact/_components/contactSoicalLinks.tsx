@@ -7,7 +7,7 @@ import { PERSONAL_INFO } from "@/constants/personal-info";
 
 export default function ContactSocialLinks() {
 	return (
-		<div className="mt-8 pt-8 border-t border-gray-700/50">
+		<div className="mt-2 pt-4 px-4 border-t border-gray-700/50">
 			<h4 className="font-semibold text-white mb-4">Connect With Me</h4>
 			<div className="grid grid-cols-2 gap-3">
 				{PERSONAL_INFO.SOCIAL_LINKS.map((social) => {

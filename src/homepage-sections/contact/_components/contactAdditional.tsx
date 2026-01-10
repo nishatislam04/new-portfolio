@@ -4,11 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function ContactAdditional() {
 	return (
 		<FadeIn delay={0.6}>
-			<Card variant="glass" className="p-6">
+			<Card variant="glass" className="p-2">
 				<CardHeader>
-					<CardTitle>Prefer Other Ways?</CardTitle>
+					<CardTitle className="px-0">Prefer Other Ways?</CardTitle>
 				</CardHeader>
-				<CardContent className="space-y-3 text-sm">
+				<CardContent className="space-y-3 text-sm px-6">
 					<p className="text-gray-400">
 						📞 Schedule a call to discuss your project
 					</p>

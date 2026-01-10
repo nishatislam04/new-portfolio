@@ -16,12 +16,12 @@ export default function ContactRightSide() {
 	return (
 		<div className="space-y-8 h-full flex flex-col">
 			<FadeIn delay={0.4} {...{ className: "flex-grow" }}>
-				<Card variant="glass" className="p-8 h-full flex flex-col">
+				<Card variant="glass" className="px-2 py-6 h-full flex flex-col">
 					<CardHeader>
 						<CardTitle>Get in Touch</CardTitle>
 					</CardHeader>
-					<CardContent className="flex-grow">
-						<div className="space-y-6 mb-8">
+					<CardContent className="flex-grow px-3">
+						<div className="space-y-6 mb-4">
 							<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 								<EmailIcon
 									className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0"

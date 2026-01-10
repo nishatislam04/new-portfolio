@@ -78,7 +78,7 @@ export function ProjectGrid({
 							<span className="w-2 h-2 bg-sky-400 rounded-full"></span>
 							All Projects
 						</h3>
-						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 							{regularProjects.map((project, index) => (
 								<motion.div
 									key={project.id}

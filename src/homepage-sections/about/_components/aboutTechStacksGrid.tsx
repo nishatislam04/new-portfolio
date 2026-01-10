@@ -26,7 +26,7 @@ const techStacks = [
 		),
 	},
 	{
-		name: "Prisma ORM",
+		name: "Prisma",
 		icon: <PrismaIcon className="size-10 fill-[url(#tech-icon-gradient)]" />,
 	},
 	{

@@ -31,7 +31,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent className="w-full max-w-7xl max-h-[85vh] md:max-h-[90vh] p-0 bg-gray-900/95 border border-white/10 sm:rounded-2xl overflow-y-auto overscroll-contain">
 				{/* Hero Section */}
-				<div className="relative h-80 md:h-96 lg:h-[28rem] font-sans overscroll-auto">
+				<div className="relative h-80 md:h-96 lg:h-[28rem]">
 					<Image
 						src={project.coverImage?.src || ""}
 						alt={project.coverImage?.alt || ""}
@@ -42,16 +42,16 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 					<div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
 
 					{/* Project Title Overlay */}
-					<div className="absolute bottom-8 left-8 right-20">
-						<div className="flex items-center gap-4 mb-3">
-							<span className="px-4 py-2 text-sm bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/30 font-medium">
+					<div className="absolute -bottom-28 left-8 right-20 w-full">
+						<div className="absolute -top-10 right-10 flex items-center gap-4 mb-3">
+							<span className="px-2 py-1 lg:px-4 lg:py-2 text-sm bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/30 font-medium">
 								{project.category}
 							</span>
-							<span className="px-4 py-2 text-sm bg-gray-500/20 text-gray-300 rounded-full border border-gray-500/30">
+							<span className="px-2 py-1 lg:px-4 lg:py-2 text-sm bg-gray-500/20 text-gray-300 rounded-full border border-gray-500/30">
 								{project.year}
 							</span>
 						</div>
-						<DialogTitle className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
+						<DialogTitle className="mb-2 font-sans text-2xl md:text-4xl lg:text-5xl font-bold text-white">
 							{project.title}
 						</DialogTitle>
 						<p className="text-emerald-400 font-medium text-lg">
@@ -61,10 +61,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 				</div>
 
 				{/* Content */}
-				<div className="p-8 md:p-10 lg:p-12 space-y-10">
+				<div className="p-8 md:p-10 lg:p-12 space-y-10 mt-20">
 					{/* Action Buttons */}
 					{project.links && project.links.length > 0 && (
-						<div className="flex flex-wrap gap-3">
+						<div className="flex justify-start flex-wrap gap-3">
 							{project.links.map((link, index) => (
 								<Button
 									key={`${index}-${crypto.randomUUID}`}
@@ -85,11 +85,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 					)}
 
 					{/* Description */}
-					<div>
-						<h2 className="text-2xl font-semibold text-white mb-6">
+					<div className="">
+						<h2 className="text-2xl font-semibold text-white mb-3">
 							Project Overview
 						</h2>
-						<p className="text-gray-300 leading-relaxed text-lg max-w-4xl font-sans">
+						<p className="text-gray-300 leading-relaxed text-base lg:text-lg max-w-4xl font-sans">
 							{project.fullDescription || project.shortDescription}
 						</p>
 					</div>
@@ -231,7 +231,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 								loop: true,
 							}}
 							orientation="horizontal"
-							className="w-full"
+							className=""
 						>
 							<h2 className="text-2xl font-semibold text-white mb-8">
 								Project Gallery

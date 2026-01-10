@@ -133,7 +133,7 @@ export function ProjectCard({
 
 					<CardContent className="p-6 space-y-4">
 						{/* Header */}
-						<div className="flex items-start justify-between gap-4">
+						<div className="relative flex items-start justify-between gap-4">
 							<div>
 								<h3 className="text-xl font-semibold text-white group-hover:text-emerald-400 transition-colors duration-300 mb-1">
 									{project.title}
@@ -146,7 +146,7 @@ export function ProjectCard({
 									<span className="text-gray-400">{project.year}</span>
 								</div>
 							</div>
-							<span className="px-3 py-1 text-xs bg-gradient-to-r from-emerald-500/20 to-sky-500/20 text-emerald-400 rounded-full border border-emerald-500/30 whitespace-nowrap font-medium">
+							<span className="absolute -top-8 right-0 px-3 py-1 text-xs bg-gradient-to-r from-emerald-500/20 to-sky-500/20 text-emerald-400 rounded-full border border-emerald-500/30 whitespace-nowrap font-medium">
 								{project.category}
 							</span>
 						</div>
