@@ -9,5 +9,4 @@ export {
 	DialogContent,
 	DialogHeader,
 } from "./Dialog";
-export { ImageCarousel } from "./ImageCarousel";
 export { Section } from "./Section";

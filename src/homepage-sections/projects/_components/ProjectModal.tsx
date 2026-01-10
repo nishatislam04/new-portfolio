@@ -5,12 +5,14 @@ import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import GithubIcon from "@/assets/icons/minified/github.svg";
 import PlayIcon from "@/assets/icons/minified/play.svg";
 import XIcon from "@/assets/icons/minified/x.svg";
+import { Dialog, DialogClose, DialogContent } from "@/components/ui";
 import {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	ImageCarousel,
-} from "@/components/ui";
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from "@/components/ui/carousel";
 import { TechBadges } from "@/components/ui/TechBadges";
 import type { Project } from "@/types/project";
 import { Button } from "../../../components/ui/button";
@@ -227,21 +229,41 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 					)}
 
 					{/* Image Gallery Carousel */}
-					{project.images && project.images.length > 0 && (
-						<div>
-							<h2 className="text-2xl font-semibold text-white mb-8">
-								Project Gallery
-							</h2>
-							<ImageCarousel
-								images={project.images}
-								autoPlay={true}
-								autoPlayInterval={5000}
-								showThumbnails={true}
-								className="w-full"
-								imageFit={"contain"}
-							/>
-						</div>
-					)}
+					<Carousel
+						opts={{
+							align: "start",
+							loop: true,
+						}}
+						orientation="horizontal"
+						className="w-full"
+					>
+						<h2 className="text-2xl font-semibold text-white mb-8">
+							Project Gallery
+						</h2>
+						<CarouselContent className="mx-1">
+							{project.images &&
+								project.images.length > 0 &&
+								project.images.map((image, index) => (
+									<CarouselItem
+										className="md:basis-full lg:basis-full"
+										key={`${index}-${crypto.randomUUID}`}
+									>
+										<div className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-800/20 rounded-lg overflow-hidden">
+											<Image
+												src={image.src}
+												alt={image.alt}
+												fill
+												className="object-contain"
+												sizes="(min-width: 1024px) 66vw, (min-width: 768px) 50vw, 100vw"
+												priority={index === 0}
+											/>
+										</div>
+									</CarouselItem>
+								))}
+						</CarouselContent>
+						<CarouselPrevious />
+						<CarouselNext />
+					</Carousel>
 
 					{/* Video Demo */}
 					{project.videoUrl && (

@@ -295,34 +295,50 @@ export const PERSONAL_INFO = {
 				{
 					src: projectImages.teamDocsCover,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 				{
 					src: projectImages.teamDocsGallery1,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 				{
 					src: projectImages.teamDocsGallery2,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 				{
 					src: projectImages.teamDocsGallery3,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 				{
 					src: projectImages.teamDocsGallery4,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 				{
 					src: projectImages.teamDocsGallery5,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 				{
 					src: projectImages.teamDocsGallery6,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 				{
 					src: projectImages.teamDocsGallery7,
 					alt: "Team-Docs Collaborative Platform Interface",
+					height: 500,
+					width: 500,
 				},
 			],
 			technologies: [

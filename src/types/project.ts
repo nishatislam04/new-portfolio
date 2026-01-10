@@ -5,6 +5,8 @@ export interface ProjectImage {
 	alt: string;
 	caption?: string;
 	priority?: boolean;
+	width: number;
+	height: number;
 }
 
 export interface Technology {
