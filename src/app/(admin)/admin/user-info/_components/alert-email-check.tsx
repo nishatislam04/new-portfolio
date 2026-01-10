@@ -11,9 +11,9 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function AlertEmailCheck({
-	setPasswordOpen,
+	onOpenChange,
 }: {
-	setPasswordOpen: (open: boolean) => void;
+	onOpenChange: (open: boolean) => void;
 }) {
 	return (
 		<AlertDialog>
@@ -36,7 +36,7 @@ export default function AlertEmailCheck({
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter className="p-6 flex items-center justify-end">
-					<AlertDialogAction onClick={() => setPasswordOpen(false)}>
+					<AlertDialogAction onClick={() => onOpenChange(false)}>
 						OK
 					</AlertDialogAction>
 				</AlertDialogFooter>
