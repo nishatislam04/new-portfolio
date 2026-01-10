@@ -4,8 +4,6 @@ import Image from "next/image";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import GithubIcon from "@/assets/icons/minified/github.svg";
 import PlayIcon from "@/assets/icons/minified/play.svg";
-import XIcon from "@/assets/icons/minified/x.svg";
-import { Dialog, DialogClose, DialogContent } from "@/components/ui";
 import {
 	Carousel,
 	CarouselContent,
@@ -13,6 +11,13 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog";
 import { TechBadges } from "@/components/ui/TechBadges";
 import type { Project } from "@/types/project";
 import { Button } from "../../../components/ui/button";
@@ -30,13 +35,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
 	return (
 		<Dialog open={isOpen} onOpenChange={onClose}>
-			<DialogClose onClose={onClose}>
-				<XIcon className="w-5 h-5 text-gray-300" />
-			</DialogClose>
-
 			<DialogContent>
 				{/* Hero Section */}
-				<div className="relative h-80 md:h-96 lg:h-[28rem] font-sans">
+				<DialogHeader className="relative h-80 md:h-96 lg:h-[28rem] font-sans">
 					<Image
 						src={project.coverImage?.src || ""}
 						alt={project.coverImage?.alt || ""}
@@ -56,17 +57,17 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 								{project.year}
 							</span>
 						</div>
-						<h1 className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
+						<DialogTitle className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
 							{project.title}
-						</h1>
+						</DialogTitle>
 						<p className="text-emerald-400 font-medium text-lg">
 							{project.company}
 						</p>
 					</div>
-				</div>
+				</DialogHeader>
 
 				{/* Content */}
-				<div className="p-8 md:p-10 lg:p-12 space-y-10">
+				<DialogDescription className="p-8 md:p-10 lg:p-12 space-y-10">
 					{/* Action Buttons */}
 					{project.links && project.links.length > 0 && (
 						<div className="flex flex-wrap gap-3">
@@ -280,7 +281,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 							</div>
 						</div>
 					)}
-				</div>
+				</DialogDescription>
 			</DialogContent>
 		</Dialog>
 	);

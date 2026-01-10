@@ -11,12 +11,23 @@ import {
 	updateUserInfoForm,
 } from "@/actions/user-info-form-actions";
 import {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogHeader,
-} from "@/components/ui";
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog";
 import {
 	Field,
 	FieldDescription,
@@ -128,6 +139,8 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 		}
 
 		setPasswordOpen(false);
+		deleteForm.reset();
+		toast.success("This feature is not implemented yet");
 	}
 
 	// Check if form has any validation errors
@@ -142,7 +155,9 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 				</h2>
 				<Button
 					type="button"
-					variant="destructive"
+					variant="oldButtonDestructive"
+					size="lg"
+					className="px-10 py-6 rounded-xl text-lg"
 					onClick={() => setConfirmOpen(true)}
 				>
 					<Trash2 />
@@ -426,7 +441,7 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 				<div className="flex gap-4">
 					<Button
 						type="submit"
-						variant="primary"
+						variant="oldButtonPrimary"
 						disabled={isSubmitting || !isDirty}
 						className="flex-1"
 					>
@@ -436,61 +451,50 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 			</form>
 
 			{/* First Confirmation Dialog */}
-			<Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
-				<DialogContent>
-					<DialogHeader>
-						<h3 className="text-xl font-semibold text-white">
-							Delete Confirmation
-						</h3>
-						<p className="text-gray-300">
+			<AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<AlertDialogTitle>Delete Confirmation</AlertDialogTitle>
+						<AlertDialogDescription>
 							Are you sure you want to delete this resource?
-						</p>
-					</DialogHeader>
-					<div className="p-6 flex items-center justify-end gap-3">
-						<Button
-							type="button"
-							className="bg-gray-800 hover:bg-gray-700"
-							onClick={() => setConfirmOpen(false)}
-						>
-							Cancel
-						</Button>
-						<Button
-							type="button"
-							className="bg-red-600 hover:bg-red-700 text-white"
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter>
+						<AlertDialogCancel>Cancel</AlertDialogCancel>
+						<AlertDialogAction
+							className="bg-green-600"
 							onClick={() => {
 								setConfirmOpen(false);
 								setPasswordOpen(true);
 							}}
 						>
 							Yes, Delete
-						</Button>
-					</div>
-					<DialogClose onClose={() => setConfirmOpen(false)}>✕</DialogClose>
-				</DialogContent>
-			</Dialog>
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
 
 			{/* Second Dialog: Password Entry */}
 			<Dialog open={passwordOpen} onOpenChange={setPasswordOpen}>
 				<DialogContent>
 					<DialogHeader>
-						<h3 className="text-xl font-semibold text-white">
+						<DialogTitle className="text-xl font-semibold text-white">
 							Please provide delete resource password below
-						</h3>
-						<p className="text-gray-300">
+						</DialogTitle>
+						<DialogDescription className="text-gray-300">
 							This action is permanent and cannot be undone.
-						</p>
+							<Button
+								type="button"
+								className="text-sm text-emerald-400 hover:text-emerald-300 underline -ml-4 mt-2"
+								onClick={() => setNoticeOpen(true)}
+							>
+								click here to get the password
+							</Button>
+						</DialogDescription>
 					</DialogHeader>
-					<div className="px-6">
-						<button
-							type="button"
-							className="text-sm text-emerald-400 hover:text-emerald-300 underline"
-							onClick={() => setNoticeOpen(true)}
-						>
-							click here to get the password
-						</button>
-					</div>
+
 					<form
-						className="p-6 pt-4"
+						className="p-0 pt-4"
 						onSubmit={deleteForm.handleSubmit(onDeleteSubmit)}
 					>
 						<Controller
@@ -536,32 +540,29 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 							</Button>
 						</div>
 					</form>
-					<DialogClose onClose={() => setPasswordOpen(false)}>✕</DialogClose>
+					{/* <DialogClose onClose={() => setPasswordOpen(false)}>✕</DialogClose> */}
 				</DialogContent>
 			</Dialog>
 
 			{/* Notice Dialog (Alert) */}
-			<Dialog open={noticeOpen} onOpenChange={setNoticeOpen}>
-				<DialogContent>
-					<DialogHeader>
-						<h3 className="text-xl font-semibold text-white">Alert</h3>
-						<p className="text-gray-300">
+			<AlertDialog open={noticeOpen} onOpenChange={setNoticeOpen}>
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<AlertDialogTitle className="text-xl font-semibold text-white">
+							Alert
+						</AlertDialogTitle>
+						<AlertDialogDescription className="text-gray-300">
 							this resource deleting password will be sent to your email box.
-							please check
-						</p>
-					</DialogHeader>
-					<div className="p-6 flex items-center justify-end">
-						<Button
-							type="button"
-							className="bg-emerald-600 hover:bg-emerald-700 text-white"
-							onClick={() => setNoticeOpen(false)}
-						>
+							Alease check
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter className="p-6 flex items-center justify-end">
+						<AlertDialogAction onClick={() => setPasswordOpen(false)}>
 							OK
-						</Button>
-					</div>
-					<DialogClose onClose={() => setNoticeOpen(false)}>✕</DialogClose>
-				</DialogContent>
-			</Dialog>
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
 		</div>
 	);
 }
