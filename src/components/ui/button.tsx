@@ -28,7 +28,7 @@ const buttonVariants = cva(
 				oldButtonGhost:
 					"inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 hover:text-white hover:bg-white/5",
 				oldButtonDestructive:
-					"inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed bg-red-500 hover:bg-red-600 text-white",
+					"inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed bg-red-500 hover:bg-red-600 text-white",
 			},
 			size: {
 				default: "h-9 px-4 py-2",

@@ -10,16 +10,7 @@ import {
 	deleteUserInfo,
 	updateUserInfoForm,
 } from "@/actions/user-info-form-actions";
-import {
-	AlertDialog,
-	AlertDialogAction,
-	AlertDialogCancel,
-	AlertDialogContent,
-	AlertDialogDescription,
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -40,6 +31,8 @@ import {
 	UserInfoDeleteSchema,
 	UserInfoUpdateSchema,
 } from "@/schema/user-info-form-schema";
+import AlertEmailCheck from "./alert-email-check";
+import AlertResourceDelete from "./alert-resource-delete";
 
 interface UserInfoEditProps {
 	user: {
@@ -58,9 +51,7 @@ interface UserInfoEditProps {
 
 export default function UserInfoEdit({ user }: UserInfoEditProps) {
 	const router = useRouter();
-	const [confirmOpen, setConfirmOpen] = useState(false);
 	const [passwordOpen, setPasswordOpen] = useState(false);
-	const [noticeOpen, setNoticeOpen] = useState(false);
 	const form = useForm<z.infer<typeof UserInfoUpdateSchema>>({
 		mode: "onBlur",
 		resolver: zodResolver(UserInfoUpdateSchema),
@@ -153,16 +144,9 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 				<h2 className="text-3xl font-semibold text-emerald-300/90 capitalize self-center h-full">
 					User Edit Management
 				</h2>
-				<Button
-					type="button"
-					variant="oldButtonDestructive"
-					size="lg"
-					className="px-10 py-6 rounded-xl text-lg"
-					onClick={() => setConfirmOpen(true)}
-				>
-					<Trash2 />
-					Delete Me
-				</Button>
+
+				{/* first alert - asking if they really want to delete this resource */}
+				<AlertResourceDelete setPasswordOpen={setPasswordOpen} />
 			</div>
 
 			<form onSubmit={form.handleSubmit(onSubmit)}>
@@ -450,30 +434,6 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 				</div>
 			</form>
 
-			{/* First Confirmation Dialog */}
-			<AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
-				<AlertDialogContent>
-					<AlertDialogHeader>
-						<AlertDialogTitle>Delete Confirmation</AlertDialogTitle>
-						<AlertDialogDescription>
-							Are you sure you want to delete this resource?
-						</AlertDialogDescription>
-					</AlertDialogHeader>
-					<AlertDialogFooter>
-						<AlertDialogCancel>Cancel</AlertDialogCancel>
-						<AlertDialogAction
-							className="bg-green-600"
-							onClick={() => {
-								setConfirmOpen(false);
-								setPasswordOpen(true);
-							}}
-						>
-							Yes, Delete
-						</AlertDialogAction>
-					</AlertDialogFooter>
-				</AlertDialogContent>
-			</AlertDialog>
-
 			{/* Second Dialog: Password Entry */}
 			<Dialog open={passwordOpen} onOpenChange={setPasswordOpen}>
 				<DialogContent>
@@ -483,13 +443,8 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 						</DialogTitle>
 						<DialogDescription className="text-gray-300">
 							This action is permanent and cannot be undone.
-							<Button
-								type="button"
-								className="text-sm text-emerald-400 hover:text-emerald-300 underline -ml-4 mt-2"
-								onClick={() => setNoticeOpen(true)}
-							>
-								click here to get the password
-							</Button>
+							{/* alert dialog showing to check password in email */}
+							<AlertEmailCheck setPasswordOpen={setPasswordOpen} />
 						</DialogDescription>
 					</DialogHeader>
 
@@ -540,29 +495,8 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 							</Button>
 						</div>
 					</form>
-					{/* <DialogClose onClose={() => setPasswordOpen(false)}>✕</DialogClose> */}
 				</DialogContent>
 			</Dialog>
-
-			{/* Notice Dialog (Alert) */}
-			<AlertDialog open={noticeOpen} onOpenChange={setNoticeOpen}>
-				<AlertDialogContent>
-					<AlertDialogHeader>
-						<AlertDialogTitle className="text-xl font-semibold text-white">
-							Alert
-						</AlertDialogTitle>
-						<AlertDialogDescription className="text-gray-300">
-							this resource deleting password will be sent to your email box.
-							Alease check
-						</AlertDialogDescription>
-					</AlertDialogHeader>
-					<AlertDialogFooter className="p-6 flex items-center justify-end">
-						<AlertDialogAction onClick={() => setPasswordOpen(false)}>
-							OK
-						</AlertDialogAction>
-					</AlertDialogFooter>
-				</AlertDialogContent>
-			</AlertDialog>
 		</div>
 	);
 }

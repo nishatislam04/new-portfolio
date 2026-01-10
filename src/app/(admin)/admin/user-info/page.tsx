@@ -9,12 +9,8 @@ export default async function UserInfoPage(): Promise<ReactElement> {
 	// Check if user info already exists
 	const userAlredyExist = await getUserInfo();
 
-	if (userAlredyExist.success && userAlredyExist.data) {
-		return (
-			// <AdminPageShell title="User Edit Management" description="">
-			<UserInfoEdit user={userAlredyExist.data} />
-		);
-	}
+	if (userAlredyExist.success && userAlredyExist.data)
+		return <UserInfoEdit user={userAlredyExist.data} />;
 
 	return (
 		<AdminPageShell title="User Create Management" description="">
