@@ -656,10 +656,12 @@ export type ProfileCreateNestedOneWithoutSocialLinksInput = {
   connect?: Prisma.ProfileWhereUniqueInput
 }
 
-export type ProfileUpdateOneRequiredWithoutSocialLinksNestedInput = {
+export type ProfileUpdateOneWithoutSocialLinksNestedInput = {
   create?: Prisma.XOR<Prisma.ProfileCreateWithoutSocialLinksInput, Prisma.ProfileUncheckedCreateWithoutSocialLinksInput>
   connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSocialLinksInput
   upsert?: Prisma.ProfileUpsertWithoutSocialLinksInput
+  disconnect?: Prisma.ProfileWhereInput | boolean
+  delete?: Prisma.ProfileWhereInput | boolean
   connect?: Prisma.ProfileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutSocialLinksInput, Prisma.ProfileUpdateWithoutSocialLinksInput>, Prisma.ProfileUncheckedUpdateWithoutSocialLinksInput>
 }

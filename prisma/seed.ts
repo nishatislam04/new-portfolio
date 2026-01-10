@@ -67,7 +67,6 @@ async function main() {
 				label: link.label,
 				url: link.url,
 				icon: link.icon,
-				kind: link.kind,
 				isPrimary: index === 0,
 				isPublic: true,
 				sortOrder: index,

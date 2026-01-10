@@ -9,9 +9,7 @@ there will be a delete option when the edit form is shown.
   clicking on it will show a form input with password seeking confirmation
   upon confirmation, we will send an email about the resource being deleted
 
-1. create user info form
-  a form containing necessary input fields to create a user
-  and this form input field will write into `user` and `profile` model
+1. create user info form [DONE]
 2. create a social link form
 3. create a work experience form
 4. create a education form
@@ -21,7 +19,7 @@ there will be a delete option when the edit form is shown.
 
 ## the form input fields
 
-1. user form
+1. user form [DONE]
 
 - first name
 - last name
@@ -40,11 +38,10 @@ there will be a delete option when the edit form is shown.
 
 2. social link form
 
-- label
-- url
-- icon (file input)
-- kind (dropdown: contact, footer)
-- sort order (number input)
+- label - text input
+- url - text input
+- icon - file input
+- sort order - number input
 
 ~ (save the `icon` in the vercel-blob and store the url in `icon` field)
 
@@ -113,6 +110,6 @@ These fields contribute to a single achievement card.
 - [] add a password protection to the admin panel
 - [] update projects-section like refactor it with shadcn components and modularize it
 
-- [] user info form create
-- [] user info form update
-- [] user info form delete
+- [x] user info form create
+- [x] user info form update
+- [x] user info form delete

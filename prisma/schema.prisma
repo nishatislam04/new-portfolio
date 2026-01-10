@@ -65,8 +65,7 @@ model Profile {
 /// Social/contact links such as Gmail, LinkedIn, WhatsApp, etc.
 /// Represents PERSONAL_INFO.SOCIAL_LINKS and other future link groups.
 model SocialLink {
-  id        String @id @default(cuid())
-  profileId String
+  id String @id @default(cuid())
 
   /// Public-facing label, e.g. "Gmail", "LinkedIn"
   label String
@@ -75,14 +74,10 @@ model SocialLink {
   /// Icon key used by the UI (e.g. "gmail", "linkedin").
   icon String?
 
-  /// Optional grouping context ("contact", "footer" dropdown).
-  kind String?
-
   sortOrder Int @default(0)
 
-  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
-
-  @@index([profileId])
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?
 }
 
 /// Work experience timeline entries with nested achievements and technologies.

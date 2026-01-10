@@ -1226,12 +1226,11 @@ export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeo
 
 export const SocialLinkScalarFieldEnum = {
   id: 'id',
-  profileId: 'profileId',
   label: 'label',
   url: 'url',
   icon: 'icon',
-  kind: 'kind',
-  sortOrder: 'sortOrder'
+  sortOrder: 'sortOrder',
+  profileId: 'profileId'
 } as const
 
 export type SocialLinkScalarFieldEnum = (typeof SocialLinkScalarFieldEnum)[keyof typeof SocialLinkScalarFieldEnum]

@@ -37,32 +37,29 @@ export type SocialLinkSumAggregateOutputType = {
 
 export type SocialLinkMinAggregateOutputType = {
   id: string | null
-  profileId: string | null
   label: string | null
   url: string | null
   icon: string | null
-  kind: string | null
   sortOrder: number | null
+  profileId: string | null
 }
 
 export type SocialLinkMaxAggregateOutputType = {
   id: string | null
-  profileId: string | null
   label: string | null
   url: string | null
   icon: string | null
-  kind: string | null
   sortOrder: number | null
+  profileId: string | null
 }
 
 export type SocialLinkCountAggregateOutputType = {
   id: number
-  profileId: number
   label: number
   url: number
   icon: number
-  kind: number
   sortOrder: number
+  profileId: number
   _all: number
 }
 
@@ -77,32 +74,29 @@ export type SocialLinkSumAggregateInputType = {
 
 export type SocialLinkMinAggregateInputType = {
   id?: true
-  profileId?: true
   label?: true
   url?: true
   icon?: true
-  kind?: true
   sortOrder?: true
+  profileId?: true
 }
 
 export type SocialLinkMaxAggregateInputType = {
   id?: true
-  profileId?: true
   label?: true
   url?: true
   icon?: true
-  kind?: true
   sortOrder?: true
+  profileId?: true
 }
 
 export type SocialLinkCountAggregateInputType = {
   id?: true
-  profileId?: true
   label?: true
   url?: true
   icon?: true
-  kind?: true
   sortOrder?: true
+  profileId?: true
   _all?: true
 }
 
@@ -194,12 +188,11 @@ export type SocialLinkGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 
 export type SocialLinkGroupByOutputType = {
   id: string
-  profileId: string
   label: string
   url: string
   icon: string | null
-  kind: string | null
   sortOrder: number
+  profileId: string | null
   _count: SocialLinkCountAggregateOutputType | null
   _avg: SocialLinkAvgAggregateOutputType | null
   _sum: SocialLinkSumAggregateOutputType | null
@@ -227,23 +220,21 @@ export type SocialLinkWhereInput = {
   OR?: Prisma.SocialLinkWhereInput[]
   NOT?: Prisma.SocialLinkWhereInput | Prisma.SocialLinkWhereInput[]
   id?: Prisma.StringFilter<"SocialLink"> | string
-  profileId?: Prisma.StringFilter<"SocialLink"> | string
   label?: Prisma.StringFilter<"SocialLink"> | string
   url?: Prisma.StringFilter<"SocialLink"> | string
   icon?: Prisma.StringNullableFilter<"SocialLink"> | string | null
-  kind?: Prisma.StringNullableFilter<"SocialLink"> | string | null
   sortOrder?: Prisma.IntFilter<"SocialLink"> | number
-  profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
+  profileId?: Prisma.StringNullableFilter<"SocialLink"> | string | null
+  profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
 }
 
 export type SocialLinkOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
   label?: Prisma.SortOrder
   url?: Prisma.SortOrder
   icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  kind?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
 }
 
@@ -252,23 +243,21 @@ export type SocialLinkWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.SocialLinkWhereInput | Prisma.SocialLinkWhereInput[]
   OR?: Prisma.SocialLinkWhereInput[]
   NOT?: Prisma.SocialLinkWhereInput | Prisma.SocialLinkWhereInput[]
-  profileId?: Prisma.StringFilter<"SocialLink"> | string
   label?: Prisma.StringFilter<"SocialLink"> | string
   url?: Prisma.StringFilter<"SocialLink"> | string
   icon?: Prisma.StringNullableFilter<"SocialLink"> | string | null
-  kind?: Prisma.StringNullableFilter<"SocialLink"> | string | null
   sortOrder?: Prisma.IntFilter<"SocialLink"> | number
-  profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
+  profileId?: Prisma.StringNullableFilter<"SocialLink"> | string | null
+  profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
 }, "id">
 
 export type SocialLinkOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
   label?: Prisma.SortOrder
   url?: Prisma.SortOrder
   icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  kind?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SocialLinkCountOrderByAggregateInput
   _avg?: Prisma.SocialLinkAvgOrderByAggregateInput
   _max?: Prisma.SocialLinkMaxOrderByAggregateInput
@@ -281,12 +270,11 @@ export type SocialLinkScalarWhereWithAggregatesInput = {
   OR?: Prisma.SocialLinkScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SocialLinkScalarWhereWithAggregatesInput | Prisma.SocialLinkScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"SocialLink"> | string
-  profileId?: Prisma.StringWithAggregatesFilter<"SocialLink"> | string
   label?: Prisma.StringWithAggregatesFilter<"SocialLink"> | string
   url?: Prisma.StringWithAggregatesFilter<"SocialLink"> | string
   icon?: Prisma.StringNullableWithAggregatesFilter<"SocialLink"> | string | null
-  kind?: Prisma.StringNullableWithAggregatesFilter<"SocialLink"> | string | null
   sortOrder?: Prisma.IntWithAggregatesFilter<"SocialLink"> | number
+  profileId?: Prisma.StringNullableWithAggregatesFilter<"SocialLink"> | string | null
 }
 
 export type SocialLinkCreateInput = {
@@ -294,19 +282,17 @@ export type SocialLinkCreateInput = {
   label: string
   url: string
   icon?: string | null
-  kind?: string | null
   sortOrder?: number
-  profile: Prisma.ProfileCreateNestedOneWithoutSocialLinksInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutSocialLinksInput
 }
 
 export type SocialLinkUncheckedCreateInput = {
   id?: string
-  profileId: string
   label: string
   url: string
   icon?: string | null
-  kind?: string | null
   sortOrder?: number
+  profileId?: string | null
 }
 
 export type SocialLinkUpdateInput = {
@@ -314,29 +300,26 @@ export type SocialLinkUpdateInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  kind?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  profile?: Prisma.ProfileUpdateOneRequiredWithoutSocialLinksNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutSocialLinksNestedInput
 }
 
 export type SocialLinkUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  profileId?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  kind?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SocialLinkCreateManyInput = {
   id?: string
-  profileId: string
   label: string
   url: string
   icon?: string | null
-  kind?: string | null
   sortOrder?: number
+  profileId?: string | null
 }
 
 export type SocialLinkUpdateManyMutationInput = {
@@ -344,18 +327,16 @@ export type SocialLinkUpdateManyMutationInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  kind?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SocialLinkUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  profileId?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  kind?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SocialLinkListRelationFilter = {
@@ -370,12 +351,11 @@ export type SocialLinkOrderByRelationAggregateInput = {
 
 export type SocialLinkCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
   label?: Prisma.SortOrder
   url?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  kind?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  profileId?: Prisma.SortOrder
 }
 
 export type SocialLinkAvgOrderByAggregateInput = {
@@ -384,22 +364,20 @@ export type SocialLinkAvgOrderByAggregateInput = {
 
 export type SocialLinkMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
   label?: Prisma.SortOrder
   url?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  kind?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  profileId?: Prisma.SortOrder
 }
 
 export type SocialLinkMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
   label?: Prisma.SortOrder
   url?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  kind?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
+  profileId?: Prisma.SortOrder
 }
 
 export type SocialLinkSumOrderByAggregateInput = {
@@ -453,7 +431,6 @@ export type SocialLinkCreateWithoutProfileInput = {
   label: string
   url: string
   icon?: string | null
-  kind?: string | null
   sortOrder?: number
 }
 
@@ -462,7 +439,6 @@ export type SocialLinkUncheckedCreateWithoutProfileInput = {
   label: string
   url: string
   icon?: string | null
-  kind?: string | null
   sortOrder?: number
 }
 
@@ -497,12 +473,11 @@ export type SocialLinkScalarWhereInput = {
   OR?: Prisma.SocialLinkScalarWhereInput[]
   NOT?: Prisma.SocialLinkScalarWhereInput | Prisma.SocialLinkScalarWhereInput[]
   id?: Prisma.StringFilter<"SocialLink"> | string
-  profileId?: Prisma.StringFilter<"SocialLink"> | string
   label?: Prisma.StringFilter<"SocialLink"> | string
   url?: Prisma.StringFilter<"SocialLink"> | string
   icon?: Prisma.StringNullableFilter<"SocialLink"> | string | null
-  kind?: Prisma.StringNullableFilter<"SocialLink"> | string | null
   sortOrder?: Prisma.IntFilter<"SocialLink"> | number
+  profileId?: Prisma.StringNullableFilter<"SocialLink"> | string | null
 }
 
 export type SocialLinkCreateManyProfileInput = {
@@ -510,7 +485,6 @@ export type SocialLinkCreateManyProfileInput = {
   label: string
   url: string
   icon?: string | null
-  kind?: string | null
   sortOrder?: number
 }
 
@@ -519,7 +493,6 @@ export type SocialLinkUpdateWithoutProfileInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  kind?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -528,7 +501,6 @@ export type SocialLinkUncheckedUpdateWithoutProfileInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  kind?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -537,7 +509,6 @@ export type SocialLinkUncheckedUpdateManyWithoutProfileInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  kind?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -545,66 +516,61 @@ export type SocialLinkUncheckedUpdateManyWithoutProfileInput = {
 
 export type SocialLinkSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  profileId?: boolean
   label?: boolean
   url?: boolean
   icon?: boolean
-  kind?: boolean
   sortOrder?: boolean
-  profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  profileId?: boolean
+  profile?: boolean | Prisma.SocialLink$profileArgs<ExtArgs>
 }, ExtArgs["result"]["socialLink"]>
 
 export type SocialLinkSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  profileId?: boolean
   label?: boolean
   url?: boolean
   icon?: boolean
-  kind?: boolean
   sortOrder?: boolean
-  profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  profileId?: boolean
+  profile?: boolean | Prisma.SocialLink$profileArgs<ExtArgs>
 }, ExtArgs["result"]["socialLink"]>
 
 export type SocialLinkSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  profileId?: boolean
   label?: boolean
   url?: boolean
   icon?: boolean
-  kind?: boolean
   sortOrder?: boolean
-  profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  profileId?: boolean
+  profile?: boolean | Prisma.SocialLink$profileArgs<ExtArgs>
 }, ExtArgs["result"]["socialLink"]>
 
 export type SocialLinkSelectScalar = {
   id?: boolean
-  profileId?: boolean
   label?: boolean
   url?: boolean
   icon?: boolean
-  kind?: boolean
   sortOrder?: boolean
+  profileId?: boolean
 }
 
-export type SocialLinkOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "label" | "url" | "icon" | "kind" | "sortOrder", ExtArgs["result"]["socialLink"]>
+export type SocialLinkOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "label" | "url" | "icon" | "sortOrder" | "profileId", ExtArgs["result"]["socialLink"]>
 export type SocialLinkInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  profile?: boolean | Prisma.SocialLink$profileArgs<ExtArgs>
 }
 export type SocialLinkIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  profile?: boolean | Prisma.SocialLink$profileArgs<ExtArgs>
 }
 export type SocialLinkIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  profile?: boolean | Prisma.SocialLink$profileArgs<ExtArgs>
 }
 
 export type $SocialLinkPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SocialLink"
   objects: {
-    profile: Prisma.$ProfilePayload<ExtArgs>
+    profile: Prisma.$ProfilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    profileId: string
     /**
      * Public-facing label, e.g. "Gmail", "LinkedIn"
      */
@@ -614,11 +580,8 @@ export type $SocialLinkPayload<ExtArgs extends runtime.Types.Extensions.Internal
      * Icon key used by the UI (e.g. "gmail", "linkedin").
      */
     icon: string | null
-    /**
-     * Optional grouping context ("contact", "footer" dropdown).
-     */
-    kind: string | null
     sortOrder: number
+    profileId: string | null
   }, ExtArgs["result"]["socialLink"]>
   composites: {}
 }
@@ -1013,7 +976,7 @@ readonly fields: SocialLinkFieldRefs;
  */
 export interface Prisma__SocialLinkClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  profile<T extends Prisma.ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  profile<T extends Prisma.SocialLink$profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SocialLink$profileArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1044,12 +1007,11 @@ export interface Prisma__SocialLinkClient<T, Null = never, ExtArgs extends runti
  */
 export interface SocialLinkFieldRefs {
   readonly id: Prisma.FieldRef<"SocialLink", 'String'>
-  readonly profileId: Prisma.FieldRef<"SocialLink", 'String'>
   readonly label: Prisma.FieldRef<"SocialLink", 'String'>
   readonly url: Prisma.FieldRef<"SocialLink", 'String'>
   readonly icon: Prisma.FieldRef<"SocialLink", 'String'>
-  readonly kind: Prisma.FieldRef<"SocialLink", 'String'>
   readonly sortOrder: Prisma.FieldRef<"SocialLink", 'Int'>
+  readonly profileId: Prisma.FieldRef<"SocialLink", 'String'>
 }
     
 
@@ -1443,6 +1405,25 @@ export type SocialLinkDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many SocialLinks to delete.
    */
   limit?: number
+}
+
+/**
+ * SocialLink.profile
+ */
+export type SocialLink$profileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Profile
+   */
+  select?: Prisma.ProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Profile
+   */
+  omit?: Prisma.ProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProfileInclude<ExtArgs> | null
+  where?: Prisma.ProfileWhereInput
 }
 
 /**
