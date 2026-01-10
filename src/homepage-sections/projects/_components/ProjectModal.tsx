@@ -224,21 +224,20 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 					)}
 
 					{/* Image Gallery Carousel */}
-					<Carousel
-						opts={{
-							align: "start",
-							loop: true,
-						}}
-						orientation="horizontal"
-						className="w-full"
-					>
-						<h2 className="text-2xl font-semibold text-white mb-8">
-							Project Gallery
-						</h2>
-						<CarouselContent className="mx-1">
-							{project.images &&
-								project.images.length > 0 &&
-								project.images.map((image, index) => (
+					{project.images && project.images.length > 0 && (
+						<Carousel
+							opts={{
+								align: "start",
+								loop: true,
+							}}
+							orientation="horizontal"
+							className="w-full"
+						>
+							<h2 className="text-2xl font-semibold text-white mb-8">
+								Project Gallery
+							</h2>
+							<CarouselContent className="mx-1">
+								{project.images.map((image, index) => (
 									<CarouselItem
 										className="md:basis-full lg:basis-full"
 										key={`${index}-${crypto.randomUUID}`}
@@ -255,10 +254,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 										</div>
 									</CarouselItem>
 								))}
-						</CarouselContent>
-						<CarouselPrevious />
-						<CarouselNext />
-					</Carousel>
+							</CarouselContent>
+							<CarouselPrevious />
+							<CarouselNext />
+						</Carousel>
+					)}
 
 					{/* Video Demo */}
 					{project.videoUrl && (

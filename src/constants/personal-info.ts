@@ -427,7 +427,56 @@ export const PERSONAL_INFO = {
 			links: [],
 			// Legacy support
 			link: "#",
-			image: projectImages.institutionCover,
+			images: [
+				{
+					src: projectImages.institutionCover,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+				{
+					src: projectImages.institutionGallery1,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+				{
+					src: projectImages.institutionGallery2,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+				{
+					src: projectImages.institutionGallery3,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+				{
+					src: projectImages.institutionGallery4,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+				{
+					src: projectImages.institutionGallery5,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+				{
+					src: projectImages.institutionGallery6,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+				{
+					src: projectImages.institutionGallery7,
+					alt: "Institution Management Suite Dashboard",
+					height: 500,
+					width: 500,
+				},
+			],
 			description:
 				"Dockerized (Lando) Laravel app with Blade frontend for institution, teacher, and student management including assignments, presets, notifications, and robust CRUD.",
 			hasLiveDemo: false,
