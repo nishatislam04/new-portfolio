@@ -29,7 +29,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
 	return (
 		<Dialog open={isOpen} onOpenChange={onClose}>
-			<DialogContent className="w-full max-w-7xl max-h-[85vh] md:max-h-[90vh] p-0 bg-gray-900/95 border border-white/10 sm:rounded-2xl overflow-y-auto overscroll-contain">
+			<DialogContent className="w-full max-w-7xl max-h-[85vh] md:max-h-[90vh] p-0 bg-gray-900/95 border border-white/10 sm:rounded-2xl overflow-y-auto overflow-x-hidden overscroll-contain">
 				{/* Hero Section */}
 				<div className="relative h-80 md:h-96 lg:h-[28rem]">
 					<Image
@@ -51,10 +51,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 								{project.year}
 							</span>
 						</div>
-						<DialogTitle className="mb-2 font-sans text-2xl md:text-4xl lg:text-5xl font-bold text-white">
+						<DialogTitle className="mb-2 font-sans text-2xl md:text-4xl lg:text-5xl font-bold text-white w-fit">
 							{project.title}
 						</DialogTitle>
-						<p className="text-emerald-400 font-medium text-lg">
+						<p className="text-emerald-400 font-medium text-lg w-fit">
 							{project.company}
 						</p>
 					</div>
@@ -231,7 +231,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 								loop: true,
 							}}
 							orientation="horizontal"
-							className=""
+							className="w-full overflow-x-hidden"
 						>
 							<h2 className="text-2xl font-semibold text-white mb-8">
 								Project Gallery
