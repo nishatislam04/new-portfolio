@@ -11,13 +11,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { TechBadges } from "@/components/ui/TechBadges";
 import type { Project } from "@/types/project";
 import { Button } from "../../../components/ui/button";
@@ -35,9 +29,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
 	return (
 		<Dialog open={isOpen} onOpenChange={onClose}>
-			<DialogContent>
+			<DialogContent className="w-full max-w-7xl max-h-[85vh] md:max-h-[90vh] p-0 bg-gray-900/95 border border-white/10 sm:rounded-2xl overflow-y-auto overscroll-contain">
 				{/* Hero Section */}
-				<DialogHeader className="relative h-80 md:h-96 lg:h-[28rem] font-sans">
+				<div className="relative h-80 md:h-96 lg:h-[28rem] font-sans overscroll-auto">
 					<Image
 						src={project.coverImage?.src || ""}
 						alt={project.coverImage?.alt || ""}
@@ -64,10 +58,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 							{project.company}
 						</p>
 					</div>
-				</DialogHeader>
+				</div>
 
 				{/* Content */}
-				<DialogDescription className="p-8 md:p-10 lg:p-12 space-y-10">
+				<div className="p-8 md:p-10 lg:p-12 space-y-10">
 					{/* Action Buttons */}
 					{project.links && project.links.length > 0 && (
 						<div className="flex flex-wrap gap-3">
@@ -281,7 +275,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 							</div>
 						</div>
 					)}
-				</DialogDescription>
+				</div>
 			</DialogContent>
 		</Dialog>
 	);
