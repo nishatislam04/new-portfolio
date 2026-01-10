@@ -7,7 +7,7 @@ import LocationIcon from "@/assets/icons/location.svg";
 import PhoneIcon from "@/assets/icons/phone.svg";
 import ResponseTimeIcon from "@/assets/icons/response-time.svg";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { Card } from "@/components/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import ContactAdditional from "./contactAdditional";
 import ContactSocialLinks from "./contactSoicalLinks";
@@ -17,8 +17,10 @@ export default function ContactRightSide() {
 		<div className="space-y-8 h-full flex flex-col">
 			<FadeIn delay={0.4} {...{ className: "flex-grow" }}>
 				<Card variant="glass" className="p-8 h-full flex flex-col">
-					<div className="flex-grow">
-						<h3 className="heading-3 mb-6">Get in Touch</h3>
+					<CardHeader>
+						<CardTitle>Get in Touch</CardTitle>
+					</CardHeader>
+					<CardContent className="flex-grow">
 						<div className="space-y-6 mb-8">
 							<div className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-all duration-300">
 								<EmailIcon
@@ -117,7 +119,7 @@ export default function ContactRightSide() {
 								</div>
 							</div>
 						</div>
-					</div>
+					</CardContent>
 
 					{/* Social Links */}
 					<ContactSocialLinks />

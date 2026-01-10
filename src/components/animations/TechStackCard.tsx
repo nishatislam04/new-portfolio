@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui";
+import { Card } from "@/components/ui/card";
 
 // Tech stack icons with blue gradient
 const TechIcon = ({ icon }: { icon: React.ReactNode }) => {
 	return (
 		<>
 			<div className="size-10">{icon}</div>
-			<svg className="size-0 absolute">
+			<svg className="size-0 absolute" aria-hidden="true">
 				<linearGradient id="tech-icon-gradient">
 					<stop offset="0%" stopColor="rgb(110 231 183)" />
 					<stop offset="100%" stopColor="rgb(56 189 248)" />
