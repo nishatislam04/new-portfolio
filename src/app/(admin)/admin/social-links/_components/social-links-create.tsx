@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import type z from "zod";
 import { createSocialLinks } from "@/actions/social-links-actions";
 import { Button } from "@/components/ui/button";
 import {
 	Field,
 	FieldDescription,
+	FieldError,
 	FieldGroup,
 	FieldLabel,
 	FieldLegend,
@@ -14,70 +17,206 @@ import {
 	FieldSet,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { SocialLinksFormSchema } from "@/schema/social-links-schema";
 
+/**
+ * Social Links Create Form Component
+ *
+ * This component provides a form for creating social links with file upload support.
+ * It uses React Hook Form for validation and state management,
+ * and shadcn/ui components for consistent styling.
+ *
+ * Features:
+ * - File upload to Vercel Blob storage
+ * - Real-time validation with Zod schema
+ * - Error handling with toast notifications
+ * - Responsive design with proper accessibility
+ *
+ * @returns JSX element for the social links creation form
+ */
 export default function SocialLinksCreate() {
-	const [submitting, setSubmitting] = useState(false);
+	/**
+	 * Initialize React Hook Form with Zod validation
+	 *
+	 * Configuration:
+	 * - mode: "onBlur" - Validates on field blur
+	 * - resolver: Uses Zod schema for validation
+	 * - defaultValues: Sets initial form state for all platforms
+	 *
+	 * Form structure matches SocialLinksFormSchema with individual fields for each platform
+	 */
+	const form = useForm<z.infer<typeof SocialLinksFormSchema>>({
+		mode: "onBlur",
+		resolver: zodResolver(SocialLinksFormSchema),
+		defaultValues: {
+			gmailLabel: "",
+			gmailUrl: "",
+			gmailIcon: undefined,
+			gmailSortOrder: "0",
+			linkedinLabel: "",
+			linkedinUrl: "",
+			linkedinIcon: undefined,
+			linkedinSortOrder: "1",
+			whatsappLabel: "",
+			whatsappUrl: "",
+			whatsappIcon: undefined,
+			whatsappSortOrder: "2",
+			messengerLabel: "",
+			messengerUrl: "",
+			messengerIcon: undefined,
+			messengerSortOrder: "3",
+		},
+	});
 
-	async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-		const formEl = e.currentTarget;
-		const formData = new FormData(formEl);
-		setSubmitting(true);
-		const result = await createSocialLinks(formData);
-		setSubmitting(false);
-
+	/**
+	 * Form submission handler
+	 *
+	 * Process:
+	 * 1. Validates form data with React Hook Form
+	 * 2. Calls server action for file upload and database storage
+	 * 3. Handles success/error responses
+	 * 4. Shows toast notifications
+	 * 5. Resets form on success
+	 *
+	 * @param data - Validated form data matching SocialLinksFormSchema
+	 */
+	async function onSubmit(data: z.infer<typeof SocialLinksFormSchema>) {
+		console.log(data); // Debug: Log form data for development
+		const result = await createSocialLinks(data);
 		if (!result.success) {
-			toast.error(result.message ?? "Failed to create social links");
-			return;
+			// Show server error as root-level form error
+			form.setError("root", {
+				message: result.message,
+			});
 		}
-		formEl.reset();
-		toast.success(result.data.message);
+
+		// success
+		if (result.success) {
+			form.reset(); // Clear form fields
+			toast.success(result.data.message); // Show success notification
+		}
 	}
 
+	// Check if form has any validation errors
+	const isSubmitting = form.formState.isSubmitting;
+	const isDirty = form.formState.isDirty;
+
 	return (
-		<form onSubmit={onSubmit} className="space-y-8">
+		<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 			<FieldSet>
 				<FieldLegend>Gmail</FieldLegend>
 				<FieldDescription>
 					Enter details for Gmail contact link.
 				</FieldDescription>
 				<FieldGroup>
-					<Field>
-						<FieldLabel htmlFor="gmail[label]">Label</FieldLabel>
-						<Input
-							id="gmail[label]"
-							name="gmail[label]"
-							placeholder="Gmail"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="gmail[url]">URL</FieldLabel>
-						<Input
-							id="gmail[url]"
-							name="gmail[url]"
-							placeholder="mailto:you@example.com"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="gmail[icon]">Icon (SVG/PNG)</FieldLabel>
-						<Input
-							id="gmail[icon]"
-							name="gmail[icon]"
-							type="file"
-							accept="image/*,image/svg+xml"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="gmail[sortOrder]">Sort order</FieldLabel>
-						<Input
-							id="gmail[sortOrder]"
-							name="gmail[sortOrder]"
-							type="number"
-							defaultValue={0}
-						/>
-					</Field>
+					<Controller
+						name="gmailLabel"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Label
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="Gmail"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="gmailUrl"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									URL
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="mailto:you@example.com"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="gmailIcon"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Icon (SVG/PNG)
+								</FieldLabel>
+								<Input
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="file"
+									accept="image/*,image/svg+xml"
+									onChange={(e) => field.onChange(e.target.files?.[0])} // Handle file selection
+									onBlur={field.onBlur}
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="gmailSortOrder"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Sort order
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="text"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
 				</FieldGroup>
 			</FieldSet>
 			<FieldSeparator />
@@ -87,42 +226,114 @@ export default function SocialLinksCreate() {
 					Enter details for LinkedIn profile link.
 				</FieldDescription>
 				<FieldGroup>
-					<Field>
-						<FieldLabel htmlFor="linkedin[label]">Label</FieldLabel>
-						<Input
-							id="linkedin[label]"
-							name="linkedin[label]"
-							placeholder="LinkedIn"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="linkedin[url]">URL</FieldLabel>
-						<Input
-							id="linkedin[url]"
-							name="linkedin[url]"
-							placeholder="https://www.linkedin.com/in/username"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="linkedin[icon]">Icon (SVG/PNG)</FieldLabel>
-						<Input
-							id="linkedin[icon]"
-							name="linkedin[icon]"
-							type="file"
-							accept="image/*,image/svg+xml"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="linkedin[sortOrder]">Sort order</FieldLabel>
-						<Input
-							id="linkedin[sortOrder]"
-							name="linkedin[sortOrder]"
-							type="number"
-							defaultValue={1}
-						/>
-					</Field>
+					<Controller
+						name="linkedinLabel"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Label
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="LinkedIn"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="linkedinUrl"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									URL
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="https://www.linkedin.com/in/username"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="linkedinIcon"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Icon (SVG/PNG)
+								</FieldLabel>
+								<Input
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="file"
+									accept="image/*,image/svg+xml"
+									onChange={(e) => field.onChange(e.target.files?.[0])}
+									onBlur={field.onBlur}
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="linkedinSortOrder"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Sort order
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="text"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
 				</FieldGroup>
 			</FieldSet>
 
@@ -131,42 +342,114 @@ export default function SocialLinksCreate() {
 				<FieldLegend>WhatsApp</FieldLegend>
 				<FieldDescription>Enter details for WhatsApp link.</FieldDescription>
 				<FieldGroup>
-					<Field>
-						<FieldLabel htmlFor="whatsapp[label]">Label</FieldLabel>
-						<Input
-							id="whatsapp[label]"
-							name="whatsapp[label]"
-							placeholder="WhatsApp"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="whatsapp[url]">URL</FieldLabel>
-						<Input
-							id="whatsapp[url]"
-							name="whatsapp[url]"
-							placeholder="https://wa.me/8801XXXXXXXXX"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="whatsapp[icon]">Icon (SVG/PNG)</FieldLabel>
-						<Input
-							id="whatsapp[icon]"
-							name="whatsapp[icon]"
-							type="file"
-							accept="image/*,image/svg+xml"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="whatsapp[sortOrder]">Sort order</FieldLabel>
-						<Input
-							id="whatsapp[sortOrder]"
-							name="whatsapp[sortOrder]"
-							type="number"
-							defaultValue={2}
-						/>
-					</Field>
+					<Controller
+						name="whatsappLabel"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Label
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="WhatsApp"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="whatsappUrl"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									URL
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="https://wa.me/8801XXXXXXXXX"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="whatsappIcon"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Icon (SVG/PNG)
+								</FieldLabel>
+								<Input
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="file"
+									accept="image/*,image/svg+xml"
+									onChange={(e) => field.onChange(e.target.files?.[0])}
+									onBlur={field.onBlur}
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="whatsappSortOrder"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Sort order
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="text"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
 				</FieldGroup>
 			</FieldSet>
 
@@ -177,49 +460,143 @@ export default function SocialLinksCreate() {
 					Enter details for Facebook Messenger link.
 				</FieldDescription>
 				<FieldGroup>
-					<Field>
-						<FieldLabel htmlFor="messenger[label]">Label</FieldLabel>
-						<Input
-							id="messenger[label]"
-							name="messenger[label]"
-							placeholder="Messenger"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="messenger[url]">URL</FieldLabel>
-						<Input
-							id="messenger[url]"
-							name="messenger[url]"
-							placeholder="https://m.me/username"
-							autoComplete="off"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="messenger[icon]">Icon (SVG/PNG)</FieldLabel>
-						<Input
-							id="messenger[icon]"
-							name="messenger[icon]"
-							type="file"
-							accept="image/*,image/svg+xml"
-						/>
-					</Field>
-					<Field>
-						<FieldLabel htmlFor="messenger[sortOrder]">Sort order</FieldLabel>
-						<Input
-							id="messenger[sortOrder]"
-							name="messenger[sortOrder]"
-							type="number"
-							defaultValue={3}
-						/>
-					</Field>
+					<Controller
+						name="messengerLabel"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Label
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="Messenger"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="messengerUrl"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									URL
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									placeholder="https://m.me/username"
+									autoComplete="off"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="messengerIcon"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Icon (SVG/PNG)
+								</FieldLabel>
+								<Input
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="file"
+									accept="image/*,image/svg+xml"
+									onChange={(e) => field.onChange(e.target.files?.[0])}
+									onBlur={field.onBlur}
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
+					<Controller
+						name="messengerSortOrder"
+						control={form.control}
+						render={({ field, fieldState }) => (
+							<Field className="mb-8" data-invalid={fieldState.invalid}>
+								<FieldLabel
+									className="text-lg text-gray-300/90 -mb-1"
+									htmlFor={field.name}
+								>
+									Sort order
+								</FieldLabel>
+								<Input
+									{...field}
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+									type="text"
+								/>
+								{fieldState.invalid && (
+									<FieldError
+										className="text-red-500 -mt-1"
+										errors={[fieldState.error]}
+									/>
+								)}
+							</Field>
+						)}
+					/>
 				</FieldGroup>
 			</FieldSet>
 
-			<div className="flex justify-end gap-3">
-				<Button type="submit" disabled={submitting}>
-					{submitting ? "Saving..." : "Save social links"}
-				</Button>
+			{/* Server error and button layout */}
+			<div className="grid grid-cols-3 items-center w-full">
+				{/* Left column: error */}
+				<div className="flex justify-start">
+					{form.formState.errors.root && (
+						<div className="max-w-md">
+							<Field className="text-red-600" data-invalid>
+								<FieldError errors={[form.formState.errors.root]} />
+							</Field>
+						</div>
+					)}
+				</div>
+
+				{/* Center column: button */}
+				<div className="flex justify-center">
+					<Button
+						variant="oldButtonPrimary"
+						size="lg"
+						type="submit"
+						disabled={!isDirty || isSubmitting}
+					>
+						{isSubmitting ? "Saving..." : "Save social links"}
+					</Button>
+				</div>
+
+				<div />
 			</div>
 		</form>
 	);
