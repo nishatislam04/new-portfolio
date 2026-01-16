@@ -17,8 +17,8 @@ export default function ContactRightSide() {
 		<div className="space-y-8 h-full flex flex-col">
 			<FadeIn delay={0.4} {...{ className: "grow" }}>
 				<Card variant="glass" className="px-2 py-6 h-full flex flex-col">
-					<CardHeader>
-						<CardTitle>Get in Touch</CardTitle>
+					<CardHeader className="pt-0 pb-8">
+						<CardTitle className="text-3xl">Get in Touch</CardTitle>
 					</CardHeader>
 					<CardContent className="grow px-3">
 						<div className="space-y-6 mb-4">

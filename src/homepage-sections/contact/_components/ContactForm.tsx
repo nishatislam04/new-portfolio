@@ -38,7 +38,7 @@ export default function ContactForm() {
 				>
 					<div className="grow space-y-6">
 						<div>
-							<h3 className="heading-3 mb-8 capitalize">
+							<h3 className="text-3xl font-bold mb-8 capitalize">
 								send me an business email
 							</h3>
 							<label
@@ -100,7 +100,7 @@ export default function ContactForm() {
 							variant="oldButtonPrimary"
 							type="submit"
 							disabled={isPending}
-							className="w-full group"
+							className="w-full group py-5"
 						>
 							{isPending ? "Sending..." : "Send Message"}
 							{!isPending && (
