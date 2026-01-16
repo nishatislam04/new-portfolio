@@ -158,7 +158,7 @@ export function WorkExperienceEditForm({
 			return;
 		}
 
-		router.refresh();
+		router.push("/admin/work-experience");
 		toast.success(result.data.message);
 	}
 
@@ -173,7 +173,7 @@ export function WorkExperienceEditForm({
 		}
 
 		toast.success(result.data.message);
-		router.refresh();
+		router.push("/admin/work-experience");
 	}
 
 	return (

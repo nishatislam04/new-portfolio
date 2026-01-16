@@ -115,10 +115,7 @@ export function WorkExperienceCreateForm() {
 			return;
 		}
 
-		// On success, reset to a clean create state and refresh so the
-		// new entry appears in the manager list above.
-		form.reset(buildCreateDefaults());
-		router.refresh();
+		router.push("/admin/work-experience");
 		toast.success(result.data.message);
 	}
 
@@ -213,8 +210,6 @@ export function WorkExperienceCreateForm() {
 								name={field.name}
 								value={field.value || "full-time"}
 								onValueChange={field.onChange}
-								defaultValue="full-time"
-								autoComplete="off"
 							>
 								<SelectTrigger
 									id={field.name}
@@ -398,7 +393,7 @@ export function WorkExperienceCreateForm() {
 					</h3>
 					<Button
 						type="button"
-						variant="secondary"
+						variant="oldButtonSecondary"
 						size="sm"
 						onClick={() => (achievementsArray as any).append("")}
 					>
@@ -464,7 +459,7 @@ export function WorkExperienceCreateForm() {
 					<h3 className="text-lg font-semibold text-gray-100">Technologies</h3>
 					<Button
 						type="button"
-						variant="secondary"
+						variant="oldButtonSecondary"
 						size="sm"
 						onClick={() =>
 							technologiesArray.append({
