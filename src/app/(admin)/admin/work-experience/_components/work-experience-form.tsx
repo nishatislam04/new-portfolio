@@ -31,6 +31,14 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectSeparator,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
 	type WorkExperienceFormInput,
@@ -236,17 +244,25 @@ function BaseWorkExperienceForm({
 							>
 								Employment Type
 							</FieldLabel>
-							<select
-								{...field}
-								id={field.name}
-								className="mt-1 block w-full rounded-md border border-gray-700 bg-gray-900 px-3 py-2 text-sm text-gray-100 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+							<Select
+								name={field.name}
+								value={field.value}
+								onValueChange={field.onChange}
 							>
-								{EMPLOYMENT_TYPES.map((option) => (
-									<option key={option.value} value={option.value}>
-										{option.label}
-									</option>
-								))}
-							</select>
+								<SelectTrigger
+									id={field.name}
+									aria-invalid={fieldState.invalid}
+								>
+									<SelectValue placeholder="Select employment type" />
+								</SelectTrigger>
+								<SelectContent position="item-aligned">
+									{EMPLOYMENT_TYPES.map((type) => (
+										<SelectItem key={type.value} value={type.value}>
+											{type.label}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
 							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
 						</Field>
 					)}
