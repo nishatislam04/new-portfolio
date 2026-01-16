@@ -1,4 +1,3 @@
-import SkipLink from "@/components/accessibility/SkipLink";
 import AboutSection from "@/homepage-sections/about/About";
 import ContactSection from "@/homepage-sections/contact/Contact";
 import CTASection from "@/homepage-sections/cta/CTA";
@@ -15,7 +14,6 @@ import WorkExperienceSection from "@/homepage-sections/work-experience/WorkExper
 export default function Home() {
 	return (
 		<>
-			<SkipLink />
 			<Header />
 			<HeroSection />
 			<AboutSection />

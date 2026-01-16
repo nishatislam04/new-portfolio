@@ -6,10 +6,10 @@ import {
 	BriefcaseBusiness,
 	FolderKanban,
 	GraduationCap,
+	Home,
 	KeyRound,
 	Layers3,
 	ScrollText,
-	Settings,
 	Share2,
 	UserRound,
 } from "lucide-react";
@@ -20,22 +20,16 @@ export type AdminNavLink = {
 	icon: LucideIcon;
 };
 
-export type AdminSettingsItem = {
-	title: string;
-	href: string;
-	icon: LucideIcon;
-};
-
-export type AdminSettingsLink = {
-	title: string;
-	icon: LucideIcon;
-	items: AdminSettingsItem[];
-};
-
 export const primaryLink: AdminNavLink = {
 	title: "Overview",
 	href: "/admin",
 	icon: Layers3,
+};
+
+export const homepageLink: AdminNavLink = {
+	title: "Homepage",
+	href: "/",
+	icon: Home,
 };
 
 export const secondaryLinks: AdminNavLink[] = [
@@ -81,14 +75,8 @@ export const secondaryLinks: AdminNavLink[] = [
 	},
 ];
 
-export const settingsLink: AdminSettingsLink = {
-	title: "Settings",
-	icon: Settings,
-	items: [
-		{
-			title: "Password",
-			href: "/admin/settings/password",
-			icon: KeyRound,
-		},
-	],
+export const passwordLink: AdminNavLink = {
+	title: "Password",
+	href: "/admin/settings/password",
+	icon: KeyRound,
 };
