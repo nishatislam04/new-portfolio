@@ -1,8 +1,8 @@
-# 🚀 Nishat Mazumder - Portfolio Website
+# Nishat Mazumder - Portfolio Website
 
 A stunning, responsive portfolio website showcasing my work as a Full Stack Web Developer. Built with Next.js 15, TypeScript, Tailwind CSS V4 and Framer Motion. Features enterprise-grade projects, modern design with smooth animations.
 
-## ✨ Features
+## Features
 
 - **Modern Design**: Clean, professional design with dark based theme and gradient accents
 - **Responsive**: Mobile-first design that works perfectly on all devices
@@ -12,7 +12,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
 - **SEO Optimized**: Meta tags, structured data, and optimized for search engines
 - **TypeScript**: Fully typed for better development experience and code quality
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15 with App Router (Canary)
 - **Language**: TypeScript
@@ -22,7 +22,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
 - **Font**: Inter, Calistoga (Google Fonts)
 - **Deployment**: Vercel
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 1. **Clone the repository**
 
@@ -52,7 +52,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
 5. **Open in browser**
    Navigate to [http://192.168.0.103:3000](http://192.168.0.103:3000)
 
-## 🚀 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 
