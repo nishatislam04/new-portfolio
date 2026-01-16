@@ -36,7 +36,7 @@ there will be a delete option when the edit form is shown.
 ~ (we wont put skills input field in this form)
 ~ (we wont put tech stack input field in this form)
 
-2. social link form
+2. social link form [DONE]
 
 - label - text input
 - url - text input
@@ -48,19 +48,20 @@ there will be a delete option when the edit form is shown.
 3. work experience form
 
 These fields contribute to a single work experience card.
+for now we will assume there will be only one work experience. not multiple. but in future we will support multiple work experiences. but now wont worry about it when we build our frontend and backend
 
 - company
 - position
 - location
-- type (dropdown: full-time, part-time, contract, internship, volunteer)
+- type (dropdown: full-time, part-time, contract, internship, volunteer -- with lable and value)
 - durationLabel (string input like "July 2024 - Current")
-- startLabel (string input)
-- endLabel (string input)
+- startLabel (string input) (like jan 28, 2002)
+- endLabel (string input) (like dec 28, 2002)
 - description (textarea)
 - isCurrent (boolean dropdown: yes, no)
 - sort order (number input)
-- achievements (array of strings as json)
-- technologies (array of strings as json with icon support)
+- achievements (arrays of string as json)
+- technologies (arrays of string as json with icon support)
 
 ~ (technologies will be stored in vercel blob with icon)
 
