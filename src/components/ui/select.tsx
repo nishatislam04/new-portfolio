@@ -18,6 +18,7 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
 	<SelectPrimitive.Trigger
 		ref={ref}
+		suppressHydrationWarning={true}
 		className={cn(
 			"flex h-14 w-full items-center justify-between whitespace-nowrap rounded-md border border-gray-700 bg-gray-800/50 px-3 py-2 text-base text-white/80 shadow-xs ring-offset-background data-placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:border-emerald-500 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 placeholder:text-gray-400",
 			className,

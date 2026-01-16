@@ -1,13 +1,14 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { WorkExperienceDTO } from "@/actions/work-experience-actions";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/utils";
-import {
-	WorkExperienceEditForm,
-	WorkExperienceForm,
-} from "./work-experience-form";
+import { WorkExperienceCreateForm } from "./work-experience-create-form";
+import { WorkExperienceEditForm } from "./work-experience-edit-form";
 
 interface WorkExperienceManagerProps {
 	experiences: WorkExperienceDTO[];
@@ -20,6 +21,8 @@ export default function WorkExperienceManager({
 	const [selectedId, setSelectedId] = useState<string | null>(
 		experiences[0]?.id ?? null,
 	);
+	// When true, show the creation form instead of the edit form.
+	const [isCreating, setIsCreating] = useState(false);
 
 	const selectedExperience = useMemo(
 		() => experiences.find((exp) => exp.id === selectedId) ?? experiences[0],
@@ -35,33 +38,48 @@ export default function WorkExperienceManager({
 					technologies now, and support for multiple entries will come later
 					without changing this UI.
 				</p>
-				<WorkExperienceForm />
+				<WorkExperienceCreateForm />
 			</div>
 		);
 	}
 
-	// When experiences exist, show a two-column layout:
-	// - Left: list of experience cards
-	// - Right: edit form for the selected experience
+	// When experiences exist, show the cards first and the active form below
+	// them so the layout is stacked vertically (Y-axis).
 	return (
-		<div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.9fr)]">
+		<div className="space-y-8">
 			<section className="space-y-4">
 				<h3 className="text-lg font-semibold text-gray-100">
 					Existing experiences
 				</h3>
-				<p className="text-sm text-gray-400">
-					Select a card to edit its details. The left column is optimized for a
-					future multi-entry timeline, even though only a single role is planned
-					for now.
-				</p>
+				<div className="flex items-start justify-between gap-4">
+					<p className="text-sm text-gray-400 flex-1">
+						Select a card to edit its details. Use the button on the right to
+						add a brand new work experience entry.
+					</p>
+
+					<Button
+						type="button"
+						variant="oldButtonPrimary"
+						size="lg"
+						onClick={() => {
+							setIsCreating(true);
+							setSelectedId(null);
+						}}
+					>
+						Add new work experience
+					</Button>
+				</div>
 				<div className="space-y-3">
 					{experiences.map((exp) => {
-						const isActive = selectedExperience?.id === exp.id;
+						const isActive = !isCreating && selectedExperience?.id === exp.id;
 						return (
 							<button
 								key={exp.id}
 								type="button"
-								onClick={() => setSelectedId(exp.id)}
+								onClick={() => {
+									setSelectedId(exp.id);
+									setIsCreating(false);
+								}}
 								className="w-full text-left"
 							>
 								<Card
@@ -95,11 +113,19 @@ export default function WorkExperienceManager({
 							</button>
 						);
 					})}
+					<Separator className="my-2" />
 				</div>
 			</section>
 
 			<section className="space-y-4">
-				<WorkExperienceEditForm experience={selectedExperience} />
+				{isCreating ? (
+					<WorkExperienceCreateForm />
+				) : selectedExperience ? (
+					<WorkExperienceEditForm
+						key={selectedExperience.id}
+						experience={selectedExperience}
+					/>
+				) : null}
 			</section>
 		</div>
 	);
