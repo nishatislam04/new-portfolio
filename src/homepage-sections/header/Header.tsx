@@ -9,7 +9,7 @@ const NAV_ITEMS = [
 export default function Header() {
 	return (
 		<div className="flex items-center justify-center fixed top-3 w-full z-20">
-			<nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur">
+			<nav className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-white/10 backdrop-blur-sm">
 				{NAV_ITEMS.map((item, index) => {
 					return (
 						<Link

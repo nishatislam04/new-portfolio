@@ -10,7 +10,7 @@ export default function EducationCard() {
 					<div className="relative mb-8 last:mb-0">
 						{/* Timeline Line */}
 						{index < education.length - 1 && (
-							<div className="absolute left-8 top-24 w-0.5 h-32 bg-gradient-to-b from-emerald-500/50 to-transparent" />
+							<div className="absolute left-8 top-24 w-0.5 h-32 bg-linear-to-b from-emerald-500/50 to-transparent" />
 						)}
 
 						{/* Education Card */}

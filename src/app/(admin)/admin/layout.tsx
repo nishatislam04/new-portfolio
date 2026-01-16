@@ -18,7 +18,7 @@ export default function AdminRootLayout({
 			<SidebarProvider>
 				<AdminSidebar />
 				<SidebarInset className="bg-gray-900/90">
-					<header className="flex h-20 items-center gap-4 border-b border-white/10 bg-gray-900/80 px-6 backdrop-blur">
+					<header className="flex h-20 items-center gap-4 border-b border-white/10 bg-gray-900/80 px-6 backdrop-blur-sm">
 						<div className="w-full flex items-center justify-between gap-3">
 							<SidebarTrigger className=" bg-gray-900/80 text-gray-200 hover:bg-white/10">
 								Menu

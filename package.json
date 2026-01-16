@@ -1,5 +1,6 @@
 {
 	"name": "portfolio-site-2",
+	"type": "module",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -54,14 +55,14 @@
 		"@biomejs/biome": "^2.3.11",
 		"@next/bundle-analyzer": "canary",
 		"@prisma/client": "^7.2.0",
+		"@tailwindcss/postcss": "^4.1.18",
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
-		"autoprefixer": "^10.4.20",
 		"concurrently": "^9.2.1",
 		"postcss": "^8",
 		"prisma": "^7.2.0",
-		"tailwindcss": "^3.4.1",
+		"tailwindcss": "^4.1.18",
 		"tsx": "^4.21.0",
 		"typescript": "^5"
 	}

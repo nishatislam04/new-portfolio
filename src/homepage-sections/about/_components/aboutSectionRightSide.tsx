@@ -10,7 +10,7 @@ export default function AboutSectionRightSide() {
 			<FadeIn delay={0.3}>
 				<div className="relative">
 					<div className="relative w-64 h-64 mx-auto transform transition-transform duration-500 hover:scale-105">
-						<div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-sky-500/20 rounded-full blur-xl" />
+						<div className="absolute inset-0 bg-linear-to-br from-emerald-500/20 to-sky-500/20 rounded-full blur-xl" />
 						<div className="relative w-full h-full bg-gray-800/50 rounded-full border border-white/10 overflow-hidden">
 							<Image
 								src={profilePicture}

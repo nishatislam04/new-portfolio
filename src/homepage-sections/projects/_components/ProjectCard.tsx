@@ -120,7 +120,7 @@ export function ProjectCard({
 							priority={project.coverImage?.priority}
 							sizes="(min-width: 1024px) 50vw, 100vw"
 						/>
-						<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+						<div className="absolute inset-0 bg-linear-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 						{/* Status Badge */}
 						<div className="absolute top-4 left-4">{getStatusBadge()}</div>
@@ -146,7 +146,7 @@ export function ProjectCard({
 									<span className="text-gray-400">{project.year}</span>
 								</div>
 							</div>
-							<span className="absolute -top-8 right-0 px-3 py-1 text-xs bg-gradient-to-r from-emerald-500/20 to-sky-500/20 text-emerald-400 rounded-full border border-emerald-500/30 whitespace-nowrap font-medium">
+							<span className="absolute -top-8 right-0 px-3 py-1 text-xs bg-linear-to-r from-emerald-500/20 to-sky-500/20 text-emerald-400 rounded-full border border-emerald-500/30 whitespace-nowrap font-medium">
 								{project.category}
 							</span>
 						</div>
@@ -168,7 +168,7 @@ export function ProjectCard({
 											key={`${index}-${crypto.randomUUID}`}
 											className="text-sm text-gray-400 flex items-start gap-2"
 										>
-											<span className="w-1 h-1 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+											<span className="w-1 h-1 bg-emerald-400 rounded-full mt-2 shrink-0"></span>
 											{feature}
 										</li>
 									))}
@@ -219,7 +219,7 @@ export function ProjectCard({
 							}
 							sizes="(min-width: 1024px) 66vw, (min-width: 768px) 50vw, 100vw"
 						/>
-						<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+						<div className="absolute inset-0 bg-linear-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 						{/* Status Badge */}
 						<div className="absolute top-4 left-4">{getStatusBadge()}</div>
@@ -269,7 +269,7 @@ export function ProjectCard({
 											key={`${index}-${crypto.randomUUID}`}
 											className="text-xs text-gray-400 flex items-start gap-2"
 										>
-											<span className="w-1 h-1 bg-sky-400 rounded-full mt-1.5 flex-shrink-0"></span>
+											<span className="w-1 h-1 bg-sky-400 rounded-full mt-1.5 shrink-0"></span>
 											{result.title}
 										</li>
 									))}
@@ -309,7 +309,7 @@ export function ProjectCard({
 						}
 						sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
 					/>
-					<div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+					<div className="absolute inset-0 bg-linear-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 					{/* Status Badge */}
 					<div className="absolute top-4 left-4">{getStatusBadge()}</div>

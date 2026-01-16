@@ -158,7 +158,7 @@ const getCustomIcon = (title: string, colors: any) => {
 	return (
 		<div
 			className={cn(
-				"size-10 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-lg bg-gradient-to-br",
+				"size-10 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-lg bg-linear-to-br",
 				colors.gradientFrom,
 				colors.gradientTo,
 			)}
@@ -193,7 +193,7 @@ export default function ToolboxRow({ category, index }: ToolboxRowProps) {
 				<div className="flex justify-center">
 					<div
 						className={cn(
-							"h-1 w-12 rounded-full bg-gradient-to-r transition-all duration-500 ease-out",
+							"h-1 w-12 rounded-full bg-linear-to-r transition-all duration-500 ease-out",
 							"group-hover/category:w-24",
 							colors.gradientFrom,
 							colors.gradientTo,

@@ -7,7 +7,7 @@ export default function NotFound() {
 			<div className="text-center space-y-6 p-8">
 				{/* 404 Animation */}
 				<div className="relative">
-					<h1 className="text-9xl font-bold text-transparent bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text">
+					<h1 className="text-9xl font-bold text-transparent bg-linear-to-r from-emerald-400 to-sky-400 bg-clip-text">
 						404
 					</h1>
 					<div className="absolute inset-0 text-9xl font-bold text-emerald-500/10">

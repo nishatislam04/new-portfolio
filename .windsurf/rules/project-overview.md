@@ -89,7 +89,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 // Styling patterns
 - Default: bg-gray-800/50 border border-gray-700/50
-- Glass: bg-white/5 backdrop-blur-sm border border-white/10
+- Glass: bg-white/5 backdrop-blur-xs border border-white/10
 - Bordered: bg-gray-800 border border-gray-700 hover:border-gray-600
 - Structure: Card, CardHeader, CardContent, CardFooter
 ```
@@ -320,7 +320,7 @@ export { Component };
 
 ---
 
-### Never do:
+### Never do
 
 - **run local server**: after implementing feature, never start or restart local server to test as the local server was always running
 
@@ -332,6 +332,6 @@ These rules ensure consistent, professional, and accessible UI components that a
 
 **Remember**: Consistency is key to a professional portfolio. Every component should feel like part of a cohesive system, not a collection of disparate elements.
 
-# project bootstrap details
+### Project bootstrap details
 
 Project runs Next.js dev server bound to host 192.168.0.103 on port 3000 (scripts use -H 192.168.0.103). Use this when invoking MCP/browser to target http://192.168.0.103:3000. MCP Next.js tools are available for server management.

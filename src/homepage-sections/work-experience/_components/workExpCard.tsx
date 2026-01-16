@@ -13,7 +13,7 @@ export default function WorkExperienceCard() {
 					<div className="relative mb-8 last:mb-0">
 						{/* Timeline Line */}
 						{index < workExperience.length - 1 && (
-							<div className="absolute left-8 top-24 w-0.5 h-32 bg-gradient-to-b from-emerald-500/50 to-transparent" />
+							<div className="absolute left-8 top-24 w-0.5 h-32 bg-linear-to-b from-emerald-500/50 to-transparent" />
 						)}
 
 						{/* Experience Card */}
@@ -66,7 +66,7 @@ export default function WorkExperienceCard() {
 													key={`achievement-${achievement.replace(/\s+/g, "-").slice(0, 20)}`}
 													className="flex items-start gap-3 p-3 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-emerald-500/30 transition-colors duration-300"
 												>
-													<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+													<CheckCircleIcon className="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" />
 													<span className="text-gray-300 text-sm leading-relaxed">
 														{achievement}
 													</span>

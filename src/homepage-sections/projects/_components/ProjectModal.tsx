@@ -31,7 +31,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent className="w-full max-w-7xl max-h-[85vh] md:max-h-[90vh] p-0 bg-gray-900/95 border border-white/10 sm:rounded-2xl overflow-y-auto overflow-x-hidden overscroll-contain">
 				{/* Hero Section */}
-				<div className="relative h-80 md:h-96 lg:h-[28rem]">
+				<div className="relative h-80 md:h-96 lg:h-112">
 					<Image
 						src={project.coverImage?.src || ""}
 						alt={project.coverImage?.alt || ""}
@@ -39,7 +39,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 						className={"object-contain object-center"}
 						priority
 					/>
-					<div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
+					<div className="absolute inset-0 bg-linear-to-t from-gray-900 via-gray-900/50 to-transparent" />
 
 					{/* Project Title Overlay */}
 					<div className="absolute -bottom-28 left-8 right-20 w-full">
@@ -106,7 +106,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 										key={`${index}-${crypto.randomUUID}`}
 										className="flex items-start gap-4 p-4 bg-gray-800/30 rounded-lg border border-gray-700/30 hover:border-gray-600/50 transition-colors"
 									>
-										<span className="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></span>
+										<span className="w-2 h-2 bg-emerald-400 rounded-full mt-2 shrink-0"></span>
 										<span className="text-gray-300">{feature}</span>
 									</div>
 								))}
@@ -143,7 +143,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 													key={`${index}-${crypto.randomUUID}`}
 													className="text-gray-300 flex items-start gap-3"
 												>
-													<span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+													<span className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 shrink-0"></span>
 													{item}
 												</li>
 											))}
@@ -163,7 +163,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 													key={`${index}-${crypto.randomUUID}`}
 													className="text-gray-300 flex items-start gap-3"
 												>
-													<span className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+													<span className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 shrink-0"></span>
 													{item}
 												</li>
 											))}
@@ -183,7 +183,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 													key={`${index}-${crypto.randomUUID}`}
 													className="text-gray-300 flex items-start gap-3"
 												>
-													<span className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+													<span className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 shrink-0"></span>
 													{item}
 												</li>
 											))}
@@ -204,7 +204,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 								{project.results.map((result, index) => (
 									<div
 										key={`${index}-${crypto.randomUUID}`}
-										className="p-6 bg-gradient-to-r from-emerald-500/10 to-sky-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/30 transition-colors"
+										className="p-6 bg-linear-to-r from-emerald-500/10 to-sky-500/10 rounded-xl border border-emerald-500/20 hover:border-emerald-500/30 transition-colors"
 									>
 										<h4 className="text-white font-semibold mb-3 text-lg">
 											{result.title}

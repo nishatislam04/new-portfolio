@@ -23,8 +23,8 @@ const tapeWords = [
 export default function TapeSection() {
 	return (
 		<section className="py-16">
-			<div className="bg-gradient-to-r from-emerald-300 to-sky-400 overflow-x-clip -rotate-3 -mx-1">
-				<div className="flex [mask-image:linear-gradient(to_right,transparent,black_10%,black90%,transparent)]">
+			<div className="bg-linear-to-r from-emerald-300 to-sky-400 overflow-x-clip -rotate-3 -mx-1">
+				<div className="flex mask-[linear-gradient(to_right,transparent,black_10%,black90%,transparent)]">
 					<div className="flex flex-none gap-4 py-3 pr-4 animate-move-left [animation-duration:30s]">
 						{[...new Array(2)].map((_, index) =>
 							tapeWords.map((word, wordIndex) => (

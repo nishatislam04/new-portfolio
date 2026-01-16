@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import {
@@ -35,7 +35,6 @@ import {
 	Select,
 	SelectContent,
 	SelectItem,
-	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
@@ -124,16 +123,23 @@ function BaseWorkExperienceForm({
 
 	const achievementsArray = useFieldArray({
 		name: "achievements",
-		control: form.control,
+		control: form.control as any,
 	});
 
 	const technologiesArray = useFieldArray({
 		name: "technologies",
-		control: form.control,
+		control: form.control as any,
 	});
 
 	const isSubmitting = form.formState.isSubmitting;
 	const isDirty = form.formState.isDirty;
+
+	// Ensure achievements array always has at least one item
+	useEffect(() => {
+		if (achievementsArray.fields.length === 0) {
+			(achievementsArray as any).append("");
+		}
+	}, [achievementsArray.fields.length, achievementsArray]);
 
 	async function onSubmit(data: WorkExperienceFormInput) {
 		const action =
@@ -407,8 +413,6 @@ function BaseWorkExperienceForm({
 								{...field}
 								id={field.name}
 								aria-invalid={fieldState.invalid}
-								type="number"
-								min={0}
 							/>
 							<FieldDescription className="text-sm text-gray-400">
 								Lower numbers appear first on the public timeline.
@@ -429,7 +433,7 @@ function BaseWorkExperienceForm({
 						type="button"
 						variant="secondary"
 						size="sm"
-						onClick={() => achievementsArray.append("")}
+						onClick={() => (achievementsArray as any).append("")}
 					>
 						Add achievement
 					</Button>
@@ -644,7 +648,7 @@ export function WorkExperienceEditForm({
 
 	async function handleDelete() {
 		setIsDeleting(true);
-		const result = await deleteWorkExperience(experience.id);
+		const result = await deleteWorkExperience(experience?.id || "");
 		setIsDeleting(false);
 
 		if (!result.success) {

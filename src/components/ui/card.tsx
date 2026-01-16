@@ -10,7 +10,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
 	({ className, variant = "default", ...props }, ref) => {
 		const variants: Record<NonNullable<CardProps["variant"]>, string> = {
 			default: "bg-gray-800/50 border border-gray-700/50",
-			glass: "bg-white/5 backdrop-blur-sm border border-white/10",
+			glass: "bg-white/5 backdrop-blur-xs border border-white/10",
 			bordered: "bg-gray-800 border border-gray-700 hover:border-gray-600",
 		};
 
@@ -18,7 +18,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
 			<div
 				ref={ref}
 				className={cn(
-					"rounded-xl shadow transition-all duration-300",
+					"rounded-xl shadow-sm transition-all duration-300",
 					variants[variant],
 					className,
 				)}

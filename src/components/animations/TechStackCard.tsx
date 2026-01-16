@@ -38,7 +38,7 @@ export function TechStackCard({
 				className="p-4 text-center group hover:border-emerald-500/30 transition-all duration-300 relative overflow-hidden"
 			>
 				{/* Subtle infinite background animations */}
-				<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+				<div className="absolute inset-0 bg-linear-to-r from-emerald-500/5 to-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
 				{/* Enhanced infinite border animations */}
 				<motion.div
@@ -98,7 +98,7 @@ export function TechStackCard({
 
 				{/* Infinite subtle background shimmer */}
 				<motion.div
-					className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent"
+					className="absolute inset-0 bg-linear-to-r from-transparent via-emerald-500/5 to-transparent"
 					animate={{
 						x: ["-100%", "100%"],
 					}}
@@ -114,7 +114,7 @@ export function TechStackCard({
 					<div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
 						<TechIcon icon={tech.icon} />
 					</div>
-					<p className="text-sm font-medium bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent group-hover:from-emerald-300 group-hover:to-sky-300 transition-all duration-300">
+					<p className="text-sm font-medium bg-linear-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent group-hover:from-emerald-300 group-hover:to-sky-300 transition-all duration-300">
 						{tech.name}
 					</p>
 				</div>
