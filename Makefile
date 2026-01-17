@@ -71,3 +71,6 @@ docker-down:
 docker-clean:
 	docker-compose down -v
 	docker system prune -f
+
+next-upgrade:
+	npm i next@canary
