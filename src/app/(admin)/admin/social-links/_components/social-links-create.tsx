@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type z from "zod";
@@ -35,6 +36,7 @@ import { SocialLinksFormSchema } from "@/schema/social-links-schema";
  * @returns JSX element for the social links creation form
  */
 export default function SocialLinksCreate() {
+	const router = useRouter();
 	/**
 	 * Initialize React Hook Form with Zod validation
 	 *
@@ -81,7 +83,6 @@ export default function SocialLinksCreate() {
 	 * @param data - Validated form data matching SocialLinksFormSchema
 	 */
 	async function onSubmit(data: z.infer<typeof SocialLinksFormSchema>) {
-		console.log(data); // Debug: Log form data for development
 		const result = await createSocialLinks(data);
 		if (!result.success) {
 			// Show server error as root-level form error
@@ -94,6 +95,7 @@ export default function SocialLinksCreate() {
 		if (result.success) {
 			form.reset(); // Clear form fields
 			toast.success(result.data.message); // Show success notification
+			router.push("/admin/social-links");
 		}
 	}
 

@@ -2,7 +2,7 @@
 trigger: always_on
 ---
 
-# Design System Rules
+# Design UI System Rules
 
 ## Color Palette
 

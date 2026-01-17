@@ -4,22 +4,20 @@ trigger: always_on
 
 # Windsurf Rules - Portfolio Project
 
-## Project Overview
-
-This is a professional portfolio website built with Next.js, featuring a modern dark theme design system with emerald accents.
-
 ## Tech Stack & Dependencies
 
-- **Framework**: Next.js 16.1 Canary with App Router
-- **Styling**: Tailwind CSS v4 with custom design tokens
+- **Framework**: Next.js version 16.1 Canary with App Router
+- **Styling**: Tailwind CSS v4
 - **Icons**: Custom SVG components with minified SVGs + Lucide React Icons
 - **Utilities**: clsx + tailwind-merge for class management
+- **UI component**: using latest shadcn/ui components and it's best practices
+- **Database**: using prisma orm with postgresql local docker database
 
 ### 2. Component Naming & Organization
 
 - **file-naming**: kebab-case for component files naming
-- **component-naming**: PascalCase for component naming
-- **Descriptive names** that indicate purpose
+- **component-naming**: PascalCase for react component naming
+- **Descriptive names** for react components to indicate purpose
 - **Export pattern**: Default export whenever possible
 - **Props interface**: create a new types file for props in the types directory. and if file exists, add the props to the existing file
 - **related components**: create _components directory for related components in the same directory as the parent component
@@ -40,18 +38,16 @@ This is a professional portfolio website built with Next.js, featuring a modern 
 
 ### 4. Performance Rules
 
-- **Image optimization**: Proper sizing and format selection and follow nextjs image optimization guidelines
-- **Code splitting**: Split code into smaller chunks for better loading performance
-- **Caching**: Implement proper nextjs caching strategies
-
-## UX/UI Consistency Rules
+- **Image optimization**: follow nextjs image optimization guidelines
+- **Code splitting**: create a separate componets based on its responsibility
+- **Caching**: Implement proper nextjs caching strategies. cache components. and ignore react caching strategies
 
 ## Development Workflow Rules
 
 ### 1. Component Development
 
 - **Design first**: Review existing components for patterns
-- **Documentation**: Include JSDoc comments for complex components
+- **Documentation**: Include JSDoc comments for complex components and complex functions
 - **install missing ui components**: Install missing ui components from shadcn/ui or other sources
 
 ## When Creating New UI Components
