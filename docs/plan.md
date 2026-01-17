@@ -65,7 +65,7 @@ for now we will assume there will be only one work experience. not multiple. but
 
 ~ (technologies will be stored in vercel blob with icon)
 
-4. education form
+4. education form [DONE]
 
 - institution
 - degree
