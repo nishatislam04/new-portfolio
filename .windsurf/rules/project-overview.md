@@ -49,6 +49,7 @@ trigger: always_on
 - **Design first**: Review existing components for patterns
 - **Documentation**: Include JSDoc comments for complex components and complex functions
 - **install missing ui components**: Install missing ui components from shadcn/ui or other sources
+- **boundary**: try to stay as much as possible in server boundary and only introduce client boundary when needed for better speed and performance.
 
 ## When Creating New UI Components
 

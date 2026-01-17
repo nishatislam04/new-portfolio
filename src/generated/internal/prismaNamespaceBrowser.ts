@@ -151,6 +151,8 @@ export const EducationScalarFieldEnum = {
   degree: 'degree',
   institution: 'institution',
   durationLabel: 'durationLabel',
+  startDate: 'startDate',
+  endDate: 'endDate',
   gpa: 'gpa',
   description: 'description',
   highlights: 'highlights',

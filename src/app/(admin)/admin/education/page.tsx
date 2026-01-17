@@ -1,8 +1,11 @@
-import type { ReactElement } from "react";
-
+import { getEducation } from "@/actions/education-actions";
 import { AdminPageShell } from "@/app/(admin)/_components/admin-page-shell";
+import EducationCreateForm from "./_components/education-create-form";
+import EducationEditForm from "./_components/education-edit-form";
 
-export default function EducationPage(): ReactElement {
+export default async function EducationPage() {
+	const result = await getEducation();
+
 	return (
 		<AdminPageShell
 			title="Education"
@@ -12,6 +15,11 @@ export default function EducationPage(): ReactElement {
 				This section will gain editable entries for institutions, programs, and
 				highlights so you can track your learning journey.
 			</p>
+			{result.data === null ? (
+				<EducationCreateForm />
+			) : (
+				<EducationEditForm education={result.data} />
+			)}
 		</AdminPageShell>
 	);
 }

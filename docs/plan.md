@@ -45,7 +45,7 @@ there will be a delete option when the edit form is shown.
 
 ~ (save the `icon` in the vercel-blob and store the url in `icon` field)
 
-3. work experience form
+3. work experience form [DONE]
 
 These fields contribute to a single work experience card.
 for now we will assume there will be only one work experience. not multiple. but in future we will support multiple work experiences. but now wont worry about it when we build our frontend and backend
@@ -66,8 +66,6 @@ for now we will assume there will be only one work experience. not multiple. but
 ~ (technologies will be stored in vercel blob with icon)
 
 4. education form
-
-These fields contribute to a single education card.
 
 - institution
 - degree

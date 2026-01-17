@@ -125,6 +125,10 @@ model Education {
   institution   String?
   /// Display-friendly duration label (e.g. "2021 - 2024")
   durationLabel String?
+  /// Free-form start date label (e.g. "Jan 2021")
+  startDate     String?
+  /// Free-form end date label (e.g. "Jun 2024" or "Current")
+  endDate       String?
   /// Stored as strings for flexibility (no strict numeric GPA typing needed).
   gpa           String?
   description   String?
