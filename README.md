@@ -50,7 +50,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
    ```
 
 5. **Open in browser**
-   Navigate to [http://192.168.0.103:3000](http://192.168.0.103:3000)
+   Navigate to [http://192.168.0.104:3000](http://192.168.0.104:3000)
 
 ## Deployment
 

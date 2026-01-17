@@ -186,12 +186,7 @@ export function WorkExperienceEditForm({
 
 				<AlertDialog>
 					<AlertDialogTrigger asChild>
-						<Button
-							variant="oldButtonDestructive"
-							size="lg"
-							className="px-6 py-3 rounded-xl text-sm"
-							type="button"
-						>
+						<Button variant="oldButtonDestructive" size="lg" type="button">
 							<Trash2 className="mr-2 h-4 w-4" />
 							Delete
 						</Button>

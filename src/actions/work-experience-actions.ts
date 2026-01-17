@@ -1,7 +1,7 @@
 "use server";
 
 import { put } from "@vercel/blob";
-import { cacheLife, cacheTag, updateTag } from "next/cache";
+import { cacheLife, cacheTag, revalidateTag, updateTag } from "next/cache";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 import {
@@ -232,7 +232,7 @@ export const createWorkExperience = async (
 			},
 		});
 
-		updateTag("work-experience");
+		revalidateTag("work-experience", "max");
 
 		return {
 			success: true,

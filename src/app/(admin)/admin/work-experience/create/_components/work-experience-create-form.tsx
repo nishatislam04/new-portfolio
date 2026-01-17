@@ -115,6 +115,7 @@ export function WorkExperienceCreateForm() {
 			return;
 		}
 
+		form.reset();
 		router.push("/admin/work-experience");
 		toast.success(result.data.message);
 	}

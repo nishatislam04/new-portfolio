@@ -28,12 +28,7 @@ export default function AlertResourceDelete({
 		<>
 			<AlertDialog>
 				<AlertDialogTrigger asChild>
-					<Button
-						type="button"
-						variant="oldButtonDestructive"
-						size="lg"
-						className="px-10 py-6 rounded-xl text-lg"
-					>
+					<Button type="button" variant="oldButtonDestructive" size="lg">
 						<Trash2 />
 						Delete Me
 					</Button>

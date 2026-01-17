@@ -5,8 +5,11 @@ import { AdminPageShell } from "@/app/(admin)/_components/admin-page-shell";
 import WorkExperienceListings from "./_components/work-experience-listings";
 
 /**
- * ! TODO: when we create a new work experience, we should redirect to the listings page. but it does not for the very first time. the listings component render when we have a item already. but it does not render, when we dont have a item.
- * @returns
+ * ! we need to optimize this page for better performance
+ * ! we need to optimize our create page and form for better performance
+ * ! we need to optimize our edit page and form for better performance
+ *
+ * ! THERE ARE TOO MANY RE-RENDERINGS HAPPENING
  */
 export default async function WorkExperiencePage() {
 	const result = await getWorkExperiences();
