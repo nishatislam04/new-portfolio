@@ -22,12 +22,6 @@ trigger: always_on
 - **Props interface**: create a new types file for props in the types directory. and if file exists, add the props to the existing file
 - **related components**: create _components directory for related components in the same directory as the parent component
 
-### 2. Import Rules
-
-- **Absolute imports**: Use `@/` prefix for all internal imports
-- **Import order**: External libraries → Internal components → Assets
-- **unused imports**: Remove unused imports for ui related components only
-
 ## Code Quality Rules
 
 ### 1. TypeScript Standards
@@ -64,10 +58,10 @@ trigger: always_on
 
 ### Never do
 
-- **run local server**: after implementing feature, never start or restart local dev server to test. as the local server was always running on [port 3000](http://192.168.0.104:3000)
+- **run local server**: after implementing feature, never start or restart local dev server to test. as the local server was always running on [port 3000](http://192.168.0.105:3000)
 
 ---
 
 ### Project bootstrap details
 
-Project runs Next.js dev server bound to host 192.168.0.104 on port 3000 (-H 192.168.0.104). Use this when invoking MCP/browser to target [http://192.168.0.104:3000](http://192.168.0.104:3000). MCP Next.js tools are available for server management.
+Project runs Next.js dev server bound to host 192.168.0.104 on port 3000 (-H 192.168.0.104). Use this when invoking MCP/browser to target [http://192.168.0.105:3000](http://192.168.0.105:3000). MCP Next.js tools are available for server management.

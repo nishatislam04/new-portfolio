@@ -1,24 +1,14 @@
 # Nishat Mazumder - Portfolio Website
 
-A stunning, responsive portfolio website showcasing my work as a Full Stack Web Developer. Built with Next.js 15, TypeScript, Tailwind CSS V4 and Framer Motion. Features enterprise-grade projects, modern design with smooth animations.
-
-## Features
-
-- **Modern Design**: Clean, professional design with dark based theme and gradient accents
-- **Responsive**: Mobile-first design that works perfectly on all devices
-- **Smooth Animations**: Powered by Framer Motion for engaging user experience
-- **Performance Optimized**: Built with Next.js 15 App Router for optimal performance
-- **Accessibility**: WCAG compliant with proper semantic HTML and keyboard navigation
-- **SEO Optimized**: Meta tags, structured data, and optimized for search engines
-- **TypeScript**: Fully typed for better development experience and code quality
+A stunning, responsive portfolio website showcasing my work as a Full Stack Web Developer. Built with Next.js 16 canary, TypeScript, Tailwind CSS V4.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router (Canary)
+- **Framework**: Next.js 16 canary with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS V4
-- **Animations**: Framer Motion
-- **Icons**: Custom SVG components
+- **UI Components**: Shadcn/ui
+- **Icons**: Custom SVG components & Lucide React Icons
 - **Font**: Inter, Calistoga (Google Fonts)
 - **Deployment**: Vercel
 
@@ -50,7 +40,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
    ```
 
 5. **Open in browser**
-   Navigate to [http://192.168.0.104:3000](http://192.168.0.104:3000)
+   Navigate to [http://192.168.0.105:3000](http://192.168.0.105:3000)
 
 ## Deployment
 
@@ -68,7 +58,7 @@ A stunning, responsive portfolio website showcasing my work as a Full Stack Web 
    - Push your code to GitHub
    - Set environment variables in Vercel dashboard
 
-### Manual Build
+### Manual Build & preview
 
 ```bash
 make build

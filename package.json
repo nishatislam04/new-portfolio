@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "concurrently --names \"Prisma,Next.js\" --prefix \"[{name}]\" --prefix-colors \"yellow.bold,blue.bold\" \"npx prisma generate --watch\" \"next dev -H 192.168.0.104\"",
+		"dev": "concurrently --names \"Prisma,Next.js\" --prefix \"[{name}]\" --prefix-colors \"yellow.bold,blue.bold\" \"bunx --bun prisma generate --watch\" \"bun --bun next dev -H 192.168.0.105\"",
 		"build": "next build",
 		"start": "next start -H 192.168.0.104",
 		"lint": "biome check .",
@@ -59,6 +59,7 @@
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
+		"babel-plugin-react-compiler": "^1.0.0",
 		"concurrently": "^9.2.1",
 		"postcss": "^8",
 		"prisma": "^7.2.0",

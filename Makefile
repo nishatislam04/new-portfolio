@@ -19,7 +19,7 @@ help:
 
 # Development
 dev: docker-up
-	npm run dev
+	bun run dev
 
 # Production
 build:
@@ -40,22 +40,22 @@ type-check:
 
 # Database operations
 generate:
-	npx prisma generate
+	bunx --bun prisma generate
 	
 seed:
-	npm run db:seed
+	bun run db:seed
 
 push:
-	npx prisma db push --force-reset
+	bunx --bun prisma db push --force-reset
 
 migrate:
-	npx prisma migrate dev
+	bunx --bun prisma migrate dev
 
 reset:
-	npx prisma migrate reset
+	bunx --bun prisma migrate reset
 
 studio:
-	npx prisma studio
+	bunx --bun prisma studio
 
 up:
 	@echo "Starting Docker services..."
