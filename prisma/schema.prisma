@@ -5,7 +5,7 @@ generator client {
   importFileExtension    = "ts"
   moduleFormat           = "esm"
   engineType             = "client"
-  runtime                = "bun" // added it later. donno if it will cause trouble or not
+  // runtime                = "bun" // added it later. donno if it will cause trouble or not
 }
 
 datasource db {
