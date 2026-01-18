@@ -1,7 +1,8 @@
-"use client";
+// "use client";
 
+import { Home, KeyRound, Layers3 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import type { ReactElement } from "react";
 import {
 	Sidebar,
@@ -10,85 +11,65 @@ import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarGroupLabel,
+	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	SidebarRail,
-	SidebarSeparator,
 } from "@/components/ui/sidebar";
-
-import {
-	homepageLink,
-	passwordLink,
-	primaryLink,
-	secondaryLinks,
-} from "./nav-items";
+import { secondaryLinks } from "./nav-items";
 
 const linkButtonClasses =
 	"h-12 justify-start gap-3 rounded-xl text-base font-medium tracking-tight";
 
 export function AdminSidebar(): ReactElement {
-	const pathname = usePathname();
+	// const pathname = usePathname();
 
-	const isActive = (href: string) =>
-		pathname === href || pathname.startsWith(`${href}/`);
+	// const isActive = (href: string) =>
+	// 	pathname === href || pathname.startsWith(`${href}/`);
+
+	console.log("admin sidebar rendering");
 
 	return (
 		<Sidebar
 			className="border-r border-white/10 bg-gray-950/95 px-2 py-6 text-gray-200 shadow-[0_0_60px_rgba(13,148,136,0.15)] flex flex-col"
 			collapsible="offcanvas"
 		>
-			{/* Fixed Header Section */}
-			<div className="flex flex-col gap-6 pb-4">
-				<SidebarGroup>
-					<SidebarGroupContent>
-						<SidebarMenu>
-							<SidebarMenuItem>
-								<SidebarMenuButton
-									asChild
-									size="lg"
-									className={`${linkButtonClasses} text-lg`}
-									isActive={isActive(primaryLink.href)}
-								>
-									<Link
-										href={primaryLink.href}
-										className="flex w-full items-center gap-3"
-										prefetch={false}
-									>
-										<primaryLink.icon className="size-5 text-emerald-300" />
-										<span>{primaryLink.title}</span>
-									</Link>
-								</SidebarMenuButton>
-							</SidebarMenuItem>
-							<SidebarMenuItem>
-								<SidebarMenuButton
-									asChild
-									size="lg"
-									className={`${linkButtonClasses} text-lg`}
-									isActive={isActive(homepageLink.href)}
-								>
-									<Link
-										href={homepageLink.href}
-										className="flex w-full items-center gap-3"
-										prefetch={false}
-									>
-										<homepageLink.icon className="size-5 text-blue-300" />
-										<span>{homepageLink.title}</span>
-									</Link>
-								</SidebarMenuButton>
-							</SidebarMenuItem>
-						</SidebarMenu>
-					</SidebarGroupContent>
-				</SidebarGroup>
+			{/* HEADER */}
+			<SidebarHeader>
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							asChild
+							size="lg"
+							className={`${linkButtonClasses} text-lg`}
+							// isActive={pathname === "/admin"}
+						>
+							<Link href="/admin" className="flex w-full items-center gap-3">
+								<Layers3 className="size-5 text-emerald-300" />
+								Overview
+							</Link>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							asChild
+							size="lg"
+							className={`${linkButtonClasses} text-lg`}
+						>
+							<Link href="/" className="flex w-full items-center gap-3">
+								<Home className="size-5 text-blue-300" />
+								Homepage
+							</Link>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+				</SidebarMenu>
+			</SidebarHeader>
 
-				<SidebarSeparator className="border-white/10" />
-			</div>
-
-			{/* Scrollable Content Section */}
-			<SidebarContent className="flex-1 overflow-auto">
+			{/* Main Resource */}
+			<SidebarContent>
 				<SidebarGroup>
 					<SidebarGroupLabel className="text-xs uppercase tracking-[0.3em] text-gray-500">
-						Content
+						Resources
 					</SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarMenu className="space-y-1">
@@ -98,12 +79,11 @@ export function AdminSidebar(): ReactElement {
 										asChild
 										size="lg"
 										className={linkButtonClasses}
-										isActive={isActive(link.href)}
+										// isActive={isActive(link.href)}
 									>
 										<Link
 											href={link.href}
 											className="flex w-full items-center gap-3"
-											prefetch={false}
 										>
 											<link.icon className="size-5" />
 											<span>{link.title}</span>
@@ -116,37 +96,27 @@ export function AdminSidebar(): ReactElement {
 				</SidebarGroup>
 			</SidebarContent>
 
-			{/* Fixed Footer Section */}
-			<div className="flex flex-col gap-4 pt-4">
-				<SidebarSeparator className="border-white/10" />
-				<SidebarFooter className="px-2">
-					<SidebarGroup>
-						<SidebarGroupContent>
-							<SidebarMenu>
-								<SidebarMenuItem>
-									<SidebarMenuButton
-										asChild
-										size="lg"
-										className={linkButtonClasses}
-										isActive={isActive(passwordLink.href)}
-									>
-										<Link
-											href={passwordLink.href}
-											className="flex w-full items-center gap-3"
-											prefetch={false}
-										>
-											<passwordLink.icon className="size-5 text-orange-300" />
-											<span>{passwordLink.title}</span>
-										</Link>
-									</SidebarMenuButton>
-								</SidebarMenuItem>
-							</SidebarMenu>
-						</SidebarGroupContent>
-					</SidebarGroup>
-				</SidebarFooter>
-			</div>
-
-			<SidebarRail />
+			{/* Footer  */}
+			<SidebarFooter>
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							asChild
+							size="lg"
+							className={linkButtonClasses}
+							// isActive={pathname === "/admin/settings/password"}
+						>
+							<Link
+								href="/admin/settings/password"
+								className="flex w-full items-center gap-3"
+							>
+								<KeyRound className="size-5 text-orange-300" />
+								Password
+							</Link>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+				</SidebarMenu>
+			</SidebarFooter>
 		</Sidebar>
 	);
 }

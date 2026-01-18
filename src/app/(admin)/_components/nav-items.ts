@@ -6,9 +6,6 @@ import {
 	BriefcaseBusiness,
 	FolderKanban,
 	GraduationCap,
-	Home,
-	KeyRound,
-	Layers3,
 	ScrollText,
 	Share2,
 	UserRound,
@@ -18,18 +15,6 @@ export type AdminNavLink = {
 	title: string;
 	href: string;
 	icon: LucideIcon;
-};
-
-export const primaryLink: AdminNavLink = {
-	title: "Overview",
-	href: "/admin",
-	icon: Layers3,
-};
-
-export const homepageLink: AdminNavLink = {
-	title: "Homepage",
-	href: "/",
-	icon: Home,
 };
 
 export const secondaryLinks: AdminNavLink[] = [
@@ -74,9 +59,3 @@ export const secondaryLinks: AdminNavLink[] = [
 		icon: FolderKanban,
 	},
 ];
-
-export const passwordLink: AdminNavLink = {
-	title: "Password",
-	href: "/admin/settings/password",
-	icon: KeyRound,
-};

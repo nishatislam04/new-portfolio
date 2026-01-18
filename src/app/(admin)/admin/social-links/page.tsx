@@ -6,8 +6,6 @@ import SocialLinksEdit from "./_components/social-links-edit";
 export default async function SocialLinksPage() {
 	const result = await getSocialLinks();
 
-	console.log(result);
-
 	return (
 		<AdminPageShell
 			title="Social Links"
