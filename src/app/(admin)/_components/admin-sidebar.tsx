@@ -27,8 +27,6 @@ export function AdminSidebar(): ReactElement {
 	// const isActive = (href: string) =>
 	// 	pathname === href || pathname.startsWith(`${href}/`);
 
-	console.log("admin sidebar rendering");
-
 	return (
 		<Sidebar
 			className="border-r border-white/10 bg-gray-950/95 px-2 py-6 text-gray-200 shadow-[0_0_60px_rgba(13,148,136,0.15)] flex flex-col"

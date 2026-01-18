@@ -12,6 +12,7 @@ export default function WorkExperienceListings({
 	return (
 		<div className="space-y-8">
 			<section className="space-y-4">
+				{/* header */}
 				<div className="flex items-start justify-between gap-4">
 					<div>
 						<h3 className="text-lg font-semibold text-gray-100">
@@ -34,7 +35,11 @@ export default function WorkExperienceListings({
 
 				<div className="space-y-3">
 					{experiences.map((exp) => (
-						<Link key={exp.id} href={`/admin/work-experience/${exp.id}/edit`}>
+						<Link
+							key={exp.id}
+							href={`/admin/work-experience/${exp.id}/edit`}
+							prefetch={true}
+						>
 							<Card className="relative flex flex-col gap-2 rounded-2xl border border-white/5 bg-gray-900/80 px-4 py-4 transition-colors duration-200 hover:border-emerald-400/40 hover:bg-emerald-500/5 cursor-pointer">
 								<div className="flex items-start justify-between gap-3">
 									<div>

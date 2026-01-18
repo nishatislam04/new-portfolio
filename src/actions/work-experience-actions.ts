@@ -21,6 +21,10 @@ export type WorkExperienceTechnology = {
 	iconUrl?: string;
 };
 
+export type WorkExperienceAchivements = {
+	value: string;
+};
+
 /**
  * DTO returned to the admin UI for a single Work Experience entry.
  */
@@ -36,7 +40,7 @@ export type WorkExperienceDTO = {
 	description: string | null;
 	isCurrent: boolean;
 	sortOrder: number;
-	achievements: string[];
+	achievements: WorkExperienceAchivements[];
 	technologies: WorkExperienceTechnology[];
 };
 

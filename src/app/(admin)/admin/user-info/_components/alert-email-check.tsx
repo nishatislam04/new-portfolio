@@ -36,7 +36,10 @@ export default function AlertEmailCheck({
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter className="p-6 flex items-center justify-end">
-					<AlertDialogAction onClick={() => onOpenChange(false)}>
+					<AlertDialogAction
+						onClick={() => onOpenChange(false)}
+						className="bg-gray-600 cursor-pointer"
+					>
 						OK
 					</AlertDialogAction>
 				</AlertDialogFooter>

@@ -44,7 +44,6 @@ import {
 	WorkExperienceFormSchema,
 } from "@/schema/work-experience-schema";
 
-// Employment types reused by the edit form dropdown.
 const EMPLOYMENT_TYPES = [
 	{ value: "full-time", label: "Full-time" },
 	{ value: "part-time", label: "Part-time" },
@@ -53,12 +52,6 @@ const EMPLOYMENT_TYPES = [
 	{ value: "volunteer", label: "Volunteer" },
 ];
 
-/**
- * Build the default values for the edit form from an existing DTO.
- *
- * When a field is optional on the DTO we fall back to a safe empty
- * value so the form is always fully controlled.
- */
 function buildEditDefaults(
 	experience: WorkExperienceDTO,
 ): WorkExperienceFormInput {
@@ -74,7 +67,9 @@ function buildEditDefaults(
 		isCurrent: experience.isCurrent,
 		sortOrder: String(experience.sortOrder ?? 0),
 		achievements:
-			experience.achievements.length > 0 ? experience.achievements : [""],
+			experience.achievements.length > 0
+				? experience.achievements
+				: [{ value: "" }],
 		technologies:
 			experience.technologies.length > 0
 				? experience.technologies.map((tech) => ({
@@ -93,25 +88,14 @@ function buildEditDefaults(
 }
 
 export interface WorkExperienceEditFormProps {
-	/**
-	 * The work experience record currently selected in the manager.
-	 * When undefined, nothing is rendered.
-	 */
 	experience: WorkExperienceDTO;
 }
 
-/**
- * WorkExperienceEditForm
- *
- * Standalone form that edits an existing work experience entry and
- * exposes a delete action. It is intentionally separate from the
- * create form so each flow can evolve independently.
- */
 export function WorkExperienceEditForm({
 	experience,
 }: WorkExperienceEditFormProps) {
 	const router = useRouter();
-	const [isDeleting, setIsDeleting] = useState(false);
+	const [isDeleting, setIsDeleting] = useState(false); // REFACTOR THIS LATER!
 
 	// if (!experience) return null;
 
@@ -123,12 +107,12 @@ export function WorkExperienceEditForm({
 
 	const achievementsArray = useFieldArray({
 		name: "achievements",
-		control: form.control as any,
+		control: form.control,
 	});
 
 	const technologiesArray = useFieldArray({
 		name: "technologies",
-		control: form.control as any,
+		control: form.control,
 	});
 
 	const isSubmitting = form.formState.isSubmitting;
@@ -137,16 +121,16 @@ export function WorkExperienceEditForm({
 	// When the selected experience changes (for example, when the user
 	// clicks a different card in the manager), reset the form values so
 	// the fields always reflect the active record.
-	useEffect(() => {
-		form.reset(buildEditDefaults(experience));
-	}, [experience, form]);
+	// useEffect(() => {
+	// 	form.reset(buildEditDefaults(experience));
+	// }, [experience, form]);
 
 	// Ensure there is always at least one achievement row.
-	useEffect(() => {
-		if (achievementsArray.fields.length === 0) {
-			(achievementsArray as any).append("");
-		}
-	}, [achievementsArray, achievementsArray.fields.length]);
+	// useEffect(() => {
+	// 	if (achievementsArray.fields.length === 0) {
+	// 		(achievementsArray as any).append("");
+	// 	}
+	// }, [achievementsArray, achievementsArray.fields.length]);
 
 	async function onSubmit(data: WorkExperienceFormInput) {
 		const result = await updateWorkExperience(experience.id, data);
@@ -495,7 +479,7 @@ export function WorkExperienceEditForm({
 							type="button"
 							variant="secondary"
 							size="sm"
-							onClick={() => (achievementsArray as any).append("")}
+							onClick={() => achievementsArray.append({ value: "" })}
 						>
 							Add achievement
 						</Button>
@@ -510,7 +494,7 @@ export function WorkExperienceEditForm({
 							<Controller
 								// eslint-disable-next-line react/no-array-index-key
 								key={fieldItem.id}
-								name={`achievements.${index}`}
+								name={`achievements.${index}.value`}
 								control={form.control}
 								render={({ field, fieldState }) => (
 									<Field data-invalid={fieldState.invalid}>

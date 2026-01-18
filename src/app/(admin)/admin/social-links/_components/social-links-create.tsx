@@ -105,7 +105,7 @@ export default function SocialLinksCreate() {
 
 	return (
 		<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-			<FieldSet>
+			<FieldSet className="mt-8">
 				<FieldLegend>Gmail</FieldLegend>
 				<FieldDescription>
 					Enter details for Gmail contact link.
@@ -222,7 +222,7 @@ export default function SocialLinksCreate() {
 				</FieldGroup>
 			</FieldSet>
 			<FieldSeparator />
-			<FieldSet>
+			<FieldSet className="mt-8">
 				<FieldLegend>LinkedIn</FieldLegend>
 				<FieldDescription>
 					Enter details for LinkedIn profile link.
@@ -340,7 +340,7 @@ export default function SocialLinksCreate() {
 			</FieldSet>
 
 			<FieldSeparator />
-			<FieldSet>
+			<FieldSet className="mt-8">
 				<FieldLegend>WhatsApp</FieldLegend>
 				<FieldDescription>Enter details for WhatsApp link.</FieldDescription>
 				<FieldGroup>
@@ -456,7 +456,7 @@ export default function SocialLinksCreate() {
 			</FieldSet>
 
 			<FieldSeparator />
-			<FieldSet>
+			<FieldSet className="mt-8">
 				<FieldLegend>Messenger</FieldLegend>
 				<FieldDescription>
 					Enter details for Facebook Messenger link.

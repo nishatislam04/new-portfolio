@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -29,7 +28,6 @@ import {
 	WorkExperienceFormSchema,
 } from "@/schema/work-experience-schema";
 
-// Employment types used by the dropdown in the form.
 const EMPLOYMENT_TYPES = [
 	{ value: "full-time", label: "Full-time" },
 	{ value: "part-time", label: "Part-time" },
@@ -38,12 +36,6 @@ const EMPLOYMENT_TYPES = [
 	{ value: "volunteer", label: "Volunteer" },
 ];
 
-/**
- * Build the initial empty state for creating a new work experience.
- *
- * This keeps all default values in one place so they are easy to
- * adjust later without hunting through the component.
- */
 function buildCreateDefaults(): WorkExperienceFormInput {
 	return {
 		company: "",
@@ -56,7 +48,7 @@ function buildCreateDefaults(): WorkExperienceFormInput {
 		description: "",
 		isCurrent: true,
 		sortOrder: "0",
-		achievements: [""],
+		achievements: [{ value: "" }],
 		technologies: [
 			{
 				label: "",
@@ -67,13 +59,6 @@ function buildCreateDefaults(): WorkExperienceFormInput {
 	};
 }
 
-/**
- * WorkExperienceCreateForm
- *
- * Standalone form component responsible only for creating a new
- * work experience entry. It owns its own React Hook Form instance
- * and talks directly to the `createWorkExperience` server action.
- */
 export function WorkExperienceCreateForm() {
 	const router = useRouter();
 
@@ -85,25 +70,16 @@ export function WorkExperienceCreateForm() {
 
 	const achievementsArray = useFieldArray({
 		name: "achievements",
-		// Casting is safe because the field name matches the schema.
-		control: form.control as any,
+		control: form.control,
 	});
 
 	const technologiesArray = useFieldArray({
 		name: "technologies",
-		control: form.control as any,
+		control: form.control,
 	});
 
 	const isSubmitting = form.formState.isSubmitting;
 	const isDirty = form.formState.isDirty;
-
-	// Ensure there is always at least one achievement row so the UI
-	// never renders an empty list the user cannot interact with.
-	useEffect(() => {
-		if (achievementsArray.fields.length === 0) {
-			(achievementsArray as any).append("");
-		}
-	}, [achievementsArray, achievementsArray.fields.length]);
 
 	async function onSubmit(data: WorkExperienceFormInput) {
 		const result = await createWorkExperience(data);
@@ -396,7 +372,7 @@ export function WorkExperienceCreateForm() {
 						type="button"
 						variant="oldButtonSecondary"
 						size="sm"
-						onClick={() => (achievementsArray as any).append("")}
+						onClick={() => achievementsArray.append({ value: "" })}
 					>
 						Add achievement
 					</Button>
@@ -411,7 +387,7 @@ export function WorkExperienceCreateForm() {
 						<Controller
 							// eslint-disable-next-line react/no-array-index-key
 							key={fieldItem.id}
-							name={`achievements.${index}`}
+							name={`achievements.${index}.value`}
 							control={form.control}
 							render={({ field, fieldState }) => (
 								<Field data-invalid={fieldState.invalid}>

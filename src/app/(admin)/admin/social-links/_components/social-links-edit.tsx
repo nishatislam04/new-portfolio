@@ -149,7 +149,7 @@ export default function SocialLinksEdit({
 		<>
 			<h1>Edit Social link</h1>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-				<FieldSet>
+				<FieldSet className="mt-8">
 					<FieldLegend>Gmail</FieldLegend>
 					<FieldDescription>
 						Enter details for Gmail contact link.
@@ -287,7 +287,7 @@ export default function SocialLinksEdit({
 					</FieldGroup>
 				</FieldSet>
 				<FieldSeparator />
-				<FieldSet>
+				<FieldSet className="mt-8">
 					<FieldLegend>LinkedIn</FieldLegend>
 					<FieldDescription>
 						Enter details for LinkedIn profile link.
@@ -426,7 +426,7 @@ export default function SocialLinksEdit({
 				</FieldSet>
 
 				<FieldSeparator />
-				<FieldSet>
+				<FieldSet className="mt-8">
 					<FieldLegend>WhatsApp</FieldLegend>
 					<FieldDescription>Enter details for WhatsApp link.</FieldDescription>
 
@@ -563,7 +563,7 @@ export default function SocialLinksEdit({
 				</FieldSet>
 
 				<FieldSeparator />
-				<FieldSet>
+				<FieldSet className="mt-8">
 					<FieldLegend>Messenger</FieldLegend>
 					<FieldDescription>
 						Enter details for Facebook Messenger link.

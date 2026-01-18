@@ -1,8 +1,7 @@
-import { redirect } from "next/navigation";
-
 import { getWorkExperiences } from "@/actions/work-experience-actions";
 import { AdminPageShell } from "@/app/(admin)/_components/admin-page-shell";
 import WorkExperienceListings from "./_components/work-experience-listings";
+import CreateWorkExperiencePage from "./create/page";
 
 /**
  * ! we need to optimize this page for better performance
@@ -15,7 +14,7 @@ export default async function WorkExperiencePage() {
 	const result = await getWorkExperiences();
 	const experiences = result.success ? result.data : [];
 
-	if (experiences.length === 0) redirect("/admin/work-experience/create");
+	if (experiences.length === 0) return <CreateWorkExperiencePage />;
 
 	return (
 		<AdminPageShell

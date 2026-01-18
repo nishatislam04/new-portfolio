@@ -15,15 +15,11 @@ export default async function EditWorkExperiencePage({
 	const { id } = await params;
 	const result = await getWorkExperiences();
 
-	if (!result.success) {
-		notFound();
-	}
+	if (!result.success) notFound();
 
 	const experience = result.data.find((exp) => exp.id === id);
 
-	if (!experience) {
-		notFound();
-	}
+	if (!experience) notFound();
 
 	return (
 		<AdminPageShell

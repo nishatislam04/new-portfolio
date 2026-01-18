@@ -6,7 +6,6 @@ import UserInfoCreate from "./_components/user-info-create";
 import UserInfoEdit from "./_components/user-info-edit";
 
 export default async function UserInfoPage(): Promise<ReactElement> {
-	// Check if user info already exists
 	const userAlredyExist = await getUserInfo();
 
 	if (userAlredyExist.success && userAlredyExist.data)

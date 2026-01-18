@@ -1,20 +1,13 @@
 import z from "zod";
 
-/**
- * Client-side form schema used with React Hook Form for creating/updating
- * a single Work Experience entry.
- *
- * This schema is intentionally separate from the server schema so that
- * we can safely use `File` (for icon uploads) only on the client.
- */
-
-// Technology item as represented in the client form
 export const WorkExperienceTechnologyClientSchema = z.object({
 	label: z.string().min(1, "Technology label is required").trim(),
-	// File input for icon upload (optional)
 	icon: z.instanceof(File).optional(),
-	// When editing, we may already have an existing icon URL stored in DB
-	existingIconUrl: z.string().url().optional(),
+	existingIconUrl: z.url().optional(),
+});
+
+export const WorkExperienceAchivementsClientSchema = z.object({
+	value: z.string(),
 });
 
 // Main client-side form schema
@@ -37,8 +30,8 @@ export const WorkExperienceFormSchema = z.object({
 		.trim(),
 	// Achievements are modeled as simple string bullets
 	achievements: z
-		.array(z.string().min(1, "Achievement cannot be empty").trim())
-		.min(1, "At least one achievement is required"),
+		.array(WorkExperienceAchivementsClientSchema)
+		.min(1, "At least one achivement is required"),
 	// Technologies with label + optional icon upload
 	technologies: z
 		.array(WorkExperienceTechnologyClientSchema)
@@ -54,7 +47,11 @@ export type WorkExperienceFormInput = z.infer<typeof WorkExperienceFormSchema>;
 
 export const WorkExperienceTechnologySchema = z.object({
 	label: z.string().min(1).trim(),
-	iconUrl: z.string().url().optional(),
+	iconUrl: z.url().optional(),
+});
+
+export const WorkExperienceAchivementsSchema = z.object({
+	value: z.string().min(1).trim(),
 });
 
 export const WorkExperienceServerBaseSchema = z.object({
@@ -68,7 +65,7 @@ export const WorkExperienceServerBaseSchema = z.object({
 	description: z.string().min(1).trim(),
 	isCurrent: z.boolean(),
 	sortOrder: z.number().int().min(0),
-	achievements: z.array(z.string().min(1).trim()),
+	achievements: z.array(WorkExperienceAchivementsSchema),
 	technologies: z.array(WorkExperienceTechnologySchema),
 });
 
