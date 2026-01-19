@@ -15,12 +15,12 @@ export function AdminPageShell({
 }: AdminPageShellProps): ReactElement {
 	return (
 		<div className="space-y-6">
-			<div className="space-y-1">
+			<div>
 				<h2 className="text-3xl font-semibold text-emerald-300/90 mb-8 capitalize">
 					{title}
 				</h2>
 				{description ? (
-					<p className="text-sm text-gray-400">{description}</p>
+					<p className="text-sm text-gray-400 mt-2">{description}</p>
 				) : null}
 			</div>
 			{children ? <div className={className}>{children}</div> : null}

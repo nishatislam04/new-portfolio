@@ -2,9 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus, Trash2 } from "lucide-react";
-import { useEffect } from "react";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { upsertAchievements } from "@/actions/achievement-actions";
@@ -17,8 +16,8 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
-	AchievementsFormSchema,
 	type AchievementsFormInput,
+	AchievementsFormSchema,
 } from "@/schema/achievement-schema";
 import type { AchievementEntry } from "@/types/achievement";
 
@@ -63,22 +62,8 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 
 	const fieldArray = useFieldArray({
 		name: "items",
-		// Casting is safe because the field name matches the schema.
-		control: form.control as any,
+		control: form.control,
 	});
-
-	useEffect(() => {
-		if (fieldArray.fields.length === 0) {
-			fieldArray.append({
-				id: undefined,
-				info: "",
-				number: "",
-				text: "",
-				sortOrder: "0",
-			});
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [fieldArray.fields.length]);
 
 	function handleAddAchievement() {
 		const currentItems = form.getValues("items") ?? [];
@@ -126,15 +111,7 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 	return (
 		<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 			<section className="space-y-4">
-				<div className="flex items-center justify-between">
-					<div>
-						<h3 className="text-lg font-semibold text-white">Achievements</h3>
-						<p className="text-sm text-gray-400 max-w-2xl">
-							These stats power the achievements section on your public
-							portfolio. Use short labels like "1+" or "100%" to keep them
-							flexible.
-						</p>
-					</div>
+				<div className="flex items-center justify-end">
 					<Button
 						type="button"
 						variant="oldButtonSecondary"
@@ -189,11 +166,7 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 												>
 													Number
 												</FieldLabel>
-												<Input
-													{...field}
-													id={field.name}
-													placeholder="1+"
-												/>
+												<Input {...field} id={field.name} placeholder="1+" />
 												{fieldState.invalid && (
 													<FieldError errors={[fieldState.error]} />
 												)}
@@ -235,11 +208,7 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 												>
 													Sort order
 												</FieldLabel>
-												<Input
-													{...field}
-													id={field.name}
-													inputMode="numeric"
-												/>
+												<Input {...field} id={field.name} inputMode="numeric" />
 												<FieldDescription className="text-xs text-gray-400">
 													Lower numbers appear first.
 												</FieldDescription>
@@ -276,14 +245,18 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 
 			<div className="flex justify-end gap-3 pt-4">
 				<Button
-					variant="ghost"
+					variant="oldButtonSecondary"
 					type="button"
 					disabled={isSubmitting || !isDirty}
 					onClick={() => form.reset(buildDefaults(items))}
 				>
 					Reset
 				</Button>
-				<Button type="submit" disabled={isSubmitting || !isDirty}>
+				<Button
+					variant="oldButtonPrimary"
+					type="submit"
+					disabled={isSubmitting || !isDirty}
+				>
 					{isSubmitting ? "Saving..." : "Save achievements"}
 				</Button>
 			</div>

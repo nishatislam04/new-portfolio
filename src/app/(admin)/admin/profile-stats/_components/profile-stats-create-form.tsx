@@ -1,10 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type { z } from "zod";
-
 import { createProfileStats } from "@/actions/profile-stats-actions";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,18 +15,31 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
-	ProfileStatsFormSchema,
 	type ProfileStatsFormInput,
+	ProfileStatsFormSchema,
 } from "@/schema/profile-stats-schema";
 
-export default function ProfileStatsCreateForm() {
+interface ProfileStatsEditFormProps {
+	stats: {
+		id: string;
+		experienceLabel: string | null;
+		projectsCompletedLabel: string | null;
+		technologiesLabel: string | null;
+		clientSatisfactionLabel: string | null;
+	};
+}
+
+export default function ProfileStatsCreateForm({
+	stats,
+}: ProfileStatsEditFormProps) {
+	const router = useRouter();
 	const form = useForm<ProfileStatsFormInput>({
 		mode: "onBlur",
 		defaultValues: {
-			experienceLabel: "",
-			projectsCompletedLabel: "",
-			technologiesLabel: "",
-			clientSatisfactionLabel: "",
+			experienceLabel: stats.experienceLabel ?? "",
+			projectsCompletedLabel: stats.projectsCompletedLabel ?? "",
+			technologiesLabel: stats.technologiesLabel ?? "",
+			clientSatisfactionLabel: stats.clientSatisfactionLabel ?? "",
 		},
 		resolver: zodResolver(ProfileStatsFormSchema),
 	});
@@ -54,6 +67,7 @@ export default function ProfileStatsCreateForm() {
 
 		form.reset();
 		toast.success(result.data.message);
+		router.refresh();
 	}
 
 	const isSubmitting = form.formState.isSubmitting;
@@ -187,16 +201,21 @@ export default function ProfileStatsCreateForm() {
 				</p>
 			)}
 
-			<div className="flex justify-end gap-3 pt-4">
+			<div className="flex justify-end items-center gap-3 pt-4">
 				<Button
-					variant="ghost"
+					variant="oldButtonSecondary"
 					type="button"
 					disabled={isSubmitting || !isDirty}
 					onClick={() => form.reset()}
 				>
 					Reset
 				</Button>
-				<Button type="submit" disabled={isSubmitting || !isDirty}>
+				<Button
+					variant="oldButtonPrimary"
+					className="px-8"
+					type="submit"
+					disabled={isSubmitting || !isDirty}
+				>
 					Save stats
 				</Button>
 			</div>

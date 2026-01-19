@@ -1,10 +1,13 @@
 "use server";
 
-import { cacheLife, cacheTag, updateTag, revalidateTag } from "next/cache";
+import { cacheLife, cacheTag, revalidateTag, updateTag } from "next/cache";
 
 import prisma from "@/lib/prisma";
+import {
+	type ProfileStatsFormInput,
+	ProfileStatsFormSchema,
+} from "@/schema/profile-stats-schema";
 import type { ActionValidationResult } from "@/utils/validation";
-import { ProfileStatsFormSchema, type ProfileStatsFormInput } from "@/schema/profile-stats-schema";
 
 async function getRootProfileId(): Promise<string> {
 	const profile = await prisma.profile.findFirst({ select: { id: true } });
@@ -29,7 +32,7 @@ export type ProfileStatsMutationResult = {
 };
 
 export const getProfileStats = async (): Promise<
-	ActionValidationResult<ProfileStatsDTO | null>
+	ActionValidationResult<ProfileStatsDTO>
 > => {
 	"use cache";
 	cacheTag("profile-stats");
@@ -44,7 +47,7 @@ export const getProfileStats = async (): Promise<
 		if (!stats)
 			return {
 				success: true,
-				data: null,
+				data: [],
 			};
 
 		return {
@@ -60,12 +63,11 @@ export const getProfileStats = async (): Promise<
 		};
 	} catch (error) {
 		const message =
-			error instanceof Error
-				? error.message
-				: "Failed to fetch profile stats";
+			error instanceof Error ? error.message : "Failed to fetch profile stats";
 		return {
 			success: false,
 			type: "server-error",
+			data: [],
 			message,
 			error: { type: "unknown", code: "PROFILE_STATS_FETCH_FAILED" },
 		};
@@ -100,8 +102,17 @@ export const createProfileStats = async (
 
 		const profileId = await getRootProfileId();
 
-		await prisma.profileStats.create({
-			data: {
+		await prisma.profileStats.upsert({
+			where: {
+				profileId,
+			},
+			update: {
+				experienceLabel: payloadResult.data.experienceLabel,
+				projectsCompletedLabel: payloadResult.data.projectsCompletedLabel,
+				technologiesLabel: payloadResult.data.technologiesLabel,
+				clientSatisfactionLabel: payloadResult.data.clientSatisfactionLabel,
+			},
+			create: {
 				profileId,
 				experienceLabel: payloadResult.data.experienceLabel,
 				projectsCompletedLabel: payloadResult.data.projectsCompletedLabel,
@@ -116,60 +127,17 @@ export const createProfileStats = async (
 			success: true,
 			data: {
 				success: true,
-				message: "Profile stats created successfully",
+				message: "Profile stats modify successfully",
 			},
 		};
 	} catch (error) {
 		const message =
-			error instanceof Error
-				? error.message
-				: "Failed to create profile stats";
+			error instanceof Error ? error.message : "Failed to create profile stats";
 		return {
 			success: false,
 			type: "server-error",
 			message,
 			error: { type: "unknown", code: "PROFILE_STATS_CREATE_FAILED" },
-		};
-	}
-};
-
-export const updateProfileStats = async (
-	id: string,
-	formData: ProfileStatsFormInput,
-): Promise<ActionValidationResult<ProfileStatsMutationResult>> => {
-	try {
-		const payloadResult = buildServerPayload(formData);
-		if (!payloadResult.success) return payloadResult;
-
-		await prisma.profileStats.update({
-			where: { id },
-			data: {
-				experienceLabel: payloadResult.data.experienceLabel,
-				projectsCompletedLabel: payloadResult.data.projectsCompletedLabel,
-				technologiesLabel: payloadResult.data.technologiesLabel,
-				clientSatisfactionLabel: payloadResult.data.clientSatisfactionLabel,
-			},
-		});
-
-		updateTag("profile-stats");
-
-		return {
-			success: true,
-			data: {
-				success: true,
-				message: "Profile stats updated successfully",
-			},
-		};
-	} catch (error) {
-		const message =
-			error instanceof Error
-				? error.message
-				: "Failed to update profile stats";
-		return {
-			success: false,
-			type: "server-error",
-			message,
-			error: { type: "unknown", code: "PROFILE_STATS_UPDATE_FAILED" },
 		};
 	}
 };
