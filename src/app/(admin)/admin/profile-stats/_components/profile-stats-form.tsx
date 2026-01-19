@@ -19,7 +19,7 @@ import {
 	ProfileStatsFormSchema,
 } from "@/schema/profile-stats-schema";
 
-interface ProfileStatsEditFormProps {
+interface ProfileStatsFormProps {
 	stats: {
 		id: string;
 		experienceLabel: string | null;
@@ -29,9 +29,7 @@ interface ProfileStatsEditFormProps {
 	};
 }
 
-export default function ProfileStatsCreateForm({
-	stats,
-}: ProfileStatsEditFormProps) {
+export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 	const router = useRouter();
 	const form = useForm<ProfileStatsFormInput>({
 		mode: "onBlur",
