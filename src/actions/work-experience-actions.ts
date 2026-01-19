@@ -130,9 +130,7 @@ export const getWorkExperiences = async (): Promise<
 			description: exp.description,
 			isCurrent: exp.isCurrent,
 			sortOrder: exp.sortOrder,
-			achievements: Array.isArray(exp.achievements)
-				? (exp.achievements as string[])
-				: [],
+			achievements: exp.achievements,
 			technologies: normalizeTechnologies(exp.technologies),
 		}));
 
@@ -143,6 +141,7 @@ export const getWorkExperiences = async (): Promise<
 		return {
 			success: false,
 			type: "server-error",
+			data: [],
 			message,
 			error: { type: "unknown", code: "WORK_EXPERIENCE_FETCH_FAILED" },
 		};
@@ -170,6 +169,7 @@ export const createWorkExperience = async (
 			return {
 				success: false,
 				type: "validation",
+				data: [],
 				message,
 				fieldErrors: {},
 			};
@@ -274,6 +274,7 @@ export const updateWorkExperience = async (
 				success: false,
 				type: "validation",
 				message,
+				data: [],
 				fieldErrors: {},
 			};
 		}
@@ -383,6 +384,7 @@ export const deleteWorkExperience = async (
 		return {
 			success: false,
 			type: "server-error",
+			data: [],
 			message,
 			error: { type: "unknown", code: "WORK_EXPERIENCE_DELETE_FAILED" },
 		};

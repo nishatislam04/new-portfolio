@@ -3,27 +3,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import {
-	deleteWorkExperience,
 	updateWorkExperience,
 	type WorkExperienceDTO,
 } from "@/actions/work-experience-actions";
-import {
-	AlertDialog,
-	AlertDialogAction,
-	AlertDialogCancel,
-	AlertDialogContent,
-	AlertDialogDescription,
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogTitle,
-	AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
 	Field,
 	FieldDescription,
@@ -43,6 +32,7 @@ import {
 	type WorkExperienceFormInput,
 	WorkExperienceFormSchema,
 } from "@/schema/work-experience-schema";
+import WorkExperienceDeleteAlert from "./work-experience-delete-alert";
 
 const EMPLOYMENT_TYPES = [
 	{ value: "full-time", label: "Full-time" },
@@ -95,9 +85,6 @@ export function WorkExperienceEditForm({
 	experience,
 }: WorkExperienceEditFormProps) {
 	const router = useRouter();
-	const [isDeleting, setIsDeleting] = useState(false); // REFACTOR THIS LATER!
-
-	// if (!experience) return null;
 
 	const form = useForm<WorkExperienceFormInput>({
 		mode: "onBlur",
@@ -118,20 +105,6 @@ export function WorkExperienceEditForm({
 	const isSubmitting = form.formState.isSubmitting;
 	const isDirty = form.formState.isDirty;
 
-	// When the selected experience changes (for example, when the user
-	// clicks a different card in the manager), reset the form values so
-	// the fields always reflect the active record.
-	// useEffect(() => {
-	// 	form.reset(buildEditDefaults(experience));
-	// }, [experience, form]);
-
-	// Ensure there is always at least one achievement row.
-	// useEffect(() => {
-	// 	if (achievementsArray.fields.length === 0) {
-	// 		(achievementsArray as any).append("");
-	// 	}
-	// }, [achievementsArray, achievementsArray.fields.length]);
-
 	async function onSubmit(data: WorkExperienceFormInput) {
 		const result = await updateWorkExperience(experience.id, data);
 
@@ -146,20 +119,6 @@ export function WorkExperienceEditForm({
 		toast.success(result.data.message);
 	}
 
-	async function handleDelete() {
-		setIsDeleting(true);
-		const result = await deleteWorkExperience(experience.id);
-		setIsDeleting(false);
-
-		if (!result.success) {
-			toast.error(result.message);
-			return;
-		}
-
-		toast.success(result.data.message);
-		router.push("/admin/work-experience");
-	}
-
 	return (
 		<div className="space-y-6">
 			{/* Header with title and delete action */}
@@ -168,30 +127,7 @@ export function WorkExperienceEditForm({
 					Edit work experience
 				</h2>
 
-				<AlertDialog>
-					<AlertDialogTrigger asChild>
-						<Button variant="oldButtonDestructive" size="lg" type="button">
-							<Trash2 className="mr-2 h-4 w-4" />
-							Delete
-						</Button>
-					</AlertDialogTrigger>
-					<AlertDialogContent>
-						<AlertDialogHeader>
-							<AlertDialogTitle>Delete this work experience?</AlertDialogTitle>
-							<AlertDialogDescription>
-								This action cannot be undone. The entry will be removed from
-								your admin data and no longer be available once the public
-								sections start reading from the database.
-							</AlertDialogDescription>
-						</AlertDialogHeader>
-						<AlertDialogFooter>
-							<AlertDialogCancel>Cancel</AlertDialogCancel>
-							<AlertDialogAction onClick={handleDelete} disabled={isDeleting}>
-								{isDeleting ? "Deleting..." : "Yes, delete"}
-							</AlertDialogAction>
-						</AlertDialogFooter>
-					</AlertDialogContent>
-				</AlertDialog>
+				<WorkExperienceDeleteAlert experienceId={experience.id} />
 			</div>
 
 			{/* Main edit form */}
@@ -424,12 +360,10 @@ export function WorkExperienceEditForm({
 									Current role
 								</FieldLabel>
 								<div className="flex items-center gap-3 mt-2">
-									<input
+									<Checkbox
 										id="isCurrent"
-										type="checkbox"
 										checked={field.value}
-										onChange={(event) => field.onChange(event.target.checked)}
-										className="h-4 w-4 rounded border-gray-700 bg-gray-900 text-emerald-500 focus:ring-emerald-500"
+										onCheckedChange={field.onChange}
 									/>
 									<label htmlFor="isCurrent" className="text-sm text-gray-300">
 										Mark as current position
@@ -477,7 +411,7 @@ export function WorkExperienceEditForm({
 						</h3>
 						<Button
 							type="button"
-							variant="secondary"
+							variant="oldButtonSecondary"
 							size="sm"
 							onClick={() => achievementsArray.append({ value: "" })}
 						>
@@ -544,7 +478,7 @@ export function WorkExperienceEditForm({
 						</h3>
 						<Button
 							type="button"
-							variant="secondary"
+							variant="oldButtonSecondary"
 							size="sm"
 							onClick={() =>
 								technologiesArray.append({

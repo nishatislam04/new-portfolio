@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 import { createWorkExperience } from "@/actions/work-experience-actions";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
 	Field,
 	FieldDescription,
@@ -319,14 +320,13 @@ export function WorkExperienceCreateForm() {
 								Current role
 							</FieldLabel>
 							<div className="flex items-center gap-3 mt-2">
-								<input
+								<Checkbox
 									id="isCurrent"
-									type="checkbox"
 									checked={field.value}
-									onChange={(event) => field.onChange(event.target.checked)}
+									onCheckedChange={field.onChange}
 									className="h-4 w-4 rounded border-gray-700 bg-gray-900 text-emerald-500 focus:ring-emerald-500"
-									autoComplete="off"
 								/>
+
 								<label htmlFor="isCurrent" className="text-sm text-gray-300">
 									Mark as current position
 								</label>

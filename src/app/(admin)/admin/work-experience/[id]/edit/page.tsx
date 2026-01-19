@@ -15,7 +15,7 @@ export default async function EditWorkExperiencePage({
 	const { id } = await params;
 	const result = await getWorkExperiences();
 
-	if (!result.success) notFound();
+	if (!result.success && result.data.length === 0) notFound();
 
 	const experience = result.data.find((exp) => exp.id === id);
 

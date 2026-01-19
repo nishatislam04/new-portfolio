@@ -4,11 +4,7 @@ import WorkExperienceListings from "./_components/work-experience-listings";
 import CreateWorkExperiencePage from "./create/page";
 
 /**
- * ! we need to optimize this page for better performance
- * ! we need to optimize our create page and form for better performance
- * ! we need to optimize our edit page and form for better performance
- *
- * ! THERE ARE TOO MANY RE-RENDERINGS HAPPENING
+ * ! we need to fix the type in validation case on server side
  */
 export default async function WorkExperiencePage() {
 	const result = await getWorkExperiences();

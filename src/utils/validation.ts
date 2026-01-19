@@ -9,9 +9,11 @@ export type ActionValidationResult<T = unknown> =
 			type: "validation";
 			message: string;
 			fieldErrors: Record<string, string[]>;
+			data: T;
 	  }
 	| {
 			success: false;
+			data: T;
 			type: "server-error";
 			message: string;
 			error: {
@@ -36,6 +38,7 @@ export function validateWithZod<T>(
 		}
 		return {
 			success: false,
+			data: [],
 			type: "validation",
 			message: "Validation failed",
 			fieldErrors,
@@ -61,6 +64,7 @@ export async function safeServerAction<T, R>(
 			success: false,
 			type: "server-error",
 			message: clientError.message,
+			data: [],
 			error: {
 				type: clientError.type,
 				code: clientError.code,
