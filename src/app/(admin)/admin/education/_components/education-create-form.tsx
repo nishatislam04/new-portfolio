@@ -3,8 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { createEducation } from "@/actions/education-actions";
@@ -31,7 +30,7 @@ const DEFAULT_VALUES: EducationFormInput = {
 	gpa: "",
 	description: "",
 	sortOrder: "0",
-	highlights: [""],
+	highlights: [{ value: "" }],
 };
 
 export default function EducationCreateForm() {
@@ -43,55 +42,18 @@ export default function EducationCreateForm() {
 		defaultValues: DEFAULT_VALUES,
 	});
 
-	const highlights = form.watch("highlights");
-	const highlightKeysRef = useRef<string[]>([]);
-
-	const generateKey = useCallback(() => {
-		if (
-			typeof crypto !== "undefined" &&
-			typeof crypto.randomUUID === "function"
-		) {
-			return crypto.randomUUID();
-		}
-		return Math.random().toString(36).slice(2);
-	}, []);
-
-	useEffect(() => {
-		if (!highlights || highlights.length === 0) {
-			form.setValue("highlights", [""], { shouldDirty: true });
-			highlightKeysRef.current = [generateKey()];
-			return;
-		}
-
-		const desiredLength = highlights.length;
-		let keys = highlightKeysRef.current;
-		if (keys.length < desiredLength) {
-			keys = [
-				...keys,
-				...Array.from({ length: desiredLength - keys.length }, () =>
-					generateKey(),
-				),
-			];
-		} else if (keys.length > desiredLength) {
-			keys = keys.slice(0, desiredLength);
-		}
-		highlightKeysRef.current = keys;
-	}, [generateKey, highlights, form]);
+	const highlightArray = useFieldArray({
+		name: "highlights",
+		control: form.control,
+	});
 
 	function addHighlight() {
-		const next = [...(highlights ?? []), ""];
-		form.setValue("highlights", next, { shouldDirty: true });
-		highlightKeysRef.current = [...highlightKeysRef.current, generateKey()];
+		highlightArray.append({ value: "" });
 	}
 
 	function removeHighlight(index: number) {
-		if (!highlights) return;
-		const next = highlights.filter((_, idx) => idx !== index);
-		form.setValue("highlights", next.length > 0 ? next : [""], {
-			shouldDirty: true,
-		});
-		const nextKeys = highlightKeysRef.current.filter((_, idx) => idx !== index);
-		highlightKeysRef.current = nextKeys.length > 0 ? nextKeys : [generateKey()];
+		if (highlightArray.fields.length <= 1) return;
+		highlightArray.remove(index);
 	}
 
 	const isSubmitting = form.formState.isSubmitting;
@@ -314,15 +276,15 @@ export default function EducationCreateForm() {
 				</div>
 
 				<div className="space-y-4">
-					{(highlights ?? []).map((_, index) => (
+					{highlightArray.fields.map((fieldItem, index) => (
 						<div
-							key={highlightKeysRef.current[index] ?? `highlight-${index}`}
+							key={fieldItem.id}
 							className="rounded-2xl border border-white/5 p-4"
 						>
 							<div className="flex items-start gap-3">
 								<div className="flex-1">
 									<Controller
-										name={`highlights.${index}` as const}
+										name={`highlights.${index}.value` as const}
 										control={form.control}
 										render={({ field, fieldState }) => (
 											<Field data-invalid={fieldState.invalid}>
@@ -345,7 +307,7 @@ export default function EducationCreateForm() {
 										)}
 									/>
 								</div>
-								{(highlights?.length ?? 0) > 1 && (
+								{highlightArray.fields.length > 1 && (
 									<Button
 										type="button"
 										variant="ghost"

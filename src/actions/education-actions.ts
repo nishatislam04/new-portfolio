@@ -19,7 +19,7 @@ export type EducationDTO = {
 	endDate: string | null;
 	gpa: string | null;
 	description: string | null;
-	highlights: string[];
+	highlights: { value: string }[];
 	sortOrder: number;
 };
 
@@ -36,11 +36,24 @@ async function getRootProfileId(): Promise<string> {
 	return profile.id;
 }
 
-function normalizeHighlights(json: unknown): string[] {
+function normalizeHighlights(json: unknown): { value: string }[] {
 	if (!json) return [];
-	return Array.isArray(json)
-		? json.filter((item): item is string => typeof item === "string")
-		: [];
+	if (!Array.isArray(json)) return [];
+	return json
+		.map((item) => {
+			if (typeof item === "string") {
+				return { value: item };
+			}
+			if (item && typeof item === "object" && "value" in item) {
+				const value = (item as { value: unknown }).value;
+				return typeof value === "string" ? { value } : null;
+			}
+			return null;
+		})
+		.filter(
+			(item): item is { value: string } =>
+				!!item && item.value.trim().length > 0,
+		);
 }
 
 export const getEducation = async (): Promise<

@@ -17,7 +17,11 @@ export const EducationFormSchema = z.object({
 		.regex(/^\d+$/, "Sort order must be a positive integer")
 		.trim(),
 	highlights: z
-		.array(z.string().min(1, "Highlight cannot be empty").trim())
+		.array(
+			z.object({
+				value: z.string().min(1, "Highlight cannot be empty").trim(),
+			}),
+		)
 		.min(1, "Add at least one highlight"),
 });
 
@@ -32,7 +36,11 @@ export const EducationServerSchema = z.object({
 	gpa: z.string().min(1).trim(),
 	description: z.string().trim().optional(),
 	sortOrder: z.number().int().min(0),
-	highlights: z.array(z.string().min(1).trim()),
+	highlights: z.array(
+		z.object({
+			value: z.string().min(1).trim(),
+		}),
+	),
 });
 
 export type EducationServerInput = z.infer<typeof EducationServerSchema>;

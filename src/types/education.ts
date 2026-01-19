@@ -7,7 +7,7 @@ export type EducationEntry = {
 	endDate: string | null;
 	gpa: string | null;
 	description: string | null;
-	highlights: string[];
+	highlights: { value: string }[];
 	sortOrder: number;
 };
 
