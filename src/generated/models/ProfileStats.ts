@@ -14,8 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model ProfileStats
- * Aggregated stats used in CTA, e.g. experience years, projects, etc.
- * Mirrors PERSONAL_INFO.stats.
+ * 
  */
 export type ProfileStatsModel = runtime.Types.Result.DefaultSelection<Prisma.$ProfileStatsPayload>
 

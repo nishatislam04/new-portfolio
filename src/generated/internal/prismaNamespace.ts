@@ -1343,7 +1343,6 @@ export type ProfileStatsScalarFieldEnum = (typeof ProfileStatsScalarFieldEnum)[k
 export const AchievementScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
-  info: 'info',
   number: 'number',
   text: 'text',
   sortOrder: 'sortOrder',

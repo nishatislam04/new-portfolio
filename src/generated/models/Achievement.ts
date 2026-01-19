@@ -14,8 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model Achievement
- * High-level achievements cards in the About section.
- * Mirrors PERSONAL_INFO.achievements.
+ * 
  */
 export type AchievementModel = runtime.Types.Result.DefaultSelection<Prisma.$AchievementPayload>
 
@@ -38,7 +37,6 @@ export type AchievementSumAggregateOutputType = {
 export type AchievementMinAggregateOutputType = {
   id: string | null
   profileId: string | null
-  info: string | null
   number: string | null
   text: string | null
   sortOrder: number | null
@@ -49,7 +47,6 @@ export type AchievementMinAggregateOutputType = {
 export type AchievementMaxAggregateOutputType = {
   id: string | null
   profileId: string | null
-  info: string | null
   number: string | null
   text: string | null
   sortOrder: number | null
@@ -60,7 +57,6 @@ export type AchievementMaxAggregateOutputType = {
 export type AchievementCountAggregateOutputType = {
   id: number
   profileId: number
-  info: number
   number: number
   text: number
   sortOrder: number
@@ -81,7 +77,6 @@ export type AchievementSumAggregateInputType = {
 export type AchievementMinAggregateInputType = {
   id?: true
   profileId?: true
-  info?: true
   number?: true
   text?: true
   sortOrder?: true
@@ -92,7 +87,6 @@ export type AchievementMinAggregateInputType = {
 export type AchievementMaxAggregateInputType = {
   id?: true
   profileId?: true
-  info?: true
   number?: true
   text?: true
   sortOrder?: true
@@ -103,7 +97,6 @@ export type AchievementMaxAggregateInputType = {
 export type AchievementCountAggregateInputType = {
   id?: true
   profileId?: true
-  info?: true
   number?: true
   text?: true
   sortOrder?: true
@@ -201,7 +194,6 @@ export type AchievementGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type AchievementGroupByOutputType = {
   id: string
   profileId: string
-  info: string | null
   number: string | null
   text: string | null
   sortOrder: number
@@ -235,7 +227,6 @@ export type AchievementWhereInput = {
   NOT?: Prisma.AchievementWhereInput | Prisma.AchievementWhereInput[]
   id?: Prisma.StringFilter<"Achievement"> | string
   profileId?: Prisma.StringFilter<"Achievement"> | string
-  info?: Prisma.StringNullableFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableFilter<"Achievement"> | string | null
   sortOrder?: Prisma.IntFilter<"Achievement"> | number
@@ -247,7 +238,6 @@ export type AchievementWhereInput = {
 export type AchievementOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
-  info?: Prisma.SortOrderInput | Prisma.SortOrder
   number?: Prisma.SortOrderInput | Prisma.SortOrder
   text?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
@@ -262,7 +252,6 @@ export type AchievementWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.AchievementWhereInput[]
   NOT?: Prisma.AchievementWhereInput | Prisma.AchievementWhereInput[]
   profileId?: Prisma.StringFilter<"Achievement"> | string
-  info?: Prisma.StringNullableFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableFilter<"Achievement"> | string | null
   sortOrder?: Prisma.IntFilter<"Achievement"> | number
@@ -274,7 +263,6 @@ export type AchievementWhereUniqueInput = Prisma.AtLeast<{
 export type AchievementOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
-  info?: Prisma.SortOrderInput | Prisma.SortOrder
   number?: Prisma.SortOrderInput | Prisma.SortOrder
   text?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
@@ -293,7 +281,6 @@ export type AchievementScalarWhereWithAggregatesInput = {
   NOT?: Prisma.AchievementScalarWhereWithAggregatesInput | Prisma.AchievementScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
   profileId?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
-  info?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
   sortOrder?: Prisma.IntWithAggregatesFilter<"Achievement"> | number
@@ -303,7 +290,6 @@ export type AchievementScalarWhereWithAggregatesInput = {
 
 export type AchievementCreateInput = {
   id?: string
-  info?: string | null
   number?: string | null
   text?: string | null
   sortOrder?: number
@@ -315,7 +301,6 @@ export type AchievementCreateInput = {
 export type AchievementUncheckedCreateInput = {
   id?: string
   profileId: string
-  info?: string | null
   number?: string | null
   text?: string | null
   sortOrder?: number
@@ -325,7 +310,6 @@ export type AchievementUncheckedCreateInput = {
 
 export type AchievementUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -337,7 +321,6 @@ export type AchievementUpdateInput = {
 export type AchievementUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
-  info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -348,7 +331,6 @@ export type AchievementUncheckedUpdateInput = {
 export type AchievementCreateManyInput = {
   id?: string
   profileId: string
-  info?: string | null
   number?: string | null
   text?: string | null
   sortOrder?: number
@@ -358,7 +340,6 @@ export type AchievementCreateManyInput = {
 
 export type AchievementUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -369,7 +350,6 @@ export type AchievementUpdateManyMutationInput = {
 export type AchievementUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
-  info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -390,7 +370,6 @@ export type AchievementOrderByRelationAggregateInput = {
 export type AchievementCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
-  info?: Prisma.SortOrder
   number?: Prisma.SortOrder
   text?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
@@ -405,7 +384,6 @@ export type AchievementAvgOrderByAggregateInput = {
 export type AchievementMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
-  info?: Prisma.SortOrder
   number?: Prisma.SortOrder
   text?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
@@ -416,7 +394,6 @@ export type AchievementMaxOrderByAggregateInput = {
 export type AchievementMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
-  info?: Prisma.SortOrder
   number?: Prisma.SortOrder
   text?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
@@ -472,7 +449,6 @@ export type AchievementUncheckedUpdateManyWithoutProfileNestedInput = {
 
 export type AchievementCreateWithoutProfileInput = {
   id?: string
-  info?: string | null
   number?: string | null
   text?: string | null
   sortOrder?: number
@@ -482,7 +458,6 @@ export type AchievementCreateWithoutProfileInput = {
 
 export type AchievementUncheckedCreateWithoutProfileInput = {
   id?: string
-  info?: string | null
   number?: string | null
   text?: string | null
   sortOrder?: number
@@ -522,7 +497,6 @@ export type AchievementScalarWhereInput = {
   NOT?: Prisma.AchievementScalarWhereInput | Prisma.AchievementScalarWhereInput[]
   id?: Prisma.StringFilter<"Achievement"> | string
   profileId?: Prisma.StringFilter<"Achievement"> | string
-  info?: Prisma.StringNullableFilter<"Achievement"> | string | null
   number?: Prisma.StringNullableFilter<"Achievement"> | string | null
   text?: Prisma.StringNullableFilter<"Achievement"> | string | null
   sortOrder?: Prisma.IntFilter<"Achievement"> | number
@@ -532,7 +506,6 @@ export type AchievementScalarWhereInput = {
 
 export type AchievementCreateManyProfileInput = {
   id?: string
-  info?: string | null
   number?: string | null
   text?: string | null
   sortOrder?: number
@@ -542,7 +515,6 @@ export type AchievementCreateManyProfileInput = {
 
 export type AchievementUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -552,7 +524,6 @@ export type AchievementUpdateWithoutProfileInput = {
 
 export type AchievementUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -562,7 +533,6 @@ export type AchievementUncheckedUpdateWithoutProfileInput = {
 
 export type AchievementUncheckedUpdateManyWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  info?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
@@ -575,7 +545,6 @@ export type AchievementUncheckedUpdateManyWithoutProfileInput = {
 export type AchievementSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
-  info?: boolean
   number?: boolean
   text?: boolean
   sortOrder?: boolean
@@ -587,7 +556,6 @@ export type AchievementSelect<ExtArgs extends runtime.Types.Extensions.InternalA
 export type AchievementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
-  info?: boolean
   number?: boolean
   text?: boolean
   sortOrder?: boolean
@@ -599,7 +567,6 @@ export type AchievementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
 export type AchievementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
-  info?: boolean
   number?: boolean
   text?: boolean
   sortOrder?: boolean
@@ -611,7 +578,6 @@ export type AchievementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type AchievementSelectScalar = {
   id?: boolean
   profileId?: boolean
-  info?: boolean
   number?: boolean
   text?: boolean
   sortOrder?: boolean
@@ -619,7 +585,7 @@ export type AchievementSelectScalar = {
   updatedAt?: boolean
 }
 
-export type AchievementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "info" | "number" | "text" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["achievement"]>
+export type AchievementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "number" | "text" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["achievement"]>
 export type AchievementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -638,7 +604,6 @@ export type $AchievementPayload<ExtArgs extends runtime.Types.Extensions.Interna
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     profileId: string
-    info: string | null
     number: string | null
     text: string | null
     sortOrder: number
@@ -1070,7 +1035,6 @@ export interface Prisma__AchievementClient<T, Null = never, ExtArgs extends runt
 export interface AchievementFieldRefs {
   readonly id: Prisma.FieldRef<"Achievement", 'String'>
   readonly profileId: Prisma.FieldRef<"Achievement", 'String'>
-  readonly info: Prisma.FieldRef<"Achievement", 'String'>
   readonly number: Prisma.FieldRef<"Achievement", 'String'>
   readonly text: Prisma.FieldRef<"Achievement", 'String'>
   readonly sortOrder: Prisma.FieldRef<"Achievement", 'Int'>

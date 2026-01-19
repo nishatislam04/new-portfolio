@@ -230,8 +230,6 @@ model PortfolioProject {
   @@index([profileId])
 }
 
-/// Aggregated stats used in CTA, e.g. experience years, projects, etc.
-/// Mirrors PERSONAL_INFO.stats.
 model ProfileStats {
   id        String @id @default(cuid())
   profileId String @unique
@@ -245,13 +243,10 @@ model ProfileStats {
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
-/// High-level achievements cards in the About section.
-/// Mirrors PERSONAL_INFO.achievements.
 model Achievement {
   id        String @id @default(cuid())
   profileId String
 
-  info   String?
   number String?
   text   String?
 
@@ -264,8 +259,6 @@ model Achievement {
   @@index([profileId])
 }
 
-/// Scrolling tape words used in the hero/tape section.
-/// Mirrors TAPE_WORDS in src/constants/index.ts.
 model TapeWord {
   id        String  @id @default(cuid())
   profileId String?

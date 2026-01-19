@@ -2,7 +2,6 @@ import z from "zod";
 
 export const AchievementItemFormSchema = z.object({
 	id: z.string().optional(),
-	info: z.string().min(1, "Info is required").trim(),
 	number: z.string().min(1, "Number is required").trim(),
 	text: z.string().min(1, "Text is required").trim(),
 	sortOrder: z
@@ -22,7 +21,6 @@ export type AchievementsFormInput = z.infer<typeof AchievementsFormSchema>;
 
 export const AchievementServerItemSchema = z.object({
 	id: z.string().optional(),
-	info: z.string().min(1).trim(),
 	number: z.string().min(1).trim(),
 	text: z.string().min(1).trim(),
 	sortOrder: z.number().int().min(0),

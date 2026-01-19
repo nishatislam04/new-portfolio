@@ -31,7 +31,6 @@ function buildDefaults(items: AchievementEntry[]): AchievementsFormInput {
 			items: [
 				{
 					id: undefined,
-					info: "",
 					number: "",
 					text: "",
 					sortOrder: "0",
@@ -43,7 +42,6 @@ function buildDefaults(items: AchievementEntry[]): AchievementsFormInput {
 	return {
 		items: items.map((item) => ({
 			id: item.id,
-			info: item.info,
 			number: item.number,
 			text: item.text,
 			sortOrder: String(item.sortOrder ?? 0),
@@ -75,7 +73,6 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 
 		fieldArray.append({
 			id: undefined,
-			info: "",
 			number: "",
 			text: "",
 			sortOrder: String(maxSort + 1),
@@ -131,30 +128,7 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 							className="rounded-2xl border border-white/5 bg-gray-900/60 p-4 space-y-4"
 						>
 							<div className="flex items-start justify-between gap-4">
-								<div className="flex-1 grid gap-4 md:grid-cols-4">
-									<Controller
-										name={`items.${index}.info`}
-										control={form.control}
-										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel
-													className="text-sm text-gray-300"
-													htmlFor={field.name}
-												>
-													Info
-												</FieldLabel>
-												<Input
-													{...field}
-													id={field.name}
-													placeholder="How many years"
-												/>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
-										)}
-									/>
-
+								<div className="flex-1 grid gap-4 md:grid-cols-3">
 									<Controller
 										name={`items.${index}.number`}
 										control={form.control}
@@ -183,7 +157,7 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 													className="text-sm text-gray-300"
 													htmlFor={field.name}
 												>
-													Text
+													Achievment Information
 												</FieldLabel>
 												<Input
 													{...field}

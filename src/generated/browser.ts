@@ -59,19 +59,16 @@ export type ToolboxCategory = Prisma.ToolboxCategoryModel
 export type PortfolioProject = Prisma.PortfolioProjectModel
 /**
  * Model ProfileStats
- * Aggregated stats used in CTA, e.g. experience years, projects, etc.
- * Mirrors PERSONAL_INFO.stats.
+ * 
  */
 export type ProfileStats = Prisma.ProfileStatsModel
 /**
  * Model Achievement
- * High-level achievements cards in the About section.
- * Mirrors PERSONAL_INFO.achievements.
+ * 
  */
 export type Achievement = Prisma.AchievementModel
 /**
  * Model TapeWord
- * Scrolling tape words used in the hero/tape section.
- * Mirrors TAPE_WORDS in src/constants/index.ts.
+ * 
  */
 export type TapeWord = Prisma.TapeWordModel

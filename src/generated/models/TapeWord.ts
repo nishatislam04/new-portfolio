@@ -14,8 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model TapeWord
- * Scrolling tape words used in the hero/tape section.
- * Mirrors TAPE_WORDS in src/constants/index.ts.
+ * 
  */
 export type TapeWordModel = runtime.Types.Result.DefaultSelection<Prisma.$TapeWordPayload>
 

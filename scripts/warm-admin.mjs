@@ -2,6 +2,7 @@ const baseUrl = process.env.WARM_BASE_URL ?? "http://192.168.0.105:3000";
 
 // Add or adjust routes here as you create new admin pages
 const routes = [
+	"/",
 	"/admin/tape",
 	"/admin/user-info",
 	"/admin/social-links",

@@ -1,6 +1,6 @@
 # Nishat Mazumder - Portfolio Website
 
-A stunning, responsive portfolio website showcasing my work as a Full Stack Web Developer. Built with Next.js 16 canary, TypeScript, Tailwind CSS V4.
+My newest portfolio re-working. Built with Next.js 16 canary, TypeScript, Tailwind CSS V4.
 
 ## Tech Stack
 

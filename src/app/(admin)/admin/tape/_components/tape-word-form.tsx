@@ -62,16 +62,6 @@ export default function TapeWordForm({ items }: TapeWordFormProps) {
 		control: form.control,
 	});
 
-	useEffect(() => {
-		if (fieldArray.fields.length === 0) {
-			fieldArray.append({
-				id: undefined,
-				value: "",
-				sortOrder: "0",
-			});
-		}
-	}, [fieldArray, fieldArray.append, fieldArray.fields.length]);
-
 	function handleAddTapeWord() {
 		const currentItems = form.getValues("items") ?? [];
 		const maxSort = currentItems.reduce((max, item) => {
@@ -215,14 +205,18 @@ export default function TapeWordForm({ items }: TapeWordFormProps) {
 
 			<div className="flex justify-end gap-3 pt-4">
 				<Button
-					variant="ghost"
+					variant="oldButtonSecondary"
 					type="button"
 					disabled={isSubmitting || !isDirty}
 					onClick={() => form.reset(buildDefaults(items))}
 				>
 					Reset
 				</Button>
-				<Button type="submit" disabled={isSubmitting || !isDirty}>
+				<Button
+					variant="oldButtonPrimary"
+					type="submit"
+					disabled={isSubmitting || !isDirty}
+				>
 					{isSubmitting ? "Saving..." : "Save tape words"}
 				</Button>
 			</div>
