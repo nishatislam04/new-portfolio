@@ -6,14 +6,11 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type { z } from "zod";
 import { createProfileStats } from "@/actions/profile-stats-actions";
+import FormInput from "@/components/form/form-input";
+import FormResetButton from "@/components/form/form-reset-button";
+import FormSubmitButton from "@/components/form/form-submit-button";
 import { Button } from "@/components/ui/button";
-import {
-	Field,
-	FieldDescription,
-	FieldError,
-	FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { FieldError } from "@/components/ui/field";
 import {
 	type ProfileStatsFormInput,
 	ProfileStatsFormSchema,
@@ -77,29 +74,15 @@ export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 				name="experienceLabel"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-6" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Experience label
-						</FieldLabel>
-						<FieldDescription className="text-sm text-gray-400">
-							Displayed years of experience (e.g. "1+", "3+ years").
-						</FieldDescription>
-						<Input
-							{...field}
-							id={field.name}
-							placeholder="1+"
-							aria-invalid={fieldState.invalid}
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Experience label"
+						description="Displayed years of experience (e.g. &quot;1+&quot;, &quot;3+ years&quot;)."
+						className="mb-6"
+						inputProps={{ placeholder: "1+" }}
+						errorClassName="text-red-500 -mt-1"
+					/>
 				)}
 			/>
 
@@ -107,29 +90,14 @@ export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 				name="projectsCompletedLabel"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-6" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Projects completed label
-						</FieldLabel>
-						<FieldDescription className="text-sm text-gray-400">
-							Total shipped projects (e.g. "10+", "25 completed").
-						</FieldDescription>
-						<Input
-							{...field}
-							id={field.name}
-							placeholder="10+"
-							aria-invalid={fieldState.invalid}
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Projects completed label"
+						description="Total shipped projects (e.g. &quot;10+&quot;, &quot;25 completed&quot;)."
+						className="mb-6"
+						inputProps={{ placeholder: "10+" }}
+					/>
 				)}
 			/>
 
@@ -137,29 +105,14 @@ export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 				name="technologiesLabel"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-6" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Technologies label
-						</FieldLabel>
-						<FieldDescription className="text-sm text-gray-400">
-							Total technologies used (e.g. "50+", "30 tools").
-						</FieldDescription>
-						<Input
-							{...field}
-							id={field.name}
-							placeholder="50+"
-							aria-invalid={fieldState.invalid}
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Technologies label"
+						description="Total technologies used (e.g. &quot;50+&quot;, &quot;30 tools&quot;)."
+						className="mb-6"
+						inputProps={{ placeholder: "50+" }}
+					/>
 				)}
 			/>
 
@@ -167,29 +120,14 @@ export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 				name="clientSatisfactionLabel"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-6" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Client satisfaction label
-						</FieldLabel>
-						<FieldDescription className="text-sm text-gray-400">
-							Perceived satisfaction metric (e.g. "100%", "5.0 rating").
-						</FieldDescription>
-						<Input
-							{...field}
-							id={field.name}
-							placeholder="100%"
-							aria-invalid={fieldState.invalid}
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Client satisfaction label"
+						description="Perceived satisfaction metric (e.g. &quot;100%&quot;, &quot;5.0 rating&quot;)."
+						className="mb-6"
+						inputProps={{ placeholder: "100%" }}
+					/>
 				)}
 			/>
 
@@ -200,21 +138,12 @@ export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 			)}
 
 			<div className="flex justify-end items-center gap-3 pt-4">
-				<Button
-					variant="secondary"
-					type="button"
-					disabled={isSubmitting || !isDirty}
-					onClick={() => form.reset()}
-				>
-					Reset
-				</Button>
-				<Button
-					className="px-8"
-					type="submit"
-					disabled={isSubmitting || !isDirty}
-				>
-					Save stats
-				</Button>
+				<FormResetButton
+					isSubmitting={isSubmitting}
+					isDirty={isDirty}
+					handler={() => form.reset()}
+				/>
+				<FormSubmitButton isSubmitting={isSubmitting} isDirty={isDirty} />
 			</div>
 		</form>
 	);

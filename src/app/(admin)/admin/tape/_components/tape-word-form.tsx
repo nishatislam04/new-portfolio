@@ -7,6 +7,9 @@ import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { upsertTapeWords } from "@/actions/tape-word-actions";
+import FormInput from "@/components/form/form-input";
+import FormResetButton from "@/components/form/form-reset-button";
+import FormSubmitButton from "@/components/form/form-submit-button";
 import { Button } from "@/components/ui/button";
 import {
 	Field,
@@ -137,22 +140,12 @@ export default function TapeWordForm({ items }: TapeWordFormProps) {
 										name={`items.${index}.value`}
 										control={form.control}
 										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel
-													className="text-sm text-gray-300"
-													htmlFor={field.name}
-												>
-													Value
-												</FieldLabel>
-												<Input
-													{...field}
-													id={field.name}
-													placeholder="PERFORMANT"
-												/>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
+											<FormInput
+												field={field}
+												fieldState={fieldState}
+												label="Value"
+												inputProps={{ placeholder: "Enter a tape word" }}
+											/>
 										)}
 									/>
 
@@ -160,21 +153,12 @@ export default function TapeWordForm({ items }: TapeWordFormProps) {
 										name={`items.${index}.sortOrder`}
 										control={form.control}
 										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel
-													className="text-sm text-gray-300"
-													htmlFor={field.name}
-												>
-													Sort order
-												</FieldLabel>
-												<Input {...field} id={field.name} inputMode="numeric" />
-												<FieldDescription className="text-xs text-gray-400">
-													Lower numbers appear first.
-												</FieldDescription>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
+											<FormInput
+												field={field}
+												fieldState={fieldState}
+												label="sort order"
+												inputProps={{ placeholder: "Enter a sort number" }}
+											/>
 										)}
 									/>
 								</div>
@@ -203,17 +187,12 @@ export default function TapeWordForm({ items }: TapeWordFormProps) {
 			)}
 
 			<div className="flex justify-end gap-3 pt-4">
-				<Button
-					variant="secondary"
-					type="button"
-					disabled={isSubmitting || !isDirty}
-					onClick={() => form.reset(buildDefaults(items))}
-				>
-					Reset
-				</Button>
-				<Button type="submit" disabled={isSubmitting || !isDirty}>
-					{isSubmitting ? "Saving..." : "Save tape words"}
-				</Button>
+				<FormResetButton
+					isSubmitting={isSubmitting}
+					isDirty={isDirty}
+					handler={() => form.reset(buildDefaults(items))}
+				/>
+				<FormSubmitButton isDirty={isDirty} isSubmitting={isSubmitting} />
 			</div>
 		</form>
 	);

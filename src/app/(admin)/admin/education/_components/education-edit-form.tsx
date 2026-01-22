@@ -7,6 +7,10 @@ import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { updateEducation } from "@/actions/education-actions";
+import FormInput from "@/components/form/form-input";
+import FormServerError from "@/components/form/form-server-error";
+import FormSubmitButton from "@/components/form/form-submit-button";
+import FormTextArea from "@/components/form/form-textarea";
 import { Button } from "@/components/ui/button";
 import {
 	Field,
@@ -86,21 +90,15 @@ export default function EducationEditForm({
 					name="institution"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-200"
-								htmlFor={field.name}
-							>
-								Institution name
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								autoComplete="off"
-								placeholder="Feni Computer Institute"
-							/>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Institution name"
+							inputProps={{
+								placeholder: "Feni Computer Institute",
+								autoComplete: "off",
+							}}
+						/>
 					)}
 				/>
 
@@ -108,21 +106,15 @@ export default function EducationEditForm({
 					name="degree"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-200"
-								htmlFor={field.name}
-							>
-								Degree title
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								autoComplete="off"
-								placeholder="Diploma in Computer Science"
-							/>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Degree title"
+							inputProps={{
+								placeholder: "Diploma in Computer Science",
+								autoComplete: "off",
+							}}
+						/>
 					)}
 				/>
 			</div>
@@ -132,24 +124,16 @@ export default function EducationEditForm({
 					name="durationLabel"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-200"
-								htmlFor={field.name}
-							>
-								Duration label
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								placeholder="2021 - 2024"
-								autoComplete="off"
-							/>
-							<FieldDescription className="text-sm text-gray-400">
-								Displayed badge text on the public timeline.
-							</FieldDescription>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Duration label"
+							description="Displayed badge text on the public timeline."
+							inputProps={{
+								placeholder: "2021 - 2024",
+								autoComplete: "off",
+							}}
+						/>
 					)}
 				/>
 
@@ -157,21 +141,15 @@ export default function EducationEditForm({
 					name="startDate"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-200"
-								htmlFor={field.name}
-							>
-								Start date label
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								placeholder="January 2021"
-								autoComplete="off"
-							/>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Start date label"
+							inputProps={{
+								placeholder: "January 2021",
+								autoComplete: "off",
+							}}
+						/>
 					)}
 				/>
 
@@ -179,21 +157,15 @@ export default function EducationEditForm({
 					name="endDate"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-200"
-								htmlFor={field.name}
-							>
-								End date label
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								placeholder="June 2024 or Current"
-								autoComplete="off"
-							/>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="End date label"
+							inputProps={{
+								placeholder: "June 2024 or Current",
+								autoComplete: "off",
+							}}
+						/>
 					)}
 				/>
 			</div>
@@ -203,21 +175,15 @@ export default function EducationEditForm({
 					name="gpa"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-200"
-								htmlFor={field.name}
-							>
-								GPA label
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								placeholder="3.72/4.0"
-								autoComplete="off"
-							/>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="GPA label"
+							inputProps={{
+								placeholder: "3.72/4.0",
+								autoComplete: "off",
+							}}
+						/>
 					)}
 				/>
 
@@ -225,19 +191,13 @@ export default function EducationEditForm({
 					name="sortOrder"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-200"
-								htmlFor={field.name}
-							>
-								Sort order
-							</FieldLabel>
-							<Input {...field} id={field.name} autoComplete="off" />
-							<FieldDescription className="text-sm text-gray-400">
-								Lower numbers appear first in the public timeline.
-							</FieldDescription>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Sort order"
+							description="Lower numbers appear first in the public timeline."
+							inputProps={{ autoComplete: "off" }}
+						/>
 					)}
 				/>
 			</div>
@@ -246,18 +206,15 @@ export default function EducationEditForm({
 				name="description"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field data-invalid={fieldState.invalid}>
-						<FieldLabel className="text-lg text-gray-200" htmlFor={field.name}>
-							Program description (optional)
-						</FieldLabel>
-						<Textarea
-							{...field}
-							id={field.name}
-							rows={4}
-							placeholder="Share context about the program or achievements."
-						/>
-						{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-					</Field>
+					<FormTextArea
+						field={field}
+						fieldState={fieldState}
+						label="Program description (optional)"
+						textareaProps={{
+							rows: 4,
+							placeholder: "Share context about the program or achievements.",
+						}}
+					/>
 				)}
 			/>
 
@@ -294,23 +251,15 @@ export default function EducationEditForm({
 										name={`highlights.${index}.value` as const}
 										control={form.control}
 										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel
-													className="text-sm text-gray-300"
-													htmlFor={field.name}
-												>
-													Highlight {index + 1}
-												</FieldLabel>
-												<Textarea
-													{...field}
-													id={field.name}
-													rows={2}
-													placeholder="Describe what you accomplished."
-												/>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
+											<FormTextArea
+												field={field}
+												fieldState={fieldState}
+												label={`Highlight ${index + 1}`}
+												textareaProps={{
+													rows: 2,
+													placeholder: "Describe what you accomplished.",
+												}}
+											/>
 										)}
 									/>
 								</div>
@@ -332,17 +281,9 @@ export default function EducationEditForm({
 			</section>
 
 			<div className="grid grid-cols-3 items-center">
-				<div className="text-red-500">
-					{form.formState.errors.root && (
-						<Field data-invalid>
-							<FieldError errors={[form.formState.errors.root]} />
-						</Field>
-					)}
-				</div>
+				<FormServerError form={form} />
 				<div className="flex justify-center">
-					<Button size="lg" type="submit" disabled={isSubmitting || !isDirty}>
-						{isSubmitting ? "Updating..." : "Update education"}
-					</Button>
+					<FormSubmitButton isSubmitting={isSubmitting} isDirty={isDirty} />
 				</div>
 				<div />
 			</div>

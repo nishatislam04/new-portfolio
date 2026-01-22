@@ -4,6 +4,10 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type { z } from "zod";
 import { submitUserInfoForm } from "@/actions/user-info-form-actions";
+import FormInput from "@/components/form/form-input";
+import FormServerError from "@/components/form/form-server-error";
+import FormSubmitButton from "@/components/form/form-submit-button";
+import FormTextArea from "@/components/form/form-textarea";
 import { Button } from "@/components/ui/button";
 import {
 	Field,
@@ -77,255 +81,148 @@ export default function UserInfoCreate() {
 				name="firstName"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							First Name
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter your first name"
-							autoComplete="first-name"
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="First Name"
+						className="mb-8"
+						inputProps={{
+							placeholder: "Enter your first name",
+							autoComplete: "first-name",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="lastName"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Last Name
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter your last name"
-							autoComplete="name"
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Last Name"
+						className="mb-8"
+						inputProps={{
+							placeholder: "Enter your last name",
+							autoComplete: "name",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="email"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Email
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter your email"
-							autoComplete="email"
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Email"
+						className="mb-8"
+						inputProps={{
+							placeholder: "Enter your email",
+							autoComplete: "email",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="title"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Title
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter your title"
-							autoComplete="title"
-						/>
-						<FieldDescription className="text-sm text-gray-400">
-							Enter your title (Designation).
-						</FieldDescription>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Title"
+						className="mb-8 -space-y-1"
+						description="Enter your title (Designation)."
+						inputProps={{
+							placeholder: "Enter your title",
+							autoComplete: "title",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="bio"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Bio
-						</FieldLabel>
-						<Textarea
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter your bio"
-							autoComplete="bio"
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormTextArea
+						field={field}
+						fieldState={fieldState}
+						label="Bio"
+						className="mb-8"
+						textareaProps={{
+							placeholder: "Enter your bio",
+							autoComplete: "bio",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="phone"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Phone Number
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter your phone number"
-							autoComplete="phone"
-						/>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Phone Number"
+						className="mb-8"
+						inputProps={{
+							placeholder: "Enter your phone number",
+							autoComplete: "phone",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="locationLabel"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Location Label
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter location label"
-							autoComplete="location-label"
-						/>
-						<FieldDescription className="text-sm text-gray-400">
-							Enter location label (address name).
-						</FieldDescription>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Location Label"
+						className="mb-8 -space-y-1"
+						description="Enter location label (address name)."
+						inputProps={{
+							placeholder: "Enter location label",
+							autoComplete: "location-label",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="locationLink"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Location Link
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter location link"
-							autoComplete="location-link"
-						/>
-						<FieldDescription className="text-sm text-gray-400">
-							Enter location link(google map link).
-						</FieldDescription>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Location Link"
+						className="mb-8 -space-y-1"
+						description="Enter location link(google map link)."
+						inputProps={{
+							placeholder: "Enter location link",
+							autoComplete: "location-link",
+						}}
+					/>
 				)}
 			/>
 			<Controller
 				name="availability"
 				control={form.control}
 				render={({ field, fieldState }) => (
-					<Field className="mb-8 -space-y-1" data-invalid={fieldState.invalid}>
-						<FieldLabel
-							className="text-lg text-gray-300/90 -mb-1"
-							htmlFor={field.name}
-						>
-							Available
-						</FieldLabel>
-						<Input
-							{...field}
-							id={field.name}
-							aria-invalid={fieldState.invalid}
-							placeholder="Enter availability"
-							autoComplete="availability"
-						/>
-						<FieldDescription className="text-sm text-gray-400">
-							Enter availability (e.g., Available, Not Available).
-						</FieldDescription>
-						{fieldState.invalid && (
-							<FieldError
-								className="text-red-500 -mt-1"
-								errors={[fieldState.error]}
-							/>
-						)}
-					</Field>
+					<FormInput
+						field={field}
+						fieldState={fieldState}
+						label="Available"
+						className="mb-8 -space-y-1"
+						description="Enter availability (e.g., Available, Not Available)."
+						inputProps={{
+							placeholder: "Enter availability",
+							autoComplete: "availability",
+						}}
+					/>
 				)}
 			/>
 
@@ -333,25 +230,12 @@ export default function UserInfoCreate() {
 			<div className="grid grid-cols-3 items-center w-full">
 				{/* Left column: error */}
 				<div className="flex justify-start">
-					{form.formState.errors.root && (
-						<div className="max-w-md">
-							<Field className="text-red-600" data-invalid>
-								<FieldError errors={[form.formState.errors.root]} />
-							</Field>
-						</div>
-					)}
+					<FormServerError form={form} />
 				</div>
 
 				{/* Center column: button */}
 				<div className="flex justify-center">
-					<Button
-						disabled={!isDirty || isSubmitting}
-						size="lg"
-						className="mt-18 px-12"
-						type="submit"
-					>
-						{isSubmitting ? "Submitting..." : "Confirm"}
-					</Button>
+					<FormSubmitButton isSubmitting={isSubmitting} isDirty={isDirty} />
 				</div>
 
 				<div />

@@ -11,23 +11,14 @@ import {
 	type WorkExperienceDTO,
 } from "@/actions/work-experience-actions";
 
+import FormCheckbox from "@/components/form/form-checkbox";
+import FormFileInput from "@/components/form/form-file-input";
+import FormInput from "@/components/form/form-input";
+import FormSelect from "@/components/form/form-select";
+import FormServerError from "@/components/form/form-server-error";
+import FormSubmitButton from "@/components/form/form-submit-button";
+import FormTextArea from "@/components/form/form-textarea";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-	Field,
-	FieldDescription,
-	FieldError,
-	FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import {
 	type WorkExperienceFormInput,
 	WorkExperienceFormSchema,
@@ -138,23 +129,13 @@ export function WorkExperienceEditForm({
 						name="company"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Company
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									aria-invalid={fieldState.invalid}
-									placeholder="SOFTBD LTD"
-								/>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="Company"
+								className="mb-4"
+								inputProps={{ placeholder: "SOFTBD LTD" }}
+							/>
 						)}
 					/>
 
@@ -163,23 +144,13 @@ export function WorkExperienceEditForm({
 						name="position"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Position
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									aria-invalid={fieldState.invalid}
-									placeholder="Junior Software Engineer"
-								/>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="Position"
+								className="mb-4"
+								inputProps={{ placeholder: "Junior Software Engineer" }}
+							/>
 						)}
 					/>
 
@@ -188,23 +159,13 @@ export function WorkExperienceEditForm({
 						name="location"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Location
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									aria-invalid={fieldState.invalid}
-									placeholder="Dhaka, Bangladesh"
-								/>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="Location"
+								className="mb-4"
+								inputProps={{ placeholder: "Dhaka, Bangladesh" }}
+							/>
 						)}
 					/>
 
@@ -213,36 +174,14 @@ export function WorkExperienceEditForm({
 						name="type"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Employment Type
-								</FieldLabel>
-								<Select
-									name={field.name}
-									value={field.value}
-									onValueChange={field.onChange}
-								>
-									<SelectTrigger
-										id={field.name}
-										aria-invalid={fieldState.invalid}
-									>
-										<SelectValue placeholder="Select employment type" />
-									</SelectTrigger>
-									<SelectContent position="item-aligned">
-										{EMPLOYMENT_TYPES.map((type) => (
-											<SelectItem key={type.value} value={type.value}>
-												{type.label}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormSelect
+								field={field}
+								fieldState={fieldState}
+								label="Employment Type"
+								options={EMPLOYMENT_TYPES}
+								selectPlaceholder="Select employment type"
+								className="mb-4"
+							/>
 						)}
 					/>
 				</div>
@@ -253,26 +192,14 @@ export function WorkExperienceEditForm({
 						name="durationLabel"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Duration label
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									aria-invalid={fieldState.invalid}
-									placeholder="July 2024 - Current"
-								/>
-								<FieldDescription className="text-sm text-gray-400">
-									Display-only label for the timeline.
-								</FieldDescription>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="Duration label"
+								className="mb-4"
+								inputProps={{ placeholder: "July 2024 - Current" }}
+								description="Display-only label for the timeline."
+							/>
 						)}
 					/>
 
@@ -280,23 +207,13 @@ export function WorkExperienceEditForm({
 						name="startLabel"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Start label
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									aria-invalid={fieldState.invalid}
-									placeholder="July 2024"
-								/>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="Start label"
+								className="mb-4"
+								inputProps={{ placeholder: "July 2024" }}
+							/>
 						)}
 					/>
 
@@ -304,23 +221,13 @@ export function WorkExperienceEditForm({
 						name="endLabel"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									End label
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									aria-invalid={fieldState.invalid}
-									placeholder="Current"
-								/>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="End label"
+								className="mb-4"
+								inputProps={{ placeholder: "Current" }}
+							/>
 						)}
 					/>
 				</div>
@@ -330,22 +237,16 @@ export function WorkExperienceEditForm({
 					name="description"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field className="mb-4" data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Role description
-							</FieldLabel>
-							<Textarea
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Describe your responsibilities and impact."
-								rows={4}
-							/>
-							{fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-						</Field>
+						<FormTextArea
+							field={field}
+							fieldState={fieldState}
+							label="Role description"
+							className="mb-4"
+							textareaProps={{
+								placeholder: "Describe your responsibilities and impact.",
+								rows: 4,
+							}}
+						/>
 					)}
 				/>
 
@@ -355,24 +256,13 @@ export function WorkExperienceEditForm({
 						name="isCurrent"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel className="text-lg text-gray-300/90 -mb-1">
-									Current role
-								</FieldLabel>
-								<div className="flex items-center gap-3 mt-2">
-									<Checkbox
-										id="isCurrent"
-										checked={field.value}
-										onCheckedChange={field.onChange}
-									/>
-									<label htmlFor="isCurrent" className="text-sm text-gray-300">
-										Mark as current position
-									</label>
-								</div>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormCheckbox
+								field={field}
+								fieldState={fieldState}
+								label="Current role"
+								checkboxLabel="Mark as current position"
+								className="mb-4"
+							/>
 						)}
 					/>
 
@@ -380,25 +270,14 @@ export function WorkExperienceEditForm({
 						name="sortOrder"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-4" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-lg text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Sort order
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									aria-invalid={fieldState.invalid}
-								/>
-								<FieldDescription className="text-sm text-gray-400">
-									Lower numbers appear first on the public timeline.
-								</FieldDescription>
-								{fieldState.invalid && (
-									<FieldError errors={[fieldState.error]} />
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="Sort order"
+								className="mb-4"
+								inputProps={{}}
+								description="Lower numbers appear first on the public timeline."
+							/>
 						)}
 					/>
 				</div>
@@ -431,39 +310,31 @@ export function WorkExperienceEditForm({
 								name={`achievements.${index}.value`}
 								control={form.control}
 								render={({ field, fieldState }) => (
-									<Field data-invalid={fieldState.invalid}>
-										<div className="flex items-start gap-3">
-											<div className="flex-1">
-												<FieldLabel
-													className="text-sm text-gray-300/90 mb-1"
-													htmlFor={field.name}
-												>
-													Achievement {index + 1}
-												</FieldLabel>
-												<Textarea
-													{...field}
-													id={field.name}
-													aria-invalid={fieldState.invalid}
-													rows={2}
-													placeholder="Describe a concrete result or highlight."
-												/>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</div>
-											{achievementsArray.fields.length > 1 && (
-												<Button
-													type="button"
-													variant="ghost"
-													size="icon"
-													className="mt-6 text-gray-500 hover:text-red-500"
-													onClick={() => achievementsArray.remove(index)}
-												>
-													<Trash2 className="h-4 w-4" />
-												</Button>
-											)}
+									<div className="flex items-start gap-3">
+										<div className="flex-1">
+											<FormTextArea
+												field={field}
+												fieldState={fieldState}
+												label={`Achievement ${index + 1}`}
+												textareaProps={{
+													rows: 2,
+													placeholder:
+														"Describe a concrete result or highlight.",
+												}}
+											/>
 										</div>
-									</Field>
+										{achievementsArray.fields.length > 1 && (
+											<Button
+												type="button"
+												variant="ghost"
+												size="icon"
+												className="mt-6 text-gray-500 hover:text-red-500"
+												onClick={() => achievementsArray.remove(index)}
+											>
+												<Trash2 className="h-4 w-4" />
+											</Button>
+										)}
+									</div>
 								)}
 							/>
 						))}
@@ -509,49 +380,25 @@ export function WorkExperienceEditForm({
 											name={`technologies.${index}.label`}
 											control={form.control}
 											render={({ field, fieldState }) => (
-												<Field data-invalid={fieldState.invalid}>
-													<FieldLabel
-														className="text-sm text-gray-300/90 mb-1"
-														htmlFor={field.name}
-													>
-														Technology label
-													</FieldLabel>
-													<Input
-														{...field}
-														id={field.name}
-														aria-invalid={fieldState.invalid}
-														placeholder="React"
-													/>
-													{fieldState.invalid && (
-														<FieldError errors={[fieldState.error]} />
-													)}
-												</Field>
+												<FormInput
+													field={field}
+													fieldState={fieldState}
+													label="Technology label"
+													inputProps={{ placeholder: "React" }}
+												/>
 											)}
 										/>
 										<Controller
 											name={`technologies.${index}.icon`}
 											control={form.control}
 											render={({ field, fieldState }) => (
-												<Field data-invalid={fieldState.invalid}>
-													<FieldLabel
-														className="text-sm text-gray-300/90 mb-1"
-														htmlFor={field.name}
-													>
-														Icon (optional)
-													</FieldLabel>
-													<Input
-														id={field.name}
-														aria-invalid={fieldState.invalid}
-														type="file"
-														accept="image/*,image/svg+xml"
-														onChange={(event) =>
-															field.onChange(event.target.files?.[0])
-														}
-													/>
-													{fieldState.invalid && (
-														<FieldError errors={[fieldState.error]} />
-													)}
-												</Field>
+												<FormFileInput
+													field={field}
+													fieldState={fieldState}
+													label="Icon (optional)"
+													className="mb-2"
+													inputProps={{ accept: "image/*,image/svg+xml" }}
+												/>
 											)}
 										/>
 										{form.watch(`technologies.${index}.existingIconUrl`) && (
@@ -581,19 +428,16 @@ export function WorkExperienceEditForm({
 				{/* Root-level error and submit button */}
 				<div className="grid grid-cols-3 items-center w-full">
 					<div className="flex justify-start">
-						{form.formState.errors.root && (
-							<div className="max-w-md">
-								<Field className="text-red-600" data-invalid>
-									<FieldError errors={[form.formState.errors.root]} />
-								</Field>
-							</div>
-						)}
+						<FormServerError form={form} />
 					</div>
 
 					<div className="flex justify-center">
-						<Button size="lg" type="submit" disabled={!isDirty || isSubmitting}>
-							{isSubmitting ? "Updating..." : "Update work experience"}
-						</Button>
+						<FormSubmitButton
+							isSubmitting={isSubmitting}
+							isDirty={isDirty}
+							label="Update work experience"
+							labelChange="Updating..."
+						/>
 					</div>
 
 					<div />

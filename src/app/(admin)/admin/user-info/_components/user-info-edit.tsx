@@ -6,6 +6,8 @@ import { toast } from "sonner";
 import type { z } from "zod";
 import { updateUserInfoForm } from "@/actions/user-info-form-actions";
 import { Button } from "@/components/ui/button";
+import FormInput from "@/components/form/form-input";
+import FormTextArea from "@/components/form/form-textarea";
 import {
 	Field,
 	FieldDescription,
@@ -103,267 +105,170 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 					name="firstName"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field className="mb-8" data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								First Name
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter your first name"
-								autoComplete="first-name"
-							/>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="First Name"
+							className="mb-8"
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							inputProps={{
+								placeholder: "Enter your first name",
+								autoComplete: "first-name",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="lastName"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field className="mb-8" data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Last Name
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter your last name"
-								autoComplete="name"
-							/>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Last Name"
+							className="mb-8"
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							inputProps={{
+								placeholder: "Enter your last name",
+								autoComplete: "name",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="email"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field className="mb-8" data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Email
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter your email"
-								autoComplete="email"
-							/>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Email"
+							className="mb-8"
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							inputProps={{
+								placeholder: "Enter your email",
+								autoComplete: "email",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="title"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Title"
 							className="mb-8 -space-y-1"
-							data-invalid={fieldState.invalid}
-						>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Title
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter your title"
-								autoComplete="title"
-							/>
-							<FieldDescription className="text-sm text-gray-400">
-								Enter your title (Designation).
-							</FieldDescription>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							description="Enter your title (Designation)."
+							descriptionClassName="text-sm text-gray-400"
+							inputProps={{
+								placeholder: "Enter your title",
+								autoComplete: "title",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="bio"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field className="mb-8" data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Bio
-							</FieldLabel>
-							<Textarea
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter your bio"
-								autoComplete="bio"
-							/>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+						<FormTextArea
+							field={field}
+							fieldState={fieldState}
+							label="Bio"
+							className="mb-8"
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							textareaProps={{
+								placeholder: "Enter your bio",
+								autoComplete: "bio",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="phone"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field className="mb-8" data-invalid={fieldState.invalid}>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Phone Number
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter your phone number"
-								autoComplete="phone"
-							/>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Phone Number"
+							className="mb-8"
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							inputProps={{
+								placeholder: "Enter your phone number",
+								autoComplete: "phone",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="locationLabel"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Location Label"
 							className="mb-8 -space-y-1"
-							data-invalid={fieldState.invalid}
-						>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Location Label
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter location label"
-								autoComplete="location-label"
-							/>
-							<FieldDescription className="text-sm text-gray-400">
-								Enter location label (address name).
-							</FieldDescription>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							description="Enter location label (address name)."
+							descriptionClassName="text-sm text-gray-400"
+							inputProps={{
+								placeholder: "Enter location label",
+								autoComplete: "location-label",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="locationLink"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Location Link"
 							className="mb-8 -space-y-1"
-							data-invalid={fieldState.invalid}
-						>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Location Link
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter location link"
-								autoComplete="location-link"
-							/>
-							<FieldDescription className="text-sm text-gray-400">
-								Enter location link(google map link).
-							</FieldDescription>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							description="Enter location link(google map link)."
+							descriptionClassName="text-sm text-gray-400"
+							inputProps={{
+								placeholder: "Enter location link",
+								autoComplete: "location-link",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				<Controller
 					name="availability"
 					control={form.control}
 					render={({ field, fieldState }) => (
-						<Field
+						<FormInput
+							field={field}
+							fieldState={fieldState}
+							label="Available"
 							className="mb-8 -space-y-1"
-							data-invalid={fieldState.invalid}
-						>
-							<FieldLabel
-								className="text-lg text-gray-300/90 -mb-1"
-								htmlFor={field.name}
-							>
-								Available
-							</FieldLabel>
-							<Input
-								{...field}
-								id={field.name}
-								aria-invalid={fieldState.invalid}
-								placeholder="Enter availability"
-								autoComplete="availability"
-							/>
-							<FieldDescription className="text-sm text-gray-400">
-								Enter your availability status.
-							</FieldDescription>
-							{fieldState.invalid && (
-								<FieldError
-									className="text-red-500 -mt-1"
-									errors={[fieldState.error]}
-								/>
-							)}
-						</Field>
+							labelClassName="text-lg text-gray-300/90 -mb-1"
+							description="Enter your availability status."
+							descriptionClassName="text-sm text-gray-400"
+							inputProps={{
+								placeholder: "Enter availability",
+								autoComplete: "availability",
+							}}
+							errorClassName="text-red-500 -mt-1"
+						/>
 					)}
 				/>
 				{form.formState.errors.root && (

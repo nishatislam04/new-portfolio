@@ -3,6 +3,8 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type z from "zod";
 import { deleteUserInfo } from "@/actions/user-info-form-actions";
+import FormInput from "@/components/form/form-input";
+import FormSubmitButton from "@/components/form/form-submit-button";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -12,8 +14,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import { UserInfoDeleteSchema } from "@/schema/user-info-form-schema";
 import AlertEmailCheck from "./alert-email-check";
 
@@ -81,27 +81,12 @@ export default function DeleteResourceDialog({
 						name="password"
 						control={form.control}
 						render={({ field, fieldState }) => (
-							<Field className="mb-6" data-invalid={fieldState.invalid}>
-								<FieldLabel
-									className="text-gray-300/90 -mb-1"
-									htmlFor={field.name}
-								>
-									Password
-								</FieldLabel>
-								<Input
-									{...field}
-									id={field.name}
-									type="password"
-									placeholder="Enter delete password"
-									aria-invalid={fieldState.invalid}
-								/>
-								{fieldState.invalid && (
-									<FieldError
-										className="text-red-500 -mt-1"
-										errors={[fieldState.error]}
-									/>
-								)}
-							</Field>
+							<FormInput
+								field={field}
+								fieldState={fieldState}
+								label="Password"
+								inputProps={{ placeholder: "Enter the delete password" }}
+							/>
 						)}
 					/>
 					<div className="flex items-center justify-end gap-3">
@@ -112,13 +97,12 @@ export default function DeleteResourceDialog({
 						>
 							Cancel
 						</Button>
-						<Button
-							type="submit"
-							className="bg-red-600 hover:bg-red-700 text-white"
-							disabled={form.formState.isSubmitting}
-						>
-							{form.formState.isSubmitting ? "Deleting..." : "Delete"}
-						</Button>
+						<FormSubmitButton
+							isSubmitting={form.formState.isSubmitting}
+							isDirty={form.formState.isDirty}
+							label="delete"
+							labelChange="deleting"
+						/>
 					</div>
 				</form>
 			</DialogContent>

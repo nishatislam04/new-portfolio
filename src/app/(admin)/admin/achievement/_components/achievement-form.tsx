@@ -5,16 +5,12 @@ import { Plus, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
-
 import { upsertAchievements } from "@/actions/achievement-actions";
+import FormInput from "@/components/form/form-input";
+import FormResetButton from "@/components/form/form-reset-button";
+import FormServerError from "@/components/form/form-server-error";
+import FormSubmitButton from "@/components/form/form-submit-button";
 import { Button } from "@/components/ui/button";
-import {
-	Field,
-	FieldDescription,
-	FieldError,
-	FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import {
 	type AchievementsFormInput,
 	AchievementsFormSchema,
@@ -133,18 +129,12 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 										name={`items.${index}.number`}
 										control={form.control}
 										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel
-													className="text-sm text-gray-300"
-													htmlFor={field.name}
-												>
-													Number
-												</FieldLabel>
-												<Input {...field} id={field.name} placeholder="1+" />
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
+											<FormInput
+												field={field}
+												fieldState={fieldState}
+												label="Number"
+												inputProps={{ placeholder: "1+" }}
+											/>
 										)}
 									/>
 
@@ -152,22 +142,12 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 										name={`items.${index}.text`}
 										control={form.control}
 										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel
-													className="text-sm text-gray-300"
-													htmlFor={field.name}
-												>
-													Achievment Information
-												</FieldLabel>
-												<Input
-													{...field}
-													id={field.name}
-													placeholder="years of experience"
-												/>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
+											<FormInput
+												field={field}
+												fieldState={fieldState}
+												label="Achievment Information"
+												inputProps={{ placeholder: "years of experience" }}
+											/>
 										)}
 									/>
 
@@ -175,21 +155,12 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 										name={`items.${index}.sortOrder`}
 										control={form.control}
 										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel
-													className="text-sm text-gray-300"
-													htmlFor={field.name}
-												>
-													Sort order
-												</FieldLabel>
-												<Input {...field} id={field.name} inputMode="numeric" />
-												<FieldDescription className="text-xs text-gray-400">
-													Lower numbers appear first.
-												</FieldDescription>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
+											<FormInput
+												field={field}
+												fieldState={fieldState}
+												label="Sort Order"
+												inputProps={{ placeholder: "Enter sort order number" }}
+											/>
 										)}
 									/>
 								</div>
@@ -211,24 +182,11 @@ export default function AchievementForm({ items }: AchievementFormProps) {
 				</div>
 			</section>
 
-			{form.formState.errors.root && (
-				<p className="text-sm text-red-500">
-					{form.formState.errors.root.message}
-				</p>
-			)}
+			<FormServerError form={form} />
 
 			<div className="flex justify-end gap-3 pt-4">
-				<Button
-					variant="secondary"
-					type="button"
-					disabled={isSubmitting || !isDirty}
-					onClick={() => form.reset(buildDefaults(items))}
-				>
-					Reset
-				</Button>
-				<Button type="submit" disabled={isSubmitting || !isDirty}>
-					{isSubmitting ? "Saving..." : "Save achievements"}
-				</Button>
+				<FormResetButton isSubmitting={isSubmitting} isDirty={isDirty} />
+				<FormSubmitButton isSubmitting={isSubmitting} isDirty={isDirty} />
 			</div>
 		</form>
 	);
