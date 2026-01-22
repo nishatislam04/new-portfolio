@@ -23,10 +23,7 @@ export default function ErrorPage({
 				</div>
 
 				<div className="flex flex-col sm:flex-row gap-4 justify-center">
-					<Button
-						onClick={reset}
-						className="bg-emerald-500 hover:bg-emerald-600"
-					>
+					<Button onClick={reset} variant="secondary">
 						Try again
 					</Button>
 

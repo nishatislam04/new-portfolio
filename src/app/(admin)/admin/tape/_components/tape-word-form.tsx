@@ -115,7 +115,7 @@ export default function TapeWordForm({ items }: TapeWordFormProps) {
 					</div>
 					<Button
 						type="button"
-						variant="oldButtonSecondary"
+						variant="secondary"
 						size="sm"
 						className="gap-2"
 						onClick={handleAddTapeWord}
@@ -204,18 +204,14 @@ export default function TapeWordForm({ items }: TapeWordFormProps) {
 
 			<div className="flex justify-end gap-3 pt-4">
 				<Button
-					variant="oldButtonSecondary"
+					variant="secondary"
 					type="button"
 					disabled={isSubmitting || !isDirty}
 					onClick={() => form.reset(buildDefaults(items))}
 				>
 					Reset
 				</Button>
-				<Button
-					variant="oldButtonPrimary"
-					type="submit"
-					disabled={isSubmitting || !isDirty}
-				>
+				<Button type="submit" disabled={isSubmitting || !isDirty}>
 					{isSubmitting ? "Saving..." : "Save tape words"}
 				</Button>
 			</div>

@@ -201,7 +201,7 @@ export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 
 			<div className="flex justify-end items-center gap-3 pt-4">
 				<Button
-					variant="oldButtonSecondary"
+					variant="secondary"
 					type="button"
 					disabled={isSubmitting || !isDirty}
 					onClick={() => form.reset()}
@@ -209,7 +209,6 @@ export default function ProfileStatsForm({ stats }: ProfileStatsFormProps) {
 					Reset
 				</Button>
 				<Button
-					variant="oldButtonPrimary"
 					className="px-8"
 					type="submit"
 					disabled={isSubmitting || !isDirty}

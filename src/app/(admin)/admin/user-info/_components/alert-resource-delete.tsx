@@ -28,7 +28,7 @@ export default function AlertResourceDelete({
 		<>
 			<AlertDialog>
 				<AlertDialogTrigger asChild>
-					<Button type="button" variant="oldButtonDestructive" size="lg">
+					<Button type="button" variant="destructive" size="lg">
 						<Trash2 />
 						Delete Me
 					</Button>

@@ -40,7 +40,7 @@ export default function WorkExperienceDeleteAlert({
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
-				<Button variant="oldButtonDestructive" size="lg" type="button">
+				<Button variant="destructive" size="lg" type="button">
 					<Trash2 className="mr-2 h-4 w-4" />
 					Delete
 				</Button>

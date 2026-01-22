@@ -26,9 +26,7 @@ export default function NotFound() {
 				{/* Navigation buttons */}
 				<div className="flex flex-col sm:flex-row gap-4 justify-center">
 					<Link href="/">
-						<Button className="bg-emerald-500 hover:bg-emerald-600">
-							Go to Homepage
-						</Button>
+						<Button>Go to Homepage</Button>
 					</Link>
 
 					<Link href="/#projects">

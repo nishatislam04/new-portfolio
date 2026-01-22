@@ -40,7 +40,7 @@ My newest portfolio re-working. Built with Next.js 16 canary, TypeScript, Tailwi
    ```
 
 5. **Open in browser**
-   Navigate to [http://192.168.0.105:3000](http://192.168.0.105:3000)
+   Navigate to [http://192.168.1.105:3000](http://192.168.1.105:3000)
 
 ## Deployment
 

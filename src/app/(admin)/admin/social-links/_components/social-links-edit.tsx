@@ -716,12 +716,7 @@ export default function SocialLinksEdit({
 
 					{/* Center column: button */}
 					<div className="flex justify-center">
-						<Button
-							variant="oldButtonPrimary"
-							size="lg"
-							type="submit"
-							disabled={!isDirty || isSubmitting}
-						>
+						<Button size="lg" type="submit" disabled={!isDirty || isSubmitting}>
 							{isSubmitting ? "Updating..." : "Update social links"}
 						</Button>
 					</div>

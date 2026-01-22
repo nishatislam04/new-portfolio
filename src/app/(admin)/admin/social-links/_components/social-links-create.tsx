@@ -588,12 +588,7 @@ export default function SocialLinksCreate() {
 
 				{/* Center column: button */}
 				<div className="flex justify-center">
-					<Button
-						variant="oldButtonPrimary"
-						size="lg"
-						type="submit"
-						disabled={!isDirty || isSubmitting}
-					>
+					<Button size="lg" type="submit" disabled={!isDirty || isSubmitting}>
 						{isSubmitting ? "Saving..." : "Save social links"}
 					</Button>
 				</div>

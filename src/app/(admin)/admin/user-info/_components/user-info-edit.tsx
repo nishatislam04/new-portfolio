@@ -374,7 +374,6 @@ export default function UserInfoEdit({ user }: UserInfoEditProps) {
 				<div className="flex gap-4">
 					<Button
 						type="submit"
-						variant="oldButtonPrimary"
 						disabled={isSubmitting || !isDirty}
 						className="flex-1"
 					>

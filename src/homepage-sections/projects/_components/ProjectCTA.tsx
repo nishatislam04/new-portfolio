@@ -10,7 +10,6 @@ export default function ProjectCTA() {
 			<div className="text-center mt-16">
 				<p className="text-gray-400 mb-6">Interested in working together?</p>
 				<Button
-					variant="oldButtonPrimary"
 					size="lg"
 					onClick={() => {
 						const element = document.getElementById("contact");

@@ -265,7 +265,7 @@ export default function EducationCreateForm() {
 					</div>
 					<Button
 						type="button"
-						variant="oldButtonSecondary"
+						variant="secondary"
 						size="sm"
 						className="gap-2"
 						onClick={addHighlight}
@@ -333,12 +333,7 @@ export default function EducationCreateForm() {
 					)}
 				</div>
 				<div className="flex justify-center">
-					<Button
-						variant="oldButtonPrimary"
-						size="lg"
-						type="submit"
-						disabled={!isDirty || isSubmitting}
-					>
+					<Button size="lg" type="submit" disabled={!isDirty || isSubmitting}>
 						{isSubmitting ? "Saving..." : "Save education"}
 					</Button>
 				</div>

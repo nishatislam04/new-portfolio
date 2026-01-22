@@ -411,7 +411,7 @@ export function WorkExperienceEditForm({
 						</h3>
 						<Button
 							type="button"
-							variant="oldButtonSecondary"
+							variant="secondary"
 							size="sm"
 							onClick={() => achievementsArray.append({ value: "" })}
 						>
@@ -478,7 +478,7 @@ export function WorkExperienceEditForm({
 						</h3>
 						<Button
 							type="button"
-							variant="oldButtonSecondary"
+							variant="secondary"
 							size="sm"
 							onClick={() =>
 								technologiesArray.append({
@@ -591,12 +591,7 @@ export function WorkExperienceEditForm({
 					</div>
 
 					<div className="flex justify-center">
-						<Button
-							variant="oldButtonPrimary"
-							size="lg"
-							type="submit"
-							disabled={!isDirty || isSubmitting}
-						>
+						<Button size="lg" type="submit" disabled={!isDirty || isSubmitting}>
 							{isSubmitting ? "Updating..." : "Update work experience"}
 						</Button>
 					</div>

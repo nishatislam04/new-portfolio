@@ -97,7 +97,6 @@ export default function ContactForm() {
 
 					<div className="pt-2">
 						<Button
-							variant="oldButtonPrimary"
 							type="submit"
 							disabled={isPending}
 							className="w-full group py-5"
