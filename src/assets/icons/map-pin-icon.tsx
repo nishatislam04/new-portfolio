@@ -1,0 +1,21 @@
+import type { SVGProps } from "react";
+
+export type MapPinIconProps = SVGProps<SVGSVGElement>;
+
+export default function MapPinIcon(props: MapPinIconProps) {
+	return (
+		<svg
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<path
+				d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"
+				stroke="currentColor"
+				strokeWidth={2}
+			/>
+			<circle cx={12} cy={10} r={3} stroke="currentColor" strokeWidth={2} />
+		</svg>
+	);
+}

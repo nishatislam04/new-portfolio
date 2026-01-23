@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-import ClockIcon from "@/assets/icons/minified/clock.svg";
-import LockIcon from "@/assets/icons/minified/lock.svg";
-import PlayIcon from "@/assets/icons/minified/play.svg";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right-icon.tsx";
+import ClockIcon from "@/assets/icons/minified/clock-icon.tsx";
+import LockIcon from "@/assets/icons/minified/lock-icon.tsx";
+import PlayIcon from "@/assets/icons/minified/play-icon.tsx";
 import { Card, CardContent } from "@/components/ui/card";
 import { TechBadges } from "@/components/ui/TechBadges";
 import type { Project } from "@/types/project";

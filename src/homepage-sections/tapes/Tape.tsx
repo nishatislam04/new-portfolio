@@ -1,4 +1,4 @@
-import StarIcon from "@/assets/icons/star.svg";
+import StarIcon from "@/assets/icons/star-icon.tsx";
 
 // Words for the tape - matching typical design samples
 const tapeWords = [

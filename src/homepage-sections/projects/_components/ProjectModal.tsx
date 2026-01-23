@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-import GithubIcon from "@/assets/icons/minified/github.svg";
-import PlayIcon from "@/assets/icons/minified/play.svg";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right-icon.tsx";
+import GithubIcon from "@/assets/icons/minified/github-icon.tsx";
+import PlayIcon from "@/assets/icons/minified/play-icon.tsx";
 import {
 	Carousel,
 	CarouselContent,

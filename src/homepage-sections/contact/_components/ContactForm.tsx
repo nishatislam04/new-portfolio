@@ -2,7 +2,7 @@
 
 import { useRef, useState, useTransition } from "react";
 import { sendEmail } from "@/actions/SendEmail";
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right-icon.tsx";
 import { FadeIn } from "@/components/animations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";

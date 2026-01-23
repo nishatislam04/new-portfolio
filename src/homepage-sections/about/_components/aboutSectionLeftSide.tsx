@@ -1,4 +1,4 @@
-import CheckCircleIcon from "@/assets/icons/check-circle.svg";
+import CheckCircleIcon from "@/assets/icons/check-circle-icon.tsx";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { FadeInOnScroll } from "@/components/animations/FadeInOnScroll";
 import { PERSONAL_INFO } from "@/constants/personal-info";

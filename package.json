@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "concurrently --names \"Prisma,Next.js,Warm Admin\" --prefix \"[{name}]\" --prefix-colors \"yellow.bold,blue.bold,green.bold\" \"bunx --bun prisma generate --watch\" \"bun --bun next dev -H 192.168.1.105\" \"sleep 13 && bun run warm:admin\"",
+		"dev": "concurrently --names \"Prisma,Next.js,Warm Admin\" --prefix \"[{name}]\" --prefix-colors \"yellow.bold,blue.bold,green.bold\" \"bunx --bun prisma generate --watch\" \"bun --bun next dev\" \"sleep 13 && bun run warm:admin\"",
 		"warm:admin": "bun scripts/warm-admin.mjs",
 		"analyze:dev": "ANALYZE=true bun run dev",
 		"analyze:build": "ANALYZE=true bun run build",

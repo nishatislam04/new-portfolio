@@ -1,9 +1,9 @@
-import DockerIcon from "@/assets/icons/stacks/minified/docker.svg";
-import LaravelIcon from "@/assets/icons/stacks/minified/laravel.svg";
-import NestJSIcon from "@/assets/icons/stacks/minified/nestjs.svg";
-import NextJSIcon from "@/assets/icons/stacks/minified/nextjs.svg";
-import PostgreSQLIcon from "@/assets/icons/stacks/minified/postgres.svg";
-import PrismaIcon from "@/assets/icons/stacks/minified/prisma.svg";
+import DockerIcon from "@/assets/icons/stacks/minified/docker-icon.tsx";
+import LaravelIcon from "@/assets/icons/stacks/minified/laravel-icon.tsx";
+import NestJSIcon from "@/assets/icons/stacks/minified/nestjs-icon.tsx";
+import NextJSIcon from "@/assets/icons/stacks/minified/nextjs-icon.tsx";
+import PostgreSQLIcon from "@/assets/icons/stacks/minified/postgres-icon.tsx";
+import PrismaIcon from "@/assets/icons/stacks/minified/prisma-icon.tsx";
 import { FadeIn, TechStackCard } from "@/components/animations";
 
 const techStacks = [

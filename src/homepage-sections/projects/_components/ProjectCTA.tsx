@@ -1,6 +1,6 @@
 "use client";
 
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right-icon.tsx";
 import { FadeIn } from "@/components/animations";
 import { Button } from "@/components/ui/button";
 

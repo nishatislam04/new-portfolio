@@ -1,7 +1,7 @@
 import { BriefcaseIcon } from "lucide-react";
-import CalendarIcon from "@/assets/icons/calendar.svg";
-import CheckCircleIcon from "@/assets/icons/check-circle.svg";
-import MapPinIcon from "@/assets/icons/map-pin.svg";
+import CalendarIcon from "@/assets/icons/calendar-icon.tsx";
+import CheckCircleIcon from "@/assets/icons/check-circle-icon.tsx";
+import MapPinIcon from "@/assets/icons/map-pin-icon.tsx";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { workExperience } from "@/constants/personal-info";
 

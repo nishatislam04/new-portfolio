@@ -1,4 +1,4 @@
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right-icon.tsx";
 import { Container } from "@/components/ui";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 import CurrentYear from "./_components/currentYear";

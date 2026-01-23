@@ -1,6 +1,6 @@
 "use client";
 
-import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import ArrowUpRightIcon from "@/assets/icons/arrow-up-right-icon.tsx";
 import { Button } from "@/components/ui/button";
 import { scrollToElement } from "@/utils";
 

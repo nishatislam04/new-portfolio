@@ -1,11 +1,10 @@
 import Link from "next/link";
-import AvailabilityIcon from "@/assets/icons/availability.svg";
-import EmailIcon from "@/assets/icons/email.svg";
-import GithubIcon from "@/assets/icons/github.svg";
-import LocationIcon from "@/assets/icons/location.svg";
-
-import PhoneIcon from "@/assets/icons/phone.svg";
-import ResponseTimeIcon from "@/assets/icons/response-time.svg";
+import AvailabilityIcon from "@/assets/icons/availability-icon.tsx";
+import EmailIcon from "@/assets/icons/email-icon.tsx";
+import GithubIcon from "@/assets/icons/github-icon.tsx";
+import LocationIcon from "@/assets/icons/location-icon.tsx";
+import PhoneIcon from "@/assets/icons/phone-icon.tsx";
+import ResponseTimeIcon from "@/assets/icons/response-time-icon.tsx";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PERSONAL_INFO } from "@/constants/personal-info";

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import SparkleIcon from "@/assets/icons/sparkle.svg";
-import StarIcon from "@/assets/icons/star.svg";
+import SparkleIcon from "@/assets/icons/sparkle-icon.tsx";
+import StarIcon from "@/assets/icons/star-icon.tsx";
 import grainImage from "@/assets/images/grain.jpg";
 import { Section } from "@/components/ui";
 import HeroOrbit from "@/homepage-sections/hero/_components/HeroOrbit";

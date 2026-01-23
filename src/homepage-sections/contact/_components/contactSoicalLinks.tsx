@@ -1,8 +1,8 @@
 import Link from "next/link";
-import GmailIcon from "@/assets/icons/minified/Gmail.svg";
-import LinkedInIcon from "@/assets/icons/minified/Linkedin.svg";
-import MessengerIcon from "@/assets/icons/minified/Messenger.svg";
-import WhatsAppIcon from "@/assets/icons/minified/Whatsapp.svg";
+import GmailIcon from "@/assets/icons/minified/gmail-icon.tsx";
+import LinkedInIcon from "@/assets/icons/minified/linkedin-icon.tsx";
+import MessengerIcon from "@/assets/icons/minified/messenger-icon.tsx";
+import WhatsAppIcon from "@/assets/icons/minified/whatsapp-icon.tsx";
 import { PERSONAL_INFO } from "@/constants/personal-info";
 
 export default function ContactSocialLinks() {

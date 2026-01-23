@@ -1,4 +1,4 @@
-const baseUrl = process.env.WARM_BASE_URL ?? "http://192.168.1.105:3000";
+const baseUrl = process.env.WARM_BASE_URL ?? "http://localhost:3000";
 
 // Add or adjust routes here as you create new admin pages
 const routes = [
