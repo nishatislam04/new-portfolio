@@ -55,9 +55,9 @@ export const updateUserInfoForm = async (data: unknown) =>
 	});
 
 export const getUserInfo = async () => {
-	"use cache";
-	cacheTag("user-info");
-	cacheLife("weeks");
+	// "use cache";
+	// cacheTag("user-info");
+	// cacheLife("weeks");
 	try {
 		const profile = await prisma.profile.findFirst({
 			select: {

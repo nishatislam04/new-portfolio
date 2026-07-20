@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
-import { fontClassName } from "@/app/fonts";
-
 export const metadata: Metadata = {
 	metadataBase: new URL("https://new-portfolio-psi-bice.vercel.app"),
 	title: {

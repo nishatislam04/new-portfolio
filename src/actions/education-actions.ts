@@ -59,9 +59,9 @@ function normalizeHighlights(json: unknown): { value: string }[] {
 export const getEducation = async (): Promise<
 	ActionValidationResult<EducationDTO | null>
 > => {
-	"use cache";
-	cacheTag("education");
-	cacheLife("weeks");
+	// "use cache";
+	// cacheTag("education");
+	// cacheLife("weeks");
 
 	try {
 		const profileId = await getRootProfileId();

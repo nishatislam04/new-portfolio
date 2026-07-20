@@ -34,9 +34,9 @@ export type ProfileStatsMutationResult = {
 export const getProfileStats = async (): Promise<
 	ActionValidationResult<ProfileStatsDTO>
 > => {
-	"use cache";
-	cacheTag("profile-stats");
-	cacheLife("weeks");
+	// "use cache";
+	// cacheTag("profile-stats");
+	// cacheLife("weeks");
 
 	try {
 		const profileId = await getRootProfileId();

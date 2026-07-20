@@ -21,6 +21,9 @@ help:
 dev: docker-up
 	bun run dev
 
+dev-simple:
+	bun run dev:simple
+
 # Production
 build:
 	npm run build
@@ -41,7 +44,7 @@ type-check:
 # Database operations
 generate:
 	bunx --bun prisma generate
-	
+
 seed:
 	bun run db:seed
 

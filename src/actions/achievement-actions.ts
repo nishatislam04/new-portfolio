@@ -3,15 +3,15 @@
 import { cacheLife, cacheTag, revalidateTag, updateTag } from "next/cache";
 
 import prisma from "@/lib/prisma";
-import type { ActionValidationResult } from "@/utils/validation";
 import {
-	AchievementServerItemSchema,
-	AchievementServerPayloadSchema,
-	AchievementsFormSchema,
 	type AchievementServerItemInput,
+	AchievementServerItemSchema,
 	type AchievementServerPayloadInput,
+	AchievementServerPayloadSchema,
 	type AchievementsFormInput,
+	AchievementsFormSchema,
 } from "@/schema/achievement-schema";
+import type { ActionValidationResult } from "@/utils/validation";
 
 export type AchievementDTO = AchievementServerItemInput & {
 	id: string;
@@ -34,9 +34,9 @@ async function getRootProfileId(): Promise<string> {
 export const getAchievements = async (): Promise<
 	ActionValidationResult<AchievementDTO[]>
 > => {
-	"use cache";
-	cacheTag("achievement");
-	cacheLife("weeks");
+	// "use cache";
+	// cacheTag("achievement");
+	// cacheLife("weeks");
 
 	try {
 		const profileId = await getRootProfileId();
@@ -58,9 +58,7 @@ export const getAchievements = async (): Promise<
 		return { success: true, data: items };
 	} catch (error) {
 		const message =
-			error instanceof Error
-				? error.message
-				: "Failed to fetch achievements";
+			error instanceof Error ? error.message : "Failed to fetch achievements";
 		return {
 			success: false,
 			type: "server-error",
@@ -86,8 +84,8 @@ function buildServerPayload(
 		};
 	}
 
-	const normalizedItems: AchievementServerItemInput[] = clientParsed.data.items.map(
-		(item) => {
+	const normalizedItems: AchievementServerItemInput[] =
+		clientParsed.data.items.map((item) => {
 			const parsedItem = AchievementServerItemSchema.safeParse({
 				...item,
 				sortOrder: Number.parseInt(item.sortOrder, 10) || 0,
@@ -98,8 +96,7 @@ function buildServerPayload(
 			}
 
 			return parsedItem.data;
-		},
-	);
+		});
 
 	const serverParsed = AchievementServerPayloadSchema.safeParse({
 		items: normalizedItems,
@@ -134,9 +131,7 @@ export const upsertAchievements = async (
 				where: { profileId },
 			});
 
-			const existingById = new Map(
-				existing.map((item) => [item.id, item]),
-			);
+			const existingById = new Map(existing.map((item) => [item.id, item]));
 
 			const incomingIds = new Set<string>();
 
@@ -185,9 +180,7 @@ export const upsertAchievements = async (
 		};
 	} catch (error) {
 		const message =
-			error instanceof Error
-				? error.message
-				: "Failed to update achievements";
+			error instanceof Error ? error.message : "Failed to update achievements";
 		return {
 			success: false,
 			type: "server-error",

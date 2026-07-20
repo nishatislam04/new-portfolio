@@ -34,9 +34,9 @@ async function getRootProfileId(): Promise<string> {
 export const getTapeWords = async (): Promise<
 	ActionValidationResult<TapeWordDTO[]>
 > => {
-	"use cache";
-	cacheTag("tape-word");
-	cacheLife("weeks");
+	// "use cache";
+	// cacheTag("tape-word");
+	// cacheLife("weeks");
 
 	try {
 		const profileId = await getRootProfileId();

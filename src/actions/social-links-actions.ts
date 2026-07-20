@@ -158,9 +158,9 @@ export async function createSocialLinks(formData: SocialLinksFormInput) {
  * @returns Promise resolving to array of social links or error response
  */
 export async function getSocialLinks() {
-	"use cache";
-	cacheTag("social-links");
-	cacheLife("weeks");
+	// "use cache";
+	// cacheTag("social-links");
+	// cacheLife("weeks");
 	try {
 		const socialLinks = await prisma.socialLink.findMany({
 			orderBy: {

@@ -106,9 +106,9 @@ function normalizeTechnologies(json: unknown): WorkExperienceTechnology[] {
 export const getWorkExperiences = async (): Promise<
 	ActionValidationResult<WorkExperienceDTO[]>
 > => {
-	"use cache";
-	cacheTag("work-experience");
-	cacheLife("weeks");
+	// "use cache";
+	// cacheTag("work-experience");
+	// cacheLife("weeks");
 
 	try {
 		const profileId = await getRootProfileId();
